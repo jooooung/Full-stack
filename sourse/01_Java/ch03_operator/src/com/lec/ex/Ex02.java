@@ -12,7 +12,13 @@ public class Ex02 {
 		n2 = n1--;
 		System.out.printf("n1 = %d, n2 = %d\n", n1, n2);
 		
-		result = !(n1!=n2);  //논리연산자(반대를 의미)
-		System.out.println("!(n1!=n2)는"+ result);   //오류남  왜?!!
+		boolean result = !(n1!=n2);  //논리연산자(반대를 의미)  그냥 result를 쓰니 에러 -> boolean 추가
+		System.out.println("!(n1!=n2!)는"+ result);   
 	}
 }
+
+//n1 = 11, n2 = 11
+//n1 = 12, n2 = 11
+//n1 = 11, n2 = 11
+//n1 = 10, n2 = 11
+//!(n1!=n2)는false   -> 왜 !(n1!=n2) 그대로 이렇게 나오지?
