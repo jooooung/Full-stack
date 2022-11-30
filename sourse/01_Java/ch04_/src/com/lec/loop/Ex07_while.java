@@ -5,7 +5,7 @@ public class Ex07_while {
 		int i=10;
 		while(i>0) {    //i가 0보다 클 때
 			System.out.println(i+".");    //i + . 을 출력하라
-			i--;      //무한 루프 방지
+			i--;      //무한 루프 방지  증가할 땐 ++ 감소할 땐 --
 		}
 		
 //		for(int i=10; i>0 ; i--) {

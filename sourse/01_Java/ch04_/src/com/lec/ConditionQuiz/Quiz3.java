@@ -1,5 +1,5 @@
 package com.lec.ConditionQuiz;
-
+//가위바위보 중 하나를 내고 낸 것을 출력하세요(가위대신 0, 바위대신 1, 보대신 2를 입력)
 import java.util.Scanner;
 
 public class Quiz3 {

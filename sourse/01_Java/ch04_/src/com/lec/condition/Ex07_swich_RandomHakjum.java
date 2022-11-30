@@ -1,5 +1,4 @@
 package com.lec.condition;
-
 // 실행할때마다 컴퓨터가 난수(Random)점수발생하여 학점 출력
 public class Ex07_swich_RandomHakjum {
 	 public static void main(String[] args) {
