@@ -1,8 +1,7 @@
 package com.lec.loopQuiz;
-
+//컴퓨터와 가위바위보 게임을 당신이 질 때까지 무한반복하는 게임을 작성하시오.(단, 가위대신 0, 바위대신 1, 보대신 2)
 import java.util.Scanner;
 
-//컴퓨터와 가위바위보 게임을 당신이 질 때까지 무한반복하는 게임을 작성하시오.(단, 가위대신 0, 바위대신 1, 보대신 2)
 public class Quiz6 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -24,7 +23,7 @@ public class Quiz6 {
 					System.out.printf("당신은 %s, 컴퓨터는 %s. 비겼어요\n",  uStr, comStr);
 				}
 			}
-		}while((u+2)%3 == com || u==com);          //이해가 안 됨
+		}while((u+2)%3 == com || u==com);	//만약  u 가 1바위 이라면   가위 == com  ||   바위== com
 		sc.close();
 		System.out.println("end");
 	}
