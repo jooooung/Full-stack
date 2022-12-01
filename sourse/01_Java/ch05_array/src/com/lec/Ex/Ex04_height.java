@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Ex04_height {
 	public static void main(String[] args) {
-		String[] arrName = {"¿µ¯M", "Ã¶¼ö", "±æµ¿", "¿µ¼ö", "¸»ÀÚ"};   //ÀÌ¸§ ÀúÀå °ø°£
+		String[] arrName = {"¿µÈñ", "Ã¶¼ö", "±æµ¿", "¿µ¼ö", "¸»ÀÚ"};   //ÀÌ¸§ ÀúÀå °ø°£
 		int[] arrHeight = new int[arrName.length];    //Å° ÀúÀå °ø°£
 		Scanner sc = new Scanner(System.in);
 		int totHeight = 0;
@@ -18,7 +18,8 @@ public class Ex04_height {
 		for(int idx=0 ; idx<arrName.length ; idx++) {
 			System.out.printf("%d¹øÂ° %sÀÇ Å°´Â %d\n", idx,  arrName[idx], arrHeight[idx]);
 		}
-		System.out.println("Æò±ÕÅ°´Â" + (double)totHeight/arrHeight.length);
+		System.out.println(arrName.length + "¸íÀÇ Æò±ÕÅ°´Â" + (double)totHeight/arrHeight.length);
+		System.out.printf("%d¸íÀÇ Æò±ÕÅ°´Â %.1f\n", arrName.length, (double)totHeight/arrHeight.length);
 		sc.close();
 		int maxIdx=0, maxHeight=0;  //ÃÖÀå½ÅÀ» ±¸ÇÏ±â À§ÇÑ º¯¼öµé(ÀÛÀº °ªÀ¸·Î ÃÊ±âÈ­)
 		int minIdx=0, minHeight=9999;   //ÃÖ´Ü½ÅÀ» ±¸ÇÏ±â À§ÇÑ º¯¼öµé(Å«°ªÀ¸·Î ÃÊ±âÈ­)
