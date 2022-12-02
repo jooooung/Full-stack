@@ -38,4 +38,3 @@ public class Ex06_lotto {
 		}
 	}//main
 }//class
-
