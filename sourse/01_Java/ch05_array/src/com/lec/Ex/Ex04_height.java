@@ -18,7 +18,8 @@ public class Ex04_height {
 		for(int idx=0 ; idx<arrName.length ; idx++) {
 			System.out.printf("%d번째 %s의 키는 %d\n", idx,  arrName[idx], arrHeight[idx]);
 		}
-		System.out.println("평균키는" + (double)totHeight/arrHeight.length);
+		System.out.println(arrName.length + "명의 평균키는" + (double)totHeight/arrHeight.length);
+		System.out.printf("%d명의 평균키는 %.1f\n", arrName.length, (double)totHeight/arrHeight.length);
 		sc.close();
 		int maxIdx=0, maxHeight=0;  //최장신을 구하기 위한 변수들(작은 값으로 초기화)
 		int minIdx=0, minHeight=9999;   //최단신을 구하기 위한 변수들(큰값으로 초기화)
