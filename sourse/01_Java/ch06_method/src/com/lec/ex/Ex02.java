@@ -32,3 +32,4 @@ public class Ex02 {
 11-private static String evenOdd(int total) : evenOdd 만든후 String으로 출력
 
 */
+
