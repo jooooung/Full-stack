@@ -15,6 +15,7 @@ public class Quiz {
 		} while (num < 2 || num > 9);
 		num2(num);
 	}
+
 	private static void num2(int a) {
 		for (int i = 1; i <= 9; i++) {
 			System.out.printf("%d * %d = %d\n", a, i, a * i);
