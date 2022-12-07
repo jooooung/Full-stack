@@ -7,7 +7,7 @@ public class Child extends SuperIJ{
 		System.out.println("매개변수 없는 child 생성자 함수");
 	}
 	public Child(int i, int j) {  // 오후 수정 : super 이용
-		super(i, j);
+		super(i, j); //상위 클래스의 매개변수 있는 생성자 호출
 		System.out.println("매개변수 있는 child 생성자 함수 - i, j 초기화");
 //		setI(i); 
 //		this.i = i; //프라이빗이면 사용 불가, 프로텍티드면 사용 가능

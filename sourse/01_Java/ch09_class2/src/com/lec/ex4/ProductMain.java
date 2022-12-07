@@ -1,3 +1,4 @@
+
 package com.lec.ex4;
 
 public class ProductMain {
@@ -8,6 +9,8 @@ public class ProductMain {
 		p1.infoPrint();
 		Product p2 = new Product();
 		p2.infoPrint();
+		Product p3 = new Product();
+		p3.infoPrint();
 		System.out.println("static 변수 :" + Product.count);
 		System.out.println("static 변수 :" + p1.count);
 		System.out.println("static 변수 :" + p2.count);

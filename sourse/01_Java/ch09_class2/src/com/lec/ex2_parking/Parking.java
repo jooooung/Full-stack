@@ -1,3 +1,5 @@
+//차량 번호, 입차시간, 출차시간, 요금
+
 package com.lec.ex2_parking;
 
 import com.lec.constant.Constant;

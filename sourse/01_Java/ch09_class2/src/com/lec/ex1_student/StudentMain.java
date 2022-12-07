@@ -8,7 +8,7 @@ public class StudentMain {
 		Student s4 = new Student("강동원", 80, 80, 81);
 		Student s5 = new Student("유아인", 70, 70, 70);
 		Student[] students = {s1, s2, s3, s4, s5};
-		String[] title = {"이름", "국어", "영어", "총점", "평균"};
+		String[] title = {"이름", "국어", "영어","수학", "총점", "평균"};
 		int [] total = new int[5]; 	//0번 idx:국어, 1번 idx:영어 ...
 		line();
 		System.out.println("\t\t\t성적표");

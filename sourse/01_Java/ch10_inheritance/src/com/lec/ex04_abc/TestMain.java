@@ -9,7 +9,7 @@ public class TestMain {
 		System.out.println("aOby와bOby가 같냐" + aObj.equals(bObj));
 		S[] arr = {sObj, aObj, bObj, cObj};
 //		S[] arr = {new S(), new A(), new B(), new C()};
-		for(S a :arr ) {
+		for(S a :arr ) {    
 			System.out.println("s = " + a.s);
 		}
 	}

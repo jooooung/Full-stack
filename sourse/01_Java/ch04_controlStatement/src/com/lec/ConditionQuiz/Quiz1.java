@@ -9,6 +9,8 @@ public class Quiz1 {
 		int num = sc.nextInt();
 		if(0>num) {
 			System.out.println("입력한 수의 절대값은 = " + -num);
+		}else {
+			System.out.println("입력한 수의 절대값은 = " + num);
 		}
 		sc.close();
 	}

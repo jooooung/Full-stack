@@ -9,6 +9,5 @@ public class Animal {
 	public final void stop() { // final을 쓰면 stop() 메소드는 override 금지
 		speed = 0;
 		System.out.println("멈춤");
-	}
-	
+	}	
 }

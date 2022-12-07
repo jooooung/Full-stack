@@ -13,7 +13,7 @@ public class Person {
 		this.character = character;
 		System.out.println("매개변수 2개짜리 Person 생성자");
 	}
-	public void intro() {
+	public void intro() {   //return 없는 method 생성
 		System.out.println("★" + name + "은" + character );
 	}
 	public String getName() {

@@ -61,5 +61,4 @@ public class Student {
 	public double getAvg() {
 		return avg;
 	}
-	
 }

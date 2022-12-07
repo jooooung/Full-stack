@@ -14,7 +14,7 @@ public class StudentMain {
 		line('-');
 		System.out.println();
 		System.out.println("\t번호 \t이름 \t국어 \t영어 \t수학 \t총점 \t평균 ");
-		for(Student student :students) {
+		for(Student student : students) {
 			student.infoPrint();
 			total[0] += student.getKor();
 			total[1] += student.getEng();
