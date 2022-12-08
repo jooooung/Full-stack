@@ -9,18 +9,17 @@ public abstract class Employee {
 	}
 	public abstract int computePay();
 
-	public static final int computeIncentive() {
-		int temp
+	public final int computeIncentive() {
+		int temp = computePay();
+		if(temp >= 3000000)
+			return (int)(temp * 0.05);
+		return 0;
 	}
-	
-	public Employee(String name, int COMOUTERINCENTIVE2) {
-		super();
-		this.name = name;
-	}
-	
+
 	public String getName() {
 		return name;
 	}
-
-
+	public void setName(String name) {
+		this.name = name;
+	}
 }

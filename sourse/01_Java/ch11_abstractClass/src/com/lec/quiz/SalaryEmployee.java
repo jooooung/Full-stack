@@ -3,12 +3,13 @@ package com.lec.quiz;
 public class SalaryEmployee extends Employee {
 	private int annalSalary;
 	
-	public SalaryEmployee(String name, int COMOUTERINCENTIVE) {
-		super(name, COMOUTERINCENTIVE);
-		annalSalary 
+	public SalaryEmployee(String name, int annalSalary) {
+		super(name);
+		this.annalSalary = annalSalary; 
 	}
+	
 	@Override
-	public void computePay() {
-		
+	public int computePay() {
+		return annalSalary / 14;
 	}
 }
