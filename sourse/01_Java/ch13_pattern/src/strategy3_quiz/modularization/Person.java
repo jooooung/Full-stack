@@ -8,15 +8,18 @@ public abstract class Person {
 	private String name;
 	private GetImpl get;
 	private JobImpl job;
+	
 	public Person(String id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 	
 	public void get() {
+		System.out.print(name + "Àº ");
 		get.get();
 	}
 	public void job() {
+		System.out.print(name + "Àº ");
 		job.job();
 	}
 	public void print() {

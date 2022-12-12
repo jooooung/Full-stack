@@ -8,9 +8,9 @@ public class ActorMain {
 		gong.canCatchCriminal();	gong.canSearch();
 		
 		Chef chefGong = gong;
-		gong.makePizza(); 	gong.makeSpaghetti();
-		gong.outFire();		gong.saveMan();
-		gong.canCatchCriminal();	gong.canSearch();
+		chefGong.makePizza(); 	chefGong.makeSpaghetti();
+//		chefGong.outFire();		chefGong.saveMan();
+//		chefGong.canCatchCriminal();	chefGong.canSearch();
 		
 		FireFighter FireGong = gong;
 //		FireGong.makePizza(); 	FireGong.makeSpaghetti();
