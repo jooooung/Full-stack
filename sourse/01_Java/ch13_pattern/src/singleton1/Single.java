@@ -1,6 +1,6 @@
 // 메모리 영역 데이터 영역  |  heap 영역
 // 클래스 &static     |  일반변수
-package singletone1;
+package singleton1;
 
 public class Single {
 	private int i;

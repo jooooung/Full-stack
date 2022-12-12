@@ -1,4 +1,4 @@
-package singletone2;
+package singleton2;
 
 public class FirstClass {
 	public FirstClass() {
