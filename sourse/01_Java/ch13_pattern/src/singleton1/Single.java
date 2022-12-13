@@ -4,12 +4,25 @@ package singleton1;
 
 public class Single {
 	private int i;
-	private Single() {}
-	private static Single INSTANCE = new Single();
+
+	private Single() {}  //概俺函荐 绝绰 Single 积己磊   
+
+	private static Single INSTANCE = new Single();  
+
 	public static Single getInstance() {
-		//积己等 按眉 林家甫 return
+		// 积己等 按眉 林家甫 return
 		return INSTANCE;
 	}
+
+	public int getI() {
+		return i;
+	}
+
+	public void setI(int i) {
+		this.i = i;
+	}
+}
+
 //	private static Single INSTANCE;
 //	public static Single getInstance() {
 //		//按眉积己沁栏搁 弊 按眉 林家甫 府畔
@@ -19,11 +32,3 @@ public class Single {
 //		}
 //		return INSTANCE;
 //	}
-	public int getI() {
-		return i;
-	}
-
-	public void setI(int i) {
-		this.i = i;
-	}
-}
