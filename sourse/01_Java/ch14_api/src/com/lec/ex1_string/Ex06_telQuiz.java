@@ -19,19 +19,25 @@ public class Ex06_telQuiz {
 		while (true) {
 			System.out.println("전화번호를 입력해주세요(종료는 x)");
 			String tel = scanner.next();
-			if(tel.equalsIgnoreCase("x"))
+			String Odd = "";
+			String reverse = "";
+			if (tel.equalsIgnoreCase("x"))
 				break;
-			System.out.println("입력한 전화번호 : " +tel);
-			for(int i=0 ; i<tel.length() ; i++) {
-				tel.charAt(i)
-				System.out.println("짝수번째 문자열 : " +)
+			System.out.println("입력한 전화번호 : " + tel);
+			System.out.println("짝수번째 문자열 : ");
+			for (int i = 0; i < tel.length(); i++) {
+				if ((i % 2) == 0) {
+					System.out.print(tel.charAt(i));
+				}
 			}
-			System.out.println("문자를 꺼꾸로 : " +
-			
-			System.out.println("전화번호 맨 앞 자리는 : " +
-			System.out.println("전화번호 뒷자리는 : " +
-			
-			
+			System.out.println();
+			for (int i = tel.length() - 1; i >= 0; i--) {
+				reverse = reverse + tel.charAt(i);
+			}
+			System.out.print("문자를 거꾸로 : ");
+			System.out.println(reverse);
+			System.out.println("전화번호 맨 앞자리 : " + tel.substring(0, 3));
+			System.out.println("전화번호 뒷자리 : " + tel.substring(tel.lastIndexOf('-') + 1));
 		}
 	}
 }
