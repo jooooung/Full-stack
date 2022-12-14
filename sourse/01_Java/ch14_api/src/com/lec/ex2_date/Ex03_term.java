@@ -16,4 +16,4 @@ public class Ex03_term {
 }
 
 
-//(now - checkOut) 계산이 안 되어 -> 1970년 1월 1일 부터 now 까지의 밀리세컨 - ㅣ
+//(now - checkOut) 계산이 안 되어 -> 1970년 1월 1일 부터 now 까지의 밀리세컨 - 1970년 1월 1일 부터 check 까지의 밀리세컨으로 계산

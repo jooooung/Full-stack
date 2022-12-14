@@ -1,6 +1,6 @@
 package com.lec.ex2_date;
 
-public class QuizSawon2Main2 {
+public class QuizSawon2Main {
 
 	public static void main(String[] args) {
 		QuizSawon2[] sawons = { new QuizSawon2("a01", "ȫ�浿", Dept.COMPUTER),
