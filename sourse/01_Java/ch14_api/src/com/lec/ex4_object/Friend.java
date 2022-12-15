@@ -6,6 +6,7 @@ public class Friend {
 	private String birth; // 년도 빼고 월 일 만 저장
 	private String address;
 
+	public Friend() {}
 	public Friend(String name, String tel, String birth, String address) {
 		this.name = name;
 		this.tel = tel;

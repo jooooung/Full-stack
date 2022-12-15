@@ -36,36 +36,4 @@ public class QuizSawon {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy, MM, dd");
 		return "[사번]" + sawonNo + "\t[이름]" + name + "\t[부서]" + depart + "\t[입사일]" + sdf.format(hireday);
 	}
-
-	public String getSawonNo() {
-		return sawonNo;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getDepart() {
-		return depart;
-	}
-
-	public void setDepart(String depart) {
-		this.depart = depart;
-	}
-
-	public Date gethireday() {
-		return hireday;
-	}
-
-	public void sethireday(Date hireday) {
-		this.hireday = hireday;
-	}
-
-	public void setSawonNo(String sawonNo) {
-		this.sawonNo = sawonNo;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 }
