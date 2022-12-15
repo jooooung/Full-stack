@@ -12,5 +12,4 @@ public class Ex05 {
 //		}
 		System.out.println("°á°ú´Â "+result);
 	}
-
 }

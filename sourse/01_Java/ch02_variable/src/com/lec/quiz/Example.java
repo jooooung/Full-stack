@@ -4,8 +4,8 @@ public class Example {
 	public static void main(String[] args) {
 		//국어, 영어, 수학 점수 할당
 		int kor = 100;
-		int eng = 100;
-		int mat = 100;
+		int eng = 90;
+		int mat = 88;
 		//총점, 평균
 		int tot = kor + eng + mat;
 		double avg = tot / 3. ;   

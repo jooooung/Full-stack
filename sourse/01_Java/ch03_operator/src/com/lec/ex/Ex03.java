@@ -11,5 +11,4 @@ public class Ex03 {
 		result = n1!=n2;
 		System.out.printf("%d %s %d ดย %b\n", n1, "!=", n2, result);
 	}
-
 }

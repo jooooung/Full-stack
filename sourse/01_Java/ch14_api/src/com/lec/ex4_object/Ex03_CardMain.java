@@ -14,7 +14,7 @@ public class Ex03_CardMain { // ♥ ♣ ♠ ◆
 		//임의로 뽑힌 카드와 배열안의 카드 비교
 		Random random = new Random();
 		char[] kinds = {'♥', '♣', '♠', '◆'};   // 랜덤한 kind를 출력하기 위해 만든 배열
-		Card randomCard = new Card(kinds[random.nextInt(4)], random.nextInt(13)+1);
+		Card randomCard = new Card(kinds[random.nextInt(4)], random.nextInt(13)+1);  //카드 그림과 숫자 랜덤값
 		System.out.println("임의로 뽑힌 카드 : " + randomCard);
 		int i;
 		for(i=0 ; i<cards.length ; i++) {   //같은 카드 찾는 for문
