@@ -32,7 +32,7 @@ public class Ex01_arrayList { // arrayList 크기가 정해져있지 않다  add한 만큼 늘
 		for(int i=0 ; i<arrayList.size() ; i++) {
 			System.out.println(i + "번째 인덱스 값 : " + arrayList.get(i));
 		}
-		arrayList.remove(1); //1번 인덱스 제거     뒷 인덱스가 앞당겨진다
+		arrayList.remove(1); //1번 인덱스 제거     뒷 인덱스가 앞당겨진다 
 		arrayList.remove(arrayList.size()-1); //맨 마지막 인덱스 값 제거
 		System.out.println("remove후 " + arrayList);
 		arrayList.clear();  // arrayList의 모든 데이터 제거

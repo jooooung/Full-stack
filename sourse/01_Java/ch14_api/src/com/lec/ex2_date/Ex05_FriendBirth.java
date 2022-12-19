@@ -12,7 +12,7 @@ public class Ex05_FriendBirth {
 							 new Friend("김수환", "010-9999-1111", "02-17", "서울 용산"),
 							 new Friend("거북이", "010-6666-6666", "03-03", "인천 송도")};
 		GregorianCalendar now = new GregorianCalendar();
-		int month = now.get(Calendar.MONTH) + 1;  
+		int month = now.get(Calendar.MONTH) + 1;  // 시스템상 월이 0부터 시작하기에 +1을 해준다
 		int day = now.get(Calendar.DAY_OF_MONTH);
 		String monthStr = month<10 ? "0"+month : ""+month;   //빈 스트링을 더해서 month를 int에서 string 으로 형변환
 		String dayStr = day<10 ? "0"+day : ""+day;

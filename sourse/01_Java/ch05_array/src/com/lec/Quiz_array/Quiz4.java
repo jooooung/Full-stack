@@ -13,10 +13,10 @@ public class Quiz4 {
 				num[i] = num[j];
 				num[j] = temp;
 				}
-			}
-		}
+			}//for-j
+		}//for-i
 		for (int k : num) {
 			System.out.print(k + " ");
-		}
-	}
+		}//»Æ¿Âfor
+	}//main
 }

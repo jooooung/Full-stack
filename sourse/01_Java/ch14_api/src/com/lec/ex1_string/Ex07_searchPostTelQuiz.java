@@ -8,7 +8,7 @@ public class Ex07_searchPostTelQuiz {
 		String[] tels = {"010-9999-9999", "010-8888-8888", "010-7777-8888", "010-6666-8888"};
 		Scanner scanner = new Scanner(System.in);
 		while(true) {
-			boolean searchOk = false;    //검색한 결과가 있으면 true0
+			boolean searchOk = false;    //검색한 결과가 있으면 true
 			System.out.print("검색하고자 하는 전화번호 뒷자리는 ?(종료는 x)");
 			String searchTel = scanner.next();
 			if(searchTel.equalsIgnoreCase("x"))

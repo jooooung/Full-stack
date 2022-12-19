@@ -9,7 +9,7 @@ public class Ex04_lotto {
 	public static void main(String[] args) {
 		int[] lotto = new int[6];      //lotto 6자리 방 만들기
 		int i, j;
-		int temp;
+		int temp;    //난수 변수
 		Random random = new Random();
 		for(i=0 ; i<lotto.length ; i++) {
 			do { //발생된 난수가 중복되었는지 체크

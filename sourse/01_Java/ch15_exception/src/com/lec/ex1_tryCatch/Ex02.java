@@ -29,6 +29,7 @@ public class Ex02 {
 		}
 		System.out.println("i = " + i + ", j = " + j);
 		System.out.println("i * j = " + (i * j));
+		System.out.println("i / j = " + (i / j));
 		System.out.println("i + j = " + (i + j));
 		System.out.println("i - j = " + (i - j));
 		System.out.println("DONE");

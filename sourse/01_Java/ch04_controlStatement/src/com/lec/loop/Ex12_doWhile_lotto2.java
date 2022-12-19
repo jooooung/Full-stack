@@ -16,7 +16,7 @@ public class Ex12_doWhile_lotto2 {
 				System.out.println("주어진 범위를 참조하세요");         //범위 밖의 수를 입력 시
 			}else if(su>lotto) {           
 				max = su-1;                //입력한 값의 1 작은 수의 범위 알려주기
-				//System.out.println("입력한 수보다 작습니다");
+				System.out.println("입력한 수보다 작습니다");
 			} else if(su<lotto) {
 				min = su+1;      //입력한 값의 1 큰 수의 범위 알려주기
 				System.out.println("입력한 수보다 큽니다");

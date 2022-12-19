@@ -2,10 +2,17 @@ package singleton2;
 
 public class FirstClass {
 	public FirstClass() {
-		System.out.println("FirstClass积己磊 角青吝");
+//		System.out.println("FirstClass积己磊 角青吝");
+//		SingletonClass singletonObject = SingletonClass.getInstance();
+//		System.out.println("教臂沛 按眉狼 i蔼 : " + singletonObject.getI());
+//		singletonObject.setI(999);
+//		System.out.println("教臂沛 按眉狼 i蔼 荐沥饶 : " + singletonObject.getI());
+
 		SingletonClass singletonObject = SingletonClass.getInstance();
 		System.out.println("教臂沛 按眉狼 i蔼 : " + singletonObject.getI());
-		singletonObject.setI(999);
-		System.out.println("教臂沛 按眉狼 i蔼 荐沥饶 : " + singletonObject.getI());
+		singletonObject.setI(10);
+		System.out.println("教臂沛 按眉 i 荐沥 饶" + singletonObject.getI());
 	}
 }
+
+	
