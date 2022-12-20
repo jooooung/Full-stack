@@ -29,7 +29,7 @@ public class Man {
 		this.weight = weight;
 	}
 	public double calculateBMI() {//객체안에 height와 weight로 BMI 지수 return
-		double result = weight / ( (height*0.01) * (weight*0.01) );
+		double result = weight / ( (height*0.01) * (weight*0.01));
 		return result;
 	}
 	public String getName() {
