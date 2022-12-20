@@ -1,6 +1,5 @@
-package com.lec.ex2;
+package com.lec.ex2_human;
 
-import com.lec.ex2_human.*;
 import com.lec.ex2_human.kid.Kid;  
 //*는 ex2_human 밑에 있는 클라스를 모두 사용한다
 //ctrl shift o = 불필요한 import 제거
