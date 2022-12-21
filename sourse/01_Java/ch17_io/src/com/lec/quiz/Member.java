@@ -8,7 +8,7 @@ public class Member {
 	private String tel;
 	private Date birthday;
 	private String address;
-	
+
 	public Member() {}
 
 	public Member(String name, String tel, Date birthday, String address) {
@@ -20,7 +20,10 @@ public class Member {
 
 	@Override
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
-		return name + " " + tel + " " + sdf.format(birthday)+  "생" + " " + address + "\n"; 
+		if (birthday != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
+			return name + "\t" + tel + "\t" + sdf.format(birthday) + "생" + "\t" + address + "\n";
+		}
+		return name + "\t" + tel + "\t" + "생일을 잘 못 입력했습니다" + address + "\n";
 	}
 }

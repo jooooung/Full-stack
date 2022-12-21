@@ -1,12 +1,8 @@
 package com.lec.quiz;
 
-import java.io.DataInputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,7 +10,7 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class MemberTestMain_outputStream {
+public class MemberTestMain_printWriter {
 	public static void main(String[] args) {
 		ArrayList<Member> members = new ArrayList<>();
 		Date now = new Date();
@@ -41,8 +37,8 @@ public class MemberTestMain_outputStream {
 				month = Integer.parseInt(token.nextToken());
 				day = Integer.parseInt(token.nextToken());
 				birthday = new Date(new GregorianCalendar(year, month - 1, day).getTimeInMillis());
-				birthStr = birthStr.substring(birthStr.indexOf("-")+1);
-				if(birthStr.equals(today)) {
+				birthStr = birthStr.substring(birthStr.indexOf("-") + 1);
+				if (birthStr.equals(today)) {
 					System.out.println(name + "님 생일 축하드립니다");
 				}
 			} else {
@@ -55,26 +51,24 @@ public class MemberTestMain_outputStream {
 			System.out.println("회원가입 완료");
 		} while (true);
 		scanner.close();
-		
-		OutputStream os =null;
+
+		PrintWriter printWriter = null;
 		try {
-			os = new FileOutputStream("src/com/lec/quiz/member.txt", true);
+			printWriter = new PrintWriter("src/com/lec/quiz/member.txt");
 			for (Member member : members) {
 				System.out.print(member);
-				os.write(member.toString().getBytes());
+				printWriter.write(member.toString());
 			}
 			String msg = String.format("\t\t\t... 이하 %d명 가입\n", members.size());
 			System.out.println(msg);
-			os.write(msg.getBytes());
+			printWriter.write(msg);
 		} catch (FileNotFoundException e) {
-			System.out.println(e.getMessage());
-		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		} finally {
 			try {
-				//if(writer!=null) writer.close();
-				if(os!=null) os.close();
-			} catch (Exception ignore) { 
+				if (printWriter != null)
+					printWriter.close();
+			} catch (Exception ignore) {
 				System.out.println(ignore.getMessage());
 			}
 		}
