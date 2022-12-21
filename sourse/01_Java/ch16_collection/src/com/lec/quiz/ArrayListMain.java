@@ -4,36 +4,55 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ArrayListMain {
-	private static String customer;
-
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		ArrayList<Customer> customer = new ArrayList<>();
-		while (true) {
-			System.out.println("È¸¿ø°¡ÀÔÀ» ÁøÇàÇÏ½Ã°Ú½À´Ï±î? (Y/N)");
-			String newCus = sc.next();
-			if (newCus.equalsIgnoreCase("N")) {
-				if (customer.size() == 0) {
-					System.out.println("È¸¿øÀÌ ¾ø½À´Ï´Ù");
-				} else {
-					for (Customer cus : customer) {
-						System.out.println(cus);
-					}
-				}
+		ArrayList<Customer> customers = new ArrayList<>();
+
+		Scanner scanner = new Scanner(System.in);
+		String answer;
+
+		do {
+			System.out.print("íšŒì› ë“±ë¡í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(Y, N) ");
+			answer = scanner.next();
+			// Në¥¼ ëˆ„ë¥¸ ê²½ìš°
+			if (answer.equalsIgnoreCase("N")) {
+				System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
 				break;
-			} else if (newCus.equalsIgnoreCase("Y")) {
-				System.out.println("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä ");
-				String name = sc.next();
-				System.out.println("ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
-				String tel = sc.next().trim();
-				System.out.println("ÁÖ¼Ò¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä(±¸±îÁö)");
-				sc.nextLine();
-				String address = sc.nextLine().trim();
-				customer.add(new Customer(name, tel, address));
-				System.out.println("È¸¿ø°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù");
-			} else {
-				System.out.println("Àß¸ø ÀÔ·ÂÇß½À´Ï´Ù");
+			} else if (answer.equalsIgnoreCase("Y")) {
+
+				// ë°©ë²• 1:
+				Customer newcustomer = new Customer();
+				System.out.print("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”: ");
+				newcustomer.setName(scanner.next());
+				System.out.print("ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+				newcustomer.setTel(scanner.next());
+				System.out.print("ì£¼ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+				scanner.nextLine(); // ë²„í¼ë¥¼ ì§€ìš°ëŠ” ìš©ë„
+				newcustomer.setAddress(scanner.nextLine());
+				customers.add(newcustomer);
+				System.out.println(newcustomer.getName() + "ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.\n");
+
+				// ë°©ë²• 2:
+//				System.out.print("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”: ");
+//				String name = scanner.next();
+//				System.out.print("ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+//				String tel = scanner.next();
+//				System.out.print("ì£¼ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+//				scanner.nextLine(); // ë²„í¼ë¥¼ ì§€ìš°ëŠ” ìš©ë„
+//				String add = scanner.nextLine();
+//				customers.add(new Customer(name, tel, add));
+//				System.out.println(name + "ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.\n");
+			}
+		} while (true);
+		scanner.close();
+
+		if (customers.isEmpty()) {
+			System.out.println("ë“±ë¡ëœ íšŒì› ëª©ë¡ì´ ì—†ìŠµë‹ˆë‹¤.");
+		} else {
+			System.out.println("\n----- íšŒì› ëª©ë¡ -----");
+			for (Customer customer : customers) {
+				System.out.println(customer);
 			}
 		}
 	}
+
 }

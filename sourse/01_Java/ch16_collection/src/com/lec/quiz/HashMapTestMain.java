@@ -6,36 +6,50 @@ import java.util.Scanner;
 
 public class HashMapTestMain {
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		HashMap<String, Customer> hashmap = new HashMap<>();
-		while (true) {
-			System.out.println("È¸¿ø°¡ÀÔÀ» ÁøÇàÇÏ½Ã°Ú½À´Ï±î? (Y/N)");
-			String newCus = sc.next();
-			if (newCus.equalsIgnoreCase("N")) {
-				if (hashmap.size() == 0) {
-					System.out.println("È¸¿øÀÌ ¾ø½À´Ï´Ù");
-				} else {
-					Iterator<String> iterator = hashmap.keySet().iterator();
-					while (iterator.hasNext()) {
-						String key = iterator.next();
-						System.out.println(hashmap.get(key));
-					}
-				}
+		HashMap<String, Customer> customers = new HashMap<String, Customer>();
+
+		Scanner scanner = new Scanner(System.in);
+		String answer;
+		String tel;
+
+		do {
+			System.out.print("íšŒì› ë“±ë¡í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(Y, N) ");
+			answer = scanner.next();
+			if (answer.equalsIgnoreCase("N")) {
+				System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
 				break;
-			} else if (newCus.equalsIgnoreCase("Y")) {
-				Customer newCustomer = new Customer();
-				System.out.println("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä ");
-				String name = sc.next();
-				System.out.println("ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
-				String tel = sc.next().trim();
-				System.out.println("ÁÖ¼Ò¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä(±¸±îÁö)");
-				sc.nextLine();
-				String address = sc.nextLine().trim();
-				hashmap.put(tel, new Customer(name, tel, address));
-				System.out.println("È¸¿ø°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù");
-			} else {
-				System.out.println("Àß¸ø ÀÔ·ÂÇß½À´Ï´Ù");
+			} else if (answer.equalsIgnoreCase("Y")) {
+				Customer newcustomer = new Customer();
+				System.out.print("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”: ");
+				newcustomer.setName(scanner.next());
+				System.out.print("ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+				tel = scanner.next();
+				// ê¸°ì¡´ì— ê°€ì…í•œ ì „í™”ë²ˆí˜¸ì¸ì§€ í™•ì¸
+				if (customers.get(tel) != null) {
+					System.out.println("ì´ë¯¸ ê°€ì…ë˜ì–´ ìˆëŠ” ì „í™”ë²ˆí˜¸ì…ë‹ˆë‹¤. ì „í™”ë²ˆí˜¸ëŠ” ì¤‘ë³µí•˜ì—¬ ê°€ì…ì´ ë¶ˆê°€í•©ë‹ˆë‹¤.");
+					continue;
+				}
+				newcustomer.setTel(tel);
+				System.out.print("ì£¼ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+				scanner.nextLine(); // ë²„í¼ë¥¼ ì§€ìš°ëŠ” ìš©ë„
+				newcustomer.setAddress(scanner.nextLine());
+				customers.put(tel, newcustomer);
+				System.out.println(newcustomer.getName() + "ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.\n");
+			}
+
+		} while (true);
+		scanner.close();
+
+		if (customers.isEmpty()) {
+			System.out.println("ë“±ë¡ëœ íšŒì› ëª©ë¡ì´ ì—†ìŠµë‹ˆë‹¤.");
+		} else {
+			System.out.println("\n----- íšŒì› ëª©ë¡ -----");
+			Iterator<String> iterator = customers.keySet().iterator();
+			while (iterator.hasNext()) {
+				String key = iterator.next();
+				System.out.println(customers.get(key));
 			}
 		}
 	}
+
 }

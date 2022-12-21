@@ -5,34 +5,36 @@ public class Customer {
 	private String tel;
 	private String address;
 
-	public Customer() {
-		super();
-	}
-
 	public Customer(String name, String tel, String address) {
-		super();
 		this.name = name;
 		this.tel = tel;
 		this.address = address;
 	}
 
+	public Customer() {
+	}
+
 	@Override
 	public String toString() {
-		return "È¸¿ø Á¤º¸ - ÀÌ¸§ =" + name + ", ÀüÈ­¹øÈ£=" + tel + ", ÁÖ¼Ò=" + address;
+		return "[ì´ë¦„] " + getName() + "\t[ì „í™”ë²ˆí˜¸] " + getTel() + "\t[ì£¼ì†Œ] " + getAddress();
 	}
+
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
 		return toString().hashCode();
 	}
+
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		if(obj !=null & getClass() == obj.getClass()) {
+		if (obj != null && getClass() == obj.getClass()) {
 			Customer other = (Customer) obj;
-			return tel == other.tel && name.equals(other.name) && address.equals(other.address);
+			boolean nameChk = name == other.name;
+			boolean telChk = tel == other.tel;
+			boolean addressChk = address == other.address;
+			return nameChk && telChk && addressChk;
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	public String getName() {
@@ -58,4 +60,5 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 }
