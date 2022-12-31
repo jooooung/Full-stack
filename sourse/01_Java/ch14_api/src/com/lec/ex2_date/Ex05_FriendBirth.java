@@ -10,7 +10,7 @@ public class Ex05_FriendBirth {
 		Friend[] friends = { new Friend("홍길동", "010-9999-9999", "12-14", "서울 서대문"),
 							 new Friend("김길동", "010-9999-3333", "12-26", "수원 영통"),
 							 new Friend("김수환", "010-9999-1111", "02-17", "서울 용산"),
-							 new Friend("거북이", "010-6666-6666", "03-03", "인천 송도")};
+							 new Friend("거북이", "010-6666-6666", "12-24", "인천 송도")};
 		GregorianCalendar now = new GregorianCalendar();
 		int month = now.get(Calendar.MONTH) + 1;  // 시스템상 월이 0부터 시작하기에 +1을 해준다
 		int day = now.get(Calendar.DAY_OF_MONTH);

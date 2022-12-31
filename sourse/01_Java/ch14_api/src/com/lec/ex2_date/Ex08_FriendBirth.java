@@ -12,9 +12,9 @@ public class Ex08_FriendBirth {
 		Friend[] friends = { new Friend("홍길동", "010-9999-9999", "12-14", "서울 서대문"),
 							 new Friend("김길동", "010-9999-3333", "12-14", "수원 영통"),
 							 new Friend("김수환", "010-9999-1111", "02-17", "서울 용산"),
-							 new Friend("거북이", "010-6666-6666", "03-03", "인천 송도")};
+							 new Friend("거북이", "010-6666-6666", "12-24", "인천 송도")};
 		GregorianCalendar now = new GregorianCalendar();
-		SimpleDateFormat sdf1 = new SimpleDateFormat("MM월 dd일");
+		SimpleDateFormat sdf1 = new SimpleDateFormat("MM-dd");
 		String today = sdf1.format(now.getTime());
 		boolean none = true;
 		System.out.println("오늘 생일인 친구 목록을 검색합니다");

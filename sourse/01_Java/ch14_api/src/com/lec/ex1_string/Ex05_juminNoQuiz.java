@@ -6,12 +6,12 @@ import java.util.Scanner;
 public class Ex05_juminNoQuiz {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("주민번호 : ");
+		System.out.print("주민번호(6자리-7자리) : ");
 		String juminNo = scanner.next();
 		int genderInt = Integer.parseInt(juminNo.substring(7,8));
 		if (genderInt == 1 || genderInt == 3) {
 			System.out.println("남성입니다");
-		} else if (genderInt == 2 || genderInt == 2) {
+		} else if (genderInt == 2 || genderInt == 4) {
 			System.out.println("여성입니다");
 		} else {
 			System.out.println("유효하지 않은 주민번호입니다");
