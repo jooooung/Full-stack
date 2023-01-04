@@ -1,0 +1,73 @@
+-- ★ 연습문제 ★
+-- 1. 사번, 이름, 급여를 출력
+select pno, pname, pay from personal;
+-- 2. 급여가 2000~5000 사이 모든 직원의 모든 필드
+select * from personal where pay between 2000 and 5000;
+-- 3. 부서번호가 10또는 20인 사원의 사번, 이름, 부서번호
+select pno, pname, dno from personal where dno in (10, 20);
+-- 4. 보너스가 null인 사원의 사번, 이름, 급여 급여 큰 순정렬
+select pno, pname, pay from personal where bonus is null order by pay desc;
+-- 5. 사번, 이름, 부서번호, 급여. 부서코드 순 정렬 같으면 PAY 큰순
+select pno, pname, dno, pay, dno from personal order by dno, pay desc;
+-- 6. 사번, 이름, 부서명
+select pno, pname, dname from personal p, division d
+	where p.dno=d.dno;
+-- 7. 사번, 이름, 상사이름
+select p1.pno, p1.pname worker, p2.pname manager 
+	from personal p1, personal p2
+	where p1.manager=p2.pno;
+-- 8. 사번, 이름, 상사이름(상사가 없는 사람도 출력)
+select p1.pno, p1.pname worker, p2.pname manager 
+	from personal p1 left outer join personal p2
+	on p1.manager=p2.pno;
+-- 9. 이름이 s로 시작하는 사원 이름
+select pname from personal
+	where pname like 's%';
+-- 10. 사번, 이름, 급여, 부서명, 상사이름
+select p1.pno, p1.pname pname, p1.pay, dname, p2.pname manager
+	from personal p1, personal p2, division d
+    where p1.manager=p2.pno and p1.dno=d.dno;
+-- 11. 부서코드, 급여합계, 최대급여
+select dno, sum(pay) sumpay, max(pay) maxpay
+	from personal
+    group by dno;
+-- 12. 부서명, 급여평균, 인원수
+select dname, avg(pay), count(*) 
+	from personal p, division d
+    where p.dno=d.dno
+    group by dname;
+-- 13. 부서코드, 급여합계, 인원수 인원수가 4명 이상인 부서만 출력
+select dno, sum(pay), count(*)
+	from personal
+    group by dno
+    having count(*) >=4;
+-- 14. 사번, 이름, 급여 회사에서 제일 급여를 많이 받는 사람
+select pno, pname, pay
+	from personal
+    where pay = (select max(pay) from personal);
+-- 15. 회사 평균보다 급여를 많이 받는 사람 이름, 급여, 부서번호
+select pname, pay, dno
+	from personal
+	where pay > (select avg(pay) from personal);
+-- 16. 회사 평균 급여보다 많이 받는 사원의 사번, 이름, 급여, 부서명을 출력(부서명순 정열 같으면 급여 큰순 정렬)
+select pno, pname, pay, dname
+	from personal p, division d
+	where p.dno=d.dno
+		and pay > (select avg(pay) from personal)
+	order by dname, pay desc;
+-- 17. 자신이 속한 부서의 평균보다 많인 받는 사람의 이름, 금여, 부서번호, 반올림한 해당부서평균
+select p.pname, p.pay, p.dno, round(avgpay)
+	from personal p, (select dno, avg(pay) avgpay from personal group by dno) a
+    where p.dno=a.dno;
+-- 18. 입사가 가장 빠른 사람의 이름, 급여, 부서명
+ select pname, pay, dname
+	from personal p, division d
+    where p.dno=d.dno and startdate = (select min(startdate) from personal); 
+-- 19. 이름, 급여, 해당부서평균
+select pname, pay, round(dpay)
+	from personal p, (select dno, avg(pay) dpay from personal group by dno) a
+    where p.dno=a.dno;
+-- 20. 이름, 급여, 부서명, 해당부서평균
+select pname, pay, dname, round(dpay)
+	from personal p, division d, (select dno, avg(pay) dpay from personal group by dno) a
+    where p.dno=a.dno and p.dno=d.dno;
