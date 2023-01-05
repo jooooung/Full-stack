@@ -27,7 +27,7 @@ public class SelectAllOracle {
 					int empno = rs.getInt(1);
 					String ename = rs.getString("ename");
 					String job	 = rs.getString("job");
-					String mgr	 = rs.getString("mgr");
+					String mgr	 = rs.getString("mgr"); 	  
 					//String hiredate = rs.getString("hiredate");
 					Date	 hiredate = rs.getDate("hiredate");	// Date : 시간 미포함
 					Timestamp hiredate1 = rs.getTimestamp("hiredate");	//Timestamp : 시간 포함

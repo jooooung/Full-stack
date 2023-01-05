@@ -15,6 +15,7 @@ CREATE TABLE PERSON (   -- PERSON
     ENG NUMBER(3)CHECK(ENG>=0),
     MAT NUMBER(3)CHECK(MAT>=0)  
 );
+DROP SEQUENCE pNO_SEQ;
 CREATE SEQUENCE pNO_SEQ MAXVALUE 99999 NOCACHE;  -- pNO_SEQ
 
 -- 더미데이터 insert
@@ -30,8 +31,8 @@ SELECT * FROM PERSON;
 -- 기능별 query 작성 (1, 2, 3)
 -- 1. person 입력
 INSERT INTO PERSON 
-    VALUES (pNO_SEQ.NEXTVAL, '송혜교', 
-            (SELECT JNO FROM JOB WHERE JNAME='배우'), 100, 100, 100);
+    VALUES (pNO_SEQ.NEXTVAL, '송혜교', '배우', 100, 100, 100);
+--delete from person where pno=;
 -- 2. 직업별 조회
 SELECT ROWNUM RN, A.* 
     FROM (SELECT pNAME||'('||pNO||'번)' pNO, jNAME, KOR, ENG, MAT, (KOR+ENG+MAT) SUM 

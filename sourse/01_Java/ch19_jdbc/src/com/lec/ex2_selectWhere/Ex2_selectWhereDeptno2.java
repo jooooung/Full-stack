@@ -45,6 +45,7 @@ public class Ex2_selectWhereDeptno2 {
 						String ename = rs2.getString("ename");
 						int sal = rs2.getInt("sal");
 						String manager = rs2.getString("manager");
+						System.out.println("-" + ename);
 						System.out.println("사번 : " + empno);
 						System.out.println("이름 : " + ename);
 						System.out.println("급여 : " + sal);
