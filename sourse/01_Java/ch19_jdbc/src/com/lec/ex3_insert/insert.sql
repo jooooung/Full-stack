@@ -1,0 +1,18 @@
+-- ex1
+INSERT INTO DEPT VALUES (60, 'IT', 'SEOUL');
+COMMIT;
+-- ex2
+SELECT COUNT(*) CNT FROM DEPT WHERE DEPTNO=50;
+INSERT INTO DEPT VALUES (60, 'IT', 'SEOUL');
+select * from dept where deptno=12;
+
+-- update
+UPDATE DEPT SET DNAME='MARKETING', LOC='INCHON' WHERE DEPTNO=12;
+commit;
+SELECT COUNT(*) CNT FROM DEPT WHERE DEPTNO=90;
+select * from dept;
+delete from dept where deptno=90;
+
+-- delete
+DELETE FROM DEPT WHERE DEPTNO=60;
+
