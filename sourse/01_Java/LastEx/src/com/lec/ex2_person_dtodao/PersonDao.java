@@ -69,6 +69,7 @@ public class PersonDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		System.out.println("등수\t이름\t\t직업\t국어\t영어\t수학\t총점");
 		String sql = "SELECT ROWNUM RN, A.* " + 
 				"    FROM (SELECT pNAME||'('||pNO||'번)' pNO, jNAME, KOR, ENG, MAT, (KOR+ENG+MAT) SUM " + 
 				"            FROM PERSON P, JOB J WHERE P.jNO=J.jNO AND jNAME=?" + 
@@ -107,6 +108,7 @@ public class PersonDao {
 		Connection conn = null;
 		Statement stmt  = null;
 		ResultSet 	 rs = null;
+		System.out.println("등수\t이름\t\t직업\t국어\t영어\t수학\t총점");
 		String sql = "SELECT ROWNUM RN, A.* " + 
 				"    FROM (SELECT pNAME||'('||pNO||'번)' pNO, jNAME, KOR, ENG, MAT, (KOR+ENG+MAT) SUM " + 
 				"            FROM PERSON P, JOB J WHERE P.jNO=J.jNO " + 

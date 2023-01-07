@@ -27,7 +27,7 @@ public class Person {
 				dao.insertPerson(new PersonDto(pname, jname, kor, eng, mat));
 				break;
 			case "2": // 직업명받아 직업 출력
-				System.out.print("조회할 직업은 ? ");
+				System.out.print("조회할 직업은 ? " + dao.jnamelist());
 				jname = sc.next();
 				ArrayList<PersonDto> dtos = dao.selectJname(jname);
 				if (dtos.isEmpty()) {

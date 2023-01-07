@@ -6,10 +6,10 @@ INSERT INTO PERSON
             (SELECT JNO FROM JOB WHERE JNAME='배우'), 100, 100, 100);
 --delete from person where pno=6;
 -- 2. 직업별 조회
-SELECT ROWNUM RN, A.* 
-    FROM (SELECT pNAME||'('||pNO||'번)' pNO, jNAME, KOR, ENG, MAT, (KOR+ENG+MAT) SUM 
-            FROM PERSON P, JOB J WHERE P.jNO=J.jNO AND jNAME='배우'
-             ORDER BY SUM DESC) A
+    SELECT ROWNUM RN, A.* 
+        FROM (SELECT pNAME||'('||pNO||'번)' pNO, jNAME, KOR, ENG, MAT, (KOR+ENG+MAT) SUM 
+                FROM PERSON P, JOB J WHERE P.jNO=J.jNO AND jNAME='배우'
+                 ORDER BY SUM DESC) A
    ;
 -- 3. 전체 조회
 SELECT ROWNUM RN, A.* 
