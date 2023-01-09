@@ -6,8 +6,8 @@ public class CustomerDto {
 	private String cname;
 	private int cpoint;
 	private int camount;
+	private String levelname;
 	private int levelup;
-	private int levelno;
 	
 	public CustomerDto() {}
 	// 입력용
@@ -16,19 +16,20 @@ public class CustomerDto {
 		this.cname = cname;
 	}
 	// 출력용
-	public CustomerDto(int cid, String ctel, String cname, int cpoint, int camount, int levelup, int levelno) {
+	public CustomerDto(int cid, String ctel, String cname, int cpoint, int camount, String levelname, int levelup) {
 		this.cid = cid;
 		this.ctel = ctel;
 		this.cname = cname;
 		this.cpoint = cpoint;
 		this.camount = camount;
+		this.levelname = levelname;
 		this.levelup = levelup;
-		this.levelno = levelno;
 	}
 	
 	@Override
 	public String toString() {
-		return cid + ctel + cname + cpoint + camount + levelup + levelno;
+		return cid + "\t" + ctel + "\t" + cname + "\t" +
+				cpoint + "\t" + camount + "\t" + levelname + "\t" + levelup;
 	}
 
 	public int getCid() {
@@ -79,11 +80,11 @@ public class CustomerDto {
 		this.levelup = levelup;
 	}
 
-	public int getLevelno() {
-		return levelno;
+	public String getLevelname() {
+		return levelname;
 	}
 
-	public void setLevelno(int levelno) {
-		this.levelno = levelno;
+	public void setLevelno(String levelname) {
+		this.levelname = levelname;
 	}
 }
