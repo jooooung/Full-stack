@@ -48,7 +48,7 @@ COMMIT;
 -- 2. 폰4자리(FULL) 검색 
     -- (ctel입력받아 cid, ctel, cname, cpoint, cmount, levelname, LevelUp)
     -- public ArrayList<CustomerDto> ctelGetCustomers(String searchTel)
-SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, (HIGH+1)-CAMOUNT LEVELUP 
+SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, HIGH+1-CAMOUNT LEVELUP 
     FROM CUSTOMER C, LEVELS L
     WHERE C.LEVELNO=L.LEVELNO
     ORDER BY CAMOUNT DESC;  -- 최고 레벨도 레벨업 금액이 나와버림

@@ -6,6 +6,7 @@ public class CustomerDto {
 	private String cname;
 	private int cpoint;
 	private int camount;
+	
 	private String levelname;
 	private int levelup;
 	
