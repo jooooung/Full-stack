@@ -1,6 +1,6 @@
-// 2.js : µ¿ÀûÀÎ ºÎºĞ
-name = prompt("What's ur name?", "Hong");   // Ãë¼Ò¸¦ Å¬¸¯ÇÏ¸é 'null' ¸®ÅÏ
+// 2.js : ë™ì ì¸ ë¶€ë¶„
+name = prompt("ì´ë¦„ì€?", "í™ê¸¸ë™");   // ì·¨ì†Œë¥¼ í´ë¦­í•˜ë©´ 'null' ë¦¬í„´
 if (name != 'null' && name != '') {
-    document.write(name + "~Welcome<br>");
+    document.write(name + "ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤<br>");
 }
   
