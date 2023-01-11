@@ -1,0 +1,13 @@
+﻿
+footer p {
+    margin: 0;
+    color: gray;
+    font-size: 10pt;
+    text-align:center;
+}
+
+
+header h1, tr, td{
+    text-align:center;
+}
+

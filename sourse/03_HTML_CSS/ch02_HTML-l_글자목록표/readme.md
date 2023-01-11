@@ -93,8 +93,8 @@ type 종류 : disc, square, circle
 ## 표태그
 - `<table></table>` : 표 만들기
   - `<tr></tr>` : 행
-    - `<th></th>` : 열
-    - `<td></td>` : 제목(진한 글씨, 가운데 정렬)
+    - `<th></th>` : 제목(진한 글씨, 가운데 정렬)
+    - `<td></td>` : 열
       - `<th, td colspan>` : 열병합
       - `<th, td rowspan>` : 행병합
 

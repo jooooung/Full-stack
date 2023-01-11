@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="화면구현평가1.css" type="text/css">
+    <script>
+        function chk() {
+            if (frm.name.value.length < 2) {
+                alert('이름을 2글자 이상 입력해주세요');
+                frm.name.focus();
+                return false;
+            } else if (frm.id.value.length < 4) {
+                alert('ID를 4글자 이상 입력해주세요')
+                frm.id.focus();
+                return false;
+            }  else if (frm.pw.value != frm.pwChk.value) {
+                alert('비밀번호를 확인하세요');
+                frm.pw.value = '';
+                frm.pwChk.value = '';
+                frm.pw.focus();
+                return false;
+            } 
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form action="" method="get" name="frm" onsubmit="return chk()">
+        <header><h1>회원가입</h1></header>
+        <fieldset>
+            <legend>필수입력</legend>
+            <table>
+                <tr>
+                    <td>이 름<strong>*</strong></td>
+                    <td>
+                        <input type="text" name="name" size="30"
+                               placeholder="이름은 2글자 이상" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>아이디<strong>*</strong></td>
+                    <td>
+                        <input type="text" name="id" size="30"
+                               placeholder="ID는 4글자 이상" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호<strong>*</strong></td>
+                    <td><input type="password" name="pw" size="30" /></td>
+                </tr>
+                <tr>
+                    <td>비번확인<strong>*</strong></td>
+                    <td>
+                        <input type="password" name="pwChk" size="30" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>전화<strong>*</strong></td>
+                    <td>
+                        <input type="tel" name="tel" size="30" required="required"
+                               placeholder="xx-xxxx-xxxx/000-0000-0000"
+                               pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>이메일<strong>*</strong></td>
+                    <td>
+                        <input type="email" name="email" size="30" required="required"
+                               placeholder="id@domain.com또는co.kr, id 맨 앞에 숫자 불가"
+                               pattern="[a-zA-Z가-힣]+@+\w+(\.\w+){1,2}" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>추가 입력 사항</legend>
+            <table>
+                <tr>
+                    <td>결혼유 무</td>
+                    <td>
+                        <input type="radio" name="결혼" value="기혼" id="기혼" />기혼
+                        <input type="radio" name="결혼" value="미혼" id="미혼" />미혼
+                    </td>
+                </tr>
+                <tr>
+                    <td>자식</td>
+                    <td>
+                        <input type="checkbox" value="아들" id="아들" />아들
+                        <input type="checkbox" value="딸" id="딸" />딸
+                    </td>
+                </tr>
+                <tr>
+                    <td>지역</td>
+                    <td>
+                        <select name="place">
+                            <option>서울</option>
+                            <option>경기</option>
+                            <option>강원</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <center>
+        <input type="submit" value="가입" id="가입" />
+        <input type="submit" value="취소" id="취소" />
+        </center>
+    </form>
+    <hr />
+    <footer>
+        <p>서울시 서대문구 신촌로 141 은하빌딩 203호</p>
+        <p>Copyright ⓒ XX All Rights reserved</p>
+    </footer>
+</body>
+</html>
