@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #header, #content, #footer {
+            width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+
+            #header .left {
+                width: 150px;
+                height: 150px;
+                float: left;
+                border: 1px solid gray;
+                background-color: lightgray;
+                border-radius: 40px 0 40px 0;
+            }
+
+            #header .center {
+                width: 693px;
+                height: 150px;
+                float: left;
+                border: 1px solid gray;
+                background-color: lightgray;
+                border-radius: 0 0 40px 40px;
+            }
+
+            #header .right {
+                width: 150px;
+                height: 150px;
+                float: left;
+                border: 1px solid gray;
+                background-color: lightgray;
+                border-radius: 0 40px 0 40px;
+            }
+
+            #content .left {
+                width: 150px;
+                height: 300px;
+                float: left;
+                border: 1px solid gray;
+                background-color: lightgray;
+                border-radius: 0 40px 40px 0;
+            }
+
+            #content .center {
+                width: 693px;
+                height: 300px;
+                float: left;
+                border: 1px solid gray;
+                background-color: lightgray;
+                border-radius: 40px 40px 40px 40px;
+                overflow: hidden;
+            }
+
+                #content .center li {
+                    font-weight: bold;
+                    font-size: 30px;
+                    float: left;
+                    list-style: none;
+                    width: 33%;
+                    text-align: center;
+                }
+
+                #content .center h3 {
+                    padding: 50px 100px 10px 100px;
+                    text-align: center;
+                }
+
+                #content .center p {
+                    padding: 20px;
+                }
+
+            #content .right {
+                width: 150px;
+                height: 300px;
+                float: left;
+                border: 1px solid gray;
+                background-color: lightgray;
+                border-radius: 40px 0 0 40px;
+            }
+
+                #content .right ol li:nth-last-child(-n+3) {
+                    color: red;
+                }
+
+            #footer .left {
+                width: 150px;
+                height: 150px;
+                float: left;
+                border: 1px solid gray;
+                background-color: lightgray;
+                border-radius: 0 40px 0 40px;
+            }
+
+            #footer .center {
+                width: 693px;
+                height: 150px;
+                float: left;
+                border: 1px solid gray;
+                background-color: lightgray;
+                border-radius: 40px 40px 0 0;
+            }
+
+            #footer .right {
+                width: 150px;
+                height: 150px;
+                float: left;
+                border: 1px solid gray;
+                background-color: lightgray;
+                border-radius: 40px 0 40px 0;
+            }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="left"></div>
+        <div class="center"></div>
+        <div class="right"></div>
+    </div>
+    <div id="content">
+        <div class="left"></div>
+        <div class="center">
+            <ul>
+                <li>menu1</li>
+                <li>menu2</li>
+                <li>menu3</li>
+            </ul>
+            <br />
+            <h3>풀스택 개발자 양성과정</h3>
+            <p>커다란 장식하는 눈이 전인 인생을 이상이 보라. 길지 있는 없으면, 살았으며, 무엇을 트고, 있는가? 미묘한 하였으며, 얼마나 바이며, 그들은 이것이야말로 봄바람이다. 충분히 아니더면, 부패를 스며들어 싸인 가장 꽃 같지 구하지 있다. 실로 우리의 이는 얼음에 역사를 위하여서.</p>
+        </div>
+        <div class="right">
+            <ol>
+                <li class="1">태그</li>
+                <li class="2">전체(*)</li>
+                <li class="3">id, class</li>
+                <li class="4">속성</li>
+                <li class="5">후손, 자손(>)</li>
+                <li class="6">동위</li>
+                <li class="7">반응</li>
+                <li class="8">상태</li>
+                <li class="9">구조</li>
+                <li class="10">문자</li>
+                <li class="11">링크</li>
+                <li class="12">부정</li>
+            </ol>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="left"></div>
+        <div class="center"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>

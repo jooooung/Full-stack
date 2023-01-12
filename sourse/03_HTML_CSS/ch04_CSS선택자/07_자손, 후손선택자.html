@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap {
+            width: 600px;
+            margin: 0 auto;
+            border: 1px solid gray;
+        }
+            /*나란히 띄우기*/
+            #wrap #header { /*부모쪽에 overflow*/
+                overflow: hidden;
+            }
+
+            #wrap .logo { /*후손선택자*/
+                float: left;
+                padding: 10px 30px 10px 150px;
+            }
+
+            #wrap .title {
+                float: left;
+                padding: 18px 150px 10px 30px;
+            }
+            div p{ /*후손선택자*/
+                font-size: 15px;
+            }
+            div > p{  /*자손선택자*/
+                color:rebeccapurple;
+            }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div class="logo">
+                <h1>LOGO</h1>
+            </div>
+            <div class="title">
+                <h2>주식회사</h2>
+            </div>
+        </div> <!--header-->
+        <div id="content">
+            <p>
+                풀밭에 군영과 보내는 끝에 위하여서. 내는 위하여서 우리 피어나는 그들의 우리 그러므로 뼈 고동을 칼이다. 몸이 속에 이성은 굳세게 이것이다.
+                이상, 가장 얼음과 가치를 긴지라 봄날의 기관과 소금이라 것이다. 위하여서, 방황하였으며, 얼음 품에 피는 남는 스며들어 그들의 교향악이다. 꽃이 피부가 오직 품에 봄바람이다.
+                하여도 많이 살았으며, 더운지라 풀밭에 만물은 뭇 있다. 크고 같으며, 타오르고 길지 설레는 천지는 하여도 가진 얼마나 봄바람이다. 이상의 이상을 옷을 갑 반짝이는 하여도 작고 보이는 열락의 이것이다.
+            </p>
+            <ul>
+                <li><p>인류의 길지 청춘은 있다. 원대하고, 황금시대의 하여도 천지는 전인 보는 날카로우나 보배를 것이다.</p></li>
+                <li><p>인류의 길지 청춘은 있다. 원대하고, 황금시대의 하여도 천지는 전인 보는 날카로우나 보배를 것이다.</p></li>
+                <li><p>인류의 길지 청춘은 있다. 원대하고, 황금시대의 하여도 천지는 전인 보는 날카로우나 보배를 것이다.</p></li>
+            </ul>
+        </div> <!--content-->
+        <div id="footer">
+            <p>서울시 서대문구 대현동</p>
+        </div> <!--footer-->
+    </div>
+</body>
+</html>

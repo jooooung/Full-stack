@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap{
+            width:400px;
+            margin:0 auto;
+        }
+        #header {
+            color: orange;
+            text-align: center;
+            border:dotted;
+        }
+        #section{
+            text-align:center;
+        }
+        #section img[src$='bmp']{
+            border:2px solid blue;
+        }
+
+        #section img[src$='gif'] {
+            border: 2px solid red;
+        }
+        #section img[src$='jpg'] {
+            border: 2px solid yellow;
+        }
+        #section img[src$='png'] {
+            border: 2px solid black;
+        }
+        #footer{
+            text-align:center;
+            color: #ff6a00;
+            padding:15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <h1>자바 스크립트 책들</h1>
+        </div>
+        <div id="section">
+            <img src="0112_book/book.bmp" />
+            <img src="0112_book/book.gif" />
+            <img src="0112_book/book.jpg" />
+            <img src="0112_book/book.png" />
+        </div>
+        <div id="footer">
+            서울시 OO구 OO동 OOO XX빌딩 O층
+        </div>
+    </div>
+</body>
+</html>

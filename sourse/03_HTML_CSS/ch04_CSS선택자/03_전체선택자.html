@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style> /*위부터 아래로 차례 적용*/
+        * {/*전체선택자 : 페이지 초기화 용도, 전체 페이지의 디자인 초기화*/
+           margin:0;
+           padding:0;
+           color:saddlebrown;
+        }
+        header, nav, section, footer{
+            width:500px; /*width를 지정하지 않으면 부모의 width를 다 씀*/
+            margin: 2px auto;
+            border:1px solid gray;
+        }
+        /*블록태그를 수평으로 출력*/
+        nav ul{overflow:hidden;} /*수평으로 할 태그의 부모태그에 적용*/
+        nav ul li{
+            float:left;
+            list-style:none;    /*ul의 circle 없애기*/
+            margin:10px 27px;
+        }
+        section{clear:both;} /*더이상 안 뜰 곳*/
+        /*float속성을 clear. 부모태그 overflow:hidden했으면 생략가능*/
+    </style>
+</head>
+<body>
+    <header>
+        <h1>00 주식회사</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>회사소개</li>
+            <li>서비스소개</li>
+            <li>고객센터</li>
+            <li>공지사항</li>
+        </ul>
+    </nav>
+    <section>
+        <p>
+            There are many variations of passages of Lorem Ipsum available,
+            but the majority have suffered alteration in some form, by injected humour,
+            or randomised words which don't look even slightly believable.
+            If you are going to use a passage of Lorem Ipsum,
+            you need to be sure there isn't anything embarrassing hidden in the middle of text.
+            All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,
+            making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words,
+            combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
+            The generated Lorem Ipsum is therefore always free from repetition,
+            injected humour, or non-characteristic words etc.
+        </p>
+    </section>
+    <footer>
+        <p>서울시 서대문구 신촌로 114, 2F(대현동, 은하빌딩)</p>
+    </footer>
+</body>
+</html>
