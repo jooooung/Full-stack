@@ -9,8 +9,7 @@ header, footer{   /*header, footer 태그를 동시에 속성 적용*/
 }
 ```
 
-## ✨ * 
-- 전체선택자 : 페이지 초기화 용도, 전체 페이지의 디자인 초기화
+## ✨ 전체선택자 : 페이지 초기화 용도, 전체 페이지의 디자인 초기화
 ```
 * {  /* * : 전체선택 */  
    margin:0;    /*밖여백*/
@@ -44,9 +43,9 @@ div #wrap #content ul li.memu1 { /*li.memu1 = li중에 menu1 / li .memu1 = li밑
 }
 ```
 ## ✨ 속성선택자
-- (=) 같은것 : input[type='password']{} = (input의 type이 password인 것의 속성 설정)
-- (^=) 시작하는것 : input[type^='te']{} = (input의 type이 te로 시작하는 것)
-- ($=) 끝나는것 : input[name$='me']{} = (input의 name이 me로 끝나는 것)            
+- `(=)` 같은것 : input[type='password']{} = (input의 type이 password인 것의 속성 설정)
+- `(^=)` 시작하는것 : input[type^='te']{} = (input의 type이 te로 시작하는 것)
+- `($=)` 끝나는것 : input[name$='me']{} = (input의 name이 me로 끝나는 것)            
 
 ## ✨ 후손선택자
 - 자손선택자를 포함한다

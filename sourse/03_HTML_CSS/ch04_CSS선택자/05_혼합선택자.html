@@ -5,63 +5,68 @@
     <meta charset="utf-8" />
     <title></title>
     <style>
-        *{
-            margin:0;
-            padding:0;
-            color:saddlebrown;
+        * {
+            margin: 0;
+            padding: 0;
+            color: saddlebrown;
         }
+
         div {
             border: 1px solid gray;
         }
-
-        div #header { /*id=header 설정*/
-            width: 600px;
-            margin: 0 auto;
-            background-color: yellow;
-            text-align: center;
-            text-decoration: underline; /*밑줄긋기*/
-        }
-
-        div #wrap {
-            width: 600px;
-            margin: 0 auto;
-            background-color: aqua;
-            overflow: hidden; /*수평으로 만들기 1. 부모단 hidden*/
-        }
-
-            #wrap #content {
-                float: left;
-                width: 350px; /*#content:가로(350px)+테두리(2px)=352px*/
-                height: 300px;
+            /*id=header 설정*/
+            #header{
+                width: 600px;
+                margin: 0 auto;
+                background-color: yellow;
                 text-align: center;
+                text-decoration: underline; /*밑줄긋기*/
             }
-                #wrap #content ul li.memu1, #wrap #content ul li.menu2 {
-                    color: darkblue;
-                }
-                #wrap #content ul li.memu1 { /*li.memu1 li중에 menu1 / li .memu1 li밑의 menu1*/
-                    font-size: 1.5em; /*원래 글씨 크기의 1.5배*/
-                }
 
-                #wrap #content ul li.memu2 {
-                    font-weight: bold;
-                }
-
-            #wrap #side_banner {
-                float: left;
-                width: 246px; /*#side_banner=가로(246px)+테두리(2px)=248px*/
-                height: 300px;
-                text-align:center;
+            #wrap {
+                width: 600px;
+                margin: 0 auto;
+                background-color: aqua;
+                overflow: hidden; /*수평으로 만들기 1. 부모단 hidden*/
             }
-            #wrap #side_banner img{width:200px;}
+
+        #wrap #content {
+            float: left;
+            width: 350px; /*#content:가로(350px)+테두리(2px)=352px*/
+            height: 300px;
+            text-align: center;
+        }
+
+            #wrap #content ul li.memu1, #wrap #content ul li.menu2 {
+                color: darkblue;
+            }
+
+            #wrap #content ul li.memu1 { /*li.memu1 li중에 menu1 / li .memu1 li밑의 menu1*/
+                font-size: 1.5em; /*원래 글씨 크기의 1.5배*/
+            }
+
+            #wrap #content ul li.memu2 {
+                font-weight: bold;
+            }
+
+        #wrap #side_banner {
+            float: left;
+            width: 246px; /*#side_banner=가로(246px)+테두리(2px)=248px*/
+            height: 300px;
+            text-align: center;
+        }
+
+            #wrap #side_banner img {
+                width: 200px;
+            }
 
         #footer {
             clear: both; /*부모단에서 overflow했기에 생략 가능*/
             width: 600px;
             margin: 0 auto;
-            background-color:yellow;
-            text-align:center;
+            background-color: yellow;
+            text-align: center;
         }
-        
     </style>
 </head>
 <body>
