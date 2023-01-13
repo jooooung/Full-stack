@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #contain{
+            width:400px;
+            margin:0 auto;
+            border:1px solid;
+        }
+            #contain #row1, #contain #row2{
+                width:400px;
+                border:5px solid gray;
+                box-sizing:border-box;  /*border가 width안으로*/
+                overflow:hidden;
+            }
+            .first, .second{
+                width:100px;
+                height:100px;
+                line-height:100px;
+                border:1px solid red;
+                margin:10px;
+            }
+            #contain #row1 > div {
+                float:left;
+            }
+
+        #contain #row2 > div {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="contain">
+        <div id="row1">
+            <div class="first">first</div>
+            <div class="second">second</div>
+        </div>
+        <div id="row2">
+            <div class="first">first</div>
+            <div class="second">second</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap {
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        #header {
+            text-align: center;
+            border-bottom: 1px solid lightgray;
+        }
+
+        #content {
+            padding: 0 10px;
+            text-align: justify; /*글씨 폭 정렬*/
+        }
+
+            #content p:nth-child(2)::first-line, /*문자선택자*/
+            #content p:nth-child(3)::first-line {
+                color: blue;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            #content p:nth-child(2)::first-letter,
+            #content p:nth-child(3)::first-letter {
+                font-size: 2em; /*원래 크기(20px)의 2배*/
+            }
+
+            #content p:nth-child(2)::selection { /*글씨 선택 시 설정*/
+                background-color: violet;
+                color: yellow;
+            }
+
+        #footer ul {
+            border-top: 1px solid lightgray;
+            overflow: hidden;
+        }
+
+            #footer ul li {
+                float: left;
+                list-style: none;
+                padding: 15px 10px;
+            }
+            #footer ul li:first-child{
+                padding:22px;
+            }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <h1>제목이나 회사명</h1>
+        </div>
+        <div id="content">
+            <p>Where can I get some?</p>
+            <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+        </div>
+        <div id="footer">
+            <ul>
+                <li><img src="0112/logo.png" alt:회사로고 /></li>
+                <li><img src="0112/add.png" alt:회사정보 /></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

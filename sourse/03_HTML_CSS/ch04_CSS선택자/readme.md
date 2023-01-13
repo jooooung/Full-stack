@@ -90,3 +90,24 @@ input:focus{
 - ():first-child : 첫번째의 ()
 - ():last-child : 마지막의 ()
 ```
+
+## ✨ 문자선택자
+```
+#content p:nth-child(2)::first-line     /*첫번째 줄*/
+#content p:nth-child(2)::first-letter   /*첫번째 글자*/
+#content p:nth-child(2)::selection      /*드래그 시*/
+```
+
+## ✨ 링크 선택자 : 문서에 링크(href) 되어 있는 문자를 선택하여, CSS 속성 설정 가능
+```
+ #content ul li a::after{
+    content: '-' attr(href)
+}
+```                
+
+## ✨ 부정선택자
+```
+#content ul li a::after{
+    content: '-' attr(href)
+}
+```                

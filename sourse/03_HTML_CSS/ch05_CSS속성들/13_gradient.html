@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #nav{
+            width: 800px;
+            margin: 0 auto;
+            border:1px solid gray;
+        }
+        #nav ul{overflow:hidden}
+            #nav ul li {
+                float: left;
+                list-style: none;
+                width: 160px;
+                border-top: 1px solid red;
+                border-bottom: 1px solid red;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+                /*li의 background-color를 dradient(그라데이션)으로 설정*/
+                /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d8e0de+0,aebfbc+22,99afab+35,8ea6a2+50,829d98+66,4e5c5a+84,0e0e0e+100 */
+                background: rgb(216,224,222); /* Old browsers */
+                background: -moz-linear-gradient(top, rgba(216,224,222,1) 0%, rgba(174,191,188,1) 22%, rgba(153,175,171,1) 35%, rgba(142,166,162,1) 50%, rgba(130,157,152,1) 66%, rgba(78,92,90,1) 84%, rgba(14,14,14,1) 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, rgba(216,224,222,1) 0%,rgba(174,191,188,1) 22%,rgba(153,175,171,1) 35%,rgba(142,166,162,1) 50%,rgba(130,157,152,1) 66%,rgba(78,92,90,1) 84%,rgba(14,14,14,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, rgba(216,224,222,1) 0%,rgba(174,191,188,1) 22%,rgba(153,175,171,1) 35%,rgba(142,166,162,1) 50%,rgba(130,157,152,1) 66%,rgba(78,92,90,1) 84%,rgba(14,14,14,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d8e0de', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+            }
+            #nav ul li a{
+                text-decoration:none;
+                color:blue;
+                font-size:1.5em;
+                font-weight:bold;
+                display:block;  /*a태그의 영역 확장 : 글씨 주변도 클릭 가능*/
+            }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <ul>
+            <li><a href="">menu1</a></li>
+            <li><a href="">menu2</a></li>
+            <li><a href="">menu3</a></li>
+            <li><a href="">menu4</a></li>
+            <li><a href="">menu5</a></li>
+        </ul>
+    </div>
+</body>
+</html>

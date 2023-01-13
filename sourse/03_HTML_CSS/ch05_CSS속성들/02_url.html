@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        /*url() 용도 : 로컬font지정할 때, 백그라운드 이미지를 지정할 때*/
+        @font-face { /*로컬 폰트 설정*/
+            font-family: 'NanumSon';
+            src: url('나눔손글씨_배은혜체.ttf');
+        }
+
+        * {
+            font-family: NanumSon;
+        }
+
+        #wrap {
+            width: 600px;
+            height: 250px;
+            margin: 10px auto;
+            border: 1px solid;
+        }
+
+            #wrap #content {
+                width: 80%;
+                height: 100%;
+                margin: 0 auto;
+                border: 1px solid;
+                /*background-image: url('밀크.jpg');
+                background-repeat:no-repeat;
+                background-position:center;*/
+                background: url('밀크.jpg') center no-repeat;
+                background-size:100%;   /*가로 사이즈 기준*/
+                font-size: 3em;
+                text-align:center;
+            }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="content">
+            내 이름은 밀크
+        </div>
+    </div>
+</body>
+</html>
