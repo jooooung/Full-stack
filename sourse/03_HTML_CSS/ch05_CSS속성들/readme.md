@@ -74,3 +74,5 @@ box-sizing:border-box;
 - fixed : 스크롤을 내려도 화면에 고정
 - relative : 상대 좌표
 - relative와 absolute의 혼합 사용 :
+---
+## ✨ 11. float

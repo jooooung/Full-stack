@@ -1,0 +1,171 @@
+/* 페이지 초기화 */
+@font-face {
+    font-family: SecularOne-Regular;
+    src: url('../font/SecularOne-Regular.ttf');
+    /* 폴더는 html기준 */
+}
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'SecularOne-Regular';
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style: none;
+}
+
+/* * * * * header의 .gnd * * * * */
+header .gnb {
+    overflow: hidden;
+    background-color: black;
+    width: 100%;
+}
+
+header .gnb ul {
+    width: 1000px;
+    margin: 0 auto;
+    height: 30px;
+    line-height: 30px;
+}
+
+header .gnb ul li {
+    width: 80px;
+    margin: 0 10px;
+    float: left;
+    text-align: center;
+}
+
+header .gnb ul li a {
+    color: white;
+    display: block;
+}
+
+/* * * * * header의 .logo * * * * */
+header .logo {
+    width: 311px;
+    height: 162px;
+    margin: 30px auto;
+    background: url(../밀크.jpg) center no-repeat;
+    border: 1px solid gray;
+}
+
+/* * * * * header의 .hitmenu * * * * */
+header .hitmenu ul {
+    width: 1000px;
+    margin: 0 auto 3px;
+    overflow: hidden;
+}
+
+header .hitmenu ul li {
+    float: right;
+    border: 1px solid gray;
+}
+
+header .hitmenu ul li:first-child {
+    border-radius: 0 10px 10px 0;
+}
+
+header .hitmenu ul li:last-child {
+    border-radius: 10px 0 0 10px;
+}
+
+header .hitmenu ul li a {
+    padding: 10px 25px;
+    display: block;
+}
+
+/* * * * * header의 .lnb * * * * */
+header .lnb {
+    border-top: 1px dashed #333333;
+    border-bottom: 1px dashed #333333;
+}
+
+header .lnb ul {
+    width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+header .lnb ul li {
+    float: left;
+    width: 12.5%;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+
+header .lnb ul li a {
+    font-weight: bold;
+}
+
+/* * * * * content * * * * */
+#content {
+    width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid;
+    margin: 5px auto;
+}
+/* * * * * content .section1  * * * * */
+#content .section1 .slide_banner {
+    width: 698px;
+    height: 400px;
+    line-height: 400px;
+    text-align: center;
+    border: 1px solid lightgrey;
+    box-sizing: border-box;
+    float: left;
+}
+
+#content .section1 .side_banner {
+    width: 296px;
+    height: 400px;
+    line-height: 400px;
+    text-align: center;
+    border: 1px solid lightgrey;
+    float: left;
+}
+
+/* * * * * content .section2  * * * * */
+#content .section2 .hit_product ul li,
+#content .section2 .md_product ul li{
+    width: 240.7px;
+    height: 400px;
+    line-height: 400px;
+    float: left;
+    margin: 10px 7px 10px 0;
+    text-align: center;
+    border: 1px solid;
+    box-sizing: border-box;
+}
+#content .section2 .hit_product ul li:first-child,
+#content .section2 .md_product ul li:first-child{
+    margin-left: 7px;
+
+/* * * * * footer * * * * */
+footer{
+    width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin: 5px auto;
+}
+
+footer div:nth-child(1),
+footer div:nth-child(2),
+footer div:nth-child(3){
+    float: left; width:33.33%; height: 100px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+footer div:last-child{
+    clear:both;
+    height: 50px; line-height: 50px; text-align: center;
+    background-color: black;
+    color:white;
+}
