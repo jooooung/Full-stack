@@ -35,7 +35,7 @@ header, footer{   /*header, footer 태그를 동시에 속성 적용*/
 
 ## ✨ 혼합선택자
 `h1#id1{} : id가 id1인 h1태그의 스타일 설정`
-- div(태그), #wrap(id), #content(id), ul(태그), li(태그), li.memu1(class)   
+- div(태그), #wrap(id), #content(id), ul(태그), li(태그), li.memu1(class)  
 모두 혼합하여 사용 가능
 ```
 div #wrap #content ul li.memu1 { /*li.memu1 = li중에 menu1 / li .memu1 = li밑의 menu1*/
@@ -92,6 +92,7 @@ input:focus{
 ```
 
 ## ✨ 문자선택자
+- 특정 문자나 상태를 선택하여 속성 변화
 ```
 #content p:nth-child(2)::first-line     /*첫번째 줄*/
 #content p:nth-child(2)::first-letter   /*첫번째 글자*/
@@ -100,14 +101,15 @@ input:focus{
 
 ## ✨ 링크 선택자 : 문서에 링크(href) 되어 있는 문자를 선택하여, CSS 속성 설정 가능
 ```
- #content ul li a::after{
-    content: '-' attr(href)
+ #content ul li a::after{   /*id='content'-ul-li a::after(바로 뒤에)*/
+    content: '-' attr(href)     /* '-' 와 링크주소 */
 }
 ```                
 
 ## ✨ 부정선택자
+- id='content' - ul - li의 class가 web이 아닌 것의 a 태그
 ```
-#content ul li a::after{
-    content: '-' attr(href)
+#content ul li:not(.web) a{   /*부정선택자*/
+    background-color:yellow;
 }
 ```                
