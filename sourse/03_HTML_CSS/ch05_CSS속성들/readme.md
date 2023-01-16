@@ -33,6 +33,7 @@ background-size:100%;   /*가로 사이즈 기준*/
 - **inline**(가로정렬) : 위, 아래 margin 미적용 
 - **block**(세로정렬) : 위, 아래 margin 적용 
     - ```inline -> block, block -> inline``` 가능
+    - 글씨 주변도 클릭 가능
 - **none** : 안보이게(공간도 안보임)
 - **inline-block** : 위, 아래 margin 적용
 ---
