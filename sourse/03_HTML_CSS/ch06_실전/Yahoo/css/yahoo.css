@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  list-style: none;
+}
+
+/* header */
+header #header_nav {
+  overflow: hidden;
+  width: 100%;
+  min-width: 900px; /*최소 width값*/
+  height: 25px;
+  line-height: 25px;
+  background-color: #2d1152;
+}
+
+header #header_nav a{
+  color: white;
+}
+
+header #header_nav .gnb{
+  width: 660px;
+  margin-left: 3px;
+}
+
+header #header_nav .gnb ul li {
+  float: left;
+  width: 60px;
+  text-align: center;
+}
+
+header #header_nav .survivalFootball p {
+  float: right;
+  margin-right: 10px;
+}
+
+header #header_nav .survivalFootball img {
+  width: 16px;
+  padding: 5px;
+}
+
+/* * * * * header_info * * * * */
+header #header_info {
+  overflow: hidden;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+header #header_info .logo {
+  float: left;
+  margin:10px;
+}
+
+header #header_info .search{
+  float: left;
+}
+
+header #header_info .search input[type="text"]{
+  width: 400px;
+  margin-top: 20px;
+  padding: 10px 0;
+  outline: none;
+  font-size: 20px;
+  border:1px solid #3488d9;
+}
+
+header #header_info .search input[type="submit"]{
+  width: 124px;
+  height: 37px;
+  background: url(../img/search_btn.png) no-repeat;
+  color: white;
+  border: 0;
+  cursor: pointer;
+}
+
+header #header_info .service {
+  float: right;
+}
+
+header #header_info .service ul li{
+  float: left;
+  margin: 30px 30px 0 0 ;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* * * * * content * * * * */
+#content{
+  width: 997px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* * #content #main_menu * */
+#content #main_menu{
+  float: left;
+  width: 155px;
+}
+
+#content #main_menu ul li{
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+}
+
+/* * #content #main * */
+#content #main{
+  float: left;
+}
+
+#content #main div{
+  margin-bottom: 3px;
+  margin-right: 3px;
+}
+
+#content #main div:first-child{
+  border: 1px solid lightgray;
+  width: 600px;
+  height: 300px;
+}
+
+#content #main div:nth-child(2){
+  border: 1px solid lightgray;
+  width: 600px;
+  height: 150px;
+}
+#content #main div:nth-child(3){
+  height: 50px;
+  line-height: 50px;
+}
+#content #main div ul li a{
+  float: left;
+  background-color: #2d1152;
+  color: white;
+  width: 16.6%;
+  text-align: center;
+}
+
+#content #main div:nth-child(n+4){
+  border: 1px solid lightgray;
+  width: 600px;
+  height: 100px;
+}
+
+/* * content #main_banner * */ 
+#content #main_banner{
+  float: left;
+}
+
+#content #main_banner div{
+  margin-left: 3px;
+  margin-bottom: 3px;
+}
+
+#content #main_banner div:nth-child(1), 
+#content #main_banner div:nth-child(2){
+  width: 230px;
+  height: 100px;
+  border: 1px solid lightgray;
+}
+
+#content #main_banner div:nth-child(3),
+#content #main_banner div:nth-child(4){
+  width: 230px;
+  height: 150px;
+  border: 1px solid lightgray;
+}
+
+#content #main_banner div:nth-child(5){
+  width: 230px;
+  height: 200px;
+  border: 1px solid lightgray;
+}
+
+/* * * * * footer * * * * */
+footer{
+  width: 997px;
+  height: 100px;
+  margin: 0 192.5px;
+  overflow: hidden;
+}
+
+footer ul li{
+  float: left;
+}

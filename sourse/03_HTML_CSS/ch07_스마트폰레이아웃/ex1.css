@@ -1,0 +1,139 @@
+/* * * * * 페이지초기화 * * * * */
+*{
+  margin: 0;
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+
+/* * * * * header * * * * */
+header{
+  background: url('ex1/bg_header.png');
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  position: relative;
+}
+
+header .left{
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+
+header .right{
+  position: absolute;
+  right: 10px;
+  top: 7px;
+}
+
+/* * * * * #gnb * * * * */
+#gnb ul{
+  overflow: hidden;
+  border: 5px solid gray;
+}
+
+#gnb ul li{
+  float: left;
+  width: 10%;
+  margin: 1.25%;
+  border: 1px solid gray;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#gnb ul li a{
+  display: block;
+}
+
+/* * * * * checkBox가 checked일 경우만 gnb를 보이게 * * * * */
+#gnb{
+  display: none;
+}
+
+#toggle:checked ~ div{
+  display: block;
+}
+
+#toggle{
+  display: none;
+}
+
+/* * * * * lnb * * * * */
+#lnb ul{
+  overflow: hidden;
+}
+
+#lnb ul li{
+  float: left;
+  width: 20%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background-color: darkcyan;
+  border: 1px solid white;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#lnb ul li a{
+  color: white;
+}
+
+/* * * * * #content * * * * */
+#content{
+  padding: 10px;
+}
+
+#content .content_header{
+  padding: 10px;
+  border-bottom: 1px solid gray;
+}
+
+#content .content_body p:first-child{
+  color: deepskyblue;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 10px 0;
+  /* 말줄임 태그(ellipsis) */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#content .content_body p:last-child{
+  background: url(ex1/bg_image.png) -500px -200px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+/* * * * * footer * * * * */
+footer{
+  text-align: center;
+}
+
+footer .logo{
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  margin: 20px;
+  padding: 10px;
+}
+
+footer .logo img{
+  width: 150px;
+}
+
+footer .info{
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+footer .address{
+  font-size: 0.8em;
+  margin: 3px;
+}

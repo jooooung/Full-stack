@@ -11,14 +11,11 @@
   - post : 입력한 데이터가 눈에 보이지 않게 전송(url이 아니라 데이터 영역을 이용해서 데이터를  
   전송하기에 웹브라우저나 서버 상관없이 파라미터 길이 제한이 없다)   
 3. button : 버튼을 생성  
-`<input type="button" value="button" />` <input type="button" value="button" />    
+`<input type="button" value="button" />`  value = 버튼에 쓰일 값
 4. checkbox : 체크박스을 생성  
     - checked="checked" : 기본 체크값을 설정  
     - 중복체크, 미체크 가능
 
-<input type="checkbox" name="lang" value="kor" checked="checked" />한국어
-<input type="checkbox" name="lang" value="eng" />영어
-<input type="checkbox" name="lang" value="chi" />중국어
 ```
 <input type="checkbox" name="lang" value="kor" checked="checked" />한국어
 <input type="checkbox" name="lang" value="eng" />영어
@@ -26,35 +23,33 @@
 ```
 
 5. file : 파일 입력 양식을 생성  
-`<input type="file" name="img" />` <input type="file" name="img" />
+`<input type="file" name="img" />`
 6. hidden : 보이지 않게 합니다.  
 `<input type="hidden" name="hiddenParam" value="hidden전송값" />`
 7. image : 이미지 형태를 생성
 8. password : 비밀번호 입력 양식을 생성  
-`<input type="password" name="pw" />` <input type="password" name="pw" />
+`<input type="password" name="pw" />` 
 9. radio : 라디오 버튼을 생성(기본값:circle)
    - name을 똑같이 설정해야 중복 선택이 불가해진다
-<input type="radio" name="결혼" value="기혼" id="기혼" />기혼
-<input type="radio" name="결혼" value="미혼" id="미혼" />미혼
 ```
       <input type="radio" name="결혼" value="기혼" id="기혼" />기혼
       <input type="radio" name="결혼" value="미혼" id="미혼" />미혼
 ```                  
 10. reset : 초기화 버튼을 생성(입력값 초기화)  
-`<input type="reset" value="초기화" />` <input type="reset" value="초기화" />
+`<input type="reset" value="초기화" />` 
 11. submit : 제출 버튼을 생성(value기본값 : 제출)  
-`<input type="submit" value="로그인" />` <input type="submit" value="로그인" /> 
+`<input type="submit" value="로그인" />`
 12. text : 글자 입력 양식을 생성(name, size 등 설정가능)  
-`<input type="text" name="id" size="9" />` <input type="text" name="id" size="9" />
-13. autofocus : 포커스 자동 설정(하나만 설정 가능)  `autofocus="autofocus"`
+`<input type="text" name="id" size="9" />` 
+13. autofocus : 포커스 자동 설정(하나만 설정 가능)  
+  `autofocus="autofocus"`
 14. placeholder : 각 필드에 대한 입력 형식 힌트제공  
-전화 <input type="tel" name="tel" placeholder="000-0000-0000" />  
 `전화 <input type="tel" name="tel" placeholder="000-0000-0000" />`  
+번호 입력 칸에 placeholder가 뜬다
 15. required : 필수 입력 필드
     - 미입력시 입력란을 작성하라는 말풍선이 뜬다
 16. min, max : 숫자의 범위를 설정  
 `<input type="number" name="career" max="60" min="0" />`
-<input type="number" name="career" max="60" min="0" />
 17. pattern : 조건을 사용한 일반식 표시  
     - pattern에 맞지 않게 입력 시 형식에 맞게 입력하라는 말풍선이 뜬다  
       title은 추가 설명
@@ -69,9 +64,6 @@
 
 ✨18. label
 - 입력창이 아닌 라벨을 클릭해도 입력창으로 이동되게 하기  
- <label for="name">이 &nbsp; 름 <strong>*</strong></label>
- <input type="text" name="name" id="name" required="required"
-                 autofocus="autofocus" />
 ```
     <li>    
         <label for="name">이 &nbsp; 름 <strong>*</strong></label>   
@@ -82,8 +74,7 @@
 ✨19. readOnly, disable
 - readOnly : 입력불가, 읽기전용
 - disable : 출력은 되나 전송안됨  
-disable data <input type="text" disabled="disabled" name="disabledParam" value="disable값은 전송안됨"/>  
-        readOnly data <input type="text" readonly="readonly" name="readonlyParam" value="readonly전송값" />
+
 ```
 disable data <input type="text" disabled="disabled" name="disabledParam" value="disable값은 전송안됨"/>
 readOnly data <input type="text" readonly="readonly" name="readonlyParam" value="readonly전송값" />
