@@ -90,3 +90,19 @@ header #search input[type=submit]{
   border: 0;
 }
 
+#lnb ul li a{
+color: black;
+}
+
+/*************** #section1 *******************/
+#section1 {
+  overflow: hidden;
+}
+
+#section1 .row1{
+  float: left;
+}
+
+#section1 .row1 a img{
+  width: 50px;
+}
