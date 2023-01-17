@@ -17,17 +17,13 @@
 </head>
 <body>
 	<!— 열린 태그, 닫힌 태그가 있고, 이 둘은 쌍이다. 닫힌 태그가 필요없는 태그도 있긴 하다 -- >
-	<a href="http://www.daum.net">
-<!- 태그 이름 : A, 태그속성 :href, 태그값이 있다 -->
-		<img src="img/parkseyoung.jpg" alt="다음" />
-	</a>
 </body>
 </html>
 ```
 ### 1. `<!DOCTYPE html>`
 - 웹 브라우저가 현재 웹 페이지가 HTML5 문서임을 인식하게 하는 것
 - 문서의 가장 첫번째 줄에 있어야 한다
-### 2. `<html  lang=”ko”>`
+### 2. `<html  lang=””>`
 - html태그의 시작을 알리고 lang(언어) 속성을 입력
 - 이 lang속성은 실제 웹 브라우저가 동작하는데 어떠한 영향도 끼치지 않는다
 ### 3. `<head>  …  </head>`
@@ -36,13 +32,6 @@
 ### 4. `<body>  …  </body>`
 - 사용자에게 보이는 웹 문서 실제 정보
 ---
-## 배경색 설정하기
-```
-<style>
-    body{background-color:#00FF00; /*16진수 R(2)G(2)B(2)*/}
-    body{background-color:#00FF0022; /* 투명도*/}
-</style>
-```
 
 ## 글자 관련 태그
 - `<h1></h1>` :  제목태그. h1~h6까지 있으며 1이 가장 크고 6이 가장 작다
@@ -87,23 +76,24 @@ type 종류 : disc, square, circle
   -  `<li></li>` : 목록 요소
 - `<dt></dt>` : 정의목록(definition term)
 - `<dd></dd>` : 정의 용어에 대한 상세설명(definition description), 자동 들여쓰기
-- summary : 세보정보의 요약이나 제목
+
+## detail과 summary  
 - details : 세부정보나 추가 정보를 숨겼다가 펼쳤다가하는 기능(toggle)
----
+- summary : 세부정보의 요약이나 제목
+
 ## 표태그
 - `<table></table>` : 표 만들기
   - `<tr></tr>` : 행
     - `<th></th>` : 제목(진한 글씨, 가운데 정렬)
     - `<td></td>` : 열
-      - `<th, td colspan>` : 열병합
-      - `<th, td rowspan>` : 행병합
+      - `<th, td colspan=''>` : 열병합
+      - `<th, td rowspan=''>` : 행병합
 
 ## 이미지태그
 - src : 이미지의 경로 지정
 - alt : 이미지가 없을 때 나오는 글자 지정
 - width : 이미지의 너비 지정 (css 부분에 설정해주는 경우가 더 많다)
 - height : 이미지의 높이 지정 (css 부분에 설정해주는 경우가 더 많다)
-- hr : 페이지에 줄 나누기(color 지정 가능)
 
 ## 오디오태그
 - src : 오디오 파일의 경로 지정
