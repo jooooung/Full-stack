@@ -95,14 +95,82 @@ color: black;
 }
 
 /*************** #section1 *******************/
-#section1 {
+section #section1{
+  margin: 7px;;
+}
+
+section #section1 .row1,
+section #section1 .row2,
+section #section1 .row3{
   overflow: hidden;
 }
 
-#section1 .row1{
+section #section1 .row1 > a,
+section #section1 .row2 > a,
+section #section1 .row3 > a{
   float: left;
+  width: 50%;
+  height: 135px;
+  border: 2px solid white;
+  box-sizing: border-box;
 }
 
-#section1 .row1 a img{
-  width: 50px;
+section #section1 img{
+  width: 100%;
+  height: 100%;
+}
+
+/********************* #section2 *******************/
+section #section2{
+  margin: 7px;
+}
+
+section #section2 ul li{
+  border: 1px solid gray;
+  padding: 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/****************** #section3 **********************/
+section #section3 ul li{
+  border: 1px solid gray;
+  margin: 7px;
+  padding: 10px;
+  height: 100px;
+  position: relative;   /* p.img 태그를 position잡을 예정이므로 부모의 포지션*/
+}
+
+section #section3 ul li p.img{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+section #section3 ul li p.txt{
+  padding-left: 120px;
+}
+
+section #section3 ul li p.txt span:first-child{
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  color: navy;
+  font-size: 1.2em;
+}
+
+/************************ footer *********************/
+footer {
+  background-color: #ea8f00;
+  text-align: center;
+  font-weight: bold;
+}
+
+footer p:last-child{
+  padding: 0 0 5px 0;
 }

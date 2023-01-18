@@ -1,0 +1,143 @@
+/************** 페이지 초기화 ****************/
+*{
+  margin: 0;
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+
+body{
+  min-width: 900px;
+}
+
+/********** header ***********/
+header{
+  height: 100px;
+  line-height: 100px;
+  padding: 10px;
+  background-color: rgb(107, 53, 108);
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/********** nav_gnb ***********/
+/* ul이 2개, 하나는 left 하나는 right */
+#nav_gnb{
+  overflow: hidden;
+  background-color: #333333;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+}
+
+#nav_gnb ul:first{
+  float: left;
+}
+
+#nav_gnb ul:last-child{
+  float: right;
+}
+
+#nav_gnb ul li{
+  float: left;
+  border-right: 1px solid white;
+  width: 125px;
+}
+#nav_gnb ul:last-child li:first-child{
+  border-left: 1px solid white;
+}
+
+#nav_gnb ul li a{
+  color: white;
+  display: block;
+}
+
+/********** section ***********/
+section{
+  overflow: hidden;
+  background-color: greenyellow;
+}
+
+/********** section #nav_lnb ***********/
+section #nav_lnb{
+  float: left;
+  width: 100px;
+}
+
+section #nav_lnb ul li a{
+  padding: 10px 20px;
+  border-bottom:2px dashed;
+  display: block;
+  color: brown;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/********** section #content_wrap : width 100%(margin-right:-100px) ***********/
+section #content_wrap{
+  float: left;
+  width: 100%;
+  margin-right: -100px;
+  background-color: blanchedalmond;
+}
+
+section #content_wrap #content{
+  padding: 20px 110px 20px 20px;
+  text-align: justify;
+}
+
+section #content_wrap #content div{
+  margin-bottom:20px;
+}
+
+section #content_wrap #content div h1{
+  padding: 10px;
+}
+
+section #content_wrap #content div p::first-line{
+  color: orange;
+  font-size: 1.5em;
+}
+
+section #content_wrap #content div p::first-letter{
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+section #content_wrap #content div:first-child img{
+  float: left;
+  margin: 10px 10px 0 0;
+}
+
+section #content_wrap #content div:nth-child(2) img{
+  float: right;
+  margin: 10px 0 0 10px;
+}
+
+section #content_wrap #content div:nth-child(4){
+  border-top: 2px dashed lightgray;
+}
+
+section #content_wrap #content div:nth-child(4) img{
+  float: left;
+  margin: 10px 10px 0 0;
+  border-radius: 20px;
+}
+
+/************** footer ****************/
+footer{
+  background-color: lightgrey;
+  height: 100px;
+  text-align: center;
+  font-weight: bold;
+}
+
+footer p:first-child{
+  font-size: 1.2em;
+  padding: 15px;
+}

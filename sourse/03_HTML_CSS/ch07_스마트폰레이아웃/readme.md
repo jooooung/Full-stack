@@ -1,6 +1,10 @@
 # 스마트폰 레이아웃
 viewport mete 태그
-- user-scalable=yes : 스마트폰 화면 확대 축소 가능
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes,
+                                minimum-scale=0.7, maximum-scale=1.5">
+```
+- user-scalable=yes(no) : 스마트폰 화면 확대 축소 가능(불가능)
 - minimum-scale=0.5 : 최소 0.5배까지 축소 
 - maximum-scale=1.5 : 최대 1.5배까지 확대
 
@@ -38,6 +42,7 @@ div 안보이게하고
 ```
 
 # 말줄임 태그(ellipsis)
+화면의 width보다 긴 문장은 끝에 ...으로 생략됨
 ```
 /* 말줄임 태그(ellipsis) */
   white-space: nowrap;

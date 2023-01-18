@@ -14,7 +14,7 @@ header, footer{   /*header, footer 태그를 동시에 속성 적용*/
 * {  /* * : 전체선택 */  
    margin:0;    /*밖여백*/
    padding:0;   /*안여백*/
-}
+
 ```
 
 ## 블록태그를 수평으로 출력        

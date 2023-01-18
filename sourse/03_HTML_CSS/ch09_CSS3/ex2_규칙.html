@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  /*import는 항상 style 맨 위에 와야한다*/
+  @import url('css/title.css');
+  @import url('css/footer.css');
+
+  @media screen and (min-device-width:1300px) { /*최소 기기의 폭 정하기*/
+    #wrap .content {
+      /* content(pc 스크린용) */
+      background-color: darkgreen;
+      color: white;
+      padding: 30px 10px;
+    }
+  } 
+  @media print {
+    /* content printer용 */
+    #wrap .content {
+      color: darkgreen;
+      padding: 10px 5px;
+      font-size: 1.2em;
+    }
+  }
+</style>
+
+<body>
+  <div id="wrap">
+    <div class="title">
+      <h1>NOTICE</h1>
+    </div>
+    <hr>
+    <div class="content">
+      <p>
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking
+        at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+        opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
+        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
+        will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+        accident, sometimes on purpose (injected humour and the like).
+      </p>
+    </div>
+    <div class="footer">
+      <p>2023.01.18<br>
+        write by Hong
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+/************** 페이지 초기화 ****************/
+*{
+  margin: 0;
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+/************** #top_bar ****************/
+#top_bar{
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  background-color: #dceb0e;
+  position: fixed;  /* 항상 화면에 고정*/
+  top: 0;     /* 고정 위치 설정*/ 
+  left: 0;
+  right: 0;
+}
+
+#top_bar ul{
+  overflow: hidden;
+}
+
+#top_bar ul li{
+  float: left;
+  width: 16.6%;
+  border-right:1px dashed darkgreen ;
+  box-sizing: border-box;
+  font-size: 1.2em;
+}
+
+/************** #left_bar ****************/
+#left_bar{
+  width: 150px;
+  background-color:saddlebrown;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  bottom: 100px;
+}
+
+#left_bar ul li a{
+  padding: 10%;
+  display: block;
+  border-bottom: 1px solid gray;
+}
+
+/************** #right_bar ****************/
+#right_bar{
+  width: 150px;
+  text-align: center;
+  background-color: lightyellow;
+  position: fixed;
+  top: 100px;
+  bottom: 100px;
+  right: 0;
+}
+
+#right_bar ul li{
+  padding: 5px;
+}
+
+#right_bar ul li img{
+  width: 90%;
+  height: 40px;
+}
+
+/************** #bottom_bar ****************/
+#bottom_bar{
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  background-color: lightgoldenrodyellow;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-weight: bold;
+}
+
+/************** #content ****************/
+#content{
+  margin: 110px 160px;
+  text-align: justify;
+}
+
+#content img{
+  float: left;
+  margin-right: 20px;
+}

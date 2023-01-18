@@ -1,0 +1,128 @@
+/******** 페이지 초기화 **********/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#wrap {
+  margin: 5px auto;
+  width: 1000px;
+  height: 700px;
+}
+
+/********* nav ************/
+nav {
+  height: 50px;
+  min-width: 900px;
+  overflow: hidden;
+}
+
+nav #nav_left ul li:hover,
+nav #nav_right ul li:hover{
+  background-color: #FDEADA;
+  border: 1px solid gray;
+}
+
+nav #nav_left ul li,
+nav #nav_right ul li {
+  width: 120px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+nav #nav_left ul li {
+  float: left;
+}
+
+nav #nav_right ul li {
+  float: right;
+}
+
+nav #nav_left ul li a,
+nav #nav_right ul li a {
+  display: block;
+}
+
+/********* #content ************/
+#content {
+  overflow: hidden;
+}
+
+#content #title {
+  margin: 10px 5px;
+  padding: 5px 15px;
+  border-bottom: 1px solid gray;
+}
+
+#content #lnb {
+  width: 270px;
+  margin: 0 15px;
+  float: left;
+}
+
+#content #lnb ul li {
+  border: 1px solid;
+  padding: 10px 20px;
+}
+
+#content #lnb ul li:hover{
+  background-color: #FDEADA;
+}
+#content #lnb ul li a {
+  display: block;
+}
+
+#content #my_content {
+  float: left;
+  width: 676px;
+  height: 500px;
+  margin: 0 10px 10px 10px;
+  border: 1px solid;
+}
+
+#content #my_content #sub_title {
+  padding: 5px 20px;
+  border-bottom: 1px solid gray;
+}
+
+#content #my_content #modify {
+  margin: 20px 50px;
+  padding: 0 30px;
+  height: 50px;
+  line-height: 50px;
+}
+
+#content #my_content #modify tr td {
+  width: 150px;
+}
+
+#content #my_content #modify tr:last-child {
+  text-align: center;
+}
+
+#content #my_content #modify tr td input {
+  padding: 10px 0;
+}
+
+#content #my_content #modify tr td input[type=submit] {
+  margin: 50px 0;
+  padding: 1px 10px;
+}
+
+footer {
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  background-color: #FDEADA;
+  border: 1px solid gray;
+}
