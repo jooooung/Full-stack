@@ -7,15 +7,15 @@
   - @import url('css파일위치/파일명');
     - import는 항상 `<style>` 맨 위에 와야한다
 
-# media
-- link태그에 media속성을 이용하여 상황에 따른 CSS를 적용할 수 있다
+# 3. @media
+- `<style>`안에서 media속성을 이용하여 상황에 따른 CSS를 적용할 수 있다
 
 ## - 종류
 - all : 모든 미디어 타입
 - aural : 음성 합성 장치
 - braille : 점자 표시 장치
 - handheld : 손으로 들고 다니면서 볼 수 있는 작은 스크린에 대응하는 용도
-- print : 인쇄 용도
+- print : 인쇄용 설정 ex) `@media print{}`
 - projection : 프로젝터 표현 용도
 - screen : 컴퓨터 스크린을 위한 용도
 - tv : 음성과 영상이 동시 출력되는 TV와 같은 장치

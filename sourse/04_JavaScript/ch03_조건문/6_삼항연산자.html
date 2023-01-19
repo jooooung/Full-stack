@@ -9,6 +9,7 @@
     table{
       border: 1px solid;
       text-align: center;
+      padding: 15px;
     }
     table input{
       text-align: center;
@@ -26,7 +27,16 @@
         return false;
       }
       // 어떤 수가 얼마 더 큰지 경고창과 화면에 출력
-      (su1 - su2 > 0) && 
+      if (su1 - su2 > 0){
+        alert('첫번째 수가 ' + (su1-su2) + '만큼 더 크다');
+        document.write('첫번째 수가 ' + (su1-su2) + '큽니다');
+      } else if(su1 - su2 < 0){
+        alert('두번째 수가 ' + (su2-su1) + '만큼 더 크다');
+        document.write('두번째 수가 ' + (su2-su1) + '큽니다');
+      } else {
+        alert('두 수가 같다');
+        document.write('<h2>두 수가 같습니다</h2>');
+      }
       return false;   // 화면 안 넘어가게
     }
   </script>
@@ -36,11 +46,11 @@
     <table>
       <tr>
         <td>첫번째수</td>
-        <td><input type="text" name="su1"></td>
+        <td><input type="number" name="su1"></td>
       </tr>
       <tr>
         <td>두번째수</td>
-        <td><input type="text" name="su2"></td>
+        <td><input type="number" name="su2"></td>
       </tr>
       <tr>
         <td colspan="2"><input type="button" value="결과"></td>

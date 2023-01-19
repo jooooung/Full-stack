@@ -45,7 +45,7 @@ header #logo_wrap .myinfo{
 /*********** header #search ***********/
 header #search{
   height: 50px;
-  position: relative; /* 돋보기 이미지를 #search안에서 position*/
+  position: relative; 돋보기 이미지를 #search안에서 position
 }
 
 header #search input[type=text]{
