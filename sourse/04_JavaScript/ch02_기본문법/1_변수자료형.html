@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 자료형 : string, number, boolean, function, object(array), undefined 
+    // 'use.strict';   // 이 파일은 strict 모드로 구현
+    var variable;
+    document.write('1. variable 타입은 : ' + typeof(variable)+ '값 : ' + variable+'<br>');
+
+    variable = '홍길동';
+    document.write('2. variable 타입은 : ' + typeof(variable)+ '값 : ' + variable+'<br>');
+
+    variable = 0x11;
+    document.write('3. variable 타입은 : ' + typeof(variable)+ '값 : ' + variable+'<br>');
+
+    variable = false;
+    document.write('4. variable 타입은 : ' + typeof(variable)+ '값 : ' + variable+'<br>');
+
+    variable = function() {
+      alert('함수속');
+    };
+    document.write('5. variable 타입은 : ' + typeof(variable)+ '값 : ' + variable+'<br>');
+    // variable();   // 함수 호출
+    
+    variable = {'name':'홍길동', 'age':20};
+    // document.write(variable.name);
+    document.write('6. variable 타입은 : ' + typeof(variable)+ '값 : ' + variable+'<br>');
+    
+    variable = [10, 'aa', function(){}, true, {name:'a', age:30}, [1,2,3]];   // 배열
+    document.write('7. variable 타입은 : ' + typeof(variable)+ '값 : ' + variable+'<br>');
+    </script> 
+</head>
+<body>
+  
+</body>
+</html>

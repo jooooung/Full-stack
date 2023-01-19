@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      border: 1px solid;
+      text-align: center;
+    }
+    table input{
+      text-align: center;
+    }
+  </style>
+  <script>
+    function chk() {
+      if(!frm.su1.value){
+        alert('첫번째 수를 입력하세요');
+        frm.su1.focus();
+        return false;
+      } else if (!frm.su1.value){
+        alert('두번째 수를 입력하세요');
+        frm.su2.focus();
+        return false;
+      }
+      // 어떤 수가 얼마 더 큰지 경고창과 화면에 출력
+      (su1 - su2 > 0) && 
+      return false;   // 화면 안 넘어가게
+    }
+  </script>
+</head>
+<body>
+  <form name="frm" onsubmit="return chk()">
+    <table>
+      <tr>
+        <td>첫번째수</td>
+        <td><input type="text" name="su1"></td>
+      </tr>
+      <tr>
+        <td>두번째수</td>
+        <td><input type="text" name="su2"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="button" value="결과"></td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>

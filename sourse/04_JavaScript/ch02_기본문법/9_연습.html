@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 사용자로부터 prompt를 이용하여 국어, 영어 점수(0~100) 입력받아 평균 출력
+    // 점수 잘 못 입력시 다시 입력받기
+    let kor, eng;
+    do{
+      kor = parseInt(prompt('국어점수'));
+    }while(isNaN(kor) || kor < 0 || kor > 100);
+
+    do{
+      eng = parseInt(prompt('영어점수'));
+    }while(isNaN(eng) || eng < 0 || eng > 100);
+
+    document.write('평균 : ' + (kor+eng)/2);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

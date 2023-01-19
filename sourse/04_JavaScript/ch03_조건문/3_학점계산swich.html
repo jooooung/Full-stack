@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    let hakjum;
+    while (isNaN(hakjum) || hakjum <0 || hakjum > 4.5) {
+      hakjum = parseFloat(prompt('학점을 입력하세요'));
+    }
+    switch (Math.trunc(hakjum * 2)) {
+      case 9: case 8: alert('A학점');
+        break;
+      case 7: case 6: alert('B학점');
+        break;
+      case 5: case 4: alert('C학점');
+        break;
+      case 3: case 2: alert('D학점');
+        break;
+      default: alert('F학점');
+        break;
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

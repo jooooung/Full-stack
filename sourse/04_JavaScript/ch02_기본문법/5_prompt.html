@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+      let scoreStr = prompt('점수를 입력하세요');
+      if(scoreStr == null){
+        alert('점수를 입력하세요');
+      }else{
+        // document.write('입력한 값 : ' + scoreStr + '-타입' + typeof(scoreStr));
+        let score = Number(scoreStr);   // string을 number로 형변환 함수
+        document.write('입력한 수 : ' + score + '- 타입 : ' + typeof(score));
+        if (isNaN(score) || scoreStr=='') {
+          alert('점수를 입력하세요');
+        }else{
+          result = score >= 70 ? '잘했다' : '못했다';
+        }
+      }
+      document.write(result);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
