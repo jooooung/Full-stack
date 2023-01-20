@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="3-1.js"></script>
+    <script src="3.js"></script>
+    <!--js파일에 같은 함수가 있다면 쓰려고 한 함수 파일을 밑에다 놓아야한다-->
+    <script>
+        // 선언적 함수의 재정의 : 맨 마지막에 정의된 함수가 유효
+        function funVar() {
+            alert('함수 A');
+        }
+        funVar();       // 함수 B가 호출됨
+        function funVar() {
+            alert('함수 B');
+        }
+        theGood();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

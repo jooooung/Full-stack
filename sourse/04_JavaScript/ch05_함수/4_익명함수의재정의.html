@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var funVar = function () {
+            alert('함수 A');
+        }
+        funVar();   // 함수A (변수이기에 차례대로 실행)
+        var funVar = function () {
+            alert('함수 B');
+        }
+        funVar();   // 함수B
+
+        var i = 10;
+        document.write(i);  // 10
+        var i = 20; 
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

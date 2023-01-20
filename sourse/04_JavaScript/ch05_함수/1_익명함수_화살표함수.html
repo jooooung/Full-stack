@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var functionVar = function (i, j) { // 함수표현식
+            alert(i + 'test' + j); 
+        };  //익명함수
+        functionVar = (i, j) => {   // 화살표함수
+            alert( i + 'test' + j);
+        };
+        // 매개변수가 한 개인 경우, 소괄호 생략 가능
+        functionVar = i => {   
+            alert( i + 'test');
+        };
+        // 명령어가 한 개인 경우, 중괄호 생략가능
+        functionVar = i =>    
+            alert( i + 'test');
+            
+        document.write(functionVar + '<br>');   // 글자 그대로 출력된다
+        document.write(typeof (functionVar) + '<br>');    // type은 function
+        // 익명 호출시에는 함수형 변수에 할당 후 변수를 통해 호출
+        functionVar(10, 20);  // 익명함수 호출은 변수이름()
+        functionVar(10 ,20);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
