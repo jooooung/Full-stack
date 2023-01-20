@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title></title>
+  <script>
+    // Java - int[] arr = {1, 2, 3};   배열시 중괄호
+    // JS - var person = {'name':'홍길동', 'age':20}    객체시 중괄호
+    var array = [
+      273,
+      "hello",
+      true,
+      function () {
+        alert(1);
+      },
+      [1, 2, 3],
+    ]; // 배열 대괄호
+    document.write("원래 배열방의 개수 : " + array.length + "<br>");
+    document.write(0 + ":" + array[0] + "<br>");
+    document.write(1 + ":" + array[1] + "<br>");
+    document.write(2 + ":" + array[2] + "<br>");
+    document.write(3 + ":" + array[3] + "<br>");
+    document.write(4 + ":" + array[4] + "<br>");
+    // array[3]();     // array[3] 만하면 호출 X   ()포함해야함
+    var append = confirm("배열방 추가할까요?");
+    if (append) {
+      var data = prompt("배열방에 넣을 내용은?"); // 내용타입은 문자
+      array.push(data);
+      document.write("추가 후 배열방의 개수 : " + array.length + "<br>");
+      document.write(
+        array.length - 1 + ":" + array[array.length - 1] + "<br>"
+      );
+    }
+  </script>
+</head>
+
+<body></body>
+
+</html>

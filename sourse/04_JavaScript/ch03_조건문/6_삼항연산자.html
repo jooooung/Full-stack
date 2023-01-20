@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    table{
+    table {
       border: 1px solid;
       text-align: center;
       padding: 15px;
     }
-    table input{
+
+    table input {
       text-align: center;
     }
   </style>
   <script>
     function chk() {
-      if(!frm.su1.value){
+      if (!frm.su1.value) {
         alert('첫번째 수를 입력하세요');
         frm.su1.focus();
         return false;
-      } else if (!frm.su1.value){
+      } else if (!frm.su2.value) {
         alert('두번째 수를 입력하세요');
         frm.su2.focus();
         return false;
       }
-      // 어떤 수가 얼마 더 큰지 경고창과 화면에 출력
-      if (su1 - su2 > 0){
-        alert('첫번째 수가 ' + (su1-su2) + '만큼 더 크다');
-        document.write('첫번째 수가 ' + (su1-su2) + '큽니다');
-      } else if(su1 - su2 < 0){
-        alert('두번째 수가 ' + (su2-su1) + '만큼 더 크다');
-        document.write('두번째 수가 ' + (su2-su1) + '큽니다');
-      } else {
-        alert('두 수가 같다');
-        document.write('<h2>두 수가 같습니다</h2>');
-      }
+      let num1 = Number(frm.su1.value);
+      let num2 = Number(frm.su2.value);
+      let bigger = (num1 >num2) ? (num1-num2) : (num2 - num1);
+      let msg;
+      if(num1>num2){
+        msg = '<h2>첫번째 수가 ' + bigger + '만큼 더 크다</h2>';
+      } else if(num2>num1){
+        msg = '<h2>두번째 수가 ' + bigger + '만큼 더 크다</h2>';
+      } else{
+        msg = '<h2>두 수가 같다</h2>';
+      } 
+      document.body.innerHTML += msg;   // 입력테이블과 메세지 같이 출력
+      frm.su1.value = num1;
+      frm.su2.value = num2;
+      let alertMsg = msg.substring(4);  // msg의 <h2> 태그 없애기
+      alertMsg = alertMsg.substring(0, alertMsg.indexOf('</h2>'));  // alertMsg의 </h2> 태그 없애기
+      alert(alertMsg);
+
       return false;   // 화면 안 넘어가게
     }
   </script>
 </head>
+
 <body>
-  <form name="frm" onsubmit="return chk()">
+  <form name="frm" onsubmit="return chk()" id="frm">
     <table>
       <tr>
         <td>첫번째수</td>
@@ -53,9 +63,10 @@
         <td><input type="number" name="su2"></td>
       </tr>
       <tr>
-        <td colspan="2"><input type="button" value="결과"></td>
+        <td colspan="2"><input type="button" value="결과" onclick="chk()"></td>
       </tr>
     </table>
   </form>
 </body>
+
 </html>

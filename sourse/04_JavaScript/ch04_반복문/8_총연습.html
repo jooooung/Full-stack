@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //score(입력점수) good(잘입력횟수) wrong(잘못입력횟수) total(누적점수) count(총입력횟수)
+        let score
+        total = 0;
+        var good = [];
+        var wrong = [];
+        var count = [];
+        while (confirm('누적할래?')) {
+            score = parseInt(prompt('누적할 점수?'));
+            count.push(score);
+            if (score > 0 || score <= 100) {
+                total += score;
+                good.push(score);
+            } else if (isNaN(score) || score < 0 || score > 100) {
+                wrong.push(score);
+            }
+        }
+        // 누적할래 취소
+        document.write(count.length + '번 입력<br>');
+        document.write('누적점수 : ' + total + '<br>');
+        document.write('점수를 제대로 입력한 횟수 : ' + good.length + '<br>');
+        document.write('점수를 잘못 입력한 횟수 : ' + wrong.length + '<br>');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
