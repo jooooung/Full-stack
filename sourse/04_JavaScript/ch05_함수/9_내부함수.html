@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script> // A가 만든 부분
+
+        function pythagoras(w, h) {
+            // 내부함수 : 함수 내에 선언된 함수
+            // 사용이유 : 다른 함수와의 충돌을 피하기 위해
+            function square(x) {
+                return x * x;
+            }
+            return Math.sqrt(square(w) + square(h));
+        }
+    </script>
+    <script> // B가 만든 부분
+        function square(w, h, hypotenuse) {
+            // return (w*w) + (h*h) === (hypotenuse*hypotenuse);
+            if ((w * w) + (h * h) === (hypotenuse * hypotenuse)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <script>
+        alert('빗변의 길이 : ' + pythagoras(3, 4));
+        alert('직각삼각형 여부 : ' + square(3, 4, 5));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // 콜백함수 : 매개변수에 넣어 전달된 함수
+        function callTenTime(callback) {
+            for (let i = 0; i < 10; i++) {
+                callback();     // 콜백함수(매개변수에 들어혼 함수)
+            }
+        }
+        // var funVar = function(){
+        //     document.write(new Date() + '<br>');
+        // };
+        // callTenTime(funVar);
+        // function funVar(){}
+        callTenTime(function(){
+            document.write(new Date() + '<br>');
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // 경고창 순서 : 3 - 3 - 3
+        // for (var i = 0; i < 3; i++) {
+        //     setTimeout(() => {
+        //         alert(i);
+        //     }, 0);
+        // }
+
+        // 0 - 1 - 2
+        // # 지역변수 이용
+        // for (let i = 0; i < 3; i++) {
+        //     setTimeout(() => {
+        //         alert(i);
+        //     }, 0);
+        // }
+
+        // # 자기호출함수 이용
+        // for (var i = 0; i < 3; i++) {
+        //     (function (x) {
+        //         setTimeout(() => {
+        //            alert(x); 
+        //         }, 0);
+        //     })(i);
+        // }
+
+        // # 배열 이용
+        [0, 1, 2].forEach(function(date, idx){
+            setTimeout(() => {
+               alert(date); 
+            }, 0);
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

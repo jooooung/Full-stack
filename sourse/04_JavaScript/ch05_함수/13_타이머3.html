@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>    // 경고창 순서 : A - C - B
+        // alert('A');
+        // setTimeout(() => {
+        //     alert('B');
+        // }, 0);
+        // alert('C');
+
+        // 브라우저 화면에 A, C write 하고 0초 후 B write
+        document.write('A');
+        setTimeout(() => {
+            document.body.innerHTML += 'B';     // document.write(); 할 시 B가 body에 덮어쓰여진다
+        }, 0);
+        document.write('C');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

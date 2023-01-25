@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // 다른 개발자에게 영향을 주지 않게 함수를 생성하자마자 호출하는 경우
+
+        (function (i) {
+            alert('자기호출함수' + i);
+
+        })(3);
+        function pythagoras(w, h) {
+            function square(x) {
+                return x * x;
+            }
+            return Math.sqrt(function (x) {
+                return x * x;
+            }(w) + function (x) {
+                return x * x;
+            }(h));
+        }
+        alert('빗변' + pythagoras(3, 4));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
