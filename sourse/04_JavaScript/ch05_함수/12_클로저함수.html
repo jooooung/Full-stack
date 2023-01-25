@@ -6,13 +6,19 @@
     <title></title>
     <script>
         // 클로저함수 : return된 함수
+        // function test(name) {
+        //     var msg = 'hello, ' + name + '님 반가워요';
+        //     return function () { alert(msg); };
+        // }
+        // var fun = test('홍길동');
+        // fun();  // 리턴받은 클로저함수 바로 실행
         function test(name) {
-            var msg = 'hello, ' + name + '님 반가워요';
-            return function () { alert(msg); };
+            var output = 'Hello' + name + '님';
+            return function () {
+                alert(output);
+            }
         }
-        var fun = test('홍길동');
-        fun();  // 리턴받은 클로저함수 바로 실행
-
+        test('홍길동')();
     </script>
 </head>
 
