@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function Student(name, kor, mat, eng, sci) {
+            this.name = name;
+            this.kor = kor;
+            this.mat = mat;
+            this.eng = eng;
+            this.sci = sci;
+        }
+        // 생성자함수는 반드시 대문자로  시작
+        // 공통 메소드 prototype으로 나누기
+        Student.prototype.getSum = function () {
+            return this.kor + this.mat + this.eng + this.sci;
+        }
+        Student.prototype.getAvg = function () {
+            return this.getSum() / 4;
+        }
+        Student.prototype.toString = function () {
+            var output = '';
+            for (var key in this) {
+                if (key != 'getSum' && key != 'getAvg' && key != 'toString') {    // 함수 제외시키기
+                    output += key.toUpperCase() + ':' + this[key] + '  &nbsp;'
+                } else if (key == 'getSum' || key == 'getAvg') {
+                    output += key.substring(3).toUpperCase() + ':' + this[key]() + ' &nbsp;';     // sum, avg 값 가져오기
+                } // if
+            } // for
+            return output;
+        } // toString
+        let students = [new Student('홍길동', 77, 85, 86, 47),
+        new Student('이길동', 88, 86, 76, 57),
+        new Student('최길동', 99, 87, 66, 69),
+        new Student('신길동', 33, 88, 66, 70),
+        new Student('지울거', 44, 89, 56, 50),];
+        students.forEach(function (data, idx) {
+            document.write(idx + '번째 ' + data + '<br>');
+        });
+        students.pop(); // 배열 마지막idx 값 지움
+        document.write('<h2>pop 후</h2>');
+        students.forEach(function (data, idx) {
+            document.write(idx + '번째 ' + data + '<br>');
+        });
+        document.write(students.length + '명 남음');
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

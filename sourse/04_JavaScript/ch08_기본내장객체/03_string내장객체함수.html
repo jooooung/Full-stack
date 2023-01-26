@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+     <meta charset="UTF-8">
+     <title></title>
+     <script>
+        var str = 'abc@abcd@abc@';
+        document.write('원본 : ' + str + '<br>');
+        document.write('@를 -로 수정 : ' + str.replaceAll('@', '-') + '<br>');
+        document.write('@ 없애기 : ' + str.replaceAll('@', '') + '<br>');
+        document.write('글씨 길이 : ' + str.length + '<br>');
+        document.write('글씨 연결 : ' + str.concat(str) + '<br>');
+        
+        // str.substr(a, b);      a번째부터 b개 글자 추출
+        document.write('3번째부터 5개글자 추출 : ' + str.substr(3, 5) + '<br>');
+        // str.substring(a, b);   a번째부터 b번째 앞까지 추출
+        document.write('3번째부터 5번째 앞까지 추출 : ' + str.substring(3, 5) + '<br>');
+        document.write('앞부터 @가 오는 위치 : ' + str.indexOf('@') + '<br>');  
+        // 이메일 형식 시 @ 가 맨 앞, 맨 끝에 오면 안됨, 앞에서의 @와 뒤에서의 @의 위치가 일치(@가 1개)
+
+        document.write('앞부터 x가 오는 위치 : ' + str.indexOf('x') + '<br>');  // 없으면 -1
+        document.write('뒤에서 @가 오는 위치 : ' + str.lastIndexOf('@') + '<br>');
+        document.write('양 쪽 space 없애기 : ' + '  abc  '.trim() + '<br>');
+        document.write('space 모두 없애기 : ' + '  a b c  '.replaceAll(' ', '') + '<br>');
+        document.write('대문자 전환 : ' + str.toUpperCase() + '<br>');
+     </script>
+</head>
+<body>
+
+</body>
+</html>

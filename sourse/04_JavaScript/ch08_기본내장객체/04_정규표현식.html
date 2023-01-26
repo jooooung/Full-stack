@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /* 정규표현식(regex)
+        1. 참조(https://goo.gl/Hlntbd 위키백과)
+        2. 간략문법
+              \d : (숫자와 매치, [0-9]와 동일)
+              \D : (숫자가 아닌 것)
+              \w : (영문자나 숫자 , [A-Za-z][0-9]와 동일
+              \W : (영문자나 숫자가 아닌 문자)
+              .  : (문자)
+              \. : .
+              \\ : \
+              \[ : [
+        {2,} : (2번 이상 반복)
+       {2,4} : (2~4회 반복)
+               + : (1번 이상 반복)
+               * : (0번 이상 반복)
+               ? : (0번이나 1번 반복)
+
+        3. 정규표현식 연습장(https://www.regexpal.com/)
+               ex1. ip주소 : 198.163.2.444
+                      ([0-9]{1,3}\.){3}[0-9]{1,3} 
+               ex2. 전화번호 : 02 777 7777 / 010 3333 3333 / 010-7777-7777 / 010.5555.5555 / 02)131.5444 
+                                \d{2,3}.?\d{3,4}.?\d{4}
+               ex3. 주민등록번호 : 981118-2033333 / 9812121044444
+                                  \d{2}[0-1]\d[0-3]\d-?[1-4]\d{6}
+               ex4. 이메일 : abc@naver.com / wj@co.kr
+                              \w+@+\w+(\.\w+){1,2}  */
+        var str = 'abcd@ef9';
+        // 패턴
+        var patternNum = /[0-9]/; // 숫자 패턴
+        var patternEng = /[a-zA-Z]/;  // 알파벳 문자 패턴
+        var patternKor = /[가-힣ㄱ-하-ㅣ]/; // 한글 문자 패턴
+        var patternSpc = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/;   // 특수문자 패턴
+        var patternMail = /^\w+@+\w+(\.\w+){1,2}$/;     // /^ 정규표현 $/ : 패턴이 일치하는지
+        
+        document.write('str에 숫자가 포함되어 있는지  : ' + patternNum.test(str) + '<br>');
+        document.write('str에 알파벳 포함되어 있는지  : ' + patternEng.test(str) + '<br>');
+        document.write('str에 한글이 포함되어 있는지  : ' + patternKor.test(str) + '<br>');
+        document.write('str에 특수문자가 포함되어 있는지  : ' + patternSpc.test(str) + '<br>');
+
+        // str.match(정규표현식패턴) :  정규표현식패턴과 맞는 text를 return, 없으면 null return
+        var email1 = 'hong@hong.com_abc';
+        var email2 = 'hong';
+        var email3 = 'hong@hong.com';
+
+        document.write('email1 : ' + email1.match(patternMail) + '<br>');
+        document.write('email2 : ' + email2.match(patternMail) + '<br>');
+        document.write('email3 : ' + email3.match(patternMail) + '<br>');
+        if(email2.match(patternMail)){
+            document.write('email2는 일치한다');
+        }else{
+            document.write('email2는 일치하지 않는다');
+        }
+    </script> 
+</head>
+
+<body>
+
+</body>
+
+</html>

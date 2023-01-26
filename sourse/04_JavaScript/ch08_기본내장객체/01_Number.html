@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // JS에서 기본데이터타입은 (number, string, boolean) va 객체데이터타입
+        var priNum = 273.21;    // 기초데이터타입 (내부적 -> new Number(273.21))
+        var objNum = new Number(273.21);    //객체데이터타입
+        document.write('priNum의 타입 : ' + typeof (priNum) + '<br>');
+        document.write('ojbNum의 타입 : ' + typeof (objNum) + '<br>');
+        // constructor : 생성자함수
+        document.write('priNum의 생성자함수 : ' + priNum.constructor + '<br>');
+        document.write('objNum의 생성자함수 : ' + objNum.constructor + '<br>');
+        if (priNum.constructor == objNum.constructor) {
+            document.write('priNum과 objNum의 저장된 타입은 같다<br>');
+        } else {
+            document.write('priNum과 objNum의 저장된 타입은 다르다<br>');
+        }
+        // Number.toFixed(1) : 소수점 1자리까지만 추출
+        document.write(objNum.toFixed(1) + '<br>');
+        document.write(priNum.toFixed(1) + '<br>');
+
+        // (1) 내장 생성자 함수 prototype에 메소드 추가
+        Number.prototype.method1 = function () {
+            document.write('Number타입이면 다 호출 가능<br>');
+        }
+        objNum.method1();
+        priNum.method1();
+
+        // (2) objNum 객체에 메소드 추가
+        objNum.method2 = function(){
+            document.write('objNum에 추가<br>');
+        };
+        objNum.method2();
+        // priNum.method2();   불가
+
+        // (3) priNum에 메소드 추가
+        priNum.method3 = function(){
+            document.write('priNum');
+        };
+        // priNum.method3();    불가
+
+        // (4) Object의 prototype에 메소드 추가
+        Object.prototype.method4 = function(){
+            document.write('<hr>' + this);
+        };
+        objNum.method4();
+        priNum.method4();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

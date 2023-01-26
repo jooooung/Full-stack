@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function Rectangle(w, h) {
+            if (w < 0) {
+                throw '음수는 불가능합니다';    // 예외 처리
+            } else {
+                var width = w;
+            }
+            if (h < 0) {
+                throw '음수는 불가능합니다';    // 예외 처리
+            } else {
+                var height = h;
+            }
+            this.getWidth = function () {
+                return width;
+            };
+            this.getHeight = function () {
+                return height;
+            };
+            this.setWidth = function (w) {
+                if (w < 0) {
+                    throw '음수는 불가능합니다';    // 예외 처리
+                } else {
+                    width = w;
+                }
+            };
+            this.setHeight = function (h) {
+
+                if (h < 0) {
+                    throw '음수는 불가능합니다';    // 예외 처리
+                } else {
+                    height = w;
+                }
+            };
+        }   // 생성자 함수
+        Rectangle.prototype.getArea = function(){
+            return this.getWidth() * this.getHeight();
+        }; // 생성자 함수와 프로토 타입 완성
+        try {
+            var rect = new Rectangle(-5,7);
+        } catch (error) {
+           // 예외 발생 시 예외페이지 이동
+            location.href = '공사중.html';
+        }
+        document.write('가로 : ' + rect.getWidth() + '/ 세로 : ' + rect.getHeight() + '/ 넓이 : ' + rect.getArea());
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
