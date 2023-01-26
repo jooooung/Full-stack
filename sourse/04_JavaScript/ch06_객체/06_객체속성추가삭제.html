@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // var student = {};
+        // student.name = '홍길동';
+        var student = {'name' : '홍길동'};  // 위 두 문장과 같다
+        student['name'] = '김길동';     // 기존 객체의 속성값을 변경
+        student.name = '신길동';
+        student.kor = 100;  // 객체의 속성(kor) 추가;
+        student.mat = 95;
+        student.hobby = '프로그래밍';
+        student.toString = function(){
+            var output = '';
+            for(var key in this){
+                if (key != 'toString'){
+                    output += key + ' : ' + this[key] + '<br>';
+                } // if
+            } // for
+            return output;
+        };
+        document.write(student);
+        // student 객체 안에 name, kor, mat, hobby, toString
+        delete(student.hobby);  // student 객체 안에 hobby 속성 제거
+        document.write('<h2>hobby 속성 제거 후</h2>'+ student);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

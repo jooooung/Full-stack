@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        let name = '이순신';    // String
+        // 객체
+        let method = function(){};
+        let person = {
+            name : '홍길동',    // 속성 변수   
+            age : 20,
+            eat : function(food){   // 메소드
+                var msg = this.age + '살 ' + this.name + '님은 ' + food + '를 먹습니다';
+                alert(msg);
+            },
+        };    
+        document.write(person.name + '님' + person.age + '살' + '<br>');
+        // document.write(person.eat + '<br>');    이렇게 호출 시 코드가 나옴
+        person.eat('덮밥');
+        document.write(person + '<br>');
+        // document.write(person.toString() + '<br>');      toString을 생략해도 같다
+    </script>
+</head>
+<body>
+
+</body>
+</html>

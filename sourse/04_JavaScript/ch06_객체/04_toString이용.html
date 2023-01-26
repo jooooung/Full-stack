@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="05_replaceAll.js"></script>
+    <script>
+        let person = {
+            name: '홍길동',    // 속성 변수   
+            age: 20,
+            eat: function (food) {   // 메소드
+                var msg = this.age + '살' + this.name + '님은' + food + '를 먹습니다';
+                alert(msg);
+            },
+            // toString 구현 방식
+            toString: function () {
+                let output = '';
+                for (var key in this) {
+                    if (key != 'eat' && key != 'toString') {
+                        output += key + ' : ' + this[key] + '\n';
+                    } // if
+                } // for
+                return output;
+            },
+        };
+        alert(person);
+        // string.replace(oldStr, newStr); string에서 oldStr을 newStr로 교체(처음 하나만)
+        // document.write(person.toString().replace('\n', '<br>'));
+        document.write(replaceAll(person.toString(), '\n', '<br>'));
+        person.address = '서울 서대문';     // 속성 변수 추가
+        document.write(replaceAll(person.toString(), '\n', '<br>'));
+        // var output = '';
+        // for(var key in person){
+        //     if(key != 'eat'){   // function 빼고 출력
+        //         output += key + ':' + person[key] + '<br>';
+        //     }
+        // }
+        // document.write(output);
+        // output = '';
+        // // person의 key(속성변수)를 배열(keyList) = ['name', 'age', 'eat'] 로 만들기
+        // var keyList = Object.keys(person);
+        // // document.write(keyList + '<br>');
+        // for(var key of keyList){
+        //     if(key != 'eat'){
+        //         output += key + ' : ' + person[key] + '<br>'
+        //     }
+        // }
+        // document.write(output);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

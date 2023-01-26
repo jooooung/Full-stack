@@ -6,9 +6,9 @@
     <title></title>
     <script>
         var a = 0;
-        var img = ['url(ch05_img/img01.png)',
-            'url(ch05_img/img02.png)',
-            'url(ch05_img/img03.png)'];
+        var img = [ 'url(ch05_img/img01.png)',
+                    'url(ch05_img/img02.png)',
+                    'url(ch05_img/img03.png)'];
         var timer = setInterval(function () {
             document.body.innerHTML = new Date();
             document.body.style.backgroundImage = img[a % img.length];
