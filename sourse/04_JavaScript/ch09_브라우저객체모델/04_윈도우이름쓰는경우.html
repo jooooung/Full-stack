@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function openWin() {
+            var child = open('', 'childWin', 'width=500, height=500');
+            if (!child) {
+                alert('팝업 해제');
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="openWin()">새창열기</button>
+    <br>
+    <a href="http://www.daum.net" target="childWin">다음으로</a>
+</body>
+
+</html>

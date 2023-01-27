@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function Student(name, kor, mat) {   // 생성자 함수
+            this.name = name;
+            this.kor = kor;
+            this.mat = mat;
+        }
+        Student.prototype.getSum = function () {
+            return this.kor + this.mat;
+        };
+        Student.prototype.getAvg = function () {
+            return this.getSum() / 2;
+        };  // 생성자 함수와 prototype
+        Student.prototype.toString = function(){
+            return this.name + '(' + this.kor + ', ' + this.mat + ', ' + 
+                                     this.getSum() + ', ' + this.getAvg() + ')' + '<br>';
+        }
+        var students = [new Student('홍길동', 80, 90),
+                        new Student('김길동', 100, 100),
+                        new Student('이길동', 70, 91),
+                        new Student('박길동', 99, 99),
+                        new Student('최길동', 80, 50),];
+
+    var originalStudents = [];  // 깊은 복사 (vs 얕은 복사 : 주소값 할당)
+    students.forEach(function(data){
+        originalStudents.push(data);
+    });
+    students.sort();
+    document.write('<h3> 정렬 전</h3>');
+    originalStudents.forEach(function(data){
+        document.write(data);
+    });
+    document.write('<h3>ascii 코드순 정렬 후</h3>');
+    students.forEach(function(data, idx){
+        document.write(idx + ':' + data);
+    });
+    // 총점 기준 내림차순
+    students.sort(function(L, R){
+        return R.getSum() - L.getSum(); // 양수면 L이 앞
+    });
+    document.write('<h3>총점 기준 내림차순 정렬</h3>');
+    students.forEach(function(data, idx){
+        document.write(idx + ':' + data);
+    });
+    // 평균 기준 top3추출
+    students.sort(function(L, R){
+        return R.getAvg() - L.getAvg();
+    });
+    document.write('<h3>평균 기준 top3 정렬</h3>');
+    students.slice(0, 3).forEach(function(data, idx){
+        document.write(idx + ':' + data);
+    });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

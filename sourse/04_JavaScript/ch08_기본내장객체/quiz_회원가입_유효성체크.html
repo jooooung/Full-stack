@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wrap {
+            width: 500px;
+            margin: 0 auto;
+            border: 2px solid #385d81;
+            text-align: center;
+        }
+
+        #wrap #frm table {
+            margin: 20px 120px;
+        }
+
+        #wrap #frm table tr td {
+            height: 50px;
+            line-height: 50px;
+        }
+
+        #wrap #frm table tr td input {
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid #385d81;
+        }
+
+        #wrap #frm table tr:last-child input {
+            background-color: #385d81;
+            color: white;
+            height: 50px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #041d36;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var lowEng = /[a-z]/;
+        var upperEng = /[A-Z]/;
+        var number = /[\d]/;
+        var patternSpc = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/;
+
+        function chk() {
+            if (frm.pw.value.length < 4) {
+                alert('비밀번호를 4개 이상 입력해주세요');
+                frm.pw.focus();
+                return false;
+            } else if (frm.pw.value != frm.pwChk.value) {
+                alert('비밀번호가 일치하지 않습니다');
+                frm.pw.focus();
+                return false;
+            } else if (lowEng.test(frm.pw.value) == false) {
+                alert('비밀번호에 소문자를 포함해주세요');
+                frm.pw.focus();
+                return false;
+            } else if (upperEng.test(frm.pw.value) == false) {
+                alert('비밀번호에 대문자를 포함해주세요');
+                frm.pw.focus();
+                return false;
+            } else if(patternSpc.test(frm.pw.value) == false){
+                alert('비밀번호에 특수문자를 포함해주세요');
+                frm.pw.focus();
+                return false;
+            } else if(number.test(frm.pw.value) == false){
+                alert('비밀번호에 숫자를 포함해주세요');
+                frm.pw.focus();
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <form name="frm" id="frm" onsubmit="return chk()">
+            <table>
+                <tr>
+                    <td>이&nbsp;름</td>
+                    <td colspan="2">
+                        <input type="text" name="id" size="20" required="required" placeholder="특수문자, 숫자 사용불가"
+                            pattern="[a-zA-Z가-힣]*">
+                    </td>
+                </tr>
+                <tr>
+                    <td>메&nbsp;일</td>
+                    <td colspan="2"><input type="text" size="20" required="required" placeholder="메일형식에 맞추세요"
+                            pattern="\w+@+\w+(\.\w+){1,2}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td colspan="2">
+                        <input type="password" name="pw" size="20" required="required">
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td colspan="2">
+                        <input type="password" name="pwChk" size="20" required="required">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <input type="submit" name="new" value="회원가입">
+                        <input type="reset" name="cancel" value="취소">
+                        <a href="#log-in"><input type="button" name="login" value="로그인"></a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function () {
+            alert('윈도우가 로그됨');   // 3
+        };
+        alert('Process 1전');   // 1
+    </script>
+</head>
+
+<body>
+    <h1>Process -1</h1>
+    <script>
+        alert('1과 2사이');     // 2
+    </script>
+    <h1>Process -2</h1>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+     <meta charset="UTF-8">
+     <title></title>
+     <script src="dateintervalDay.js"></script>
+     <script>
+         var today = new Date();
+         document.write('today : ' + today + '<br>');
+         document.write('지금 날짜와 시간 : ' + today.toLocaleString() + '<br>');
+         document.write('오늘 : ' + today.toLocaleDateString() + '<br>');
+         document.write('시간 : ' + today.toLocaleTimeString() + '<br>');
+         var openday = new Date(2022, 10, 28, 9, 30, 0);    // 개강 시점
+         var limitday = new Date(2023, 4, 12, 14, 0, 0);   // 수료 시점
+         document.write(today.getIntervalDay(openday) + '일 지남' + '<br>');
+         document.write(today.getIntervalDay(limitday) + '일 남음' + '<br>');
+     </script>
+</head>
+<body>
+
+</body>
+</html>

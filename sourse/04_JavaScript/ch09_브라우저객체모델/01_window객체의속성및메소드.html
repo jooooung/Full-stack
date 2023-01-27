@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var cnt = 0;
+        for (var key in window) {   // alert, confirm 등 평소에 사용하던 함수는 window 객체안의 메소드
+            if(key.substr(0, 2) == 'on' || key == 'chk'){
+                document.write(++cnt + '. ' +  key + ':' + window[key] + '<br>');
+            }
+        }
+        document.write('<hr>');
+        window.onload = function () {   // onload : 이벤트 속성 변수 (로드 시 실행)
+            alert('윈도우 로드됨');
+        };
+        var chk = function(){};
+        for(var key in window){
+            if (key == 'onload' || key == 'chk' || key == 'cnt'){
+                document.write(key + ':' + window[key] + '<br>');
+            }
+        }
+    </script>
+</head> 
+
+<body>
+
+</body>
+
+</html>
