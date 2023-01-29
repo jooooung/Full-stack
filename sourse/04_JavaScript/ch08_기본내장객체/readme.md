@@ -42,3 +42,23 @@ sort(function(L, R){
 4. a.concat(b) : a 와 b 배열을 합친다
 5. a.join() : a의 배열 요소를 문자열로 만들어 리턴
 6. push() : 배열의 뒤에 추가
+
+## Date 
+- Date() : 현재 날짜 시간이 출력
+- Date().toLocaleString() : 현재 날짜와 시간이 설정된 지역의 형식으로 출력
+- Date().toLocaleDateString() : 날짜만 출력
+- Date().toLocaleTimeString() : 시간만 출력
+### a와 b의 날짜 차이 구하기
+`getIntervalDay` 함수 : this = today, that = 비교날짜  
+날짜 차이를 구하여 밀리세컨을 일로 변경한 후 소수점을 버렸다
+```
+Date.prototype.getIntervalDay = function (that) {
+  if (this > that) {
+    var intervalMilliSec = this.getTime() - that.getTime();
+  } else {
+    var intervalMilliSec = that.getTime() - this.getTime();
+  } // this와 that 사이의 밀리컨을 구함
+  var day = intervalMilliSec / (1000 * 60 * 60 * 24); // 밀리세컨을 일로 변경
+  return Math.trunc(day); // 일 에 소수점 버리기
+};
+```
