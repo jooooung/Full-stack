@@ -5,6 +5,6 @@ public class Quiz1 {
 		int tot = 1;
 		for(int i=1 ; i<=10 ; i++)
 			tot *= i;
-		System.out.println("=" + tot);
+		System.out.println("=" + tot); 
 	}
 }

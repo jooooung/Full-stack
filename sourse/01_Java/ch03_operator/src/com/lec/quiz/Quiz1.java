@@ -9,7 +9,7 @@ public class Quiz1 {
 		System.out.print("정수를 입력하세요 : ");
 		int num = sc.nextInt();
 		String result = (num %3 ==0) ? "3의 배수이다":"3의 배수가 아니다";
-		System.out.printf("입력하신 (%d)는 %s/n", num, result);
+		System.out.printf("입력하신 (%d)는 %s\n", num, result);
 		sc.close();  
 		
 	}

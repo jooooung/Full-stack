@@ -2,7 +2,7 @@ package com.lec.quiz;
 
 import java.util.Scanner;
 
-// 입력한 수가 짝수인지 홀수인지 출력
+// 입력한 수가 짝수인지 홀수인지 출력(삼항연산자)
 public class Quiz2 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
