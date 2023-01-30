@@ -9,7 +9,7 @@
             // querySelector(선택자) - 방법 5 : 선택자 1(처음 1개)
             // querySelectorAll(선택자) - 방법 6 : 선택자 전부(배열)
             var header1 = document.querySelector('h1');
-            header1.innerHTMl = '첫번째만';
+            header1.innerHTML = '첫번째만';
             var head = document.querySelectorAll('h1.header');
             for (var idx in head) {
                 head[idx].style = 'background-color : yellow; color:red;';

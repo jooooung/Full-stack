@@ -7,10 +7,10 @@
     <script>
         function append() {
             document.body.innerHTML += '<h1>HEADER</h1>';
-            var header = document.querySelectorAll('h1');
-            for (var i in header) {
-                header[i].innerHTML += '#';
-            }
+            // var header = document.querySelectorAll('h1');    추가하며 # 계속 추가
+            // for (var i in header) {
+            //     header[i].innerHTML += '#';
+            // }
         }
         function remove() {
             var h1 = document.getElementsByTagName('h1');

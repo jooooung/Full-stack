@@ -40,4 +40,5 @@
 
 ## history
 - history를 만들어 앞, 뒤로 이동할 수 있다
-`history.go()` : ()안의 지정한 history로 이동 (-1 : 뒤로가기, +1 : 앞으로 가기)
+`history.go()` : ()안의 지정한 history로 이동 (-1 : 뒤로가기, +1 : 앞으로 가기
+)

@@ -11,6 +11,7 @@
             // wrap = document.getElementsByTagName('div')[0];
             // wrap = document.querySelector('div#wrap');
             wrap = document.querySelectorAll('div#wrap')[0];
+            wrap.innerHTML += '<h1>HEADER</h1>';
             var header = document.querySelectorAll('h1');
             for (var i in header) {
                 header[i].innerHTML += '#';

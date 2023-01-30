@@ -13,6 +13,7 @@
     </style>
     <script>
         window.onload = function () {
+            var id = opener.document.getElementById('id').value;
             var idChk = document.getElementById('idChk');
             idChk.value = id;
         };
@@ -31,7 +32,7 @@
                 ID<input type="text" id="idChk">
                 <button>체크</button>
             </p>
-            <input type="submit" value="아이디사용" onclick=sendData;>
+            <input type="submit" value="아이디사용" onclick=sendData()>
         </form>
     </div>
 </body>
