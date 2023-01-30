@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function () {
+            // querySelector(선택자) - 방법 5 : 선택자 1(처음 1개)
+            // querySelectorAll(선택자) - 방법 6 : 선택자 전부(배열)
+            var header1 = document.querySelector('h1');
+            header1.innerHTMl = '첫번째만';
+            var head = document.querySelectorAll('h1.header');
+            for (var idx in head) {
+                head[idx].style = 'background-color : yellow; color:red;';
+            }
+
+            var param = document.querySelectorAll('input[type=text]')[0];
+            param.value = '점심시간';
+        };
+    </script>
+</head>
+
+<body>
+    <h1 class="header">HEADER1</h1>
+    <h1 class="header">HEADER2</h1>
+    <input type="text" name="param">
+</body>
+
+</html>

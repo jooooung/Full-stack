@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wrap {
+            width: 600px;
+            margin: 0 auto;
+            border: 1px solid blue;
+            text-align: center;
+        }
+        #wrap button{
+            margin: 15px 0 ;
+        }
+    </style>
+    <script>
+        function naver(){
+            location.href = 'https://www.naver.com';
+        }
+        function daum(){
+            location.href = 'https://www.daum.net';
+        }
+        function google(){
+            location.href = 'https://www.google.com';
+        }
+        function youtube(){
+            location.href = 'https://www.youtube.com';
+        }
+        
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1>중간예제2. 메뉴</h1>
+        <button onclick="naver()">네이버</button>
+        <button onclick="daum()">다음</button>
+        <button onclick="google()">구글</button>
+        <button onclick="youtube()">유투브</button>
+    </div>
+</body>
+
+</html>

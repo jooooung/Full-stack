@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table {
+            width: 300px;
+            height: 100px;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        var color = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'purple', 'white'];
+        window.onload = function(){
+            var piano = document.getElementsByTagName('td');
+            for(var i in piano){
+                piano[i].style.backgroundColor = color[i];
+            }
+        };
+        function onMyCo(n) {
+            document.body.style.backgroundColor = color[n];
+        }
+    </script>
+</head>
+
+<body>
+        <table>
+            <tr onmouseout="onMyCo(7)">
+                <td onmouseover="onMyCo(0)"></td>
+                <td onmouseover="onMyCo(1)"></td>
+                <td onmouseover="onMyCo(2)"></td>
+                <td onmouseover="onMyCo(3)"></td>
+                <td onmouseover="onMyCo(4)"></td>
+                <td onmouseover="onMyCo(5)"></td>
+                <td onmouseover="onMyCo(6)"></td>
+            </tr>
+        </table>
+</body>
+
+</html>

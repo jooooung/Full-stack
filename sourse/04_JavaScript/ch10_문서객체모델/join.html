@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wrap {
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function confirmOpen() {
+            var child = open('confirm.html', '', 'width300, height=300, left=100');
+            if (!child) {
+                alert('팝업 허용해주세요');
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <form action="#" method="#">
+            <p>
+                아이디<input type="text" id="id">
+                <button onclick="confirmOpen()">중복확인</button>
+            </p>
+            <input type="submit" value="회원가입">
+        </form>
+    </div>
+</body>
+
+</html>

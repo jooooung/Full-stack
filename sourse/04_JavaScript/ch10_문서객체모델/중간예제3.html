@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wrap {
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #wrap table tr td {
+            width: 70px;
+            height: 200px;
+        }
+    </style>
+    <script>
+        var color = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'purple'];
+        var wrap;
+        var cnt = 0;
+        window.onload = function () {
+            var piano = document.getElementsByTagName('td');
+            for (var i in piano) {
+                piano[i].style = 'background-color :' + color[i];
+            }
+        };
+        function black(n) {
+            if (cnt == 0) { 
+                wrap = document.getElementById('wrap');
+                wrap.innerHTML += '<h2 class="message">야호 거의 끝났다</h2>';
+                var h2 = document.getElementsByClassName('message')[0];
+                document.body.style = 'background-color: black; color:' + color[n];
+                cnt++;
+            }
+        }
+
+        function white() {
+            var message = document.getElementsByClassName('message')[0];
+            wrap = document.getElementById('wrap');
+            wrap.removeChild(message);
+            document.body.style.backgroundColor = 'white';
+            cnt--;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <table>
+            <tr>
+                <td onmouseover="black(0)" , onmouseout="white()"></td>
+                <td onmouseover="black(1)" , onmouseout="white()"></td>
+                <td onmouseover="black(2)" , onmouseout="white()"></td>
+                <td onmouseover="black(3)" , onmouseout="white()"></td>
+                <td onmouseover="black(4)" , onmouseout="white()"></td>
+                <td onmouseover="black(5)" , onmouseout="white()"></td>
+                <td onmouseover="black(6)" , onmouseout="white()"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

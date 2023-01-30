@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+     <meta charset="UTF-8">
+     <title></title>
+     <style>
+        #wrap{
+            width: 300px;
+            margin: 50px auto;
+        }
+        #wrap p{
+            text-align: center;
+        }
+        #wrap h2{
+            width: 250px;
+            margin: 30 auto;
+            border: 1px solid red;
+            background-color: beige;
+            text-align: center;
+            border-radius: 10px 50px;
+            padding: 20px;
+            cursor: pointer;
+        }
+        #wrap input, #wrap span#part{
+            width: 150px;
+            height: 20px;
+            border: 1px solid pink;
+            display: inline-block;
+            text-align: left;
+        }
+     </style>
+     <script>
+         function childOpen() {
+            var child = open('04_child.html', '', 'width600, height=600, left=100');
+            if(!child){
+                alert('팝업 허용해주세요');
+            }    
+         }
+     </script>
+</head>
+<body>
+    <div id="wrap">
+        <p>사원이름 <input type="text" id="name"></p>
+        <p>파트명칭 <span id="part"></span></p>
+        <p>결제일자 <input type="date" id="date"></p>
+        <h2 onclick="childOpen()">인사정보 파트 선택</h2>
+    </div>
+</body>
+</html>

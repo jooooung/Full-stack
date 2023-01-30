@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wrap {
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var idChk = document.getElementById('idChk');
+            idChk.value = id;
+        };
+        function sendData(params) {
+            var idChk = document.getElementById('idChk').value;
+            opener.document.getElementById('id').value = idChk;
+            close();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <form action="#" method="#">
+            <p>
+                ID<input type="text" id="idChk">
+                <button>체크</button>
+            </p>
+            <input type="submit" value="아이디사용" onclick=sendData;>
+        </form>
+    </div>
+</body>
+
+</html>
