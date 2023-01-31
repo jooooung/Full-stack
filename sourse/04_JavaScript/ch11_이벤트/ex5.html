@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var img, but1, but2;
+        window.onload = function(){
+            img = document.getElementsByTagName('img')[0];
+            but1 = "ch11_img/but1.gif";
+            but2 = "ch11_img/but2.gif";
+        }
+        
+        function down() {
+            img.src = but2;
+        }
+        function up() {
+            img.src = but1;
+        }
+    </script>
+</head>
+
+<body>
+    <img src="ch11_img/but1.gif" onmousedown="down()" onmouseup="up()">
+
+</body>
+
+</html>

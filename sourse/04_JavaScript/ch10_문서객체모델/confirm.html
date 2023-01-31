@@ -16,6 +16,7 @@
             var id = opener.document.getElementById('id').value;
             var idChk = document.getElementById('idChk');
             idChk.value = id;
+
         };
         function sendData(params) {
             var idChk = document.getElementById('idChk').value;
@@ -30,7 +31,7 @@
         <form action="#" method="#">
             <p>
                 ID<input type="text" id="idChk">
-                <button>체크</button>
+                <input type="button" value="체크">
             </p>
             <input type="submit" value="아이디사용" onclick=sendData()>
         </form>

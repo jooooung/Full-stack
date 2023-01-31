@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var outImg = ["ch11_img/0out.jpg", "ch11_img/1out.jpg", 
+                      "ch11_img/2out.jpg", "ch11_img/3out.jpg"]
+        var overImg = ["ch11_img/0over.jpg", "ch11_img/1over.jpg", 
+                       "ch11_img/2over.jpg", "ch11_img/3over.jpg"];
+                       
+        img = document.getElementsByTagName('img');
+
+            function over(n) {
+                img[n].src = overImg[n];
+            }
+            function out(n) {
+                img[n].src = outImg[n];
+            }
+            
+    </script>
+</head>
+
+<body>
+
+    <img src="ch11_img/0out.jpg" onmouseover="over(0)" onmouseout="out(0)">
+    <img src="ch11_img/1out.jpg" onmouseover="over(1)" onmouseout="out(1)">
+    <img src="ch11_img/2out.jpg" onmouseover="over(2)" onmouseout="out(2)">
+    <img src="ch11_img/3out.jpg" onmouseover="over(3)" onmouseout="out(3)">
+
+</body>
+
+</html>
