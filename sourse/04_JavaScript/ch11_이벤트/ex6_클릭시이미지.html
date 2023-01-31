@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img{
+            position: absolute;
+            display: none;
+            z-index: -5;
+        }
+    </style>
+    <script>
+        window.onclick = function () {
+            var msg = document.getElementsByTagName('p')[0];
+            msg.innerHTML = 'screen좌표: ' + event.screenX + ', ' + event.screenY + '<br>';
+            let x = event.offsetX;
+            let y = event.offsetY;
+            msg.innerHTML += 'offset좌표: ' + x + ', ' + y + '<br>';
+            var img = document.getElementsByTagName('img')[0];
+            img.style.display = 'inline';
+            img.style.left = x + 'px';
+            img.style.top = y + 'px';
+        };
+    </script>
+</head>
+
+<body>
+    <p>클릭하면 클릭한 곳에 말이 옮겨지고 좌표가 출력됩니다</p>
+    <img src="ch11_img/car.gif" alt="말">
+</body>
+
+</html>

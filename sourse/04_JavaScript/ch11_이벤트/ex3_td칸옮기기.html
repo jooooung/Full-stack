@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table {
+            width: 500px;
+            margin: 0 auto;
+            background-color: darkgreen;
+        }
+
+        table tr td {
+            background-color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var tds = document.getElementsByTagName('td');
+            var idx = 4; // 현위치
+            tds[idx].style.backgroundColor = 'yellow';
+            var positionIdx = document.querySelector('p.position b')
+            this.onkeyup = function () {
+                var key = event.keyCode;
+                switch (key) {
+                    case 37:        // 좌
+                        if (idx % 3 == 0) {
+                            idx += 2;
+                        } else {
+                            idx -= 1;
+                        }
+                        break;
+                    case 38:        // 상
+                        if (idx >= 3) {
+                            idx -= 3;
+                        } else {
+                            idx += 6;
+                        }
+                        break;
+                    case 39:        // 우
+                        if (idx % 3 == 2) {
+                            idx -= 2;
+                        } else {
+                            idx += 1;
+                        }
+                        break;
+                    case 40:        // 하
+                        if (idx <= 5) {
+                            idx += 3;
+                        } else {
+                            idx -= 6;
+                        }
+                        break;
+
+                    default:
+                        return;
+                }
+                for (var i=0 ; i <tds.length ; i++){
+                    tds[i].style.backgroundColor = 'white';
+                }
+                tds[idx].style.backgroundColor = 'yellow';
+                positionIdx.innerHTML = idx;
+            };
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+    </table>
+    <p class="position">현위치 : <b>4</b></p>
+</body>
+
+</html>

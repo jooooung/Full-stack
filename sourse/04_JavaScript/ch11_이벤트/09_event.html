@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+     <meta charset="UTF-8">
+     <title></title>
+     <script>
+         window.onkeyup = function(){       // key가 눌린 후 올라올 때의 조건
+            let key = event.keyCode;    // 입력된 키의 코드값이 key의 코드 값
+            // 우측숫자 : 96(0) 97(1) ~ 105(9)
+            // 윗 숫자 : 48(1) 49(2) ~ 57(9)
+            // 알파벳 : A(65) ~ Z(90)
+            if(key>=48 && key<=57){
+                alert('윗숫자(' + (key-48) + ')를 입력');
+            } else if(key>=96 && key<=105){
+                alert('우측숫자(' + (key-96) + ')를 입력');
+            } else if(key>=65 && key <=90){
+                alert('문자 (' +String.fromCodePoint(key) + ')를 입력');    // ascii  코드값을 문자로 리턴
+            }
+         };
+         window.onclick = function(){
+            document.body.innerHTML = 'screen좌표: ' + event.screenX + ', ' + event.screenY + '<br>';
+            document.body.innerHTML += 'offset좌표: ' + event.offsetX + ', ' + event.offsetY + '<br>';
+         };
+     </script>
+</head>
+<body>
+</body>
+</html>

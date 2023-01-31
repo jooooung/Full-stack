@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+     <meta charset="UTF-8">
+     <title></title>
+     <style>
+          table {
+               width: 500px;
+               margin: 0 auto;
+               background-color: darkgreen;
+          }
+
+          table tr td {
+               background-color: white;
+               padding: 50px;
+               text-align: center;
+          }
+     </style>
+     <script>
+          window.onkeyup = function () {
+               var tds = document.getElementsByTagName('td');
+               var key = event.keyCode;
+               if(key>=96 && key <=104){     // 우측 숫자 누르면 색칠
+                    for(var i=0 ; i<tds.length ; i++){
+                         tds[i].style.backgroundColor = 'white';
+                    }
+                    tds[key-96].style.backgroundColor = 'yellow';
+               }else if(key>=48 && key <=56){     // 윗 숫자 누르면 색칠
+                    for(var i=0 ; i<tds.length ; i++){
+                         tds[i].style.backgroundColor = 'white';
+                    }
+                    tds[key-48].style.backgroundColor = 'yellow';
+               }
+          };
+     </script>
+</head>
+
+<body>
+     <table>
+          <tr>
+               <td>0</td>
+               <td>1</td>
+               <td>2</td>
+          </tr>
+          <tr>
+               <td>3</td>
+               <td>4</td>
+               <td>5</td>
+          </tr>
+          <tr>
+               <td>6</td>
+               <td>7</td>
+               <td>8</td>
+          </tr>
+     </table>
+</body>
+
+</html>
