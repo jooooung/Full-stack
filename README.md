@@ -3,3 +3,4 @@
 2. DBMS - Oracle, MySQL
 3. HTML - visual studio, vscode
 4. JavaScript
+5. React
