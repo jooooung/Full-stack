@@ -1,3 +1,23 @@
+# App.js
+- `Component`를 상속받는 class `App` 만들기 - `Component` import하기
+- `App` export 하기 : `export default App;`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Subject 수정 - web 클릭 이벤트 걸기
 1. header h1에 a 태그 추가
 2. App.js- this.state에 mode: 'read' 추가
