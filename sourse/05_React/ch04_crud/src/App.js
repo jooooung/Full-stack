@@ -151,6 +151,13 @@ class App extends Component {
         <Control  
           onChangePage={function (_mode) {
             if (_mode === "delete") { // delete 기능 만들기
+              if(this.state.selected_content_id == 0){    // 데이터 없을 때 delete 할 시
+                // alert('데이터가 없습니다');
+                this.setState({
+                  mode : 'welcome',
+                });
+                return;
+              }
               if(window.confirm('삭제하실건가요?')){
                 // this.state.selected_content_id가 id인 contents안의 객체를 제거
                 var _contents = Array.from(this.state.contents);  // 배열 복사
