@@ -7,6 +7,8 @@ const CreateContent = (props) => {
         method="get"
         onSubmit={(event) => {
           event.preventDefault();
+          //   console.log(event.target.title.value);
+          //   debugger;
           props.onCreate(event.target.title.value, event.target.body.value);
           event.target.title.value = "";
           event.target.body.value = "";

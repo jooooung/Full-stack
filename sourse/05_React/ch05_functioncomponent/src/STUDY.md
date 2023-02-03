@@ -52,4 +52,5 @@ TOC태그 onChangeMode 화살표함수 매개변수 _id, setMode('read'); 추가
 TOC.js - a태그 onClick 추가
 ```
 
-화면과 관련된 모든 변수는 다 state화 하면 된다 `let [변수이름, set변수이름] = useState 값;`
+화면과 관련된 모든 변수는 다 state화 하면 된다 `let [변수이름, set변수이름] = useState (값);`
+

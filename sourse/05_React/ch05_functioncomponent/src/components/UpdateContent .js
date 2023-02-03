@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 
 const UpdateContent = (props) => {
   const [title, setTitle] = useState(props.data.title);
@@ -11,6 +11,8 @@ const UpdateContent = (props) => {
         method="get"
         onSubmit={(event) => {
           event.preventDefault();
+          //   console.log(event.target.title.value);
+          //   debugger;
           props.onUpdate(title, body);
         }}
       >
@@ -21,6 +23,7 @@ const UpdateContent = (props) => {
             placeholder="title"
             value={title}
             onChange={(event) => {
+              // event.target.value를 title(state화)
               setTitle(event.target.value);
             }}
           ></input>

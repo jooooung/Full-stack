@@ -4,13 +4,16 @@ const TOC = (props) => {
   for (let idx = 0; idx < data.length; idx++) {
     lists.push(
       <li key={data[idx].id}>
-        <a href={data[idx].id + ".html"}
-            onClick={event => {
-              event.preventDefault();   // 현 페이지에 머물기
-              // console.log(event.target); 
-              // debugger;
-              props.onChangeMode(Number(event.target.id));
-            }}>
+        <a
+          href={data[idx].id + ".html"}
+          id={data[idx].id}
+          onClick={(event) => {
+            event.preventDefault(); // 현 페이지에 머물기
+            // console.log(event.target);
+            // debugger;
+            props.onChangeMode(Number(event.target.id));
+          }}
+        >
           {data[idx].title}
         </a>
       </li>
