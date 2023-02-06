@@ -2,5 +2,5 @@
 1. JAVA - eclipse  
 2. DBMS - Oracle, MySQL
 3. HTML - visual studio, vscode
-4. JavaScript
-5. React
+4. JavaScript - VS Code
+5. React - VS Code
