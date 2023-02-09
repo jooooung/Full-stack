@@ -27,7 +27,7 @@ public class Quiz3 extends HttpServlet {
 		out.print("<link href=\"/ch04_servlet/css/quiz3.css\" rel=\"stylesheet\">");
 		out.print("</head>");
 		out.print("<body>");
-		out.print("1부터 " + su + "까지 누적합은 " + sum);
+		out.print("<p>1부터 " + su + "까지 누적합은 " + sum + "</p>");
 		out.print("</body>");
 		out.print("</html>");
 		out.close();

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Quiz1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String[] suStr = request.getParameterValues("su");
+		String[] su = request.getParameterValues("su");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
@@ -20,10 +20,11 @@ public class Quiz1 extends HttpServlet {
 		out.println("<link href=\"css/quiz1.css\" rel=\"stylesheet\"");
 		out.println("</head>");
 		out.println("<body>");
-		for(int i=0 ; i<suStr.length ; i++) {
-			out.println(suStr[i] + "단");
+		for(int i=0 ; i<su.length ; i++) {
+			out.println("<h3>" + su[i] + "단</h3>");
 				for(int j=1 ; j<=9 ; j++) {
-					out.printf("<p>%d * %d = %d</p>", Integer.parseInt(suStr[i]), j, Integer.parseInt(suStr[i])* j);
+					int dansu = Integer.parseInt(su[i]);
+					out.printf("<p>%d * %d = %d</p>", dansu, j, dansu * j);
 			}
 		}
 		out.println("</body>");

@@ -1,2 +1,5 @@
 @charset "UTF-8";
-.suStr {padding:5px 10px;text-align: center;}
+h3, p {
+	padding:5px 10px;
+	text-align: center;
+	}

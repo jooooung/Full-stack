@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="/ch04_servlet/css/quiz5.css" rel="stylesheet">
+	<link href="../css/quiz5.css" rel="stylesheet">
 </head>
 <body>
 	<form action="../Quiz5" method="post">
@@ -11,21 +11,21 @@
 			<caption>게시판</caption>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name="title" size="30"></td>
+				<td><input type="text" name="title" size="30" required="required"></td>
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><input type="text" name="writer" size="30"></td>	
+				<td><input type="text" name="writer" size="30" required="required"></td>	
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea name="content" cols="30" rows="5"></textarea></td>
+				<td><textarea name="content" cols="31" rows="5" required="required"></textarea></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td>
 					<input type="submit" value="저장">
-					<input type="submit" value="초기화">
+					<input type="reset" value="초기화">
 				</td>
 			</tr>
 		</table>

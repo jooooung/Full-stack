@@ -12,17 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Quiz2")
 public class Quiz2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.print("<html>");
-		out.print("<body>");
-		out.print("<h2>반가워요" + name + "님! <br>" + address + "에 사는군요</h2>");
-		out.print("</body>");
-		out.print("</html>");
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<link href=\"css/quiz2.css\" rel=\"stylesheet\"");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<h2>반가워요 " + name + "님!<br>" + address + "에 사시는군요</h2>");
 		out.close();
 	}
 

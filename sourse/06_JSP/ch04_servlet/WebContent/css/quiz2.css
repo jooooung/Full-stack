@@ -1,3 +1,7 @@
 body{
 	text-align: center;
 }
+
+input[type='text']:focus {	
+	background-color: lightblue;
+}
