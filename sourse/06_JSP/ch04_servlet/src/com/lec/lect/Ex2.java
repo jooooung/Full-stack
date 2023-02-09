@@ -26,7 +26,19 @@ public class Ex2 extends HttpServlet {
 		out.print("<html>");
 		out.print("<body>");
 		if(menu!=null) {
-			out.println("<h2>선택한 메뉴는 " + Arrays.toString(menu) + "<h2>");
+//			out.println("<h2>선택한 메뉴는 " + Arrays.toString(menu) + "<h2>");
+			out.println("<h2>선택한 메뉴는 ");
+//			for(String m : menu) {		// 확장 for문
+//				out.println(m + "  ");			
+//			}
+			for (int i=0 ; i<menu.length ; i++) {	// 다중 메뉴 선택시 , 붙이기
+				if(i == menu.length-1) {
+					out.println(menu[i]);					
+				} else {
+					out.println(menu[i] + ", ");
+				}
+			}
+			out.println("입니다<h2>");
 		}else {
 			out.println("<h2>선택한 메뉴가 없습니다</h2>");
 		}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>	<!-- 체크박스 선택 안 할시 submit 안 넘어가게 하기 -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		window.onload = function () {
+			document.querySelector('form').onsubmit = function(){
+				/* var hobby = document.querySelectorAll("input[type=checkbox]"); */
+				var hobby = document.getElementsByName("hobby");
+				var checkedCnt = 0;	 /* check 개수 파악을 위한 변수 */
+				var checkedHobby = '';
+				/* alert(hobby.length); */
+				for(var i=0 ; i<hobby.length ; i++){
+					checkedCnt += hobby[i].checked;		/* hobby[i].checked가 true에서 숫자로 형변환되어 더해진다 */
+					//if(hobby[i].checked){
+					//	 checkedHobby += hobby[i].value + ' ';
+					//}	
+				}// for
+				if(!checkedCnt){
+					alert('취미를 하나 이상 선택하세요');
+					return false;
+				}
+			};
+		};
+	</script>
+</head>
+<body>	
+	<form action="../LifeCycle" method="get"> 
+		<p>
+			취미 : 
+			<input type="checkbox" name="hobby" value="독서">독서
+			<input type="checkbox" name="hobby" value="등산">등산
+			<input type="checkbox" name="hobby" value="음악">음악
+			<input type="checkbox" name="hobby" value="운동" checked="checked">운동
+		</p>
+		<p><input type="submit"></p>
+	</form>
+</body>
+</html>

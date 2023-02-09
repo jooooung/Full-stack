@@ -1,0 +1,29 @@
+<!DOCTYPE html>	<!-- radio type 비동의시 sumit 불가능하게 만들기 -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+	window.onload = function () {
+		document.getElementsByTagName('form')[0].onsubmit = function(){
+			var agreeYes = document.querySelector('input[type=radio]');	// 첫번째 radio 가져오기
+			// var agreeYes = document.getElementsByName('agree')[0];
+			if(!agreeYes.checked){	// 동의가 체크되지 않았을 시
+				alert('동의해주세요');
+				return false;
+			}
+		};
+	};
+	</script>
+</head>
+<body>
+	<fieldset>
+		It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+	</fieldset>
+	<form action="">
+		<input type="radio" name="agree" value="yes">동의
+		<input type="radio" name="agree" value="no" checked="checked">비동의
+		<input type="submit" value="다음">
+	</form>
+</body>
+</html>

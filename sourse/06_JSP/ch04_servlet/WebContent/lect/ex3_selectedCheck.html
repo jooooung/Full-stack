@@ -1,0 +1,41 @@
+<!DOCTYPE html>	<!-- select type : 미선택 시  -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+	window.onload = function(){
+		document.querySelector('form').onsubmit = function (){
+			var opt = document.querySelectorAll('.opt');
+			// alert(opt.length);
+			var optSelectedCnt = 0;	
+			for(var i=0 ; i<opt.length ; i++){
+				if(opt[i].selected){
+					optSelectedCnt++;
+				}
+			}// for
+			if(!optSelectedCnt){
+				alert('하나 이상 선택해주세요');
+				return false;
+			}
+		};
+	};
+	</script>
+</head>
+<body>
+	<h2>2~9단 중 원하는 구구단 수 선택</h2>
+	<form action="">
+		<select multiple="multiple" name="su">
+			<option class="opt" value="2">2단</option><!-- value지정시 submit에서 value값이 넘어간다 -->
+			<option class="opt" value="3">3단</option>
+			<option class="opt">4단</option>
+			<option class="opt">5단</option>
+			<option class="opt">6단</option>
+			<option class="opt">7단</option>
+			<option class="opt">8단</option>
+			<option class="opt">9단</option>
+		</select>	
+		<input type="submit" value="구구단 출력">
+	</form>
+</body>
+</html>
