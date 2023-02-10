@@ -13,7 +13,10 @@
 	<title>Insert title here</title>
 	<style>
 	body{
-		background-color: <%=color%>; 
+		width: 300px;
+		margin: 10px auto;
+		background-color: <%=color%>;
+		text-align: center; 
 	}
 	</style>
 </head>

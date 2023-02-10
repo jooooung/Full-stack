@@ -27,11 +27,9 @@
 <body>
 	<p>동전이 있는 곳을 맞춰봐</p>
 	<hr>
-	<form action="examPro.jsp">
-		<button name="su" value="1">1번</button>
-		<button name="su" value="2">2번</button>
-		<button name="su" value="3">3번</button>
-	</form>
+		<button onclick="location.href='examPro.jsp'" name="su" value="1">1번</button>
+		<button onclick="location.href='examPro.jsp'" name="su" value="2">2번</button>
+		<button onclick="location.href='examPro.jsp'" name="su" value="3">3번</button>
 	<div class="msg">
 		<%
 			String msg = request.getParameter("msg");
@@ -39,5 +37,6 @@
 				out.print(msg);
 				}
 		%>
+	</div>
 </body>
 </html>

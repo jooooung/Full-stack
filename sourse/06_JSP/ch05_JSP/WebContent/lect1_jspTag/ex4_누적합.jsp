@@ -41,8 +41,8 @@
 	</fieldset>
 	<%
 		if(num != null){
-			int n = Integer.parseInt(num);
-			int total = 0;
+			int n = Integer.parseInt(num);	/* num이 String이므로 형변환 */
+			int total = 0;	
 			for(int i=1 ; i<=n ; i++){
 				total += i;
 			}

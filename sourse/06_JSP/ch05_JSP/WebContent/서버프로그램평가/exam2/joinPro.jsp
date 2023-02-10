@@ -12,6 +12,7 @@
 </head>
 <body>
 	<%
+	response.setContentType("text/html;charset=utf-8");
 	String name = request.getParameter("name");
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
@@ -24,7 +25,6 @@
 	String[] mailSend = request.getParameterValues("mailSend");
 	String ip = request.getRemoteAddr();
 	Date date = new Date(System.currentTimeMillis());
-	response.setContentType("text/html;charset=utf-8");
 	out.println("<html>");
 	out.println("<body>");
 	out.println("<div id='joinForm_wrap'>");
@@ -37,9 +37,9 @@
 	out.println("<h2>hobby : ");
 	if(hobby!=null) {
 		for(int i=0 ; i<hobby.length ; i++)
-			if(i==hobby.length-1)
+			if(i==hobby.length-1){
 				out.print(hobby[i]);
-			else
+			}else
 				out.print(hobby[i]+", ");
 	}else {
 		out.print("없음");
