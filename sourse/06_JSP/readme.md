@@ -31,7 +31,15 @@
 
 ## ✔ 내부객체
 ### request 객체 : 웹브라우저를 통해 서버에 어떤 정보를 요청하는 것
-    - request 객체의 메소드
+- request 객체의 메소드
     1. getRemoteAddr() : 웹서버에 연결한 클라이언트의 IP주소(예전에는 IPv4, 요즘은 IPv6)
+    - `Ipv6` => `Ipv4로` 바꾸기 : eclipse > Run > Run Configurations > Apache Tomcat  
+                             > Tomcat v9.0 Server >Arguiments >   
+      Program arguments에 `-Djava.net.preferIPv4Stack=true` 입력  
+      VM arguments:에 `-Djava.net.preferIPv4Stack=true` 입력
 
 
+### response 객체 :  웹브라우저의 요청에 응답하는 것
+- `getCharacterEncoding()` : 응답할때 문자의 인코딩.
+- `addCookie(Cookie)` : 쿠키를 지정.
+- `sendRedirect(URL)` : 지정한 URL로 이동
