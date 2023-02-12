@@ -12,7 +12,7 @@
 </head>
 <body>
 	<%
-	response.setContentType("text/html;charset=utf-8");
+	response.setContentType("text/html; charset=utf-8");
 	String name = request.getParameter("name");
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");

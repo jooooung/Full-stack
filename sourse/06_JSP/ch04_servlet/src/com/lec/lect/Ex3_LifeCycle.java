@@ -21,7 +21,7 @@ public class Ex3_LifeCycle extends HttpServlet {
 	private void postConstruct() {
 		// 서블릿 객체 생성 되자마자 실행
 		System.out.println("Ex3+LifeCycle 서블릿 객체가 생성될 때 수행- 1");
-	}
+	} 
 	
 	public void init(ServletConfig config) throws ServletException {
 		// 서블릿 객체가 생성될 때 실행
