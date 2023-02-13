@@ -25,8 +25,6 @@
 			if(idx==cookies.length){
 			out.println("<h3>찾는 쿠키가 없습니다</h3>");
 			}
-		}else{
-			out.println("<h3>생성된 쿠키가 없습니다</h3>");
 		}
 	%>
 	<hr>

@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%String conPath = request.getContextPath(); %>    
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title></title>
 	<style>
-		body{
+		#wrap{
 			width: 500px;
 			margin: 0 auto;
 			text-align: center;
@@ -23,19 +22,25 @@
 			text-align: center;
 		}
 	</style>
+	<script>
+		function position(n){
+			location.href="examPro.jsp?su=" + n;
+		}
+	</script>
 </head>
 <body>
-	<p>동전이 있는 곳을 맞춰봐</p>
-	<hr>
-		<button onclick="location.href='examPro.jsp'" name="su" value="1">1번</button>
-		<button onclick="location.href='examPro.jsp'" name="su" value="2">2번</button>
-		<button onclick="location.href='examPro.jsp'" name="su" value="3">3번</button>
-	<div class="msg">
+	<div id="wrap">
+		<p>동전이 있는 곳을 맞춰봐</p>
+		<hr>
+		<button onclick="position(1)">1번</button>
+		<button onclick="position(2)">2번</button>
+		<button onclick="position(3)">3번</button>
+		<br>
 		<%
 			String msg = request.getParameter("msg");
 			if(msg!=null){
 				out.print(msg);
-				}
+			}
 		%>
 	</div>
 </body>

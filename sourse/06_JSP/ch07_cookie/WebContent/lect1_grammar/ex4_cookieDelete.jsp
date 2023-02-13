@@ -11,19 +11,19 @@
 <body>
 	<h1>특정 쿠키(cookieName) 삭제하기</h1>	
 	<%	// 같은 이름의 쿠키를 유효시간을 0초로 생성 후 response 탑재
-			Cookie[] cookies = request.getCookies();
-			if(cookies != null){
+			Cookie[] cookies = request.getCookies();	// 배열로 쿠키 가져오기
+			if(cookies != null){	// 쿠키가 있다면
 				for(Cookie c : cookies){
-					String name = c.getName();
-					if(name.equals("cookieName")){
+					String name = c.getName();	// name 얻기
+					if(name.equals("cookieName")){	// 삭제할 쿠기의 name이 있다면
 						Cookie cookie = new Cookie("cookieName", "xxx");	// 같은 이름의 쿠키 새로 만들기
 						cookie.setMaxAge(0);	// 유효시간 0초로 설정
-						response.addCookie(cookie);	
+						response.addCookie(cookie);	// response 객체에 쿠키 탑재
 						out.println("<h3>쿠키 삭제 성공</h3>");
-						break;
+						break;	
 					}// if
 				}// for
-			}// if
+			}// if 
 	%>
 	<hr>
 		<a href="ex1_cookieConstruct.jsp">쿠키 생성</a><br>
