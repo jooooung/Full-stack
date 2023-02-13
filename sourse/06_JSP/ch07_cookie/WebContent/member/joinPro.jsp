@@ -35,6 +35,7 @@
 	String ip = request.getRemoteAddr();
 	Date date = new Date(System.currentTimeMillis());
 	%>
+	<jsp:include page="../member/header.jsp"/>
 	<div id="joinForm_wrap">
 	<div id="join_title">회원가입정보</div>
 	<h2>name : <%=name %></h2>
