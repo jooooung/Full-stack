@@ -12,15 +12,17 @@
 			line-height: 600px;
 			font-size: 32px;
 			text-align: center;
-			width: 400px;
+			width: 600px;
 			margin: 0 auto;
+			color: #D4A190;
+			font-weight: bold;
 		}
 	</style>
 </head>
 <body>
 	<jsp:include page="../member/header.jsp"/>
 	<div id="mainForm_wrap">
-		CONTENT
+		main 화면
 	</div>		
 	<jsp:include page="../member/footer.jsp"/>
 </body>

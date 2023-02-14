@@ -1,6 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%String conPath = request.getContextPath(); %>    
+<%
+	String conPath = request.getContextPath(); 
+if(session.getAttribute("name") != null){
+	response.sendRedirect("main.jsp");
+}
+// msg 처리
+String msg = request.getParameter("msg");
+if(msg != null){
+%>
+	<script>
+		alert('<%=msg%>');
+	</script>
+<%}%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +29,15 @@
 				<tr><td></td></tr>
 				<tr>
 					<td><label for="id">아이디</label></td>
-					<td><input type="text" name="id" id="id" required="required" autofocus="autofocus"></td>
+					<td><input type="text" name="id" id="id" required="required" autofocus="autofocus"
+										value="<%
+								 							String sessionId = (String)session.getAttribute("id");
+															if(sessionId != null){
+																out.print(sessionId);
+															}
+								 				%>"	
+							>
+					</td>
 				</tr>
 				<tr>
 					<td><label for="pw">비밀번호</label></td>
@@ -32,7 +52,6 @@
 				<tr>
 					<td colspan="2">
 						<%
-							String msg = request.getParameter("msg");
 							if(msg!=null){	// 로그인 실패
 						%> 
 							<p id="login_findIdPw" onclick="alert('아이디는aaa/비번은111')">

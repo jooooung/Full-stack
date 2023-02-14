@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%String conPath = request.getContextPath(); %>    
@@ -10,31 +11,28 @@
 </head>
 <body>
 	<%
-		request.setCharacterEncoding("utf-8");
-		String id = request.getParameter("id");
-		String pw  = request.getParameter("pw");
-		// (DB에 id,pw 확인 작업)
-		// 로그인 실패
-		if(id==null || !id.equals("aaa") || pw==null || !pw.equals("111")){
-			response.sendRedirect("login.jsp?msg=xx");	// id, pw가 안 맞을시 메세지 전송
+	String msg = "";
+	String id = request.getParameter("id");
+	String pw = request.getParameter("pw");
+	if(id != null && id.equals("aaa")){
+		// 유효한 아이디
+		if(pw!=null && pw.equals("111")){
+			// 로그인 처리
+			session.setAttribute("id", id);
+			session.setAttribute("name", "홍길동");
+			/* Member member = new Member(id, pw, "홍길동");
+			session.setAttribute("member", member); */
+			response.sendRedirect("main.jsp");
 		}else{
-			//로그인 성공
-			Cookie cookie = new Cookie("id", id);	//id 쿠키 만들기
-			cookie.setMaxAge(-1);		// 유효시간 : 브라우저 닫기
-			response.addCookie(cookie);	// 이름이 id 인 쿠키 response에 탑재
-			Cookie cookie2 = new Cookie("name", "홍길동");	// DB에서 가져온 이름을 쿠키값으로
-			cookie2.setMaxAge(-1);
-			response.addCookie(cookie2);	// 이름이 name 인 쿠키 response에 탑재
-			response.sendRedirect("main.jsp");		// main.jsp 로 데이터 보내기
+			// pw가 틀린경우
+			msg = URLEncoder.encode("비밀번호를 확인하세요", "utf-8");
+			response.sendRedirect("login.jsp?msg="+msg);
 		}
+	}else{
+		// 유효하지 않은 아이디
+		msg = URLEncoder.encode("id를 확인하세요", "utf-8");   
+		response.sendRedirect("login.jsp?msg="+msg);
+	}
 	%>
-	<%-- <jsp:include page="../member/header.jsp"/>
-	<br><br><br><br><br><br>
-	<div id="loginForm_wrap">
-		<div id="login_title">로그인 결과</div>
-		<div id="login_join">로그인 성공</div>
-	</div>
-	<br><br><br><br><br><br>
-	<jsp:include page="footer.jsp"/> --%>
 </body>
 </html>

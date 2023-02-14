@@ -6,27 +6,31 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="<%=conPath%>/css/style.css" rel="stylesheet" type="text/css">
+	<style>
+		#mainForm_wrap{
+			height: 600px;
+			line-height: 600px;
+			font-size: 20px;
+			text-align: center;
+			width: 600px;
+			margin: 0 auto;
+			color: #D4A190;
+		}
+	</style>
+	<script>
+		function next(){
+			location = "main.jsp";
+		}
+	</script>
 </head>
-<body>
+<body onload = "setTimeout('next()', 3000)">
 	<%
-		// id쿠키와 name 쿠키 삭제하고 main.jps로 이동
-		Cookie[] cookies = request.getCookies();
-		if(cookies != null){
-			for (Cookie cookie : cookies){
-				String cname = cookie.getName();
-				// id라는 이름의 쿠키 삭제
-				if(cname.equals("id")){
-					cookie.setMaxAge(0);
-					response.addCookie(cookie);
-				}else if(cname.equals("name")){
-					// name이라는 이름의 쿠키 삭제					
-					cookie.setMaxAge(0);
-					response.addCookie(cookie);
-				}//if
-			}//for
-		}//if
-		response.sendRedirect(conPath + "/member/main.jsp");	// main 페이지로 가기
+		session.invalidate();
 	%>
+	<jsp:include page="../member/header.jsp"/>
+	<div id="mainForm_wrap">
+		로그아웃되었습니다. 3초 후 페이지 이동이 있겠습니다
+	</div>		
+	<jsp:include page="../member/footer.jsp"/>
 </body>
 </html>
