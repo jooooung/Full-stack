@@ -1,5 +1,6 @@
 # ✨JSP
-
+- JSP model1 = MVC패턴 없이 
+- JSP model2 = MVC패턴(협업, 유지보수에 용이)
 - JSP는 Servlet과 반대로 HTML코드에 JAVA언어를 삽입하여 동적 문서를 만들 수 있다
 
 ## ✔ JSP 태그

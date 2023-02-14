@@ -9,14 +9,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="<%=conPath %>/css/join.css" rel="stylesheet">
 </head>
 <body>
-	<%
+<%
 	request.setCharacterEncoding("utf-8");
-	String name = request.getParameter("name");
-	String id = request.getParameter("id");
-	String pw = request.getParameter("pw");
+	String name  = request.getParameter("name");
+	String id 	 = request.getParameter("id");
+	String pw 	 = request.getParameter("pw");
 	String birth = request.getParameter("birth");
 	/* Date birth = Date.valueOf(request.getParameter("birth"));
 	Timestamp birthTimestamp = Timestamp.valueOf(request.getParameter("birth")+" 00:00:00"); */
@@ -28,23 +27,26 @@
 		birthTimestamp = Timestamp.valueOf(birth + " 00:00:00");
 	}
 	String[] hobby = request.getParameterValues("hobby");
-	String gender = request.getParameter("gender");
-	String email = request.getParameter("email");
+	String gender  = request.getParameter("gender");
+	String email	 = request.getParameter("email");
 	String[] mailSend = request.getParameterValues("mailSend");
-	String ip = request.getRemoteAddr();
-	Date date = new Date(System.currentTimeMillis());
-	%>
-	<jsp:include page="../member/header.jsp"/>
+	// 받은 파라미터 값을 Member DB에 저장
+%>
+	<script>
+		alert('<%=name%> 님 회원가입 완료되었습니다. 감사합니다');
+		location.href='login.jsp';
+	</script>
+<%-- 	<jsp:include page="../member/header.jsp"/>
 	<div id="joinForm_wrap">
 	<div id="join_title">회원가입정보</div>
 	<h2>name : <%=name %></h2>
 	<h3>id : <%=id %></h3>
-	<%-- <h3>pw : <%
+	<h3>pw : <%
 				for(int i=0 ; i< pw.length() ; i++){
 					out.print('*');
-				}%></h3> --%>
+				}%></h3>
 	<h3>pw : <%=pw.replaceAll("[a-zA-Z0-9~`!@#$%^&*()\\-_+=|\\{}\\[\\]:;\"'?/<>,\\.]", "*") %></h3>
-	<%-- <h3>birth : <%=birth %></h3> --%>
+	<h3>birth : <%=birth %></h3>
 	<h3>birth : <%=birthTimestamp %></h3>
 	<h3>hobby : <% 
 			if(hobby!=null) {
@@ -71,6 +73,6 @@
 	<input type="button" value="로그인" class="joinBtn_style" 
 											onclick="location.href='<%=conPath%>/member/login.jsp'">
 </div>
-	<jsp:include page="../member/footer.jsp"/>
+	<jsp:include page="../member/footer.jsp"/> --%>
 </body>
 </html>
