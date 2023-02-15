@@ -30,60 +30,60 @@ INSERT INTO LEVELS VALUES (3, 'GOLD', 1000000, 1999999);
 INSERT INTO LEVELS VALUES (4, 'VIP', 2000000, 2999999);
 INSERT INTO LEVELS VALUES (5, 'VVIP', 3000000, 999999999);
 
--- ´õ¹Ìµ¥ÀÌÅÍ
+-- ë”ë¯¸ë°ì´í„°
 INSERT INTO CUSTOMER (CID, CTEL, CNAME, CAMOUNT)
-    VALUES (CUSTOMER_CID_SQ.NEXTVAL, '010-3333-3333', 'ÈïºÎ', 100000);
+    VALUES (CUSTOMER_CID_SQ.NEXTVAL, '010-3333-3333', 'í¥ë¶€', 100000);
 INSERT INTO CUSTOMER (CID, CTEL, CNAME, CAMOUNT, LEVELNO)
-    VALUES (CUSTOMER_CID_SQ.NEXTVAL, '010-3333-9999', '³îºÎ', 10000000, 5);
+    VALUES (CUSTOMER_CID_SQ.NEXTVAL, '010-3333-9999', 'ë†€ë¶€', 10000000, 5);
     
 SELECT * FROM LEVELS;
 SELECT * FROM CUSTOMER;
 COMMIT;
 
--- 1. È¸¿ø°¡ÀÔ (public int insertCustomer(String ctel, String cname)
+-- 1. íšŒì›ê°€ìž… (public int insertCustomer(String ctel, String cname)
 INSERT INTO CUSTOMER (CID, CTEL, CNAME) 
-    VALUES (CUSTOMER_CID_SQ.NEXTVAL, '010-1234-1234', '±è¼öÈ£');
+    VALUES (CUSTOMER_CID_SQ.NEXTVAL, '010-1234-1234', 'ê¹€ìˆ˜í˜¸');
 COMMIT;
 
--- 2. Æù4ÀÚ¸®(FULL) °Ë»ö 
-    -- (ctelÀÔ·Â¹Þ¾Æ cid, ctel, cname, cpoint, cmount, levelname, LevelUp)
+-- 2. í°4ìžë¦¬(FULL) ê²€ìƒ‰ 
+    -- (ctelìž…ë ¥ë°›ì•„ cid, ctel, cname, cpoint, cmount, levelname, LevelUp)
     -- public ArrayList<CustomerDto> ctelGetCustomers(String searchTel)
 SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, HIGH+1-CAMOUNT LEVELUP 
     FROM CUSTOMER C, LEVELS L
     WHERE C.LEVELNO=L.LEVELNO
-    ORDER BY CAMOUNT DESC;  -- ÃÖ°í ·¹º§µµ ·¹º§¾÷ ±Ý¾×ÀÌ ³ª¿Í¹ö¸²
+    ORDER BY CAMOUNT DESC;  -- ìµœê³  ë ˆë²¨ë„ ë ˆë²¨ì—… ê¸ˆì•¡ì´ ë‚˜ì™€ë²„ë¦¼
     
 SELECT CNAME, CAMOUNT, 
     (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID) LEVELUP
     FROM CUSTOMER C, LEVELS L
-    WHERE C.LEVELNO=L.LEVELNO;  -- ÃÖ°í·¹º§ÀÌ ¾Æ´Ñ ·¹º§¸¸ ·¹º§¾÷±Ý¾× Ãâ·Â ¼­ºêÄõ¸®
+    WHERE C.LEVELNO=L.LEVELNO;  -- ìµœê³ ë ˆë²¨ì´ ì•„ë‹Œ ë ˆë²¨ë§Œ ë ˆë²¨ì—…ê¸ˆì•¡ ì¶œë ¥ ì„œë¸Œì¿¼ë¦¬
 
 SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 
     (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID) LEVELUP
     FROM CUSTOMER C, LEVELS L
-    WHERE C.LEVELNO=L.LEVELNO AND CTEL LIKE '%'||'3333' -- %3333Àº ?·Î º¯°æ ºÒ°¡ %¿Í µÞÀÚ¸® ºÐ¸®
-    ORDER BY CAMOUNT DESC;  -- DAO¿¡ µé¾î°¥ QUERY
+    WHERE C.LEVELNO=L.LEVELNO AND CTEL LIKE '%'||'3333' -- %3333ì€ ?ë¡œ ë³€ê²½ ë¶ˆê°€ %ì™€ ë’·ìžë¦¬ ë¶„ë¦¬
+    ORDER BY CAMOUNT DESC;  -- DAOì— ë“¤ì–´ê°ˆ QUERY
     
--- 3. ¹°Ç°±¸ÀÔ(cid, price ÀÔ·Â¹Þ¾Æ update : cpoint, camount, levelno)
+-- 3. ë¬¼í’ˆêµ¬ìž…(cid, price ìž…ë ¥ë°›ì•„ update : cpoint, camount, levelno)
     -- public int buy(int cid, int price)
-    -- 1´Ü°è : CPOINT, CAMOUNT
+    -- 1ë‹¨ê³„ : CPOINT, CAMOUNT
 UPDATE CUSTOMER 
     SET CPOINT = CPOINT + (400000*0.05), CAMOUNT = CAMOUNT + 400000
     WHERE CID = 1;
-    -- 2´Ü°è : ¼öÁ¤µÈ CAMOUNT¿¡ µû¶ó LEVELNO Á¶Á¤
-SELECT CNAME, CAMOUNT, C.LEVELNO Çö·¹º§, L.LEVELNO ¹Ù²ð·¹º§
+    -- 2ë‹¨ê³„ : ìˆ˜ì •ëœ CAMOUNTì— ë”°ë¼ LEVELNO ì¡°ì •
+SELECT CNAME, CAMOUNT, C.LEVELNO í˜„ë ˆë²¨, L.LEVELNO ë°”ë€”ë ˆë²¨
     FROM CUSTOMER C, LEVELS L
     WHERE CAMOUNT BETWEEN LOW AND HIGH;
 SELECT L.LEVELNO
     FROM CUSTOMER, LEVELS L
-    WHERE CAMOUNT BETWEEN LOW AND HIGH AND CID=1; -- CID°¡ 1ÀÎ µ¥ÀÌÅÍÀÇ ¹Ù²ð·¹º§
+    WHERE CAMOUNT BETWEEN LOW AND HIGH AND CID=1; -- CIDê°€ 1ì¸ ë°ì´í„°ì˜ ë°”ë€”ë ˆë²¨
 
 UPDATE CUSTOMER 
     SET LEVELNO = (SELECT L.LEVELNO
                     FROM CUSTOMER, LEVELS L
                     WHERE CAMOUNT BETWEEN LOW AND HIGH AND CID=1)
-    WHERE CID=1;    -- 2´Ü°è 
-    -- DAO¿¡ µé¾î°¥ QUERY ¿Ï¼º
+    WHERE CID=1;    -- 2ë‹¨ê³„ 
+    -- DAOì— ë“¤ì–´ê°ˆ QUERY ì™„ì„±
 UPDATE CUSTOMER 
     SET CPOINT = CPOINT + (400000*0.05), 
         CAMOUNT = CAMOUNT + 400000,
@@ -93,7 +93,7 @@ UPDATE CUSTOMER
                           AND CID=1)
     WHERE CID = 1;
     
--- 3¹ø ÈÄ ¹Ù²ï °í°´ Á¤º¸ Ãâ·Â(cid, ctel, cname, cpointm cmount, levelname, LevelUp)
+-- 3ë²ˆ í›„ ë°”ë€ ê³ ê° ì •ë³´ ì¶œë ¥(cid, ctel, cname, cpointm cmount, levelname, LevelUp)
     -- public CustomerDto getCustomer(int cid)
 SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 
         (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID) LEVELUP
@@ -101,12 +101,12 @@ SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME,
     WHERE C.LEVELNO=L.LEVELNO
         AND CID=1;
     
--- 4¹ø Àü¿¡ °í°´µî±Þ¸íµé ÃßÃâ
+-- 4ë²ˆ ì „ì— ê³ ê°ë“±ê¸‰ëª…ë“¤ ì¶”ì¶œ
     -- public ArrayList<String> getLevelNames()
 SELECT LEVELNAME FROM LEVELS;
 
--- 4. °í°´ µî±Þº° Ãâ·Â 
-    -- (levelnameÀ» ÀÔ·Â¹Þ¾Æ cid, ctel, cname, cpointm cmount, levelname, LevelUp Ãâ·Â)
+-- 4. ê³ ê° ë“±ê¸‰ë³„ ì¶œë ¥ 
+    -- (levelnameì„ ìž…ë ¥ë°›ì•„ cid, ctel, cname, cpointm cmount, levelname, LevelUp ì¶œë ¥)
     -- public ArrayList<CustomerDto> levelNameGetCustomers(String levelName)
 SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 
         (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID) LEVELUP
@@ -115,7 +115,7 @@ SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME,
         AND LEVELNAME = 'VVIP'
     ORDER BY CAMOUNT DESC;
     
--- 5. ÀüÃ¼ Ãâ·Â
+-- 5. ì „ì²´ ì¶œë ¥
     -- public ArrayList<CustomerDto> getCustomers()
 SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME, 
         (SELECT HIGH+1-CAMOUNT FROM CUSTOMER WHERE LEVELNO!=5 AND CID=C.CID) LEVELUP
@@ -123,8 +123,8 @@ SELECT CID, CTEL, CNAME, CPOINT, CAMOUNT, LEVELNAME,
     WHERE C.LEVELNO=L.LEVELNO
     ORDER BY CAMOUNT DESC;
 
--- 6. È¸¿ø Å»Åð
-    -- ctelÀ» ÀÔ·Â¹Þ¾Æ delete
+-- 6. íšŒì› íƒˆí‡´
+    -- ctelì„ ìž…ë ¥ë°›ì•„ delete
     -- public int deleteCustomer(String ctel)
 DELETE FROM CUSTOMER WHERE CTEL = '010-3333-9999';
 COMMIT;
