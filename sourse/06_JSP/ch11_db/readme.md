@@ -30,3 +30,15 @@
 2. new - oracle - next - '+'클릭
 3. Oracle Thin Driver 11 - 위의 JAR List에서 기존 지우고 ojdbc6.jar추가 - OK 클릭
 4. SID 체크 : xe - Host:localhost - 포트넘버:1521 - 유저ID 입력 - 비밀번호 입력
+
+# DAO, DTO(이용하여 code 줄이기)
+## DTO
+1. 변수만들기
+2. 매개변수 없는 생성자
+3. 매개변수 있는 생성자
+4. getter&setter
+5. toString (선택사항)
+
+## DAO
+1. driver 로드, url, id, pw 가져오기
+2. 
