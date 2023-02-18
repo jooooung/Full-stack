@@ -35,7 +35,7 @@ public class MemberDao {
 			System.out.println(e.getMessage());
 		}
 	}
-	// connention 객체 return 함수
+	// connection 객체 return 함수
 	private Connection getConnection() throws SQLException {
 		Connection conn = DriverManager.getConnection(url, "scott", "tiger");
 		return conn; 
@@ -152,6 +152,9 @@ public class MemberDao {
 		MemberDto dto = null;
 		Connection 		  conn  = null;
 		PreparedStatement pstmt = null;
+		
+		
+		
 		ResultSet 		  rs    = null;
 		String sql = "SELECT * FROM MEMBER WHERE ID=?";
 		try {
