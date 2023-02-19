@@ -43,4 +43,4 @@ UPDATE MEMBER SET PW='111',
                   ADDRESS='경기'
             WHERE ID='A';
 SELECT * FROM MEMBER;            
-COMMIT;            
+COMMIT;          

@@ -8,13 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
-
 public class MemberDao {
 	public static final int SUCCESS = 1; // 회원가입, 정보수정시 성공 리턴값	(final변수)
 	public static final int FAIL = 0; // 회원가입, 정보수정시 실패 리턴값
-	public static final int MEMBER_NONEXISTENT = 1;	// 중복된 ID일 때 리턴값
-	public static final int MEMBER_EXISTENT = 0;	// 사용가능한 ID일 때 리턴값
+	public static final int MEMBER_NONEXISTENT = 1;	// 사용가능한 ID일 때 리턴값
+	public static final int MEMBER_EXISTENT = 0;	// 중복된 ID일 때 리턴값
 	public static final int LOGIN_SUCCESS = 1;	// 로그인 성공 리턴값
 	public static final int LOGIN_FAIL_PW = 0;	// 로그인 실패 PW 리턴값
 	public static final int LOGIN_FAIL_ID= -1;	// 로그인 실패 ID 리턴값
@@ -23,35 +21,32 @@ public class MemberDao {
 	// 싱글톤
 	private static MemberDao instance = new MemberDao(); // 자기가 자기 클래스형 객체를 참조. static변수는 객체를 만들지 않아도 생성
 	public static MemberDao getInstance() {
-//		if(instance == null) {
-//			instance = new MemberDao();
-//		}
 		return instance;
 	}
 	private MemberDao() {
 		try {
-			Class.forName(driver);
+			Class.forName(driver);		// JDBC 드라이버 로드
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	// connection 객체 return 함수
 	private Connection getConnection() throws SQLException {
-		Connection conn = DriverManager.getConnection(url, "scott", "tiger");
+		Connection conn = DriverManager.getConnection(url, "scott", "tiger"); 	// 데이터베이스 연결
 		return conn; 
 	}
 	// 1. 회원가입시 ID 중복체크 : 
 	public int confirmId(String id) {
 		int result = MEMBER_EXISTENT;	// 초기화 (ID 중복)
 		Connection 		  conn  = null;
-		PreparedStatement pstmt = null;
-		ResultSet 		  rs    = null;
+		PreparedStatement pstmt = null;		// sql문 처리할 Statement 생성
+		ResultSet 		  rs    = null;		// 결과받을 객체
 		String sql = "SELECT * FROM MEMBER WHERE ID=?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();	// sql문 전송
 			if(rs.next()) { // id가 primary key이기에 while이 아닌 if(결과가 0 아니면 1이기 때문)
 				// 중복된 아이디
 				result = MEMBER_EXISTENT;
@@ -62,7 +57,7 @@ public class MemberDao {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-				try {
+				try {	// 연결 해체 (연결의 역순)
 					if(rs!=null) 	rs.close();
 					if(pstmt!=null) pstmt.close();
 					if(conn!=null) 	conn.close();
@@ -152,9 +147,6 @@ public class MemberDao {
 		MemberDto dto = null;
 		Connection 		  conn  = null;
 		PreparedStatement pstmt = null;
-		
-		
-		
 		ResultSet 		  rs    = null;
 		String sql = "SELECT * FROM MEMBER WHERE ID=?";
 		try {
