@@ -10,9 +10,9 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<% request.setCharacterEncoding("utf-8"); %>
-	<jsp:useBean id="dto" class="com.lec.member.MemberDto" scope="page"/>
-	<jsp:setProperty property="*" name="dto"/>
+	<% request.setCharacterEncoding("utf-8"); %>		<%-- post 한글로 바꾸기 --%>
+	<jsp:useBean id="dto" class="com.lec.member.MemberDto" scope="page"/>		<%-- bean 사용, scope는 현재 페이지로 설정 --%>
+	<jsp:setProperty property="*" name="dto"/>		<%-- 데이터 값 설정 --%>
 	<%
 		String tempBirth = request.getParameter("tempBirth");	// ""이거나 "2000-02-02"
 		if(!tempBirth.equals("")){
