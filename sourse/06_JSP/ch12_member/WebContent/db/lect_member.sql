@@ -21,10 +21,10 @@ SELECT * FROM MEMBER WHERE ID='A';   -- SELECT COUNT(*) FROM MEMBER WHERE ID='A'
 INSERT INTO MEMBER 
      (ID, PW,  NAME, PHONE1, PHONE2, PHONE3, GENDER, EMAIL, BIRTH, ADDRESS, RDATE) 
     VALUES
-     ('A', '111', '홍깅동', '02', '111', '2222', 'm', 'h@hong@com', '1995-01-01', '서울', SYSDATE);
+     ('B', '111', '홍깅동', '02', '111', '2222', 'm', 'h@hong@com', '1995-01-01', '서울', SYSDATE);
      
 -- 3. 로그인 : public int loginCheck(String id, String pw)
-SELECT * FROM MEMBER WHERE ID='A';  -- ID 확인하기
+SELECT ID, PW    FROM MEMBER WHERE ID='A';  -- ID 확인하기
 -- SELECT * FROM MEMBER WHERE ID='A' AND PW='111';     -- ID나 PW 잘못치면 둘 다 확인(어떤게 틀렸는지 모름
 
 -- 4. ID로 dto가져오기 : 로그인 성공시 session에 setAttribute / 회원정보 수정시 회원정보 가져오기
