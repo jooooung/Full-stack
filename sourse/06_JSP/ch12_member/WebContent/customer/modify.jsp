@@ -59,7 +59,7 @@
 					</tr>
 					<tr>
 						<th><label for="ctel">전화번호</label></th>
-						<td><input type="text" name="ctel" value="<%=ctel%>" class="ctel"></td>
+						<td><input type="text" name="ctel" value='<%=ctel==null? "" : ctel %>' class="ctel"></td>
 					</tr>
 					<tr>
 						<th>성별</th>
