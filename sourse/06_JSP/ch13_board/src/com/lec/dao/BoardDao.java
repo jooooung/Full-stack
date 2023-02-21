@@ -58,7 +58,6 @@ public class BoardDao {
 				System.out.println(e.getMessage());
 			}
 		}
-				
 		return totalCnt;
 	}
 	// 2. 글목록
