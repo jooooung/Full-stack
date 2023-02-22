@@ -65,14 +65,38 @@
 - `int result = bDao.insertBoard(dto);`	: 글 저장하기
 
 ## ✔ 글 상세보기(content.jsp)
-- 글 번호 String으로 `request`
-- `BoardDao bDao = BoardDao.getInstance();` : dao 가져오기
-- `BoardDto dto = bDao.getBoardOneLine(num);` : dao의 메소드 이용하여 dto 선언
-- if 문으로 dto가 null이면 글목록 페이지  
- null이 아니면 받은 num 번째 글 상세보기 페이지로 이동
+- num(글번호), pageNum(페이지번호) 파라미터 받기
+- DAO, DTO 선언
+- if 문으로 글 번호(dto가 null)가 null이면 글목록 페이지로   
+ null이 아니면 조회수 올리기
+- 출력시 조회수 + 1로 올라간 조회수 표시
 
+## ✔ 글 수정(updateForm.jsp)
+- num(글번호), pageNum(페이지번호) 파라미터 받기
+- DAO, DTO 선언
+- form 태그
+    - action : 수정 데이터 처리할 updatePro.jsp
+    - method : 글비밀번호가 있기에 post로 전송
+    - num, pageNum hidden 타입으로 전달
 
+## ✔글수정처리(updatePro.jsp)
+- post로 받은 데이터 utf-8로 언어 변경
+- bean태그로 데이터 받기
+- pageNum 파라미터 
+- 작성자의 IP 세팅
+- DAO 받아서 result변수에 update하기
+- 글수정 성공 시 글상세보기(content)로 이동 : 이동시 num, pageNum데이터 같이 이동
 
+## ✔글삭제(deleteForm.jsp)
+- num, pageNum 파라미터 받기
+- num, pageNum hidden 타입으로 전달
+- 글비밀번호 입력받기
+
+## ✔글삭제처리(deletePro.jsp)
+- num 파라미터 int로 형변환
+- pageNum, pw 파라미터 받기
+- Dao 받아 result에 num, pw 매개변수인 deleteBoard 메소드 선언
+- 삭제 완료시 pageNum 데이터 포함하여 list로 가기
 
 ## @ 프로젝트 복사 시 해야할 것
 - 프로젝트 프로퍼티스 -> 웹 프로젝트 세팅의 Context root 프로젝트명으로 바꾸기 : 다른 프로젝트의 Context root와 중복되면 안됨

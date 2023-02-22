@@ -321,11 +321,12 @@ public class BoardDao {
 		int result = FAIL;
 		Connection 		  conn  = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE BOARD SET SUBJECT = ?" + 
-				"                 CONTENT = ?" + 
-				"                 EMAIL = ?" + 
-				"                 PW = ?" + 
-				"            WHERE NUM = ?";
+		String sql = "UPDATE BOARD SET SUBJECT = ?," + 
+				"                 CONTENT = ?," + 
+				"                 EMAIL = ?," + 
+				"                 PW = ?," +
+				"                 IP = ?" +
+				"            WHERE NUM =?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -333,8 +334,9 @@ public class BoardDao {
 			pstmt.setString(2, dto.getContent());
 			pstmt.setString(3, dto.getEmail());
 			pstmt.setString(4, dto.getPw());
-			pstmt.setInt(5, dto.getNum());
-			pstmt.executeUpdate();	
+			pstmt.setString(5, dto.getIp());
+			pstmt.setInt(6, dto.getNum());
+			result = pstmt.executeUpdate();	
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -358,7 +360,7 @@ public class BoardDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, pw);
-			pstmt.executeUpdate();	
+			result = pstmt.executeUpdate();	
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {

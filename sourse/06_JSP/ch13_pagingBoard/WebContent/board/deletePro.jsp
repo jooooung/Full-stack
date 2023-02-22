@@ -24,8 +24,8 @@
 		 	</script>
 	<%}else{ %>	
 		 	<script>
-		 	alert('비밀번호를 확인하세요');
-	 		history.back();
+		 		alert('비밀번호를 확인하세요');
+	 			history.back();
 		 	</script>
 	<%}%>
 </body>
