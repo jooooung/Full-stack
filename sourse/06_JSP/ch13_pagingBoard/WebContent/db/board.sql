@@ -22,6 +22,12 @@ SELECT COUNT(*)FROM BOARD;
 -- 2. 글목록(글그룹이 최신인 글이 위로)
 SELECT * FROM BOARD ORDER BY REF DESC;
 
+-- 2. 글목록 (topN구문)
+SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOARD ORDER BY REF DESC) A;
+SELECT * 
+    FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOARD ORDER BY REF DESC) A)
+    WHERE RN BETWEEN 1 AND 10;      -- DAO에 들어갈 SQL
+
 -- 3. 글쓰기(원글) - 글쓴이, 제목, 본분, 이메일, PW
     -- 글번호를 생성
     SELECT NVL(MAX(NUM), 0)+1 FROM BOARD;

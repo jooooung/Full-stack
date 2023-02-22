@@ -54,3 +54,25 @@
 - 글개수 메소드 가져와 글 표시
     - 0 = 글 없음 표시
     - 0 != ArrayList로 Dto 받아 데이터 출력
+
+## ✔ 글쓰기(writeForm.jsp)
+- form 태그
+    - 작성자(로그인 시에는 닉네임 받기), 제목, 본문, 이메일, 비밀번호
+    - 글쓰기(submit), 취소(reset), 목록(button onclick이벤트) 버튼
+
+## ✔ 쓴 글 저장(writePro.jsp)
+- dto, dao 가져오기
+- `int result = bDao.insertBoard(dto);`	: 글 저장하기
+
+## ✔ 글 상세보기(content.jsp)
+- 글 번호 String으로 `request`
+- `BoardDao bDao = BoardDao.getInstance();` : dao 가져오기
+- `BoardDto dto = bDao.getBoardOneLine(num);` : dao의 메소드 이용하여 dto 선언
+- if 문으로 dto가 null이면 글목록 페이지  
+ null이 아니면 받은 num 번째 글 상세보기 페이지로 이동
+
+
+
+
+## @ 프로젝트 복사 시 해야할 것
+- 프로젝트 프로퍼티스 -> 웹 프로젝트 세팅의 Context root 프로젝트명으로 바꾸기 : 다른 프로젝트의 Context root와 중복되면 안됨

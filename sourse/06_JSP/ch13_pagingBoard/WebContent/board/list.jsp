@@ -23,12 +23,19 @@
 			<th>글번호</th><th>작성자</th><th>글제목</th><th>메일</th><th>조회수</th>
 		</tr>
 		<%
+			// 페이징 하기  list.jsp 또는 list.jsp?pageNum=19
+			String pageNum = request.getParameter("pageNum");
+			if(pageNum==null) pageNum = "1";	// 전달받은 파라미터가 없으면 1페이지
+			int currentPage = Integer.parseInt(pageNum);
+			final int PAGESIZE=10, BLOCKSIZE=10;	
+			int startRow = (currentPage-1) * PAGESIZE + 1;	// 페이지의 시작 글  
+			int endRow   = startRow + PAGESIZE - 1;					// 페이지의 마지막 글
 			BoardDao bDao = BoardDao.getInstance();
 			int totalCnt = bDao.getBoardTotalCnt();
 			if(totalCnt == 0){
 				out.println("<tr><td colspan='5'>등록된 글이 없습니다</td></tr>");
 			}else{
-				ArrayList<BoardDto> dtos = bDao.listBoard();	// 전체글 가져오기
+				ArrayList<BoardDto> dtos = bDao.listBoard(startRow, endRow);	
 				for(BoardDto dto : dtos){
 					// 글번호
 					out.println("<tr><td>" + dto.getNum() + "</td>");
@@ -39,7 +46,8 @@
 					if(dto.getReadcount() > 10){
 						out.println("<img src='" + conPath + "/img/hot.gif'>");
 					}
-					out.println("<a href='" + conPath + "/board/content.jsp?num="+dto.getNum()+"'>" + dto.getSubject() + "</a>");
+					out.println("<a href='" + conPath + "/board/content.jsp?num="+dto.getNum()
+																+"&pageNum="+pageNum+"'>" + dto.getSubject() + "</a>");
 					out.println("</td>");
 					// 메일
 					String email = dto.getEmail();
@@ -50,5 +58,28 @@
 			}
 		%>
 	</table>
+	<div class="paging">
+		<%
+			int pageCnt = (int)Math.ceil((double)totalCnt / PAGESIZE);
+			int startPage = ((currentPage - 1) / BLOCKSIZE) * BLOCKSIZE + 1;
+			int endPage = startPage + BLOCKSIZE - 1;
+			if(endPage > pageCnt){
+				endPage = pageCnt;
+			}
+			if(startPage > BLOCKSIZE){
+				out.println("[<a href='"+conPath+"/board/list.jsp?pageNum="+(startPage-1)+"'>이전</a>]");
+			}
+			for(int i=startPage ; i<=endPage ; i++){
+				if(i == currentPage){
+					out.println("[<b>" + i + "</b>]");
+				}else{
+					out.println("[<a href='"+conPath + "/board/list.jsp?pageNum=" + i + "'>" + i + "</a>]");
+				}
+			}
+			if(endPage < pageCnt){
+				out.println("[<a href='" + conPath +"/board/list.jsp?pageNum=" + (endPage+1) + "'> 다음 </a>]");
+			}
+		%>
+	</div>
 </body>
 </html>

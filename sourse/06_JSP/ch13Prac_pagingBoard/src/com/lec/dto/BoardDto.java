@@ -1,23 +1,27 @@
 package com.lec.dto;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class BoardDto {
-	private int num;			// 글번호
-	private String writer;		// 작성자
-	private String subject;		// 글제목
-	private String content;		// 본문
-	private String email;		// 이메일
-	private int readcount;		// 조회수
-	private String pw;			// 글비밀번호
-	private int ref;			// 답변글 번호
+	private int num; 
+	private String writer;
+	private String subject;
+	private String content;
+	private String email;
+	private int readcount;
+	private String pw;
+	private int ref;
 	private int ref_step;
 	private int ref_indent;
 	private String ip;
 	private Timestamp rdate;
-	public BoardDto() {}
+	public BoardDto() {
+		super();
+	}
 	public BoardDto(int num, String writer, String subject, String content, String email, int readcount, String pw,
 			int ref, int ref_step, int ref_indent, String ip, Timestamp rdate) {
+		super();
 		this.num = num;
 		this.writer = writer;
 		this.subject = subject;
