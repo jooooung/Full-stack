@@ -75,7 +75,7 @@
 			} // if 
 		} // for
 	%>
-	<h3><%=Arrays.toString(filenames) %></h3>
+	<h3><%=Arrays.toString(filenames) %></h3>n
 	<h3><%=Arrays.toString(oriFilenames) %></h3>
 	<h3>0번째 첨부</h3>
 	<h3><%=path %>/<%=filenames[2] %></h3>
