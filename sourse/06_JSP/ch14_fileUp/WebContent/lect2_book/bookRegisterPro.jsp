@@ -1,4 +1,3 @@
-<%@page import="com.mysql.cj.conf.url.SingleConnectionUrl"%>
 <%@page import="com.lec.book.*"%>
 <%@page import="java.io.FileOutputStream"%>
 <%@page import="java.io.FileInputStream"%>
@@ -11,7 +10,7 @@
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%String conPath = request.getContextPath(); %>    
+<%String conPath = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
