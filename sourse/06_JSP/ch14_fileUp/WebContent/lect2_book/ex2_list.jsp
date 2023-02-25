@@ -25,6 +25,7 @@
 		ArrayList<BookDto> books = dao.listBook(startRow, endRow);
 	%>
 	<table>
+		<caption>책 목록</caption>
 		<tr>
 			<th>ID</th>
 			<th>이름</th>
@@ -41,7 +42,7 @@
 				<tr>
 					<td><%=book.getBid() %></td>
 					<td>
-						<a href='detail.jsp?bid=<%=book.getBtitle()%>'><%=book.getBtitle() %></a>
+						<a href='detail.jsp?bid=<%=book.getBid()%>'><%=book.getBtitle() %></a>
 					</td>
 					<td>
 						<a href='detail.jsp?bid=<%=book.getBid()%>'>
@@ -50,7 +51,7 @@
 					</td>
 					<td>
 						<del><%=book.getBprice() %></del>
-						<b><%=book.getBprice() * (100 - book.getBdiscount()) / 100 %> 원
+						<b><%=book.getBprice() * (100 - book.getBdiscount()) / 100 %> 원</b>
 					</td>
 					<td>
 						<%=book.getBdiscount() %>%
@@ -59,6 +60,11 @@
 		<% } %>
 	<% } %>
 	</table>
+		<a href="ex1_list_board.jsp">책 리스트(게시판 스타일)</a><br>
+		<a href="ex2_list.jsp">책 1page리스트(게시판 스타일)</a><br>
+		<a href="ex3_list_product.jsp">책 전체리스트(product list 스타일)</a><br>
+		<a href="ex4_list.jsp">책 1page리스트(product list 스타일)</a><br>
+		<button onclick="location.href='bookRegisterForm.html'">책 등록</button> 
 	<div class="paging">
 		<%
 			int bookTotalCnt = dao.getBookTotalCnt();		// 등록된 책 개수
@@ -74,9 +80,9 @@
 		<%} 
 			for(int i=startPage ; i<=endPage ; i++){
 				if(i == currentPage){
-					out.println("[<b>" + i + "</b>]");
+					out.println("[<b>" + i + "</b>]");	// 현재 페이지에 효과 주기
 				}else{
-					out.println("[<a href='ex2_list.jsp?pageNum=" + i + "'>" + i + "</a>]");
+					out.println("[<a href='ex2_list.jsp?pageNum=" + i + "'>" + i + "</a>]");	// 페이지 출력
 				}
 			}
 			if(endPage < pageCnt){

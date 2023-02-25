@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="../css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<form action="bookRegisterPro.jsp" method="post" enctype="multipart/form-data">
+		<table>
+			<caption>책등록</caption>
+			<tr>
+				<th>제목</th>
+				<td><input type="text" name="btitle" required="required" maxlength="33" autofocus="autofocus"> 
+			</tr>
+			<tr>
+				<th>가격</th>
+				<td><input type="number" name="bprice" required="required" min="0" max="999999"></td> 
+			</tr>
+			<tr>
+				<th>대표이미지</th>
+				<td><input type="file" name="bimage1"> </td>
+			</tr>
+			<tr>
+				<th>상세이미지</th>
+				<td><input type="file" name="bimage2"></td> 
+			</tr>
+			<tr>
+				<th>책소개</th>
+				<td><textarea rows="5" name="bcontent"></textarea></td> 
+			</tr>
+			<tr>
+				<th>할인율</th>
+				<td><input type="number" name="bdiscount" value="0" min="0" max="100" required="required" onfocus='this.value=""'></td> 
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="책등록" class="btn">
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

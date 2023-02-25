@@ -25,15 +25,15 @@
 		String[] images = {"",""};
 		MultipartRequest mRequest = null;		// try 안이 아닌 밖에 설정하는 이유 : 받을 파라미터가 많기 때문
 		try{
-		mRequest = new MultipartRequest(request, path, maxSize, "utf-8", 
-								new DefaultFileRenamePolicy());
-		Enumeration<String> paramNames = mRequest.getFileNames();
-		int idx = 0;
-		while(paramNames.hasMoreElements()){
-				String param = paramNames.nextElement();
-				images[idx] = mRequest.getFilesystemName(param);
-				System.out.println(idx + "번째 처리한 파라미터 : " + param + "/파일이름 : " + images[idx]);
-				idx++;
+			mRequest = new MultipartRequest(request, path, maxSize, "utf-8", 
+									new DefaultFileRenamePolicy());
+			Enumeration<String> paramNames = mRequest.getFileNames();
+			int idx = 0;
+			while(paramNames.hasMoreElements()){
+					String param = paramNames.nextElement();
+					images[idx] = mRequest.getFilesystemName(param);
+					System.out.println(idx + "번째 처리한 파라미터 : " + param + "/파일이름 : " + images[idx]);
+					idx++;
 			}
 		}catch(IOException e){
 			System.out.println(e.getMessage());
@@ -102,5 +102,6 @@
 	<a href="ex2_list.jsp">책 1page리스트(게시판 스타일)</a><br>
 	<a href="ex3_list_product.jsp">책 전체리스트(product list 스타일)</a><br>
 	<a href="ex4_list.jsp">책 1page리스트(product list 스타일)</a><br>
+	<button onclick="location.href='<%=conPath%>/lect2_book/bookRegisterForm.html'">책 등록</button> 
 </body>
 </html>

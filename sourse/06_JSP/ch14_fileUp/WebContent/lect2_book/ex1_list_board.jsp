@@ -36,11 +36,11 @@
 					out.println("<tr>");
 					out.println("<td>" + book.getBid() + "</td>");
 					out.println("<td>");
-					out.println("<a href='detail.jsp?bid=" + book.getBtitle() + "'>" + book.getBtitle() + "</a>");
+					out.println("<a href='detail.jsp?bid=" + book.getBid() + "'>" + book.getBtitle() + "</a>");
 					out.println("</td>");
 					out.println("<td>");
-					out.println("		<a href='detail.jsp?bid=" + book.getBtitle() + "'><img src ='"
-														+ conPath + "/bookImg/" + book.getBimage1() + "' width='30'></a>");
+					out.println("		<a href='detail.jsp?bid=" + book.getBid() + "'><img src ='"
+														+ conPath + "/bookFile/" + book.getBimage1() + "' width='30'></a>");
 					out.println("</td>");
 					out.println("<td><del>" + price + "</del><b>"+disPrice+"원</b></td>");
 					out.println("<td>" + discount + "%</td>");
@@ -49,5 +49,10 @@
 			}
 		%>
 	</table>
+		<a href="ex1_list_board.jsp">책 리스트(게시판 스타일)</a><br>
+		<a href="ex2_list.jsp">책 1page리스트(게시판 스타일)</a><br>
+		<a href="ex3_list_product.jsp">책 전체리스트(product list 스타일)</a><br>
+		<a href="ex4_list.jsp">책 1page리스트(product list 스타일)</a><br>
+		<button onclick="location.href='<%=conPath%>/lect2_book/bookRegisterForm.html'">책 등록</button> 
 </body>
 </html>

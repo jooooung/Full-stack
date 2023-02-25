@@ -12,6 +12,7 @@
 </head>
 <body>
 	<table>
+		<caption>책 목록</caption>
 		<tr>
 			<%
 				String pageNum = request.getParameter("pageNum");
@@ -19,7 +20,7 @@
 					pageNum = "1";
 				}
 				int currentPage = Integer.parseInt(pageNum);
-				final int PAGESIZE=6, BLOCKSIZE=2;
+				final int PAGESIZE=3, BLOCKSIZE=2;
 				int startRow = (currentPage -1) * PAGESIZE + 1;
 				int endRow	 = startRow + PAGESIZE - 1;
 			  BookDao bDao = BookDao.getInstance();
@@ -40,7 +41,12 @@
 				</td>
 			<%}%>
 		</tr>	
-	</table>	
+	</table>
+		<a href="ex1_list_board.jsp">책 리스트(게시판 스타일)</a><br>
+		<a href="ex2_list.jsp">책 1page리스트(게시판 스타일)</a><br>
+		<a href="ex3_list_product.jsp">책 전체리스트(product list 스타일)</a><br>
+		<a href="ex4_list.jsp">책 1page리스트(product list 스타일)</a><br>
+		<button onclick="location.href='<%=conPath%>/lect2_book/bookRegisterForm.html'">책 등록</button> 	
 	<div class="paging">
 		<%
 			int bookTotalCnt = bDao.getBookTotalCnt();		// 등록된 책 개수
