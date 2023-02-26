@@ -40,21 +40,21 @@
 			 System.out.println(e.getMessage());
   	}
   	// 서버파일 => 소스 폴더 복사
-	  	for(String imgFile : images){
-			InputStream  is = null;
-			OutputStream os = null;
-			File serverFile = new File(path + "/" + imgFile);
-			if(serverFile.exists()){
-				try{
-						is = new FileInputStream(serverFile);
-	  				os = new FileOutputStream("D:/full-stack/sourse/06_JSP/ch14_fileUp/WebContent/bookFile/" + imgFile);
+  	for(String imgfile : images){
+  		InputStream  is = null;
+  		OutputStream os = null;
+  		File serverFile = new File(path + "/" + imgfile);
+  		if(serverFile.exists()){
+  			try{
+	  				is = new FileInputStream(serverFile);
+	  				os = new FileOutputStream("D:/full-stack/sourse/06_JSP/ch14_fileUp/WebContent/bookFile/"+imgfile);
 	  				byte[] bs = new byte[(int)serverFile.length()];
-					while(true){
-						int readByteCnt = is.read(bs);	// bs만큼 is 서버파일 읽기
-						if(readByteCnt == -1) break;		// 파일이 끝이면 break
-						os.write(bs, 0, readByteCnt);
-					}
-				}catch(IOException e){
+	  				while(true){
+	  					int readByteCnt = is.read(bs);
+	  					if(readByteCnt == -1) break;
+	  					os.write(bs, 0, readByteCnt);
+	  				}
+	  			}catch(IOException e){
 					System.out.println(e.getMessage());
 				}finally{
 					try{
@@ -64,33 +64,32 @@
 						System.out.println(e.getMessage());
 					}
 				} //try-catch-finally
-			} // if 
-		} // for
-	  // book  테이블에 저장
-	  String btitle  = mRequest.getParameter("btitle");
-		int 	 bprice  = Integer.parseInt(mRequest.getParameter("bprice"));
+	  	}
+	  }
+  	String btitle = mRequest.getParameter("btitle");
+		int 	 bprice = Integer.parseInt(mRequest.getParameter("bprice"));
 		String bimage1 = images[1] != null? images[1] : "noImg.png";
-	  String bimage2 = images[0] != null? images[0] : "NOTHING.JPG";
+		String bimage2 = images[0] != null? images[0] : "NOTHING.JPG";
 		String bcontent = mRequest.getParameter("bcontent");
 		if(bcontent == null) bcontent = "";
-	  int 	 bdiscount = Integer.parseInt(mRequest.getParameter("bdiscount"));
+		int 	 bdiscount = Integer.parseInt(mRequest.getParameter("bdiscount"));
 		BookDto dto = new BookDto(0, btitle, bprice, bimage1, bimage2, bcontent, bdiscount, null);
-		BookDao dao = BookDao.getInstance();
-		int result = dao.insertBook(dto);
-		if(result == dao.SUCCESS){
+		BookDao Dao = BookDao.getInstance();
+		int result = Dao.insertBook(dto);
+		if(result == Dao.SUCCESS){
 			out.println("책 등록 성공");
 		}else{
 			out.println("책 등록 실패");
 		}
-  %>
-  <h3>제목 : <%=btitle %></h3>
-  <h3>
-  	가격<del><%=bprice %></del>
-  	<b>
-  		<%=bprice * (100-bdiscount) / 100 %>
-  		(<%=bdiscount %>% 할인)
-  	</b>
-  </h3>
+	%>	
+	<h3>책이름 <%=btitle %></h3>
+	<h3>
+		가격 <del><%=bprice %></del>
+		<b>
+			<%=bprice * (100-bdiscount) / 100 %>
+			(<%=bdiscount %>% 할인)
+		</b> 
+	</h3>
   <h3>대표이미지</h3>
   <img alt="" src="<%=conPath%>/bookFile/<%=bimage1%>">
   <h3>상세이미지</h3>
