@@ -105,7 +105,7 @@ public class BookDao {
 		}
 		return books;
 	}
-	// 등록된 책 갯수
+	// 등록된 책 개수
 	public int getBookTotCnt() {
 		int bookTotalCnt = 0;
 		Connection        conn  = null;

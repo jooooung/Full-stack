@@ -172,13 +172,13 @@ public class CustomerDao {
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE CUSTOMER SET CPW = ?, " + 
-				"                    CNAME = ?," + 
-				"                    CTEL = ?," + 
-				"                    CEMAIL = ?," + 
-				"                    CADDRESS = ?," + 
-				"                    CGENDER = ?," + 
-				"                    CBIRTH = ?" + 
-				"            WHERE CID = ?";
+				"                     	  CNAME = ?," + 
+				"                    	  CTEL = ?," + 
+				"                    	  CEMAIL = ?," + 
+				"                    	  CADDRESS = ?," + 
+				"                    	  CGENDER = ?," + 
+				"                    	  CBIRTH = ?" + 
+				"            			WHERE CID = ?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -199,7 +199,7 @@ public class CustomerDao {
 				if(pstmt != null) pstmt.close();
 				if(conn  != null) conn.close();
 			}catch (SQLException e) {
-				// TODO: handle exception
+				System.out.println(e.getMessage());
 			}
 		}
 		return result;

@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="com.lec.dto.CustomerDto"%>
 <%@page import="com.lec.dao.CustomerDao"%>
 <%@page import="java.sql.Date"%>
@@ -9,7 +10,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="<%=conPath%>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	 <% request.setCharacterEncoding("UTF-8"); %>
@@ -36,14 +36,13 @@
 	 		int result = cDao.updateCustomer(dto);
 	 		if(result == CustomerDao.SUCCESS){
 	 			// 정보 수정성공
-	 			session.setAttribute(conPath + "/main/main.jsp", dto);	// 수정된 정보를 session 속성으로 수정
+	 			session.setAttribute("customer", dto);	// 수정된 정보를 session 속성으로 수정
 	 %>		
 	 			<script>
 	 				alert('정보수정 완료');
 	 				location.href='<%=conPath%>/main/main.jsp';
 	 			</script>
 	 		}else{
-	 			// 정보 수정실패
 	 			<script>
 					alert('회원정보 수정이 실패되었습니다');	 
 					location.href='<%=conPath%>/customer/modifyForm.jsp';

@@ -34,7 +34,7 @@ CREATE TABLE FILEBOARD(
     fRE_STEP NUMBER(7) NOT NULL,        -- 그룹내 출력순서
     fRE_LEVEL NUMBER(1) NOT NULL,       -- 들여쓰기
     fIP      VARCHAR2(50) NOT NULL,     -- IP주소
-    fRDATE   DATE DEFAULT SYSDATE NOT NULL              -- 글등록시점 
+    fRDATE   DATE DEFAULT SYSDATE NOT NULL  -- 글등록시점 
 );
 -- BOOK
 CREATE SEQUENCE BOOK_SEQ
@@ -49,7 +49,7 @@ CREATE TABLE BOOK(
     bIMAGE2 VARCHAR2(30) NOT NULL,      -- 부가이미지
     bCONTENT VARCHAR2(4000),            -- 책소개
     bDISCOUNT NUMBER(3) NOT NULL,       -- 할인율
-    bRDATE  DATE DEFAULT SYSDATE NOT NULL               -- 책등록시점
+    bRDATE  DATE DEFAULT SYSDATE NOT NULL  -- 책등록시점
 );
 SELECT * FROM CUSTOMER;
 SELECT * FROM FILEBOARD;

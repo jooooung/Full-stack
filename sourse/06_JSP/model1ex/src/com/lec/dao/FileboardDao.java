@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -26,13 +27,12 @@ public class FileboardDao {
 	}
 	private FileboardDao() {}
 	// 커넥션 풀
-	private Connection getConnection() throws NamingException {
+	private Connection getConnection() throws SQLException {
 		Connection conn = null;
-		Context ctx;
 		try {
-			ctx = new InitialContext();
+			Context ctx = new InitialContext();
 			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Oracle11g");
-			conn = getConnection();
+			conn = ds.getConnection();
 		} catch (NamingException e) {
 			System.out.println(e.getMessage());
 		}

@@ -14,14 +14,15 @@
 	</script>
 </head>
 <body>
-	<%! String cid, cname, ctel, cgender, cemail, caddress;
+	<%! 
+			String cid, cname, ctel, cgender, cemail, caddress;
 			Date cbirth;		
 	%>
 	<%
 		CustomerDto customer = (CustomerDto)session.getAttribute("customer");
 		if(customer==null){	// 정보가 없다면 로그인 페이지로
 			// 정보수정 페이지에서 로그인시 main페이지가 아닌 정보수정 페이지로 가게 하기
-			response.sendRedirect("loginForm.jsp?method=modify");	
+			response.sendRedirect("loginForm.jsp?method=modifyForm");	
 		}else{
 			cid = customer.getCid();
 			cname = customer.getCname();
@@ -34,8 +35,8 @@
 	%>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="modifyForm_wrap">
-		<div id="modify_title">회원가입</div>
-			<form action="modifyOk.jsp" method="post">
+		<div id="modify_title">정보수정</div>
+			<form action="modifyPro.jsp" method="post">
 				<table>
 					<tr>
 						<th><label for="cid">아이디</label></th>
@@ -62,6 +63,18 @@
 						<td><input type="text" name="ctel" value='<%=ctel==null? "" : ctel %>' class="ctel"></td>
 					</tr>
 					<tr>
+						<th><label for="cemail">이메일</label></th>
+						<td><input type="email" name="cemail" value='<%=cemail == null? "" : cemail%>' class="cemail">
+					</tr>
+					<tr>
+						<th><label for="cbirth">생년월일</label></th>
+						<td><input type="date" name="tempBirth" value='<%=cbirth== null? "" : cbirth.toString()%>' class="cbirth"></td>
+					</tr>
+					<tr>
+						<th><label for="caddress">주소</label></th>
+						<td><input type="text" name="caddress" value='<%=caddress == null? "" : caddress%>' class="caddress">
+					</tr>
+					<tr>
 						<th>성별</th>
 						<td>
 							<%if("m".equals(cgender)){ %>
@@ -75,18 +88,6 @@
 								<input type="radio" name="cgender" value="f">여자
 							<%} %>
 						</td>
-					</tr>
-					<tr>
-						<th><label for="cemail">이메일</label></th>
-						<td><input type="email" name="email" value='<%=cemail == null? "" : cemail%>' class="cemail">
-					</tr>
-					<tr>
-						<th><label for="cbirth">생년월일</label></th>
-						<td><input type="date" name="tempBirth" value='<%=cbirth== null? "" : cbirth.toString()%>' class="cbirth"></td>
-					</tr>
-					<tr>
-						<th><label for="caddress">주소</label></th>
-						<td><input type="text" name="address" value='<%=caddress == null? "" : caddress%>' class="caddress">
 					</tr>
 					<tr>
 						<td colspan="2">
