@@ -1,5 +1,0 @@
--- TABLE & SEQUENCE DROP
-
--- TABLE & SEQUENCE CREATE
-
--- INDEX & VIEW 생성(상황에 따라)

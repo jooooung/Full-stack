@@ -11,7 +11,8 @@
 <body>
 	<footer>
 		<div class="office_logo">
-			<img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+			<img alt="고용노동부 로고"
+				src="https://www.moel.go.kr/images/layout/logo.png">
 		</div>
 		<div class="office_address">
 			<ul>

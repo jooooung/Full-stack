@@ -9,7 +9,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Insert title here</title>
-  <link href="<%=conPath%>/css/style.css" rel="stylesheet" type="text/css">
+  <link href="<%=conPath%>/css/content.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   <jsp:include page="../main/header.jsp"/>
@@ -24,7 +24,6 @@
   		int endRow   = startRow + PAGESIZE - 1;					// 페이지의 마지막 글
   		CustomerDao cDao = CustomerDao.getInstance();
   		ArrayList<CustomerDto> customers = cDao.listCustomer(startRow, endRow);
-  		out.println(customers);
   	%>
   	<table>
   		<tr>
@@ -47,6 +46,31 @@
   			}
   		%>
   	</table>
+  	<div class="paging">
+  		<%
+  			int totCnt = cDao.getCustomerCnt();
+  			int pageCnt = (int)Math.ceil((double)totCnt / PAGESIZE);	// 페이지 수
+  			int startPage = ((currentPage - 1) / BLOCKSIZE) * BLOCKSIZE + 1;
+				int endPage = startPage + BLOCKSIZE - 1;			
+  	  	if(endPage > pageCnt){
+  	  		endPage = pageCnt;
+  	  	}
+  	  	if(startPage > BLOCKSIZE){
+  	  %>	
+  	  	[ <a href="<%=conPath%>/main/main.jsp?pageNum?<%=startPage-1%>">이전</a> ]	
+  	  <%}
+  	  	for(int i=startPage ; i<=endPage ; i++){
+  	  		if(i == currentPage){
+  	  			out.println("[" + i + "]");
+  	  		}else{
+  	  			out.println("[<a href='"+conPath + "/main/main.jsp?pageNum=" + i + "'>" + i + "</a>]");
+  	  		}
+  	  	}
+  	  	if(endPage < pageCnt){
+  	  	out.println("[<a href='"+conPath + "/main/main.jsp?pageNum=" + (endPage+1) + "'>다음</a>]");
+  	  	}
+  		%>
+  	</div>
   </div>
   <jsp:include page="../main/footer.jsp"/>
 </body>

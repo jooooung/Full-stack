@@ -14,8 +14,8 @@ import javax.sql.DataSource;
 import com.lec.dto.CustomerDto;
 
 public class CustomerDao {
-	private static final int SUCCESS = 1;
-	private static final int FAIL = 0;
+	public static final int SUCCESS = 1;
+	public static final int FAIL = 0;
 	// 싱글톤
 	private static CustomerDao instance = new CustomerDao();
 	public static CustomerDao getInstance(){
@@ -25,11 +25,10 @@ public class CustomerDao {
 	// 커넥션 풀
 	private Connection getConnection() throws SQLException {
 		Connection conn = null;
-		Context ctx;
 		try {
-			ctx = new InitialContext();
+			Context ctx = new InitialContext();
 			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Oracle11g");
-			conn = getConnection();
+			conn = ds.getConnection();
 		} catch (NamingException e) {
 			System.out.println(e.getMessage());
 		}
