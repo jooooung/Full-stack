@@ -47,7 +47,8 @@
 - 상세내용
 
 ## 코드순서
-### 1. DB 테이블 생성
+### 1. DB 
+- drop & create table, sequence
 - 도서번호는 `SEQUENCE` 이용
 - `QUERY` 생성
     1. 책등록 (더미데이터 삽입 시 항상 마지막에 commit하기)
@@ -76,6 +77,14 @@
     - `enctype="multipart/form-data"` : 파일이나 이미지 전송시 사용
 ### 3-2. 책등록 프로세스
 - `String 변수 : request.getRealPath("폴더명");` : 서버 파일이 저장될 폴더의 경로 변수 지정
-- 업로드 사이즈 설정
+- 최대 업로드 사이즈 설정
 - 메인 표지, 상세 표지 첨부파일이 한 개 이상이므로 배열 변수 선언
-- 
+- `MultipartRequest` : COS라이브러리에서 파일 업로드를 직접적으로 담당하는 클래스
+    - `request` : `MultipartRequest`와 연결된 `request` 객체를 의미
+    - `path`, `maxSize`, `utf-8` : 저장폴더명, 최대 업로드 사이즈, post방식으로 넘어온 언어체계
+    - `DefaultFileRenamePolicy()` : 중복 파일명 있을시 자동으로 변경
+
+#### 서버 파일 => 소스 폴더로 복사
+- for문 이용 서버파일 불러오기 => 소스 폴더에 저장
+
+
