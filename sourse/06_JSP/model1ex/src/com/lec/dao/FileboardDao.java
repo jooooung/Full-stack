@@ -15,8 +15,8 @@ import javax.sql.DataSource;
 import com.lec.dto.FileboardDto;
 
 public class FileboardDao {
-	private static final int SUCCESS = 1;
-	private static final int FAIL = 0;
+	public  static final int SUCCESS = 1;
+	public static final int FAIL = 0;
 	// 싱글톤
 	private static FileboardDao instance;
 	public static FileboardDao getInstance() {
@@ -185,8 +185,8 @@ public class FileboardDao {
 			pstmt.setString(5, dto.getFpw());
 			pstmt.setInt(6, dto.getFhit());
 			pstmt.setInt(7, dto.getFref());
-			pstmt.setInt(8, dto.getFre_step());
-			pstmt.setInt(9, dto.getFre_level());
+			pstmt.setInt(8, dto.getFre_step() + 1);
+			pstmt.setInt(9, dto.getFre_level() + 1);
 			pstmt.setString(10, dto.getFip());
 			result = pstmt.executeUpdate();
 			System.out.println(result == SUCCESS? "답글쓰기성공" : "답글쓰기 실패");
@@ -272,17 +272,22 @@ public class FileboardDao {
 		Connection 		  conn  = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE FILEBOARD SET fSUBJECT = ?, " + 
-				"                     fCONTENT = ?, " + 
-				"                     fFILENAME = ?" + 
-				"                 WHERE fNUM = ?";
+				"                    fCONTENT = ?, " + 
+				"                    fFILENAME = ?, " + 
+				"                    fPW = ?, " + 
+				"                    fIP = ? " + 
+				"                WHERE fNUM= ?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getCid());
-			pstmt.setString(2, dto.getFsubject());
-			pstmt.setString(3, dto.getFcontent());
-			pstmt.setString(4, dto.getFfilename());
+			pstmt.setString(1, dto.getFsubject());
+			pstmt.setString(2, dto.getFcontent());
+			pstmt.setString(3, dto.getFfilename());
+			pstmt.setString(4, dto.getFpw());
+			pstmt.setString(5, dto.getFip());
+			pstmt.setInt(6, dto.getFnum());
 			result = pstmt.executeUpdate();
+			System.out.println(result==SUCCESS ? "글수정 성공" : "해당 글번호가 없어서 글 수정 실패");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -300,13 +305,14 @@ public class FileboardDao {
 		int result = FAIL;
 		Connection 		  conn  = null;
 		PreparedStatement pstmt = null;
-		String sql = "DELETE FROM FILEBOARD WHERE cID = ? AND fPW = ?";
+		String sql = "DELETE FROM FILEBOARD WHERE FNUM = ? AND fPW = ?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, fnum);
 			pstmt.setString(2, fpw);
 			result = pstmt.executeUpdate();
+			System.out.println(result==SUCCESS ? "글삭제 성공" : "글삭제 실패");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {

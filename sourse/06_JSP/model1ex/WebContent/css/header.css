@@ -6,7 +6,7 @@
 }
 
 body {
-	background-color: #3c373e;
+	background-color: lightyellow; 
 	font-size: 9pt;
 }
 
@@ -20,11 +20,12 @@ header li {
 }
 
 header .gnb {
-	width: 100%;
 	background-color: #003300;
+	width: 100%;
 }
 
 header .gnb ul {
+	background-color: #003300;
 	overflow: hidden;
 	width: 1000px;
 	height: 30px;

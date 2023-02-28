@@ -26,8 +26,8 @@
 			session.setAttribute("customer", customer);
 			if(method.equals("null")){		// 정보수정 로그인이 아니면 메인으로
 				response.sendRedirect(conPath + "/main/main.jsp");
-			}else{	// 정보수정 로그인 시 정보수정 페이지로 가기
-				response.sendRedirect(conPath + "/main/" + method + ".jsp");;
+			}else{	// 정보수정, 책등록 로그인 시 정보수정, 책등록 페이지로 가기
+				response.sendRedirect(conPath + "/" + method + ".jsp");;
 			}
 		}else if(result == CustomerDao.FAIL){	
 			msg = URLEncoder.encode("아이디나 비밀번호를 확인하세요");   

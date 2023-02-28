@@ -9,6 +9,11 @@
   <meta charset="UTF-8">
   <title>Insert title here</title>
   <link href="<%=conPath%>/css/content.css" rel="stylesheet" type="text/css">
+  <style>
+  	#content_form{ 
+  		padding: 40px;
+  	}
+  </style>
 </head>
 <body>
   <jsp:include page="../main/header.jsp"/>
@@ -38,8 +43,16 @@
 			</tr>
 			<tr>
 				<td>
-					<del><%=book.getBprice()%></del><br>
-					<b><%=book.getBprice() * (100 -book.getBdiscount()) / 100 %></b> <%=book.getBdiscount()%>%할인
+					<%if(book.getBdiscount() != 0){ %>
+						<del><%=book.getBprice() %></del>
+						<b><%=book.getBprice() * (100 -book.getBdiscount()) / 100%>원</b>(<%=book.getBdiscount() %>%할인)
+					<%}else{ %>
+						<b>
+							<img alt="hit이미지" src="<%=conPath%>/img/hot.gif">베스트셀러
+							<br>
+							<%=book.getBprice() %>원
+						</b>		
+					<%} %>
 				</td>
 			</tr>
 			<tr>
@@ -51,7 +64,8 @@
 			<tr>
 				<td colspan="2">
 					<img alt="추가이미지" src="<%=conPath%>/bookImg/<%=book.getBimage2()%>">
-					<pre><%=bcontent %></pre>
+					<br>
+					<pre><%=book.getBcontent()==null? "": book.getBcontent()%></pre>
 				</td>
 			</tr>
 		</table>

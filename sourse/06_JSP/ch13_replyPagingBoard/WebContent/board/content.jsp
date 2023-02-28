@@ -12,7 +12,7 @@
 </head>
 <body>
 	<%
-		String num = request.getParameter("num");		// null 이거나 "3"
+		String num = request.getParameter("num");	
 		/* pageNum 추가 */
 		String pageNum = request.getParameter("pageNum");
 		BoardDao bDao = BoardDao.getInstance();

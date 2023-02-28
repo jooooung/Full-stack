@@ -22,7 +22,7 @@
 		CustomerDto customer = (CustomerDto)session.getAttribute("customer");
 		if(customer==null){	// 정보가 없다면 로그인 페이지로
 			// 정보수정 페이지에서 로그인시 main페이지가 아닌 정보수정 페이지로 가게 하기
-			response.sendRedirect("loginForm.jsp?method=modifyForm");	
+			response.sendRedirect("loginForm.jsp?method=customer/modifyForm");	
 		}else{
 			cid = customer.getCid();
 			cname = customer.getCname();

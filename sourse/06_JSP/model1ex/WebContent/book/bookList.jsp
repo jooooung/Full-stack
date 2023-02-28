@@ -10,6 +10,9 @@
   <meta charset="UTF-8">
   <title>Insert title here</title>
   <link href="<%=conPath%>/css/content.css" rel="stylesheet" type="text/css">
+  <style>
+  	#content_form{ padding-top: 80px;}
+  </style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -34,14 +37,26 @@
 						if(i != 0 && i % 3 == 0) out.println("</tr><tr>");
 				%>
 					<td>
+					<%if(bdiscount != 0){ %>
 						<a href="bookContent.jsp?bid=<%=books.get(i).getBid()%>&pageNum=<%=pageNum%>">
 							<img alt="표지" src="<%=conPath%>/bookImg/<%=books.get(i).getBimage1()%>"><br>
 							<%=books.get(i).getBid() %>. <%=books.get(i).getBtitle() %><br>
 						</a>	
 						<del><%=bprice %></del>
 						<b><%=discountPrice %>원</b>(<%=bdiscount %>%할인)
+					<%}else{ %>
+						<a href="bookContent.jsp?bid=<%=books.get(i).getBid()%>&pageNum=<%=pageNum%>">
+							<img alt="표지" src="<%=conPath%>/bookImg/<%=books.get(i).getBimage1()%>"><br>
+							<%=books.get(i).getBid() %>. <%=books.get(i).getBtitle() %><br>
+						</a>
+						<b>
+							<img alt="hit이미지" src="<%=conPath%>/img/hot.gif">베스트셀러
+							<br>
+							<%=bprice %>원
+						</b>		
+					<%} %>
 					</td>
-				<%}%>
+				<%} %>
 			</tr>	
 		</table>
 	<div class="paging">
@@ -54,12 +69,11 @@
   	  		endPage = pageCnt;
   	  	}
   	  	if(startPage > BLOCKSIZE){
-  	  %>
-  	  	[ <a href="<%=conPath%>/book/bookList.jsp?pageNum?<%=startPage-1%>">이전</a> ]	
-  	  <%}
+  	  	out.println("[<a href='"+conPath + "/book/bookList.jsp?pageNum=" + (startPage-1) + "'>이전</a>]");
+  	  	}
   	  	for(int i=startPage ; i<=endPage ; i++){
   	  		if(i == currentPage){
-  	  			out.println("[" + i + "]");
+  	  			out.println("[<b>" + i + "</b>]");
   	  		}else{
   	  			out.println("[<a href='"+conPath + "/book/bookList.jsp?pageNum=" + i + "'>" + i + "</a>]");
   	  		}
