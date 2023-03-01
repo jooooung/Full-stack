@@ -14,7 +14,7 @@
 	<link href='<%=conPath %>/css/join.css' rel='stylesheet'>
 	<script>
 	const infoConfirm = function () {
-		var patternMail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/;	// match함수 사용
+		var patternMail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/;	
 		if(join_frm.id.value.length < 3){	// 아이디 3글자이상
 			alert('아이디를 3글자 이상 입력해주세요');
 			join_frm.id.focus();

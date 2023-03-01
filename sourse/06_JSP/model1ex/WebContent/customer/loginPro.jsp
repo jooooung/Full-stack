@@ -13,7 +13,7 @@
 </head>
 <body>
 	<%
-	request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");
 		String msg = "";
 		String cid = request.getParameter("cid");
 		String cpw = request.getParameter("cpw");

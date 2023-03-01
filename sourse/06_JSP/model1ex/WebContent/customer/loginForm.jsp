@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%
 	String conPath = request.getContextPath(); 
-if(session.getAttribute("customer") != null){
-	response.sendRedirect("main.jsp");
-}
+	if(session.getAttribute("customer") != null){
+		response.sendRedirect("main.jsp");
+	}
 // msg 처리
 String msg = request.getParameter("msg");
 if(msg != null){
@@ -34,7 +34,7 @@ if(msg != null){
 										value="<%
 								 							String sessioncId = (String)session.getAttribute("cid");
 																	out.println(sessioncId!=null ? sessioncId : "");
-								 						%>">
+								 						%>"><!-- 회원가입 후 로그인 시 회원가입 아이디 가져오기 -->
 					</td>
 				</tr>
 				<tr>
