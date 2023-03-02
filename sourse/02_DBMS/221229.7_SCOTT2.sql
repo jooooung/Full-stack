@@ -1,10 +1,10 @@
--- ¸¸µé¾ú´Ù Áö¿î °èÁ¤ µ¥ÀÌÅÍ È®ÀÎÇØ º» ÆÄÀÏ
+ï»¿-- ë§Œë“¤ì—ˆë‹¤ ì§€ìš´ ê³„ì • ë°ì´í„° í™•ì¸í•´ ë³¸ íŒŒì¼
 
 SELECT * FROM TAB;
-SELECT * FROM USER_TABLES;  -- ³» ±ÇÇÑÀÌ °®°í ÀÖ´Â Å×ÀÌºí
-SELECT * FROM DBA_TABLES; -- DBA ±ÇÇÑ °¡Áø USER¸¸ »ç¿ë °¡´É
-SELECT * FROM ALL_TABLES   -- ³»°¡ Á¢±ÙÇÒ ¼ö ÀÖ´Â Å×ÀÌºí
+SELECT * FROM USER_TABLES;  -- ë‚´ ê¶Œí•œì´ ê°–ê³  ìžˆëŠ” í…Œì´ë¸”
+SELECT * FROM DBA_TABLES; -- DBA ê¶Œí•œ ê°€ì§„ USERë§Œ ì‚¬ìš© ê°€ëŠ¥
+SELECT * FROM ALL_TABLES   -- ë‚´ê°€ ì ‘ê·¼í•  ìˆ˜ ìžˆëŠ” í…Œì´ë¸”
     WHERE TABLE_NAME='EMP';
-SELECT * FROM SCOTT.EMP;    -- EMPÀÇ ±ÇÇÑÀ» ¹Þ¾Ò±â¿¡ »ç¿ë °¡´É
-SELECT * FROM SCOTT.DEPT;   -- DEPTÀÇ ±ÇÇÑÀ» ¹Þ¾Ò±â¿¡ »ç¿ë °¡´É
+SELECT * FROM SCOTT.EMP;    -- EMPì˜ ê¶Œí•œì„ ë°›ì•˜ê¸°ì— ì‚¬ìš© ê°€ëŠ¥
+SELECT * FROM SCOTT.DEPT;   -- DEPTì˜ ê¶Œí•œì„ ë°›ì•˜ê¸°ì— ì‚¬ìš© ê°€ëŠ¥
 EXIT;

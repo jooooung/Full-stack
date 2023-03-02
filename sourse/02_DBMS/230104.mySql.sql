@@ -1,83 +1,83 @@
--- Oracle과 다른 점
--- DCL(계정생성, 권한부어, 권한박탈, 계정삭제)
--- DDL(제약조건, 시퀀스 없음)
--- DML(outer join, and;&&, or;||, 일부단일행함수)
--- Java에서 쓸 데이터 넣고 연습해보기
+﻿-- Oracle怨??ㅻⅨ ??
+-- DCL(怨꾩젙?앹꽦, 沅뚰븳遺?? 沅뚰븳諛뺥깉, 怨꾩젙??젣)
+-- DDL(?쒖빟議곌굔, ?쒗???놁쓬)
+-- DML(outer join, and;&&, or;||, ?쇰??⑥씪?됲븿??
+-- Java?먯꽌 ???곗씠???ｊ퀬 ?곗뒿?대낫湲?
 
-show databases;	-- database들의 리스트
--- ★ DCL ★
+show databases;	-- database?ㅼ쓽 由ъ뒪??
+-- ??DCL ??
 create user user01 identified by 'password';
--- create user 아이디 identified by '비밀번호';		-- (계정 만들기 비밀번호를 '' 안에 넣어야함)
-grant all on *.* to user01;		-- 권한 부여(dba의 모든 권한)
+-- create user ?꾩씠??identified by '鍮꾨?踰덊샇';		-- (怨꾩젙 留뚮뱾湲?鍮꾨?踰덊샇瑜?'' ?덉뿉 ?ｌ뼱?쇳븿)
+grant all on *.* to user01;		-- 沅뚰븳 遺??dba??紐⑤뱺 沅뚰븳)
 -- = grant all privileges on *.* to user01;
 flush privileges;	
-revoke all privileges on *.* from user01;	-- 권한 박탈
-drop user user01;	-- 계정 삭제
--- 데이터베이스로 들어가기
+revoke all privileges on *.* from user01;	-- 沅뚰븳 諛뺥깉
+drop user user01;	-- 怨꾩젙 ??젣
+-- ?곗씠?곕쿋?댁뒪濡??ㅼ뼱媛湲?
 show databases;
-create database kimdb;	-- 새로운 데이터베이스 생성
-use kimdb;	-- andb 데이터베이스로 들어감
-select database();	-- 현재 들어와 있는 데이터베이스 확인
-show tables;	-- 현 데이터베이스 내의 테이블 보기
--- ★ DDL ★
--- 테이블 만들기(제약조건이 옆에)
+create database kimdb;	-- ?덈줈???곗씠?곕쿋?댁뒪 ?앹꽦
+use kimdb;	-- andb ?곗씠?곕쿋?댁뒪濡??ㅼ뼱媛?
+select database();	-- ?꾩옱 ?ㅼ뼱? ?덈뒗 ?곗씠?곕쿋?댁뒪 ?뺤씤
+show tables;	-- ???곗씠?곕쿋?댁뒪 ?댁쓽 ?뚯씠釉?蹂닿린
+-- ??DDL ??
+-- ?뚯씠釉?留뚮뱾湲??쒖빟議곌굔???놁뿉)
 create table emp(
 	empno 	 numeric(4) primary key,
     ename 	 varchar(20) not null,
-    nickname varchar(20) unique,	-- null 포함
-    sal 	 numeric(7,2) check(sal>0),	-- null 포함
+    nickname varchar(20) unique,	-- null ?ы븿
+    sal 	 numeric(7,2) check(sal>0),	-- null ?ы븿
     comm 	 numeric(7,2) default 0
 );
 desc emp;
-drop table if exists emp;	-- table 존재시에만 drop
--- 테이블 만들기 (제약조건이 밑에)
+drop table if exists emp;	-- table 議댁옱?쒖뿉留?drop
+-- ?뚯씠釉?留뚮뱾湲?(?쒖빟議곌굔??諛묒뿉)
 create table emp(
 	empno 	 numeric(4),	-- numeric = number
     ename 	 varchar(20) not null,
-    nickname varchar(20),	-- null 포함
-    sal 	 numeric(7,2),	-- null 포함
+    nickname varchar(20),	-- null ?ы븿
+    sal 	 numeric(7,2),	-- null ?ы븿
     comm 	 numeric(7,2) default 0,
     primary key(empno),
     unique(ename),
     check(sal>0)
 );
 select * from emp;
-insert into emp values (1111, '홍', '천사', 900, null);
+insert into emp values (1111, '??, '泥쒖궗', 900, null);
 drop table if exists emp;
 
--- MAJOR (mCode;pk 학과번호, mName 학과이름, mOffice 학과사무실)  학과번호를 시퀀스처럼 만들기
--- STUDENT (sNo 학번, sName 이름, mCode 학과번호)
+-- MAJOR (mCode;pk ?숆낵踰덊샇, mName ?숆낵?대쫫, mOffice ?숆낵?щТ??  ?숆낵踰덊샇瑜??쒗?ㅼ쿂??留뚮뱾湲?
+-- STUDENT (sNo ?숇쾲, sName ?대쫫, mCode ?숆낵踰덊샇)
 create table major(
-	mCode int primary key auto_increment,	-- auto_increment 필드의 경우 타입은 int (시퀀스와 같은 기능)
+	mCode int primary key auto_increment,	-- auto_increment ?꾨뱶??寃쎌슦 ??낆? int (?쒗?ㅼ? 媛숈? 湲곕뒫)
     mName varchar(30),
     mOffice varchar(30)
 );
 create table student(
 	sNo numeric(4) primary key,
     sName varchar(30),
-    mCode int references major(mCode) 	-- 외래키 제약조건을 옆에 쓰면 X
+    mCode int references major(mCode) 	-- ?몃옒???쒖빟議곌굔???놁뿉 ?곕㈃ X
 );
 show tables;
 select * from major;
 select * from student;
 
--- major 데이터 넣기
--- mCode는 auto_increment이기에 자동으로 입력된다
-insert into major (mName, mOffice) values ('컴콩', '203호');		
-insert into major (mName, mOffice) values ('빅데이터', '303호');
-insert into major (mName, mOffice) values ('디자인', '403호');
+-- major ?곗씠???ｊ린
+-- mCode??auto_increment?닿린???먮룞?쇰줈 ?낅젰?쒕떎
+insert into major (mName, mOffice) values ('而댁쉘', '203??);		
+insert into major (mName, mOffice) values ('鍮낅뜲?댄꽣', '303??);
+insert into major (mName, mOffice) values ('?붿옄??, '403??);
 select * from major;
--- student 데이터 넣기
-insert into student values (1111, '홍길동', 1);
-insert into student values (1112, '신길동', 3);
-insert into student values (1113, '박길동', 4);
+-- student ?곗씠???ｊ린
+insert into student values (1111, '?띻만??, 1);
+insert into student values (1112, '?좉만??, 3);
+insert into student values (1113, '諛뺢만??, 4);
 select * from student;
--- mCode 가 major에서 받아오지 못하여 mCode=4를 입력해도 오류가 안 난다
--- foreign key가 되게 다시 만들기
+-- mCode 媛 major?먯꽌 諛쏆븘?ㅼ? 紐삵븯??mCode=4瑜??낅젰?대룄 ?ㅻ쪟媛 ???쒕떎
+-- foreign key媛 ?섍쾶 ?ㅼ떆 留뚮뱾湲?
 drop table major;
 drop table student;
 create table major(
-	mCode int primary key auto_increment,	-- auto_increment 필드의 경우 타입은 int (시퀀스와 같은 기능)
+	mCode int primary key auto_increment,	-- auto_increment ?꾨뱶??寃쎌슦 ??낆? int (?쒗?ㅼ? 媛숈? 湲곕뒫)
     mName varchar(30),
     mOffice varchar(30)
 );
@@ -85,56 +85,56 @@ create table student(
 	sNo numeric(4) primary key,
     sName varchar(30),
     mCode int,
-    foreign key(mCode) references major(mCode)	-- 외래키 제약조건은 아래만
+    foreign key(mCode) references major(mCode)	-- ?몃옒???쒖빟議곌굔? ?꾨옒留?
 );
-insert into major (mName, mOffice) values ('컴콩', '203호');		
-insert into major (mName, mOffice) values ('빅데이터', '303호');
-insert into major (mName, mOffice) values ('디자인', '403호');
+insert into major (mName, mOffice) values ('而댁쉘', '203??);		
+insert into major (mName, mOffice) values ('鍮낅뜲?댄꽣', '303??);
+insert into major (mName, mOffice) values ('?붿옄??, '403??);
 select * from major;
-insert into student values (1111, '홍길동', 1);
-insert into student values (1112, '신길동', 3);
-insert into student values (1113, '박길동', 4);	-- 에러 
+insert into student values (1111, '?띻만??, 1);
+insert into student values (1112, '?좉만??, 3);
+insert into student values (1113, '諛뺢만??, 4);	-- ?먮윭 
 select * from student;
 
-	-- ex. 학번, 이름, 학과번호, 학과명, 학과사무실 출력	equi join
+	-- ex. ?숇쾲, ?대쫫, ?숆낵踰덊샇, ?숆낵紐? ?숆낵?щТ??異쒕젰	equi join
 select sNo, sName, s.mCode, mName, mOffice
 	from student s, major m
     where s.mCode=m.mCode;
-    -- ex. 학번, 이름, 학과번호, 학과명, 학과사무실 출력(학생이 없는 학과도 출력)  outer join
+    -- ex. ?숇쾲, ?대쫫, ?숆낵踰덊샇, ?숆낵紐? ?숆낵?щТ??異쒕젰(?숈깮???녿뒗 ?숆낵??異쒕젰)  outer join
 select sNo, sName, s.mCode, mName, mOffice
 	from student s right outer join major m
     on s.mCode=m.mCode;
 select sNo, sName, length(sName) from student;    
 
--- ★ ★ 자바(JDBC) 때 쓸 테이블 ★ ★
+-- ?????먮컮(JDBC) ?????뚯씠釉?????
 drop table if exists personal;
 drop table if exists division;
 create table division(
-	dno int,	-- 부서번호
-    dname varchar(20), -- 부서이름
-    phone varchar(20), -- 부서전화
-    position varchar(20), -- 부서위치
+	dno int,	-- 遺?쒕쾲??
+    dname varchar(20), -- 遺?쒖씠由?
+    phone varchar(20), -- 遺?쒖쟾??
+    position varchar(20), -- 遺?쒖쐞移?
     primary key(dno)
 );
 create table personal(
-	pno int,	-- 사번
-    pname varchar(20) not null, -- 사원명
-    job varchar(20) not null, -- 직책
-    manager int,	-- 상사의 사번
-    startdate date,	-- 입사일
-    pay int,	-- 월급
-    bonus int,	-- 상여금
-    dno int,		-- 부서번호
+	pno int,	-- ?щ쾲
+    pname varchar(20) not null, -- ?ъ썝紐?
+    job varchar(20) not null, -- 吏곸콉
+    manager int,	-- ?곸궗???щ쾲
+    startdate date,	-- ?낆궗??
+    pay int,	-- ?붽툒
+    bonus int,	-- ?곸뿬湲?
+    dno int,		-- 遺?쒕쾲??
     primary key(pno),
     foreign key (dno) references division(dno)
 );
 select * from division;
--- division 데이터 넣기
-insert into division values (10, 'finance', '02-393-4321', '서대문');
-insert into division values (20, 'research', '02-555-4321', '강남');
-insert into division values (30, 'sales', '02-717-4321', '마포');
-insert into division values (40, 'cs', '031-4444-4321', '안양');
--- personal 데이터 넣기
+-- division ?곗씠???ｊ린
+insert into division values (10, 'finance', '02-393-4321', '?쒕?臾?);
+insert into division values (20, 'research', '02-555-4321', '媛뺣궓');
+insert into division values (30, 'sales', '02-717-4321', '留덊룷');
+insert into division values (40, 'cs', '031-4444-4321', '?덉뼇');
+-- personal ?곗씠???ｊ린
 insert into personal values (1111,'smith','manager', 1001, '1990-12-17', 1000, null, 10);
 insert into personal values (1112,'ally','salesman',1116,'1991-02-20',1600,500,30);
 insert into personal values (1113,'word','salesman',1116,'1992-02-24',1450,300,30);
@@ -146,148 +146,148 @@ insert into personal values (1121,'kim','clerk',1114,'1990-12-08',4000,null,20);
 insert into personal values (1123,'lee','salesman',1116,'1991-09-23',1200,0,30);
 insert into personal values (1226,'park','analyst',1111,'1990-01-03',2500,null,10);
 select pno, pname, pay, pay*12+ifnull(bonus, 0) from personal;	-- ifnull() = nvl
-select pno, pname, pay, pay*12+if(bonus is null, 0, bonus) from personal;  -- if(필드의 조건, 참, 거짓)
+select pno, pname, pay, pay*12+if(bonus is null, 0, bonus) from personal;  -- if(?꾨뱶??議곌굔, 李? 嫄곗쭞)
 commit;
--- ★ ★ DML ★ ★
+-- ????DML ????
 use kimdb;
 select database();
 
 select * from personal;
 select * from division;
--- ★ 연습문제 ★
--- 1. 사번, 이름, 급여를 출력
+-- ???곗뒿臾몄젣 ??
+-- 1. ?щ쾲, ?대쫫, 湲됱뿬瑜?異쒕젰
 select pno, pname, pay from personal;
--- 2. 급여가 2000~5000 사이 모든 직원의 모든 필드
+-- 2. 湲됱뿬媛 2000~5000 ?ъ씠 紐⑤뱺 吏곸썝??紐⑤뱺 ?꾨뱶
 select * from personal where pay between 2000 and 5000;
--- 3. 부서번호가 10또는 20인 사원의 사번, 이름, 부서번호
+-- 3. 遺?쒕쾲?멸? 10?먮뒗 20???ъ썝???щ쾲, ?대쫫, 遺?쒕쾲??
 select pno, pname, dno from personal where dno in (10, 20);
--- 4. 보너스가 null인 사원의 사번, 이름, 급여 급여 큰 순정렬
+-- 4. 蹂대꼫?ㅺ? null???ъ썝???щ쾲, ?대쫫, 湲됱뿬 湲됱뿬 ???쒖젙??
 select pno, pname, pay from personal where bonus is null order by pay desc;
--- 5. 사번, 이름, 부서번호, 급여. 부서코드 순 정렬 같으면 PAY 큰순
+-- 5. ?щ쾲, ?대쫫, 遺?쒕쾲?? 湲됱뿬. 遺?쒖퐫?????뺣젹 媛숈쑝硫?PAY ?곗닚
 select pno, pname, dno, pay, dno from personal order by dno, pay desc;
--- 6. 사번, 이름, 부서명
+-- 6. ?щ쾲, ?대쫫, 遺?쒕챸
 select pno, pname, dname from personal p, division d
 	where p.dno=d.dno;
--- 7. 사번, 이름, 상사이름
+-- 7. ?щ쾲, ?대쫫, ?곸궗?대쫫
 select p1.pno, p1.pname worker, p2.pname manager 
 	from personal p1, personal p2
 	where p1.manager=p2.pno;
--- 8. 사번, 이름, 상사이름(상사가 없는 사람도 출력)
+-- 8. ?щ쾲, ?대쫫, ?곸궗?대쫫(?곸궗媛 ?녿뒗 ?щ엺??異쒕젰)
 select p1.pno, p1.pname worker, p2.pname manager 
 	from personal p1 left outer join personal p2
 	on p1.manager=p2.pno;
--- 8-1. 사번, 이름, 상사이름(상사가 없는 사람도 출력)+부서명
+-- 8-1. ?щ쾲, ?대쫫, ?곸궗?대쫫(?곸궗媛 ?녿뒗 ?щ엺??異쒕젰)+遺?쒕챸
 select p1.pno, p1.pname worker, p2.pname manager, dname
 	from division d, personal p1 left outer join personal p2
 	on p1.manager=p2.pno
     where p1.dno=d.dno;
--- 9. 이름이 s로 시작하는 사원 이름
+-- 9. ?대쫫??s濡??쒖옉?섎뒗 ?ъ썝 ?대쫫
 select pname from personal
 	where pname like 's%';
--- 10. 사번, 이름, 급여, 부서명, 상사이름
+-- 10. ?щ쾲, ?대쫫, 湲됱뿬, 遺?쒕챸, ?곸궗?대쫫
 select p1.pno, p1.pname pname, p1.pay, dname, p2.pname manager
 	from personal p1, personal p2, division d
     where p1.manager=p2.pno and p1.dno=d.dno;
--- 11. 부서코드, 급여합계, 최대급여
+-- 11. 遺?쒖퐫?? 湲됱뿬?⑷퀎, 理쒕?湲됱뿬
 select dno, sum(pay) sumpay, max(pay) maxpay
 	from personal
     group by dno;
--- 12. 부서명, 급여평균, 인원수
+-- 12. 遺?쒕챸, 湲됱뿬?됯퇏, ?몄썝??
 select dname, avg(pay), count(*) 
 	from personal p, division d
     where p.dno=d.dno
     group by dname;
--- 13. 부서코드, 급여합계, 인원수 인원수가 4명 이상인 부서만 출력
+-- 13. 遺?쒖퐫?? 湲됱뿬?⑷퀎, ?몄썝???몄썝?섍? 4紐??댁긽??遺?쒕쭔 異쒕젰
 select dno, sum(pay), count(*)
 	from personal
     group by dno
     having count(*) >=4;
--- 14. 사번, 이름, 급여 회사에서 제일 급여를 많이 받는 사람
+-- 14. ?щ쾲, ?대쫫, 湲됱뿬 ?뚯궗?먯꽌 ?쒖씪 湲됱뿬瑜?留롮씠 諛쏅뒗 ?щ엺
 select pno, pname, pay
 	from personal
     where pay = (select max(pay) from personal);
--- 15. 회사 평균보다 급여를 많이 받는 사람 이름, 급여, 부서번호
+-- 15. ?뚯궗 ?됯퇏蹂대떎 湲됱뿬瑜?留롮씠 諛쏅뒗 ?щ엺 ?대쫫, 湲됱뿬, 遺?쒕쾲??
 select pname, pay, dno
 	from personal
 	where pay > (select avg(pay) from personal);
--- 16. 회사 평균 급여보다 많이 받는 사원의 사번, 이름, 급여, 부서명을 출력(부서명순 정열 같으면 급여 큰순 정렬)
+-- 16. ?뚯궗 ?됯퇏 湲됱뿬蹂대떎 留롮씠 諛쏅뒗 ?ъ썝???щ쾲, ?대쫫, 湲됱뿬, 遺?쒕챸??異쒕젰(遺?쒕챸???뺤뿴 媛숈쑝硫?湲됱뿬 ?곗닚 ?뺣젹)
 select pno, pname, pay, dname
 	from personal p, division d
 	where p.dno=d.dno
 		and pay > (select avg(pay) from personal)
 	order by dname, pay desc;
--- 17. 자신이 속한 부서의 평균보다 많인 받는 사람의 이름, 금여, 부서번호, 반올림한 해당부서평균
+-- 17. ?먯떊???랁븳 遺?쒖쓽 ?됯퇏蹂대떎 留롮씤 諛쏅뒗 ?щ엺???대쫫, 湲덉뿬, 遺?쒕쾲?? 諛섏삱由쇳븳 ?대떦遺?쒗룊洹?
 select p.pname, p.pay, p.dno, round(avgpay) avg
 	from personal p, (select dno, avg(pay) avgpay from personal group by dno) a
     where p.dno=a.dno and p.pay> avgpay;
--- 18. 입사가 가장 빠른 사람의 이름, 급여, 부서명
+-- 18. ?낆궗媛 媛??鍮좊Ⅸ ?щ엺???대쫫, 湲됱뿬, 遺?쒕챸
  select pname, pay, dname
 	from personal p, division d
     where p.dno=d.dno and startdate = (select min(startdate) from personal); 
--- 19. 이름, 급여, 해당부서평균
+-- 19. ?대쫫, 湲됱뿬, ?대떦遺?쒗룊洹?
 select pname, pay, round(dpay)
 	from personal p, (select dno, avg(pay) dpay from personal group by dno) a
     where p.dno=a.dno;
--- 20. 이름, 급여, 부서명, 해당부서평균
+-- 20. ?대쫫, 湲됱뿬, 遺?쒕챸, ?대떦遺?쒗룊洹?
 select pname, pay, dname, round(dpay)
 	from personal p, division d, (select dno, avg(pay) dpay from personal group by dno) a
     where p.dno=a.dno and p.dno=d.dno;
     
--- ★ ★ Oracle에서의 단일행함수와 다른 부분 ★ ★
+-- ????Oracle?먯꽌???⑥씪?됲븿?섏? ?ㅻⅨ 遺遺?????
 select curdate();
-insert into personal values (1000, '홍길동', 'manager', 1001, curdate(), null, null, 40);
+insert into personal values (1000, '?띻만??, 'manager', 1001, curdate(), null, null, 40);
 select * from personal where pno=1000;
 set sql_safe_updates = 0;
-delete from personal where pname='홍길동';
+delete from personal where pname='?띻만??;
 
-	-- ex. "이름은 job이다"
-select concat(pname, '은 ', job, '이다') msg from personal;	-- mysql은 concat 안에 두 개 이상도 가능
-select round(23.456);	-- from 절이 없어도 실행 가능
+	-- ex. "?대쫫? job?대떎"
+select concat(pname, '? ', job, '?대떎') msg from personal;	-- mysql? concat ?덉뿉 ??媛??댁긽??媛??
+select round(23.456);	-- from ?덉씠 ?놁뼱???ㅽ뻾 媛??
 
--- 시스템으로부터 현재 시점,  현재 날짜, 현재 시간
+-- ?쒖뒪?쒖쑝濡쒕????꾩옱 ?쒖젏,  ?꾩옱 ?좎쭨, ?꾩옱 ?쒓컙
 select sysdate();
 select now();
-select year(sysdate()), month(now()), day(now());	-- 원하는 날짜 형식
+select year(sysdate()), month(now()), day(now());	-- ?먰븯???좎쭨 ?뺤떇
 select case weekday(now())
-	when '0' then '월요일'
-    when '1' then '화요일'
-    when '2' then '수요일'
-    when '3' then '목요일'
-    when '4' then '금요일'
-    when '5' then '토요일'
-    when '6' then '일요일' end dayofweek;		-- 요일(한글)
-select dayname(now());	-- 요일(영어)
-select monthname(now());	-- 달 (영어)
-select pname, dayname(startdate) from personal;		-- 입사일의 요일 
+	when '0' then '?붿슂??
+    when '1' then '?붿슂??
+    when '2' then '?섏슂??
+    when '3' then '紐⑹슂??
+    when '4' then '湲덉슂??
+    when '5' then '?좎슂??
+    when '6' then '?쇱슂?? end dayofweek;		-- ?붿씪(?쒓?)
+select dayname(now());	-- ?붿씪(?곸뼱)
+select monthname(now());	-- ??(?곸뼱)
+select pname, dayname(startdate) from personal;		-- ?낆궗?쇱쓽 ?붿씪 
 select pname, year(startdate), month(startdate), day(startdate) from personal;
 
--- 시스템으로부터 현재 날짜
+-- ?쒖뒪?쒖쑝濡쒕????꾩옱 ?좎쭨
 select curdate();
--- 시스템으로부터 현재 시간
+-- ?쒖뒪?쒖쑝濡쒕????꾩옱 ?쒓컙
 select curtime();
 
--- date_format(날짜/시간, 포맷) -> 문자
--- date_format(문자, 포맷) -> 날짜
-	-- 포맷 : %Y 2023(년도 4자리) %y(년도2자리)
-	-- 		 %m (01월, 02월..), %c(1월 2월)  %M (월이름(영어)), %b(짧은 월이름(Jan))
-	-- 		 %d (01 02일..), %e(1, 2, 3일)
-    -- 		 %H (24시간)	%h(12시간)	%p(오전 오후)	%i(분) %s(초)
-select date_format(now(), '%Y년 %c월 %e일 %p %h시 %i분 %s초') now;
+-- date_format(?좎쭨/?쒓컙, ?щ㎎) -> 臾몄옄
+-- date_format(臾몄옄, ?щ㎎) -> ?좎쭨
+	-- ?щ㎎ : %Y 2023(?꾨룄 4?먮━) %y(?꾨룄2?먮━)
+	-- 		 %m (01?? 02??.), %c(1??2??  %M (?붿씠由??곸뼱)), %b(吏㏃? ?붿씠由?Jan))
+	-- 		 %d (01 02??.), %e(1, 2, 3??
+    -- 		 %H (24?쒓컙)	%h(12?쒓컙)	%p(?ㅼ쟾 ?ㅽ썑)	%i(遺? %s(珥?
+select date_format(now(), '%Y??%c??%e??%p %h??%i遺?%s珥?) now;
 select * from personal where startdate < date_format('1990-08-10', '%Y-%m-%d');
 
--- format(숫자, 소수점 자리수) -> 문자 	자동으로 세자리마다 ,
+-- format(?レ옄, ?뚯닔???먮━?? -> 臾몄옄 	?먮룞?쇰줈 ?몄옄由щ쭏??,
 select pname, format(pay, 2) from personal;
 
--- 이름, 급여, 금여 3000 이상인지 여부
-select pname, pay, if(pay>=3000, '이상', '이하') result from personal;
+-- ?대쫫, 湲됱뿬, 湲덉뿬 3000 ?댁긽?몄? ?щ?
+select pname, pay, if(pay>=3000, '?댁긽', '?댄븯') result from personal;
 select pname, pay, bonus, if(bonus is null, 0, bonus) from personal;
 select pname, bonus, ifnull(bonus, 0) from personal;
 
--- ★ ★ top-n 구문 ★ ★
+-- ????top-n 援щЦ ????
 select pname, pay from personal order by pay desc;
--- limit n (1~n등)
-select pname, pay from personal order by pay desc limit 5;	-- 1등 ~ 5등
--- limit n1, n2 (n1번째부터 n2개, 첫번째는 0번째)
-select pname, pay from personal order by pay desc limit 0, 5;	-- 1등부터 5개  1~5등
-select pname, pay from personal order by pay desc limit 5, 5;	-- 6등부터 5개  6~10등
-select pname, pay from personal order by pay desc limit 6, 3;	-- 7등부터 3개  7~9등
+-- limit n (1~n??
+select pname, pay from personal order by pay desc limit 5;	-- 1??~ 5??
+-- limit n1, n2 (n1踰덉㎏遺??n2媛? 泥ル쾲吏몃뒗 0踰덉㎏)
+select pname, pay from personal order by pay desc limit 0, 5;	-- 1?깅???5媛? 1~5??
+select pname, pay from personal order by pay desc limit 5, 5;	-- 6?깅???5媛? 6~10??
+select pname, pay from personal order by pay desc limit 6, 3;	-- 7?깅???3媛? 7~9??

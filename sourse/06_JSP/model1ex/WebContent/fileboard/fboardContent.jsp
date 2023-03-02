@@ -82,7 +82,6 @@
 					<th>조회수</th>
 					<td><%=fDto.getFhit()%></td>
 				</tr>
-				</tr>
 				<tr>
 					<th>IP</th>
 					<td><%=fDto.getFip()%></td>
