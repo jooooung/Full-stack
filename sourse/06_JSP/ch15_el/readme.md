@@ -37,11 +37,13 @@
 
 ## ✔내장객체
 ### Scope에 관한 객체
-1. pageScope : page객체의 attribute를 참조하는 객체(page attribute의 집합) Map 타입
-2. requestScope : request객체의 attribute를 참조하는 객체(request attribute의 집합) Map 타입
-3. sessionScope : session객체의 attribute를 참조하는 객체(session attribute의 집합) Map 타입
-4. applicationScope : application객체의 attribute를 참조하는 객체(application attribute의 집합) Map 타입
+- `Scope`객체는 생략 가능하다. 생략시 알아서 어떤 객체인지 찾아준다
+ex) `session 내 attribute : ${sessionName }` : scope 객체를 생략했지만 `sessionName`인 `scope`객체를 알아서 찾아준다
+1. `pageScope` : page객체의 attribute를 참조하는 객체(page attribute의 집합) Map 타입
+2. `requestScope` : request객체의 attribute를 참조하는 객체(request attribute의 집합) Map 타입
+3. `sessionScope` : session객체의 attribute를 참조하는 객체(session attribute의 집합) Map 타입
+4. `applicationScope` : application객체의 attribute를 참조하는 객체(application attribute의 집합) Map 타입
 ### 그 외 유용한 객체
-- param : 요청 파라미터를 참조하는 객체(웹 브라우저로부터 입력된 데이터의 집합) Map 타입
-- paramValues : 요청 파라미터(배열)를 참조하는 객체(웹 브라우저로부터 입력된 데이터의 집합-똑 같은 이름의 데이터가 여럿일 때 사용) Map 타입
-- initParam : `${initParam.파라미터명 }` => web.xml에 명시 후 사용
+- `param` : 요청 파라미터를 참조하는 객체(웹 브라우저로부터 입력된 데이터의 집합) Map 타입
+- `paramValues` : 요청 파라미터(배열)를 참조하는 객체(웹 브라우저로부터 입력된 데이터의 집합-똑 같은 이름의 데이터가 여럿일 때 사용) Map 타입
+- `initParam` : `${initParam.파라미터명 }` => web.xml에 명시 후 사용
