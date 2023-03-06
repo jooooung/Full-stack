@@ -1,16 +1,25 @@
-## 테이블 설계
+# ✨model1 
+## ✔테이블 설계
 1. CUSTOMER(고객)
 2. FILEBOARD(게시판)
 3. BOOK(도서)
 
-## DDL
-
-## dummyData
-- 고객(CUSTOMER)테이블
-- 게시판(FileBoard)테이블
--seq.nextval - seq.currval
-- 도서(BOOK)테이블
-
-## DML
-
-# file
+## ✔테이블 생성(DDL)
+## ✔쿼리 생성(DML)
+## ✔ 각 테이블의 Dao, Dto 생성
+## ✔ main, header, footer 생성
+- header, footer 생성 후 `jsp:include` 이용
+## ✔ BOOK(도서)
+- 도서목록(페이징)
+- 도서상세보기
+- 도서등록, 도서등록 프로세스
+## ✔ FILEBOARD(게시판)
+- 게시판 목록(페이징)
+- 글 상세보기 : 버튼 종류 비로그인시=>목록, 삭제 / 로그인시=>목록, 수정, 답변, 삭제
+- 글쓰기
+- 글수정 
+- 글삭제 : 삭제 비밀번호 받기
+## ✔ CUSTOMER(고객)
+- 로그인
+- 회원가입 : 회원가입 후 로그인 시 회원가입한 id 출력
+- 정보수정

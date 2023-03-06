@@ -20,8 +20,9 @@
   	} */
   %>
   <c:set var="names" value="<%=names %>"/> <!-- 변수선언 -->
-  <c:forEach var="name" items="${names }">	<!-- names 변수 모두 출력 -->
-  	<p>${name }</p>
+  <c:forEach var="name" items="${names }" varStatus="status">	<!-- names 변수 모두 출력 -->
+  	${status.index}${name }<br/> 
+  	<%-- <p>${name }</p> --%>
   </c:forEach>
   <c:forEach var="name" items="${names }" begin="1" end="2">	<!-- names 변수 중 1~2번째까지 출력 -->
   	<p>${name }</p>

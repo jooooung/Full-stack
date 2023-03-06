@@ -26,7 +26,7 @@
 		MultipartRequest mRequest = null;		// try 안이 아닌 밖에 설정하는 이유 : 받을 파라미터가 많기 때문
 		try{
 			mRequest = new MultipartRequest(request, path, maxSize, "utf-8", 
-									new DefaultFileRenamePolicy());
+									new DefaultFileRenamePolicy()); 
 			Enumeration<String> paramNames = mRequest.getFileNames();
 			int idx = 0;
 			while(paramNames.hasMoreElements()){
