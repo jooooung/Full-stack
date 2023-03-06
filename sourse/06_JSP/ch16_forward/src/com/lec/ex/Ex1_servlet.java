@@ -1,6 +1,7 @@
 package com.lec.ex;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,11 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Ex1_servlet")
+@WebServlet("/ex1_servlet")
 public class Ex1_servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		actionDo(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,9 +26,10 @@ public class Ex1_servlet extends HttpServlet {
 		String name = request.getParameter("name");
 		Member member = new Member(id, pw, name);
 		// dao 생성해서 dao의 메소드 호출, 결과에 따라 x.jsp로
-		request.setAttribute("member", member);		// requeset에 member 추가
+//		request.setAttribute("member", member);		// requeset에 member 추가
 		// View 단으로(sendRedirect를 하면 request객체가 날라갈 수 있다)
-		RequestDispatcher dispatcher = request.getRequestDispatcher("1_dispatcher/ex1_view.jsp");	// url이 바뀌지 않고 이동
-		dispatcher.forward(request, response);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("1_dispatcher/ex1_view.jsp");	// url이 바뀌지 않고 이동
+//		dispatcher.forward(request, response);
+		response.sendRedirect("2_redirect/ex1_view.jsp?id=" + id +"&pw="+pw+"&name=" + URLEncoder.encode(name, "utf-8"));
 	}
 }

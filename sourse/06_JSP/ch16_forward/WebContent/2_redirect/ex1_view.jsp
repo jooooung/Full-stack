@@ -9,11 +9,12 @@
   <link href="<%=conPath%>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form action="<%=conPath %>/ex1_servlet" method="post"><!-- servlet url 이름 -->
-		<p>ID <input type="text" name="id"></p>
-		<p>PW <input type="password" name="pw"></p>
-		<p>name <input type="text" name="name"></p>
-		<p><input type="submit" value="확인"></p>
-	</form>  
+	<jsp:useBean id="member" class="com.lec.ex.Member" scope="page"/>
+	<jsp:setProperty property="*" name="member"/>
+  <h2>회원정보(ex1_view.jsp)</h2>
+  <h3>회원 : ${member }</h3>
+  <h3>ID : ${member.id }</h3>
+  <h3>PW : ${member.pw }</h3>
+  <h3>name : ${member.name }</h3>
 </body>
 </html>

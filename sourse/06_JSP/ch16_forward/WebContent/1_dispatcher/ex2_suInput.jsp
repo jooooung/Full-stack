@@ -9,11 +9,10 @@
   <link href="<%=conPath%>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form action="<%=conPath %>/ex1_servlet" method="post"><!-- servlet url 이름 -->
-		<p>ID <input type="text" name="id"></p>
-		<p>PW <input type="password" name="pw"></p>
-		<p>name <input type="text" name="name"></p>
-		<p><input type="submit" value="확인"></p>
-	</form>  
+  <!-- <form action="ex2_suPro.jsp"> -->
+  <form action="<%=conPath %>/ex2_suPro"><!-- 디렉토리 구조 --> 
+  	누적을 원하는 수 <input type="number" min="1" name="su" required="required">
+  	<input type="submit" value="누적">
+  </form>
 </body>
 </html>

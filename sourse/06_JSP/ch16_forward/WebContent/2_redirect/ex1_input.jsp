@@ -9,11 +9,11 @@
   <link href="<%=conPath%>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form action="<%=conPath %>/ex1_servlet" method="post"><!-- servlet url 이름 -->
-		<p>ID <input type="text" name="id"></p>
-		<p>PW <input type="password" name="pw"></p>
-		<p>name <input type="text" name="name"></p>
-		<p><input type="submit" value="확인"></p>
-	</form>  
+  <form action="<%=conPath%>/ex1_servlet"><!-- member 타입 받기 -->
+  	<p>ID <input type="text" name="id"> </p>
+  	<p>PW <input type="password" name="pw"> </p>
+  	<p>name <input type="text" name="name"> </p>
+  	<p><input type="submit" value="확인"></p>
+  </form>
 </body>
 </html>
