@@ -97,3 +97,17 @@
 ### 3. functions : fn 라이브러리는 el 표기법과 함께 사용
 - id 파라미터를 대문자로 : `${fn:toUpperCase(param.id) }`
 
+# ✨emp : 이름 직책 검색기능
+1. query
+2. dto, dao
+3. Emplist.java(servlet)
+4. emplist(전체리스트)
+- servlet
+  - dao 받기 : `EmpDao dao = EmpDao.getInstance();`
+  - 배열로 dto(emplist) 받기 : `ArrayList<EmpDto> emps = dao.getListEmp();`
+  - `request.setAttribute("emps", emps);` : 받은 emps를 request.setAttribute 
+  - 3_emp/empList.jsp로 forward : `RequestDispatcher` 이용
+5. empSch(이름, 직책 검색)
+   - emplist 서블릿에서 파라미터로 `schName`, `schJob` 추가
+   - 검색 메소드 추가
+

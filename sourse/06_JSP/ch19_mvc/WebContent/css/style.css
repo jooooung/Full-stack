@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+body {
+  background-color: #3c373e;
+  color: rgba(255, 255, 255, 0.5);
+	font-size: 9pt;
+}
+
+table {
+	width: 90%;
+	margin: 10px auto;
+}
+
+table tr {
+	height: 40px;
+}
+
+table tr:nth-child(2n) {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+a:hover{
+	color: #fff;
+}
+
+td, th {
+	text-align: center;
+	padding: 5px;
+}
+
+caption {
+	color: white;
+	font-size: 20px;
+	padding: 10px;
+}
+
+h2, b {
+	text-align: center;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+.left {
+	text-align: left;
+}
+
+.paging {
+	text-align: center;
+}
+
+input:not(.btn), textarea {
+	width: 90%;
+}
+
+button {
+	margin: auto;
+	display:block;
+}

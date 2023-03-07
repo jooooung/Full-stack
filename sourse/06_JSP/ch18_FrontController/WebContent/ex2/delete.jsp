@@ -11,9 +11,7 @@
   <link href="${conPath}/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <h1><a href="empList">EempList</a></h1><!-- servlet 파일로 보내기 -->
-  <!-- EmpList.java(servlet, 프로세스), empList.jsp(뷰) -->
-  <h1><a href="${conPath }/empSch">empSch(이름,직업으로 검색 list 출력)</a></h1>
-  <!-- EmpSch.java(servlet, 프로세스), empSch.jsp(뷰) -->
+  <h1>delete.jsp</h1>
+  <h2>deleteResult : ${deleteResult }</h2>
 </body>
 </html>
