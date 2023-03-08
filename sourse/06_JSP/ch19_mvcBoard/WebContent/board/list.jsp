@@ -20,7 +20,7 @@
 		<script>alert('글쓰기 실패')</script>
 	</c:if>
   <table>
-  	<caption>글쓰기</caption>
+  	<caption>글목록</caption>
   	<tr>
   		<td><a href="${conPath }/writeView.do">글쓰기</a></td>
   	</tr>
@@ -38,20 +38,23 @@
   				<td>${dto.bid }</td>
   				<td>${dto.bname }</td>
   				<td class="left">
+  					<!-- 들여쓰기 -->
   					<c:forEach var="i" begin="1" end="${dto.bindent }">
   						<c:if test="${i != dto.bindent }"> 
   							&nbsp; &nbsp; 
-  						</c:if> <!-- 들여쓰기 -->
+  						</c:if> 
+  						<!-- 답글 표시 -->
   						<c:if test="${i eq dto.bindent }">	
   							└
-  						</c:if> <!-- 답글 표시 -->
+  						</c:if> 
   					</c:forEach><!-- 답글들여쓰기 ,표시 처리 -->
   					<a href="${conPath }/contentView.do?bid=${dto.bid}&pageNum=${pageNum}">
   						${dto.btitle }
   					</a>
+  					<!-- 조회수 높은 글 효과주기 -->
   					<c:if test="${dto.bhit > 10 }">
   						<b>*</b>
-  					</c:if> <!-- 조회수 높은 글 효과주기 -->
+  					</c:if> 
   				</td>
   				<td>${dto.bip }</td>
   				<td>
