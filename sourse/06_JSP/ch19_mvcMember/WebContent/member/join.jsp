@@ -45,7 +45,7 @@
   		<tr>
   			<td colspan="2">
   				<input type="submit" value="회원가입">
-  				<input type="button" value="로그인" onclick="location.href='${conPath}/member/login.jsp'">
+  				<input type="button" value="로그인" onclick="location.href='${conPath}/loginView.do'">
   			</td>
   		</tr>
   	</table>

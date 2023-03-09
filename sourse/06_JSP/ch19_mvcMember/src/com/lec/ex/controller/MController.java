@@ -44,10 +44,10 @@ public class MController extends HttpServlet {
 			service = new MJoinService();
 			service.execute(request, response);
 			viewPage = "member/login.jsp";
-		}else if(command.equals("/logout.do")) {
+		}else if(command.equals("/logout.do")) { // 로그아웃
 			service = new MLogoutService();
 			service.execute(request, response);
-			viewPage = "member/main.jsp";
+			viewPage = "member/login.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

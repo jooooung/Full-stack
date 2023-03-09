@@ -14,13 +14,13 @@ public class MLoginService implements Service {
 		String mid = request.getParameter("mid");
 		String mpw = request.getParameter("mpw");
 		MemberDao mDao = new MemberDao();
-		MemberDto member = (MemberDto)session.getAttribute("member");
 		int result = mDao.loginChk(mid, mpw);
+		
 		if(result == MemberDao.SUCCESS) {
+			MemberDto member = mDao.content(mid);
 			session.setAttribute("member", member);
-			request.setAttribute("loginResult", result);
-		}else {
-			
 		}
+		
+		request.setAttribute("loginResult", result);
 	}
 }

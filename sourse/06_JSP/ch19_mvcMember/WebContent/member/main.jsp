@@ -11,6 +11,13 @@
 	<link href="${conPath}/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<c:set var="FAIL" value="0"/>
+	<c:if test="${loginResult eq FAIL }">
+		<script>
+			alert('아이디나 비밀번호를 확인해주세요');
+			
+		</script>
+	</c:if>
 	<c:if test="${not empty member }">
 		<table>
 		  <tr>

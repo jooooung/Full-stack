@@ -35,11 +35,15 @@ public class MJoinService implements Service {
 		String mname = mRequest.getParameter("mname"); 
 		String memail = mRequest.getParameter("memail"); 
 		String mphoto = mRequest.getParameter("mphoto"); 
-		String mbirth = mRequest.getParameter("mbirth");
+		Date mbirth = null;
+		String mbirthStr = mRequest.getParameter("mbirth");
+		if(!mbirthStr.equals("")) {
+			mbirth = Date.valueOf(mbirthStr);
+		}
 		String maddress = mRequest.getParameter("maddress");
 		String mrdate = mRequest.getParameter("mrdate");
 		MemberDao mDao = new MemberDao();
-		MemberDto dto = new MemberDto();
+		MemberDto dto = new MemberDto(mid, mpw, mname, memail, mphoto, mbirth, maddress, null);
 		request.setAttribute("joinResult", mDao.join(dto));
 	}
 }
