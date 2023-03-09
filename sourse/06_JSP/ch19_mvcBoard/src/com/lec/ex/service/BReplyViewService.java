@@ -10,6 +10,6 @@ public class BReplyViewService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int bid = Integer.parseInt(request.getParameter("bid"));  // 원글 bid
 		BoardDao bDao = new BoardDao();
-		request.setAttribute("replyBoard", bDao.modifyView_replyView(bid));	// 원글 dto
+		request.setAttribute("replyBoard", bDao.modifyView_replyView(bid));	// 원글 dtow
 	}
 }
