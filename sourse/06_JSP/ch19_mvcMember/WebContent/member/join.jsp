@@ -32,7 +32,10 @@
   		</tr>
   		<tr>
   			<td>사진</td>
-  			<td><input type="file" name="mphoto"></td>
+  			<td>
+  				<c:if test=""></c:if>
+  				<input type="file" name="mphoto">
+  			</td>
   		</tr>
   		<tr>
   			<td>생년월일</td>
@@ -44,8 +47,9 @@
   		</tr>
   		<tr>
   			<td colspan="2">
-  				<input type="submit" value="회원가입">
-  				<input type="button" value="로그인" onclick="location.href='${conPath}/loginView.do'">
+  				<input type="submit" value="회원가입" class="btn">
+  				<input type="button" value="로그인" class="btn"
+  							 onclick="location.href='${conPath}/loginView.do'">
   			</td>
   		</tr>
   	</table>

@@ -11,14 +11,17 @@
 	<link href="${conPath}/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+	<c:set var="mid" value=""/>
+	<c:if test="${not empty member.mid }">
+		${mid } = ${member.mid  }
+	</c:if>
   <form action="login.do" method="post">
   	<table>
   		<caption>로그인</caption>
   		<tr>
   			<td>ID</td>
   			<td>
-  				<input type="text" name="mid" required="required">
+  				<input type="text" name="mid" required="required" value="${mid }">
   			</td>
   		</tr>
   		<tr>
@@ -29,8 +32,9 @@
   		</tr>
   		<tr>
   			<td colspan="2">
-  				<input type="submit" value="로그인">
-  				<input type="button" value="회원가입" onclick="location.href='${conPath}/member/join.jsp'">
+  				<input type="submit" value="로그인" class="btn">
+  				<input type="button" value="회원가입" class="btn"
+  							 onclick="location.href='${conPath}/member/join.jsp'">
   			</td>
   		</tr>
   	</table>

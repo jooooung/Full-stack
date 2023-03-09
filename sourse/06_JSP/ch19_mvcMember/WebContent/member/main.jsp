@@ -15,13 +15,13 @@
 	<c:if test="${loginResult eq FAIL }">
 		<script>
 			alert('아이디나 비밀번호를 확인해주세요');
-			
+			history.back();
 		</script>
 	</c:if>
 	<c:if test="${not empty member }">
 		<table>
 		  <tr>
-		  	<td>${member.mname }(${member.mid })님 어세오세요</td>
+		  	<td><h2>${member.mname }(${member.mid })님 어세오세요</h2></td>
 		  </tr>
 		  <tr>
 		 		<td><button onclick="location.href='${conPath}/logout.do'">로그아웃</button></td>
