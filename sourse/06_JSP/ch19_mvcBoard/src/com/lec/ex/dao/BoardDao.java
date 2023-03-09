@@ -198,7 +198,7 @@ public class BoardDao {
 				String btitle   = rs.getString("btitle");
 				String bcontent = rs.getString("bcontent");
 				Timestamp bdate = rs.getTimestamp("bdate");
-				int    bhit 	= rs.getInt("bgit");
+				int    bhit 	= rs.getInt("bhit");
 				int    bgroup   = rs.getInt("bgroup");
 				int    bstep 	= rs.getInt("bstep");
 				int    bindent  = rs.getInt("bindent");

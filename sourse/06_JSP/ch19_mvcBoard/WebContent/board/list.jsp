@@ -19,6 +19,22 @@
 	<c:if test="${writeResult eq FAIL }">
 		<script>alert('글쓰기 실패')</script>
 	</c:if>
+	<c:if test="${modifyResult eq SUCCESS }">
+		<script>alert('${param.bid}번 글 수정 성공')</script>
+	</c:if>
+	<c:if test="${modifyResult eq FAIL}">
+		<script>alert('${param.bid}번 글 수정 실패')</script>
+	</c:if>
+	<c:if test="${not empty deleteResult }">
+		<script>alert('${deleteResult}');</script>
+	</c:if>
+	<c:if test="${replyResult eq SUCCESS }">
+		<script>alert('${param.bid}번 글 답글쓰기 성공')</script>
+	</c:if>
+	<c:if test="${replyResult eq FAIL }">
+		<script>alert('${param.bid}번 글 답글쓰기 실패')</script>
+		history.back();
+	</c:if>
   <table>
   	<caption>글목록</caption>
   	<tr>

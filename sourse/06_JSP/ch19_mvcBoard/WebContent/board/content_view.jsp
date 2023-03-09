@@ -11,6 +11,15 @@
 	<link href="${conPath}/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<c:set var="SUCCESS" value="1"/>
+	<c:set var="FAIL" value="0"/>
+	<c:if test="${modifyResult eq SUCCESS}">
+		<script>alert('${param.bid}번 글 수정 성공')</script>
+	</c:if>
+	<c:if test="${modifyResult eq FAIL}">
+		<script>alert('${param.bid}번 글 수정 실패')</script>
+		history.back();
+	</c:if>
 	<table>
 		<caption>상세보기</caption>
 		<tr>
