@@ -10,17 +10,17 @@ import com.lec.ex.dto.MemberDto;
 public class MLoginService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
 		String mid = request.getParameter("mid");
 		String mpw = request.getParameter("mpw");
 		MemberDao mDao = new MemberDao();
 		int result = mDao.loginChk(mid, mpw);
 		
 		if(result == MemberDao.SUCCESS) {
-			MemberDto member = mDao.content(mid);
+			HttpSession session = request.getSession();
+			MemberDto member = mDao.getMember(mid);
 			session.setAttribute("member", member);
+		}else {
+			request.setAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인하세요");
 		}
-		
-		request.setAttribute("loginResult", result);
 	}
 }

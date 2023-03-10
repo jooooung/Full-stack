@@ -21,70 +21,80 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class MJoinService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String path = request.getRealPath("/memberPhotoUp");
-		int maxSize = 1024 * 1024 * 5;	
-		String image = "";
+		String path = request.getRealPath("mPhotoUp");
+		int maxSize = 1024*1024; // 사진 업로드 제한 용량 : 1M
+		String mphoto = ""; // 첨부된 파일이 저장된 파일 이름
+		// mRequest 객체 생성 후 mPhoto 파일이름 얻어옴
 		MultipartRequest mRequest = null;
-		try{
-			mRequest = new MultipartRequest(request, path, maxSize, "utf-8", 
-									new DefaultFileRenamePolicy()); 
-			Enumeration<String> paramNames = mRequest.getFileNames();
-			while(paramNames.hasMoreElements()){
-					String param = paramNames.nextElement();
-					image = mRequest.getFilesystemName(param);
+		int result = 0; // 회원가입 결과를 저장할 변수(가입성공시 1, 실패시 0저장)
+		try {
+			// 첨부된 파일을 서버에 저장하고 파일이름(mphoto) 가져오기
+			mRequest = new MultipartRequest(request, path, maxSize,
+								"utf-8", new DefaultFileRenamePolicy());
+			Enumeration<String> params = mRequest.getFileNames();
+			//while(params.hasMoreElements()) {
+				String param = params.nextElement();
+				mphoto = mRequest.getFilesystemName(param);
+			//}
+			// mRequest을 이용하여 파라미터 받아와서 DB 저장
+			String mid = mRequest.getParameter("mid");
+			String mpw = mRequest.getParameter("mpw");
+			String mname = mRequest.getParameter("mname");
+			String memail = mRequest.getParameter("memail");
+			mphoto = mphoto==null ? "NOIMG.png" : mphoto;
+			String mbirthStr = mRequest.getParameter("mbirth");
+			Date mbirth = null;
+			if(!mbirthStr.equals("")) {
+				mbirth = Date.valueOf(mbirthStr);
 			}
-		}catch(IOException e){
-			System.out.println(e.getMessage());
-		}
-		InputStream  is = null;
-		OutputStream os = null;
-		try{
-			File serverFile = new File(path + "/" + image);
-			if(serverFile.exists()){	
-				is = new FileInputStream(image);		
-				os = new FileOutputStream("D:/full-stack/sourse/06_JSP/ch19_mvcMember/WebContent/memberPhotoUp/" + image);		
-				byte[] bs = new byte[(int)serverFile.length()];
-				while(true){
-					int nReadCnt = is.read(bs);
-					if(nReadCnt == -1) break;
-					os.write(bs, 0, nReadCnt);
+			String maddress = mRequest.getParameter("maddress");
+			MemberDao mDao = new MemberDao();
+			// mid 중복 체크
+			result = mDao.midConfirm(mid);
+			if(result == MemberDao.SUCCESS) { // 가입 가능한 mID이까 회원가입
+				MemberDto member = new MemberDto(mid, mpw, mname, memail, 
+						mphoto, mbirth, maddress, null);
+				// 회원가입
+				result = mDao.join(member);
+				if(result == MemberDao.SUCCESS) {
+					HttpSession session = request.getSession(); // 세션은 request로 부터
+					session.setAttribute("mid", mid);
+					request.setAttribute("joinResult", "회원가입이 완료되었습니다");
+				}else {
+					request.setAttribute("joinErrorMsg", "정보가 너무 길어서 회원가입 실패");
 				}
-				System.out.println("서버에 업로드한 파일을 소스폴더로 복사 완료");
+			}else {
+				request.setAttribute("joinErrorMsg", "중복된 ID는 회원가입이 불가합니다");
 			}
-		}catch(Exception e){
+		} catch (IOException e) {
 			System.out.println(e.getMessage());
-		}finally{
-			try{
-				if(os!=null) os.close();
-				if(is!=null) is.close();
-			}catch(IOException e){
-				System.out.println(e.getMessage());
-			}
+			request.setAttribute("joinErrorMsg", "첨부 파일의 용량이 너무 큽니다. 1M가 이내로 업로드 해 주세요");
 		}
 		
-		String mid = mRequest.getParameter("mid"); 
-		String mpw = mRequest.getParameter("mpw"); 
-		String mname = mRequest.getParameter("mname"); 
-		String memail = mRequest.getParameter("memail"); 
-		String mphoto = mRequest.getParameter("mphoto");
-		if(mphoto == null) {
-			mphoto = "default.png";
+		// 서버에 업로드된 파일을 소스 폴더로 복사
+		File serverFile = new File(path + "/" + mphoto);
+		if(serverFile.exists() && !mphoto.equals("NOIMG.png") && result==MemberDao.SUCCESS) {
+			InputStream is = null;
+			OutputStream os = null;
+			try {
+				is = new FileInputStream(serverFile);
+				os = new FileOutputStream("C:/Full-stack/sourse/06_JSP/ch19_mvcMember/WebContent/mPhotoUp/"+mphoto);
+				byte[] bs = new byte[(int) serverFile.length()];
+				while(true) {
+					int readByteCnt = is.read(bs);
+					if(readByteCnt==-1) break;
+					os.write(bs, 0, readByteCnt);
+				}
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}finally {
+				try {
+					if(os!=null) os.close();
+					if(is!=null) is.close();
+				} catch (IOException e) {
+					// TODO: handle exception
+				}
+			}
 		}
-		String mbirthStr = mRequest.getParameter("mbirth");
-		Date mbirth = null;
-		if(!mbirthStr.equals("")) {
-			mbirth = Date.valueOf(mbirthStr);
-		}
-		String maddress = mRequest.getParameter("maddress");
-		String mrdateStr = mRequest.getParameter("mrdate");
-		Date mrdate = null;
-		HttpSession session = request.getSession();
-		MemberDao mDao = new MemberDao();
-		MemberDto member = new MemberDto(mid, mpw, mname, memail, mphoto, mbirth, maddress, null);
-		int result = mDao.join(member);
-		if(result == mDao.SUCCESS) {
-			session.setAttribute("member", member);
-		}
-		request.setAttribute("joinResult", result );
 	}
 }

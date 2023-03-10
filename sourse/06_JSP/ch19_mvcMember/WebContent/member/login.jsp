@@ -11,9 +11,16 @@
 	<link href="${conPath}/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<c:set var="mid" value=""/>
-	<c:if test="${not empty member.mid }">
-		${mid } = ${member.mid  }
+	<c:if test="${not empty  joinResult}">
+		<script>
+			alert('${joinResult}');
+		</script>
+	</c:if>
+	<c:if test="${not empty  joinErrorMsg}">
+		<script>
+			alert('${joinErrorMsg}');
+			history.back();
+		</script>
 	</c:if>
   <form action="login.do" method="post">
   	<table>
@@ -34,7 +41,7 @@
   			<td colspan="2">
   				<input type="submit" value="로그인" class="btn">
   				<input type="button" value="회원가입" class="btn"
-  							 onclick="location.href='${conPath}/member/join.jsp'">
+  							 onclick="location.href='${conPath}/joinView.do'">
   			</td>
   		</tr>
   	</table>

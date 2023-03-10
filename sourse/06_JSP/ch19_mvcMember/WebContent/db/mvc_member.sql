@@ -10,20 +10,33 @@ CREATE TABLE MVC_MEMBER(
     mRDATE DATE DEFAULT SYSDATE NOT NULL
 );
 SELECT * FROM MVC_MEMBER;
--- DUMMY DATA
-INSERT INTO MVC_MEMBER (MID, MPW, MNAME, MEMAIL, MPHOTO, MBIRTH, MADDRESS, MRDATE)
-    VALUES ('a', 'a', '홍', 'a@a.com', 'default.png', '1999-01-01', '서울', '2000-12-12');
-INSERT INTO MVC_MEMBER (MID, MPW, MNAME, MEMAIL, MPHOTO, MBIRTH, MADDRESS, MRDATE)
-    VALUES ('b', 'b', '김', 'b@b.com', 'default.png', '1999-01-01', '서울', '2000-12-12');
-
 -- DAO에 들어갈 QUERY
     -- 1. ID중복체크
 SELECT COUNT(*) FROM MVC_MEMBER WHERE MID = 'c';
     -- 2. JOIN
 INSERT INTO MVC_MEMBER (MID, MPW, MNAME, MEMAIL, MPHOTO, MBIRTH, MADDRESS, MRDATE)
-    VALUES ('c', 'c', '이', 'a@a.com', 'default.png', '1999-01-01', '서울', '2000-12-12');
+    VALUES ('c', 'c', '이', 'a@a.com', 'NOIMG.png', '1999-01-01', '서울', '2000-12-12');
     -- 3. LOGIN CHECK
 SELECT * FROM MVC_MEMBER WHERE MID = 'a' AND MPW = 'a';
     -- 4. mID로 MemberDto 가져오기
 SELECT * FROM MVC_MEMBER WHERE MID = 'a';
+    -- 5. 회원정보수정
+UPDATE MVC_MEMBER 
+    SET MPW='1',
+        MNAME='송',
+        MEMAIL='S@S.COM',
+        MPHOTO='NOIMG.png',
+        MBIRTH='1993-02-15',
+        MADDRESS='부산'
+    WHERE MID='a';
+
+    -- 6. 회원리스트(top-n)mID순
+SELECT * 
+    FROM (SELECT ROWNUM RN, A.* 
+        FROM (SELECT * FROM MVC_MEMBER ORDER BY MRDATE DESC) A)
+    WHERE RN BETWEEN 1 AND 3;
+    -- 7. 전체회원 수
+SELECT COUNT(*) CNT FROM MVC_MEMBER;
+    -- 8. 회원탈퇴
+DELETE FROM MVC_MEMBER WHERE MID = 't';
 COMMIT;

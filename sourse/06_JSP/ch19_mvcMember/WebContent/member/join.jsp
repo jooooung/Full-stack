@@ -33,7 +33,6 @@
   		<tr>
   			<td>사진</td>
   			<td>
-  				<c:if test=""></c:if>
   				<input type="file" name="mphoto">
   			</td>
   		</tr>

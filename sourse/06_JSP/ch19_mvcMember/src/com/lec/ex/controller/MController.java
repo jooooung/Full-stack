@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lec.ex.service.MAllViewService;
 import com.lec.ex.service.MJoinService;
 import com.lec.ex.service.MLoginService;
 import com.lec.ex.service.MLogoutService;
+import com.lec.ex.service.MMoidfyService;
+import com.lec.ex.service.MWithdrawalService;
 import com.lec.ex.service.Service;
 
 @WebServlet("*.do")
@@ -43,11 +46,27 @@ public class MController extends HttpServlet {
 		}else if(command.equals("/join.do")) { // 회원가입 처리
 			service = new MJoinService();
 			service.execute(request, response);
-			viewPage = "member/login.jsp";
+			viewPage = "loginView.do";
 		}else if(command.equals("/logout.do")) { // 로그아웃
 			service = new MLogoutService();
 			service.execute(request, response);
-			viewPage = "member/login.jsp";
+			viewPage = "main.do";
+		}else if(command.equals("/modifyView.do")) { // 정보수정 페이지
+//			service = new MGetMemberService();	// 
+//			service.execute(request, response);
+			viewPage = "member/modify.jsp";
+		}else if(command.equals("/modify.do")) {  // 정보수정
+			service = new MMoidfyService();
+			service.execute(request, response);
+			viewPage = "member/main.jsp";
+		}else if(command.equals("/allView.do")) {  // 회원 목록 출력(paging)
+			service = new MAllViewService();
+			service.execute(request, response);
+			viewPage = "member/mAllView.jsp";
+		}else if(command.equals("/withdrawal.do")) {  // 회원 탈퇴
+			service = new MWithdrawalService();
+			service.execute(request, response);
+			viewPage = "member/main.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
