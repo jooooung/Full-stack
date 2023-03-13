@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">  
+  <title>Insert title here</title>
+  <style>
+  	p{text-align: center;}
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+  	$(document).ready(function(){
+  		// 1단계: +
+  		// 2단계: 사칙연산 random [+ - * /] Math.random을 0~3 
+  		// 3단계: 5문제를 푼 시간(초)과 점수 출력 
+  		$('.n1').val(Math.trunc(Math.random()*9) + 1);
+  		$('.n2').val(Math.trunc(Math.random()*9) + 1);
+  		var n1 = Number($('.n1').val());
+  		var n2 = Number($('.n2').val());
+  		$('#cal').click(function(){
+	  		var operator = Number($('.operator'));
+  			var sum = n1 + n2;
+	  		var answer = Number($('.answer').val());
+  			if(answer == sum){
+  				$('.result').html('<p>맞았습니다</p>');
+  			}else{
+  				$('.result').html('<p>틀렸습니다</p>');
+  			} 
+  		});
+  		$('#reset').click(function(){
+  			$('.answer').val('');
+  			$('.result').html('');
+  		});
+  	});
+  </script>
+</head>
+<body>
+	<p>1단계 : 
+		<input type="text" class="n1" size="5" readonly="readonly">
+		+
+		<input type="text" class="n2" size="5" readonly="readonly">
+		=
+		<input type="text" placeholder="답" class="answer" size="5">
+	</p>
+	<p>
+		<button id="reset">다시해봐</button>
+		<button id="cal">채점해봐</button>
+	</p>
+	<h1 class="result"></h1>
+	
+</body>
+</html>

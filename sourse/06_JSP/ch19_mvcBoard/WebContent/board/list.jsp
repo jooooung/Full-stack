@@ -9,6 +9,17 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath}/css/style.css" rel="stylesheet" type="text/css">
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script>
+	$(document).ready(function(){
+  		$('tr').click(function(){
+  			var bid = $(this).children().eq(0).text().trim();	// string tr의 첫번째의 text
+  			if(! isNaN(bid)){	// title 클릭 시 무반응
+  				location.href = '${conPath }/contentView.do?bid='+bid+'&pageNum=${pageNum}';
+  			}
+  		});
+  	});
+	</script>
 </head>
 <body>
 	<c:set var="SUCCESS" value="1"/>
@@ -64,9 +75,9 @@
   							└
   						</c:if> 
   					</c:forEach><!-- 답글들여쓰기 ,표시 처리 -->
-  					<a href="${conPath }/contentView.do?bid=${dto.bid}&pageNum=${pageNum}">
+  					<%-- <a href="${conPath }/contentView.do?bid=${dto.bid}&pageNum=${pageNum}"> --%>
   						${dto.btitle }
-  					</a>
+  					<!-- </a> -->
   					<!-- 조회수 높은 글 효과주기 -->
   					<c:if test="${dto.bhit > 10 }">
   						<b>*</b>

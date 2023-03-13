@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">  
+  <title>Insert title here</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+  	$(function(){
+  		$('p#msg').html('<b>hello, jQuery</b>');  
+  		// $('p#msg').text('<b>hello, jQuery</b>');  text는 태그까지 그대로 나온다
+  		$('input[name="msg"]').val('hello, JSP');	// input은 val(value)
+  		// $('.msg').val('hello, JSP');
+  		$('button').click(function(){
+  			// var pMsg = $('p#msg').html();	// p태그 안의 msg 가져오기 : 태그도 그대로 나온다
+  			var pMsg = $('p#msg').text();	// p태그 안의 msg의 text만 가져오기
+  			var inputMsg = $('input[name=msg]').val().trim();
+  			alert(pMsg + '\n' + inputMsg);
+  		});
+  	});
+  </script>
+</head>
+<body>
+  <p id="msg"></p>
+  <p> 메세지 : <input type="text" name="msg" class="msg"></p>
+  <button>msg 경고창</button>
+</body>
+</html>

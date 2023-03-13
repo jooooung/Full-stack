@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">  
+  <title>Insert title here</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+  	$(document).ready(function(){
+  		$('input[name="pw"], input[name="pwChk"]').keyup(function(){
+  			var pw = $('.pw').val();
+  			var pwChk = $('.pwChk').val();
+  			if(pw == pwChk){
+  				$('.result').html('두 비밀번호가 일치합니다');	
+  			}else{
+  				$('.result').html('<b>비밀번호가 일치하지 않습니다</b>');
+  			}
+  		});
+  	});
+  </script>
+</head>
+<body>
+	<p>ID <input type="text" name="id"></p>
+	<p>PW <input type="password" name="pw" class="pw"></p>
+	<p>PW <input type="password" name="pwChk" class="pwChk"></p>
+	<p class="result"></p>
+</body>
+</html>

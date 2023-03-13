@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">  
+  <title>Insert title here</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <style>
+  	.red{color: red;}
+  	.blue{color: blue;}
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+  	$(document).ready(function(){
+  		var h1Cnt = 0;
+  		$('#h1').click(function(){
+  			h1Cnt ++;
+  			if(h1Cnt < 6){	// 이벤트 조건 걸기
+  				$(this).append('<span class="red">♥</span>');
+  			}else{
+  				// 이벤트 제거
+  				$(this).off();
+  			}
+  		});
+  		$('#h2').click(function(){
+  			$(this).append('<span class="red">♥</span>').prepend('<span class="blue">♥</span>');
+  		});
+  		setInterval(()=>{  // 2초마다 이벤트 발생
+				$('h1').first().trigger('click');	// h1의 첫번째 태그에 2초마다 클릭 이벤트 발생시키기
+			}, 2000);
+  	});
+  </script>
+</head>
+<body>
+	<h1 id="h1">start1(5회 제안) :</h1>
+	<h1 id="h2">: start2 :</h1>
+</body>
+</html>

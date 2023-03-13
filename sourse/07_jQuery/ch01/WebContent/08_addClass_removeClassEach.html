@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">  
+  <title>Insert title here</title>
+  <style>
+  	table td{
+  		width: 100px;
+  		height: 100px;
+  		background-color: #AAFFAA;
+  		text-align: center;
+  	}
+  	.tdRed{
+  		background-color: red;
+  		
+  	}
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+  	$(document).ready(function(){
+  		$('td').each(function(idx, item){
+  			$(this).click(function(){
+  				$('td').removeClass('tdRed');
+  				$(this).addClass('tdRed');
+  				alert((idx+1)+'번째 선택');
+  			});
+  		});	
+  	});
+  </script>
+</head>
+<body>
+	<table>
+		<tr><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td></tr>
+	</table>
+</body>
+</html>
