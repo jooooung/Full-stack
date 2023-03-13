@@ -4,27 +4,54 @@
   <meta charset="UTF-8">  
   <title>Insert title here</title>
   <style>
-  	p{text-align: center;}
-  </style>
+	p, h1 {text-align: center;}
+	button{padding:10px; margin: 10px 30px;}
+	b{color:red;}
+</style>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script>
   	$(document).ready(function(){
   		// 1단계: +
   		// 2단계: 사칙연산 random [+ - * /] Math.random을 0~3 
   		// 3단계: 5문제를 푼 시간(초)과 점수 출력 
-  		$('.n1').val(Math.trunc(Math.random()*9) + 1);
-  		$('.n2').val(Math.trunc(Math.random()*9) + 1);
+  		var sec = 0;
+  		var timerId = setInterval(() => {
+				sec++;
+				if(sec>20){
+					$('.result').html('<b>'+sec +'초</b>가 넘었어요. 서두르세요');
+				}else{
+					$('.result').html(sec+'초 경과');
+				}
+			}, 1000);
+  		var n1 = Array(5); 
+  		var n2 = Array(5); 
+  		var opIdx = Array(5); 
+  		var answer = Array(5); 
+  		$('.n1').each(function(idx, item){
+				n1[idx] = parseInt(Math.random()*9+1);
+				$(this).val(n1[idx]);
+			});
+			$('.n2').each(function(idx, item){
+				n2[idx] = parseInt(Math.random()*9+1);
+				$(this).val(n2[idx]);
+			});
   		var opArray = ['+','-','*','/'];
-			var opIdx = parseInt(Math.random()*opArray.length); // 0~3
+			$('.operator').each(function(idx, item){
+				opIdx = parseInt(Math.random()*opArray.length); // 0~3
 				$('.operator').html('<b>'+opArray[opIdx]+'</b>');
-  		var n1 = Number($('.n1').val());
-  		var n2 = Number($('.n2').val());
-			var temp = [n1+n2, n1-n2, n1*n2, n1/n2];
+				var temp = [n1[idx]+n2[idx],
+										n1[idx]-n2[idx],
+										n1[idx]*n2[idx],
+										n1[idx]/n2[idx]];
+				answer[idx] = temp[opIdx[idx]];
+			});
   		$('#cal').click(function(){
-	  		var operator = Number($('.operator'));
-  			var sum = temp[opIdx];
-	  		var answer = Number($('.answer').val());
-  			if(answer == sum){
+  			clearInterval(timerId);
+  				$('.result').html('경과시간 : ' + sec);
+  			if(answer[idx].val() == answer[idx]){
+  				
+  				
+  				
   				$('.result').html('<p>맞았습니다</p>');
   			}else{
   				$('.result').html('<p>틀렸습니다</p>');
@@ -82,6 +109,7 @@
 		<button id="reset">다시해봐</button>
 		<button id="cal">채점해봐</button>
 	</p>
+	<hr>
 	<h1 class="result"></h1>
 	
 </body>
