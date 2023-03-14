@@ -37,32 +37,61 @@
 			});
   		var opArray = ['+','-','*','/'];
 			$('.operator').each(function(idx, item){
-				opIdx = parseInt(Math.random()*opArray.length); // 0~3
-				$('.operator').html('<b>'+opArray[opIdx]+'</b>');
+				opIdx[idx] = parseInt(Math.random()*opArray.length); // 0~3
+				$(this).html('<b>'+opArray[opIdx[idx]]+'</b>');
 				var temp = [n1[idx]+n2[idx],
 										n1[idx]-n2[idx],
 										n1[idx]*n2[idx],
 										n1[idx]/n2[idx]];
 				answer[idx] = temp[opIdx[idx]];
 			});
-  		$('#cal').click(function(){
-  			clearInterval(timerId);
-  				$('.result').html('경과시간 : ' + sec);
-  			if(answer[idx].val() == answer[idx]){
-  				
-  				
-  				
-  				$('.result').html('<p>맞았습니다</p>');
-  			}else{
-  				$('.result').html('<p>틀렸습니다</p>');
-  			} 
+  		$('#cal').click(function(){	// 채점
+  			clearInterval(timerId); // 타이머 정지
+  			let score = 0;
+  			$('.answer').each(function(idx, item){
+  				if($(this).val().trim() == answer[idx]){
+  					score += 20;
+  					$(this).css('color', 'blue');
+  				}else{
+  					$(this). val($(this).val() + ' 정답은 : ' + answer[idx]);
+  					$(this).css('color', 'res');
+  				}
+  			})
+  			$('.result').html('점수 : ' + score + '/ 경과시간 : ' + sec);
+  			
   		});
   		$('#reset').click(function(){
-  			$('.n1').val(Math.trunc(Math.random()*9) + 1);
-  	  	$('.n2').val(Math.trunc(Math.random()*9) + 1);
-  	  	$(opArray).each(function(idx, item){
-					$('.operator').html(opArray[Math.trunc(Math.random()*4)]);
-				});
+  			$('.result').html('0초 경과');
+			clearInterval(timerId);
+			sec = 0;
+			timerId = setInterval(()=>{
+				sec++;
+				if(sec>20){
+					$('.result').html('<b>'+sec +'초</b>가 넘었어요. 서두르세요');
+				}else{
+					$('.result').html(sec+'초 경과');
+				}
+			}, 1000);
+			$('.n1').each(function(idx, item){
+				n1[idx] = parseInt(Math.random()*10);
+				$(this).val(n1[idx]);
+				// item.value = n1[idx];
+			});
+			$('.n2').each(function(idx, item){
+				n2[idx] = parseInt(Math.random()*10);
+				$(this).val(n2[idx]);
+				//item.value = n2[idx];
+			});
+			$('span.operation').each(function(idx, item){
+				opIdx[idx] = parseInt(Math.random()*4);
+				$(this).html('<b>'+opArray[opIdx[idx]] +'</b>');
+				var tempAnswer = [n1[idx] + n2[idx],
+													n1[idx] - n2[idx],
+													n1[idx] * n2[idx],
+													n1[idx] / n2[idx],]
+				answer[idx] = tempAnswer[opIdx[idx]];
+			});
+			$('.answer').css('color','black');
 	  	  $('.answer').val('');
 				$('.result').html('');	
   		});
@@ -75,35 +104,35 @@
 		<span class="operator"></span>
 		<input type="text" class="n2" size="5" readonly="readonly">
 		=
-		<input type="text" placeholder="답" class="answer" size="5">
+		<input type="text" placeholder="답" class="answer" size="15">
 	</p>
 	<p>2번 : 
 		<input type="text" class="n1" size="5" readonly="readonly">
 		<span class="operator"></span>
 		<input type="text" class="n2" size="5" readonly="readonly">
 		=
-		<input type="text" placeholder="답" class="answer" size="5">
+		<input type="text" placeholder="답" class="answer" size="15">
 	</p>
 	<p>3번 : 
 		<input type="text" class="n1" size="5" readonly="readonly">
 		<span class="operator"></span>
 		<input type="text" class="n2" size="5" readonly="readonly">
 		=
-		<input type="text" placeholder="답" class="answer" size="5">
+		<input type="text" placeholder="답" class="answer" size="15">
 	</p>
 	<p>4번 : 
 		<input type="text" class="n1" size="5" readonly="readonly">
 		<span class="operator"></span>
 		<input type="text" class="n2" size="5" readonly="readonly">
 		=
-		<input type="text" placeholder="답" class="answer" size="5">
+		<input type="text" placeholder="답" class="answer" size="15">
 	</p>
 	<p>5번 : 
 		<input type="text" class="n1" size="5" readonly="readonly">
 		<span class="operator"></span>
 		<input type="text" class="n2" size="5" readonly="readonly">
 		=
-		<input type="text" placeholder="답" class="answer" size="5">
+		<input type="text" placeholder="답" class="answer" size="15">
 	</p>
 	<p>
 		<button id="reset">다시해봐</button>

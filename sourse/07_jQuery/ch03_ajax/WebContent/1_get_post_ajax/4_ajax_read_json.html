@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">  
+  <title>json파일 읽어 들여 ajax로 테이블에 출력</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+  	$(document).ready(function(){
+  		// ex.json 내용을 table 안에 출력
+  		$.ajax({
+  			url : 'ex.json',
+  			dataType : 'json',
+  			success : function(data){  // json 파일이 객체배열로 data에 들어간다
+  				var out = '<tr><th>ID</th><th>name</th><th>price</th><th>description</th></tr>';
+  				$.each(data, function(idx, item){
+  					out += '<tr>';
+  					out += '<td>' + item.id + '</td>';
+  					out += '<td>' + item.name + '</td>';
+  					out += '<td>' + item.price + '</td>';
+  					out += '<td>' + item.description + '</td>';
+  					out += '</tr>';
+  				}); // each()
+  				$('table#dataShow').html(out);
+  			}, // success	
+  		}); // ajax
+  	});
+  </script>
+</head>
+<body>
+	<table id="dataShow"></table>
+</body>
+</html>

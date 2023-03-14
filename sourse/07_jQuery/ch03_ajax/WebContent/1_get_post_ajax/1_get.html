@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert1 title here</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+	$(document).ready(function() {
+		// ajax 관련 함수 " $.get(), $.post(), $.ajax()
+		$('button').click(function(){	// 중복체크 버튼 누를 시 체크
+			var mid = $('#mid').val();
+			// midConfirm.jsp?mid=mid로 요청한 결과 화면을 midConfirmResult에 출력
+			/* $.get(요청경로, callback(data, status){
+				data : 요청경로 수행 결과(midConform.jsp에 만들어 놓은 result)
+				status : success/fail
+			}) */
+			$.get('midConfirm.jsp?mid='+mid, function(data, status){
+				if(status == 'success'){
+					$('span#midConfirmResult').html(data);
+				}
+			});
+		}); // button click event
+		$('#mid').keyup(function(){   // 중복체크 버튼 없이 입력할 시 자동으로 중복체크
+			var mid = $(this).val();
+			if(mid.length < 2){
+				$('span#midConfirmResult').text('2글자 이상 입력');
+			}else{
+				$.get('midConfirm.jsp?mid='+mid, function(data, status){
+					if(status == 'success'){
+						$('span#midConfirmResult').html(data);
+					}
+				});
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	아이디
+	<input type="text" name="mid" required="required" id="mid">
+	<button>중복체크</button>
+	<br>
+	<span id="midConfirmResult"></span>
+</body>
+</html>

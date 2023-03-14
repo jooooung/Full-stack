@@ -26,12 +26,8 @@
   		$('td').each(function(idx, item){
   			$(this).click(function(){
   				if(idx == ddukIdx){
-						dImg = $('<img>', {
-											'src': 'img/dduk.jpg', 
-											'width': '100px', 
-											'height': '100px'
-						});  				
-						$(this).html(dImg);
+						$(this).css('background-image', 'url("img/dduk.jpg")');
+						$(this).css('background-size', '100%")');
   					$('td').removeClass('tdRed');
   					$('td').off();
   					$('input[name="msg"]').val('축하축하 맞췄어요');

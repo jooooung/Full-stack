@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+    	dateFormat: "yy-mm-dd",	// 날짜 출력 형식
+    	dayNamesMin: [ "일", "월", "화", "수", "목", "금", "토" ],
+    	monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    	changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+    	changeYear: true, // 년을 바꿀수 있는 셀렉트 박스를 표시한다
+      yearSuffix: '년',
+    	showMonthAfterYear: true,	
+      showOtherMonths: true,	// 다른 달의 날짜도 표시
+      minDate: new Date(1950, 1 - 1, 1),	 // 1950년 1월 1일을 최소 날짜로 세팅
+			yearRange: 'c-100:c+10',	// 년도 선택 이전 이후 범위 설정
+    });
+  });
+  </script>
+</head>
+<body>
+	<p>생년월일 : <input type="text" id="datepicker"></p>
+	<!-- <p>생년월일 <input type="date"> </p>	date 는 모든 브라우저에서 적용되지 않는다 -->
+</body>
+</html>

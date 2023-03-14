@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">  
+  <title>Insert title here</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+  	$(document).ready(function(){
+  		$('button').click(function() {
+  			let mid = $('#mid').val();
+  			$.ajax({
+  				// url : 요청경로 (★필수)
+  				// type : get / post
+  				// data : 요청파라미터와 값
+  				// dataType : html/json/text = 요청한 경로로 실행한 결과의 타입
+  				// success : 성공 시 수행할 콜백함수(★필수)
+  				// error : 실패 시 수행할 콜백함수
+  				url : 'midConfirm.jsp',
+  				type : 'get',
+  				data : 'mid='+mid,
+  				dataType : 'html',
+  				success : function(data){
+  					$('span#midConfirmResult').html(data);
+  				},
+  				error : function(code){
+  					alert(code.status + '/' + code.statusText);
+  				}
+  			});
+  		});
+  	});
+  </script>
+</head>
+<body>
+	아이디
+	<input type="text" name="mid" required="required" id="mid">
+	<button>중복체크</button>
+	<br>
+	<span id="midConfirmResult"></span>
+</body>
+</html>
