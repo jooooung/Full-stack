@@ -16,6 +16,29 @@
 2. 구글과 같은 `CDN`(Content Delivery Network) 으로부터 `jQuery`를 포함시키는 방법이 있다.(CDN방식)
 - 다운로드 방식이 아닌 `CDN` 방식이 대게 쓰이고 로드가 빠르다
 
+## 기본 함수들
+- $('선택자').함수() : 선택자에서 even, odd, eq(n), first()등이 올 수 있다.
+1. html() : 해당 선택자 안에 html코드 삽입, 가져오기
+2. text() : 해당 선택자 안에 text 삽입, 가져오기
+3. hide() : 안 보이게
+4. show() : 보이게
+5. toggle() : hide와 show를 동시에 할 수 있다
+6. css('속성','값') : css 적용
+7. val() : input의 value를 수정, 가져오기
+8. each() : 배열 처리
+9. addClass() : 클래스명 추가
+10. removeClass() : 클래스명 제거
+11. attr('속성명','값') : 속성을 수정, 가져오기
+12. append() : 뒤에 추가
+13. prepend() : 앞에 추가
+14. 이벤트 관련 함수들
+    - click(콜백함수), on('이벤트명', 콜백함수),
+    - one('이벤트명', 콜백함수)
+    - off() : 이벤트 제거
+    - trigger() : 이벤트 강제 발생
+15. aJax 관련함수 : $.get(), $.post(), $.ajax()
+
+
 
 ## 외부데이터 타입
 1. *.json(자바, 파이썬으로 다루기 쉽다)
