@@ -40,35 +40,42 @@
   			}  // if
   		}); // mpw, mpwChk keyup
   		
+  		var patternMemail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/;
   		$('#memail').keyup(function(){
-  			var memail = $(this).val();
-  			if(memail){
+  			let memail = $(this).val();
+  			if(!memail){
+  				$('#memailConfirmResult').html(' &nbsp; ');
+  			}else if(!memail.match(patternMemail)){
+  				$('#memailConfirmResult').html('<b>메일 형식을 지켜 주세요</b>');
+  			}else{
   				$.ajax({
   					url : "${conPath}/memailConfirm.do",
   					type : 'get',
   					data : 'memail='+memail,
   					dataType : 'html',
   					success : function(data){
-  						$('#memailChkResult').html(data);
+  						$('#memailConfirmResult').html(data);
   					},
   				}); // $.ajax
   			} // if
   		}); // #memail keyup event
   		
-  	// submit : 사용가능한 ID입니다(#idConfirmResult), 비밀번호 일치(#pwChkResult) 일 때만 
+  	// submit : 사용가능한 ID입니다(#idConfirmResult), 비밀번호 일치(#pwChkResult) 사용가능한 이메일입니다 
   		$('form').submit(function(){
   			var midConfirmResult = $('#midConfirmResult').text().trim();
   			var mpwChkResult = $('#mpwChkResult').text().trim();
-  			var memailChkResult = $('#memailChkResult').text().trim();
+  			var memailConfirmResult = $('#memailConfirmResult').text().trim();
   			if(midConfirmResult != '사용가능한 ID입니다'){
   				alert('사용 가능한 ID가 아닙니다');
+  				$('#mid').focus();
   				return false;		// submit 제한
   			}else if(mpwChkResult != '비밀번호 일치'){
   				alert('비밀번호를 확인하세요');
   				$('#mpw').focus();
   				return false;		// submit 제한
-  			}else if(memailChkResult != '사용가능한 이메일입니다'){
+  			}else if(memailConfirmResult != '사용가능한 이메일입니다'){
   				alert('사용가능한 이메일이 아닙니다');
+  				$('#memail').focus();
   				return false;   // submit 제한
   			} // if
   		}); // form submit event
@@ -159,8 +166,8 @@
 					<tr>
 						<th><label for="memail">메일</label></th>
 						<td>
-							<input type="email" name="memail" id="memail" class="memail">
-							<div id="memailChkResult"> &nbsp; &nbsp; &nbsp; </div>
+							<input type="text" name="memail" id="memail" class="memail">
+							<div id="memailConfirmResult"> &nbsp; &nbsp; &nbsp; </div>
 						</td>
 					</tr>
 					<tr>

@@ -351,7 +351,7 @@ public class FileboardDao {
 		return result;
 	}
 	// 10. 회원탈퇴시 탈퇴회원(mID) 글 삭제 
-	public int WithdrawalDelete(int mid) {
+	public int WithdrawalDelete(String mid) {
 		int result = FAIL;
 		Connection 		  conn  = null;
 		PreparedStatement pstmt = null;
@@ -359,7 +359,7 @@ public class FileboardDao {
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, mid);
+			pstmt.setString(1, mid);
 			pstmt.executeUpdate();
 			result = SUCCESS;
 			System.out.println("탈퇴회원 글삭제 성공");

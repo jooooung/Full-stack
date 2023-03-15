@@ -3,7 +3,10 @@
 #content_form {
 	width: 800px;
 	height: 480px;
-	margin: 20px auto 0px;
+	min-height: 100%;
+	margin: 70px auto 0px;
+	text-align: center;
+	position: relative;
 }
 
 #midConfirmResult, #mpwChkResult, #memailConfirmResult {

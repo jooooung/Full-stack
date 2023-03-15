@@ -12,7 +12,7 @@ public class MemailConfirmService implements Service {
 		MemberDao mDao = new MemberDao();
 		int result = mDao.mEmailConfirm(memail);
 		if(result == MemberDao.FAIL){
-			request.setAttribute("memailConfirmResult", "중복된 이메일입니다");
+			request.setAttribute("memailConfirmResult", "<b>중복된 이메일입니다</b>");
 		}else{
 			request.setAttribute("memailConfirmResult", "사용가능한 이메일입니다");
 		}
