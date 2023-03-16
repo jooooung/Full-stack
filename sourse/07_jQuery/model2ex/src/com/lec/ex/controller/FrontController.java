@@ -10,7 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lec.ex.service.ALoginService;
+import com.lec.ex.service.BoardContentService;
+import com.lec.ex.service.BoardDeleteService;
 import com.lec.ex.service.BoardListService;
+import com.lec.ex.service.BoardModifyService;
+import com.lec.ex.service.BoardModifyViewService;
+import com.lec.ex.service.BoardReplyService;
+import com.lec.ex.service.BoardReplyViewService;
+import com.lec.ex.service.BoardWriteService;
 import com.lec.ex.service.MJoinService;
 import com.lec.ex.service.MAllViewService;
 import com.lec.ex.service.MLoginService;
@@ -93,6 +100,36 @@ public class FrontController extends HttpServlet {
 			service = new BoardListService();
 			service.execute(request, response);
 			viewPage = "freeBoard/boardList.jsp";
+		}else if(command.equals("/boardWriteView.do")) {	// 글쓰기 페이지
+			viewPage = "freeBoard/boardWrite.jsp";
+		}else if(command.equals("/boardWrite.do")) {	// 쓴 글 저장
+			service = new BoardWriteService();
+			service.execute(request, response);
+			viewPage = "boardList.do";
+		}else if(command.equals("/boardContent.do")) {	// 상세보기
+			service = new BoardContentService();
+			service.execute(request, response);
+			viewPage = "freeBoard/boardContent.jsp";
+		}else if(command.equals("/boardReplyView.do")) {	// 답글 페이지
+			service = new BoardReplyViewService();
+			service.execute(request, response);
+			viewPage = "freeBoard/boardReply.jsp";
+		}else if(command.equals("/boardReply.do")) {	// 답글 저장
+			service = new BoardReplyService();
+			service.execute(request, response);
+			viewPage = "boardList.do";
+		}else if(command.equals("/boardDelete.do")) {	// 글삭제
+			service = new BoardDeleteService();
+			service.execute(request, response);
+			viewPage = "boardList.do";
+		}else if(command.equals("/boardModifyView.do")) {	// 글수정 페이지
+			service = new BoardModifyViewService();
+			service.execute(request, response);
+			viewPage = "freeBoard/boardModify.jsp";
+		}else if(command.equals("/boardModify.do")) {	// 수정 글 저장
+			service = new BoardModifyService();
+			service.execute(request, response);
+			viewPage = "boardList.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

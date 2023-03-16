@@ -73,8 +73,8 @@
   				alert('비밀번호를 확인하세요');
   				$('#mpw').focus();
   				return false;		// submit 제한
-  			}else if(memailConfirmResult != '사용가능한 이메일입니다'){
-  				alert('사용가능한 이메일이 아닙니다');
+  			}else if(memailConfirmResult != '사용가능한 이메일입니다' && memailConfirmResult != ''){
+  				alert('메일을 확인하세요');
   				$('#memail').focus();
   				return false;   // submit 제한
   			} // if

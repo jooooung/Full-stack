@@ -9,7 +9,13 @@ public class BoardListService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String pageNum = request.getParameter("pageNum");
-		if(pageNum == null) pageNum = "1";
+		if(pageNum == null) {
+			if(request.getAttribute("pageNum") != null) {
+				pageNum = (String)request.getAttribute("pageNum");
+			}else {
+				pageNum = "1";
+			}
+		}
 		int currentPage = Integer.parseInt(pageNum);
 		final int PAGESIZE = 10, BLOCKSIZE = 10;
 		int startRow = (currentPage - 1) * PAGESIZE + 1;
@@ -26,5 +32,6 @@ public class BoardListService implements Service {
 		request.setAttribute("BLOCKSIZE", BLOCKSIZE);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
+		request.setAttribute("totCnt", totCnt);
 	}
 }

@@ -14,8 +14,8 @@ import javax.sql.DataSource;
 import com.lec.ex.dto.FIleboardDto;
 
 public class FileboardDao {
-	private static final int SUCCESS = 1;
-	private static final int FAIL = 0;
+	public static final int SUCCESS = 1;
+	public static final int FAIL = 0;
 	private DataSource ds;
 	// 싱글톤
 	private static FileboardDao instance = new FileboardDao();
@@ -39,9 +39,11 @@ public class FileboardDao {
 		Connection 		  conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "SELECT * " + 
+		String sql = "SELECT * \r\n" + 
 				"    FROM (SELECT ROWNUM RN, A.* " + 
-				"        FROM (SELECT * FROM FILEBOARD ORDER BY FGROUP DESC, FSTEP) A)" + 
+				"        FROM (SELECT F.*, MNAME FROM FILEBOARD F, MVC_MEMBER M" + 
+				"                WHERE F.MID = M.MID" + 
+				"                ORDER BY FGROUP DESC, FSTEP) A)" + 
 				"    WHERE RN BETWEEN ? AND ?";
 		try {
 			conn = ds.getConnection();
@@ -52,6 +54,7 @@ public class FileboardDao {
 			while(rs.next()) {
 				int fid = rs.getInt("fid");
 				String mid = rs.getString("mid");
+				String mname = rs.getString("mname");
 				String ftitle = rs.getString("ftitle");;
 				String fcontent = rs.getString("fcontent");;
 				String ffilename = rs.getString("ffilename");;
@@ -61,7 +64,7 @@ public class FileboardDao {
 				int fstep = rs.getInt("fstep");;
 				int findent = rs.getInt("findent");;
 				String fip = rs.getString("fip");;
-				dtos.add(new FIleboardDto(fid, mid, ftitle, fcontent, ffilename, frdate, fhit, fgroup, fstep, findent, fip));
+				dtos.add(new FIleboardDto(fid, mid, mname, ftitle, fcontent, ffilename, frdate, fhit, fgroup, fstep, findent, fip));
 			}
 			
 		} catch (Exception e) {
@@ -104,7 +107,7 @@ public class FileboardDao {
 		return cnt;
 	}
 	// 3. 글쓰기 (원글)
-	public int write(String mid, String ftitle, String fcontent, String ffilename, String fip) {
+	public int write(FIleboardDto dto) {
 		int result = FAIL;
 		Connection 		  conn  = null;
 		PreparedStatement pstmt = null;
@@ -113,11 +116,11 @@ public class FileboardDao {
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mid);
-			pstmt.setString(2, ftitle);
-			pstmt.setString(3, fcontent);
-			pstmt.setString(4, ffilename);
-			pstmt.setString(5, fip);
+			pstmt.setString(1, dto.getMid());
+			pstmt.setString(2, dto.getFtitle());
+			pstmt.setString(3, dto.getFcontent());
+			pstmt.setString(4, dto.getFfilename());
+			pstmt.setString(5, dto.getFip());
 			pstmt.executeUpdate();
 			result = SUCCESS;
 			System.out.println("글쓰기 성공");
@@ -161,7 +164,8 @@ public class FileboardDao {
 		Connection 		  conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "SELECT * FROM FILEBOARD WHERE FID = ?";
+		String sql = "SELECT F.*, MNAME FROM FILEBOARD F, MVC_MEMBER M  " + 
+				"    WHERE F.MID = M.MID AND FID = ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -169,6 +173,7 @@ public class FileboardDao {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				String mid = rs.getString("mid");
+				String mname = rs.getString("mname");
 				String ftitle = rs.getString("ftitle");;
 				String fcontent = rs.getString("fcontent");;
 				String ffilename = rs.getString("ffilename");;
@@ -178,7 +183,7 @@ public class FileboardDao {
 				int fstep = rs.getInt("fstep");;
 				int findent = rs.getInt("findent");;
 				String fip = rs.getString("fip");;
-				dto = new FIleboardDto(fid, mid, ftitle, fcontent, ffilename, frdate, fhit, fgroup, fstep, findent, fip);
+				dto = new FIleboardDto(fid, mid, mname, ftitle, fcontent, ffilename, frdate, fhit, fgroup, fstep, findent, fip);
 			}
 			
 		} catch (Exception e) {
@@ -194,13 +199,14 @@ public class FileboardDao {
 		}
 		return dto;
 	}
-	// 5-2. 글수정 상세보기
-	public FIleboardDto modyfyView(int fid) {
+	// 5-2. 글수정 답글, 상세보기
+	public FIleboardDto modyfyView_replyView(int fid) {
 		FIleboardDto dto = null;
 		Connection 		  conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "SELECT * FROM FILEBOARD WHERE FID = ?";
+		String sql = "SELECT F.*, MNAME FROM FILEBOARD F, MVC_MEMBER M  " + 
+				"    WHERE F.MID = M.MID AND FID = ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -208,6 +214,7 @@ public class FileboardDao {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				String mid = rs.getString("mid");
+				String mname = rs.getString("mname");
 				String ftitle = rs.getString("ftitle");;
 				String fcontent = rs.getString("fcontent");;
 				String ffilename = rs.getString("ffilename");;
@@ -217,7 +224,7 @@ public class FileboardDao {
 				int fstep = rs.getInt("fstep");;
 				int findent = rs.getInt("findent");;
 				String fip = rs.getString("fip");;
-				dto = new FIleboardDto(fid, mid, ftitle, fcontent, ffilename, frdate, fhit, fgroup, fstep, findent, fip);
+				dto = new FIleboardDto(fid, mid, mname, ftitle, fcontent, ffilename, frdate, fhit, fgroup, fstep, findent, fip);
 			}
 			
 		} catch (Exception e) {
@@ -234,7 +241,7 @@ public class FileboardDao {
 		return dto;
 	}
 	// 6. 글수정(fid, ftitle, fcontent, ffilename, frdate(SYSDATA), fip)
-	public int modify(int fid, String ftitle, String fcontent, String ffilename, String frdate, String fip) {
+	public int modify(int fid, String ftitle, String fcontent, String ffilename, String fip) {
 		int result = FAIL;
 		Connection 		  conn  = null;
 		PreparedStatement pstmt = null;
@@ -242,7 +249,6 @@ public class FileboardDao {
 				"    SET FTITLE = ?," + 
 				"        FCONTENT = ?," + 
 				"        FFILENAME = ?," + 
-				"        FRDATE = ?," + 
 				"        FIP = ?" + 
 				"    WHERE FID = ?";
 		try {
@@ -251,9 +257,8 @@ public class FileboardDao {
 			pstmt.setString(1, ftitle);
 			pstmt.setString(2, fcontent);
 			pstmt.setString(3, ffilename);
-			pstmt.setString(4, frdate);
-			pstmt.setString(5, fip);
-			pstmt.setInt(6, fid);
+			pstmt.setString(4, fip);
+			pstmt.setInt(5, fid);
 			pstmt.executeUpdate();
 			result = SUCCESS;
 			System.out.println("글수정 성공");

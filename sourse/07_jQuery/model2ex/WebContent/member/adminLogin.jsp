@@ -10,6 +10,18 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
+	<c:if test="${not empty member }">
+		<script>
+			alert('사용자는 관리자 모드로 로그인 할 수 없습니다');
+			history.back();
+		</script>
+	</c:if>
+	<c:if test="${not empty admin }">
+		<script>
+			alert('이미 로그인 하셨습니다');	
+			history.back();
+		</script>
+	</c:if>
 	<jsp:include page="../main/header.jsp" />
 	<div id="content_form">
 		<form action="adminLogin.do" method="post">

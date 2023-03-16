@@ -13,12 +13,13 @@
 	<jsp:include page="../main/header.jsp" />
 	<div id="content_form">
 		<form action="login.do" method="post">
+			<input type="hidden" name="next" value="${param.next }">
 	  	<table>
 	  		<caption>로그인</caption>
 	  		<tr>
 				  <th><label for="mid">ID</label></th>
 					<td>
-						<input type="text" name="mid" id="mid" class="mid" required="required">
+						<input type="text" name="mid" id="mid" class="mid" required="required" value="${mid }" >
 					</td>
 				</tr>
 				<tr>

@@ -11,6 +11,11 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
+	<c:if test="${empty admin }">
+		<script>
+			location.href='${conPath}/adminLoginView.do';
+		</script>
+	</c:if>
 	<c:if test="${not empty adminLoginResult }">
 		<script>
 			alert('${adminLoginResult}');
@@ -22,7 +27,7 @@
 			history.back();
 		</script>
 	</c:if>
-	<jsp:include page="../main/header.jsp"/>
+	<jsp:include page="../main/header.jsp" />
 	<div id="content_form">
 		<table>
   		<caption>전체회원보기</caption>

@@ -10,25 +10,22 @@
 <title>Insert title here</title>
 <style>
 #content_form {
-	width: 800px;
-	height: 500px;
-	line-height: 500px;
-	margin: 70px auto 0px;
+	line-height: 480px;
 	text-align: center;
 	font-size: 3em;
 }
 </style>
 </head>
 <body>
-	<c:if test="${not empty next }">
-		<script>
-			location.href = '${conPath}/${next}';
-		</script>
-	</c:if>
 	<c:if test="${not empty loginErrorMsg }">
 		<script>
 			alert('${loginErrorMsg}');
 			history.back();
+		</script>
+	</c:if>
+	<c:if test="${not empty next }">
+		<script>
+			location.href = '${conPath}/${next}';
 		</script>
 	</c:if>
 	<c:if test="${not empty modifyResult }">

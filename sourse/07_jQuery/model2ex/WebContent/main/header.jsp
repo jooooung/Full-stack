@@ -26,6 +26,7 @@
 	header .gnb ul li {	float: right;	margin-right: 30px;}
 	header .gnb a { 
 		color : #ffffaa;
+		width: 100%;
 		font-size: 0.9em;
 		display: block;
 		padding-left:15px;
@@ -110,7 +111,7 @@
 				<li><a>${member.mname }님 &nbsp; ▶</a></li>	
 			</ul>
 		</div>
-		<div class="logo" onclick="location.href='${conPath}/list.do'">
+		<div class="logo" onclick="location.href='${conPath}/main.do'">
 			LOGO
 		</div>
 		<div class="lnb">
