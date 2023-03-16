@@ -104,7 +104,7 @@ public class FrontController extends HttpServlet {
 			viewPage = "freeBoard/boardWrite.jsp";
 		}else if(command.equals("/boardWrite.do")) {	// 쓴 글 저장
 			service = new BoardWriteService();
-			service.execute(request, response);
+			service.execute(request, response); 
 			viewPage = "boardList.do";
 		}else if(command.equals("/boardContent.do")) {	// 상세보기
 			service = new BoardContentService();

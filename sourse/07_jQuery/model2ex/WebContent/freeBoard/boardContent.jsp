@@ -58,7 +58,7 @@
 					<button onclick="location.href='${conPath }/boardReplyView.do?fid=${board.fid}&pageNum=${param.pageNum }'">답변</button>
 				</c:if>
 					<button onclick="location.href='${conPath }/boardList.do?pageNum=${param.pageNum }'">목록</button>
-				<c:if test="${member.mid eq board.mid }">
+				<c:if test="${member.mid eq board.mid && not empty admin }">
 					<button onclick="location.href='${conPath }/boardDelete.do?fid=${board.fid}&pageNum=${param.pageNum }'">삭제</button>
 					<button onclick="location.href='${conPath }/boardModifyView.do?fid=${board.fid}&pageNum=${param.pageNum }'">수정</button>	
 				</c:if>

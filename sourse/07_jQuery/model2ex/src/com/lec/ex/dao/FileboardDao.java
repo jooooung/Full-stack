@@ -241,25 +241,25 @@ public class FileboardDao {
 		return dto;
 	}
 	// 6. 글수정(fid, ftitle, fcontent, ffilename, frdate(SYSDATA), fip)
-	public int modify(int fid, String ftitle, String fcontent, String ffilename, String fip) {
+	public int modify(FIleboardDto dto) {
 		int result = FAIL;
 		Connection 		  conn  = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE FILEBOARD " + 
-				"    SET FTITLE = ?," + 
-				"        FCONTENT = ?," + 
-				"        FFILENAME = ?," + 
-				"        FIP = ?" + 
-				"    WHERE FID = ?";
+		String sql = "UPDATE FILEBOARD SET FTITLE = ?," + 
+				"                    FCONTENT = ?," + 
+				"                    fFILENAME = ?," + 
+				"                    FIP = ?," + 
+				"                    FRDATE = SYSDATE" + 
+				"            WHERE FID = ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, ftitle);
-			pstmt.setString(2, fcontent);
-			pstmt.setString(3, ffilename);
-			pstmt.setString(4, fip);
-			pstmt.setInt(5, fid);
-			pstmt.executeUpdate();
+			pstmt.setString(1, dto.getFtitle());
+			pstmt.setString(2, dto.getFcontent());
+			pstmt.setString(3, dto.getFfilename());
+			pstmt.setString(4, dto.getFip());
+			pstmt.setInt(5, dto.getFid());
+			result = pstmt.executeUpdate();
 			result = SUCCESS;
 			System.out.println("글수정 성공");
 		} catch (Exception e) {
