@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class ExDto {
-	private int eday;
+	private int eno;
 	private String mid;
 	private int epno;
 	private int eweight;
@@ -15,9 +15,9 @@ public class ExDto {
 	public ExDto() {
 		super();
 	}
-	public ExDto(int eday, String mid, int epno, int eweight, int eset, int ecount, Timestamp etime, Date edate) {
+	public ExDto(int eno, String mid, int epno, int eweight, int eset, int ecount, Timestamp etime, Date edate) {
 		super();
-		this.eday = eday;
+		this.eno = eno;
 		this.mid = mid;
 		this.epno = epno;
 		this.eweight = eweight;
@@ -26,11 +26,11 @@ public class ExDto {
 		this.etime = etime;
 		this.edate = edate;
 	}
-	public int getEday() {
-		return eday;
+	public int geteno() {
+		return eno;
 	}
-	public void setEday(int eday) {
-		this.eday = eday;
+	public void seteno(int eno) {
+		this.eno = eno;
 	}
 	public String getMid() {
 		return mid;
@@ -76,7 +76,7 @@ public class ExDto {
 	}
 	@Override
 	public String toString() {
-		return "ExDto [eday=" + eday + ", mid=" + mid + ", epno=" + epno + ", eweight=" + eweight + ", eset=" + eset
+		return "ExDto [eno=" + eno + ", mid=" + mid + ", epno=" + epno + ", eweight=" + eweight + ", eset=" + eset
 				+ ", ecount=" + ecount + ", etime=" + etime + ", edate=" + edate + "]";
 	}
 }

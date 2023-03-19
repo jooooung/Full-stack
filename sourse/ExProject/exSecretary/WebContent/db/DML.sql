@@ -3,7 +3,7 @@
 SELECT * FROM MEMBER WHERE MID = 'member1';
 -- 2. 회원가입
 INSERT INTO MEMBER 
-    VALUES ('member4', 'member4', '박지우', null, null, null, 'f', null, '0');
+    VALUES ('member4', 'member4', '박지우', null, null, null, 'f', null, '0', SYSDATE);
 -- 3. 로그인
 SELECT * FROM MEMBER WHERE MID = 'member1' AND MPW = 'member1';
 -- 4. 상세보기(MID로 DTO 가져오기)
