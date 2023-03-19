@@ -6,7 +6,7 @@ INSERT INTO MEMBER
     VALUES ('member4', 'member4', '박지우', null, null, null, 'f', null, '0');
 -- 3. 로그인
 SELECT * FROM MEMBER WHERE MID = 'member1' AND MPW = 'member1';
--- 4. 상세보가(MID로 DTO 가져오기)
+-- 4. 상세보기(MID로 DTO 가져오기)
 SELECT * FROM MEMBER WHERE MID = 'member1';
 -- 5. 회원정보 수정
 UPDATE MEMBER SET MPW = 'member1',
@@ -23,9 +23,9 @@ SELECT *
         FROM (SELECT * FROM MEMBER ORDER BY MNAME) A)
     WHERE RN BETWEEN 1 AND 2;
 -- 7. 전체 회원 수 
-SELECT COUNT(*) FROM MEMBER;
+SELECT COUNT(*) CNT FROM MEMBER;
 
--- 8. 회원탈퇴(MID를 FK로 하는 테이블 모두 삭제)
+-- 8. 회원탈퇴
 DELETE FROM EX WHERE MID = 'member1';
 DELETE FROM BCOMMENT WHERE MID = 'member1';
 DELETE FROM EXBOARD WHERE MID = 'member1';

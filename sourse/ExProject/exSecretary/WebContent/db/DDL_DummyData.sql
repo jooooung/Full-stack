@@ -30,7 +30,8 @@ CREATE TABLE MEMBER(
     MEMAIL VARCHAR2(100),
     MGENDER VARCHAR2(10),
     MBIRTH DATE,
-    MWITHD VARCHAR2(4) DEFAULT 0 NOT NULL
+    MWITHD VARCHAR2(4) DEFAULT 0 NOT NULL,
+    MRDATE DATE
 );
 
     -- INBODY
@@ -129,11 +130,11 @@ CREATE SEQUENCE BCOMMENT_SEQ
 ------ DUMMY DATA --------
     -- MEMBER
 INSERT INTO MEMBER 
-    VALUES ('member1', 'member1', '김수호', null, null, null, 'm', null, '0');
+    VALUES ('member1', 'member1', '김수호', null, null, null, 'm', null, '0', sysdate);
 INSERT INTO MEMBER 
-    VALUES ('member2', 'member2', '박지우', null, '010-2501-2273', 'member2@naver.com', 'f', '1993-04-11', '0');
+    VALUES ('member2', 'member2', '박지우', null, '010-2501-2273', 'member2@naver.com', 'f', '1993-04-11', '0', sysdate);
 INSERT INTO MEMBER 
-    VALUES ('member3', 'member3', '최수영', null, null, null, 'm', null, '0');
+    VALUES ('member3', 'member3', '최수영', null, null, null, 'm', null, '0', sysdate);
     
     -- ADMIN
 INSERT INTO ADMIN VALUES ('admin', 'admin', '관리자');
