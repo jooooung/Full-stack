@@ -6,3 +6,4 @@
 4. JavaScript
 5. React - VS Code
 6. JSP - eclipse(jee)
+7. jQuery
