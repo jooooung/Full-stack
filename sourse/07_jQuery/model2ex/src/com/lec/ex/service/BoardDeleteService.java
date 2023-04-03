@@ -11,7 +11,7 @@ public class BoardDeleteService implements Service {
 		int fid = Integer.parseInt(request.getParameter("fid"));
 		FileboardDao fDao = FileboardDao.getinstance();
 		int result = fDao.delete(fid);
-		String deleteResult = result==fDao.SUCCESS? "삭제 성공" : "삭제 실패";
+		String deleteResult = result==FileboardDao.SUCCESS? "삭제 성공" : "삭제 실패";
 		request.setAttribute("deleteResult", deleteResult);
 	}
 }
