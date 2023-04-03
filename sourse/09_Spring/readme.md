@@ -4,7 +4,8 @@
 
 ---
 
-## ①. STS 다운로드
+## ✨Spring 세팅하기
+### ①. STS 다운로드
 
 1. 스프링 홈페이지 - 프로젝트 -> 스프링 툴스 4 하단의 Spring Tool Suite 3의 Spring Tool Suite 3 wiki 클릭(Spring Tool Suite 3.9.13까지 JDK8을 지원한다)
 
@@ -28,30 +29,30 @@
 <br>
 <br>
 
-# ✅ Spring 개요
+## ✨ Spring 개요
 
-## ③ 프로젝트 만들기
+### ③ 프로젝트 만들기
 1. Spring legacy project - Simple Spring Utility Priject- next 후 다운로드 - Package 이름 지정
 - C:\Users\dhdtn\\.m2라는 폴더가 생성된다
 - 프로젝트에 오류 시 우클릭 - Maven - Update
 
-## ④ Lombok 추가하기
-pom.xml : `dependencies` = 사용 라이브러리 종류가 담아져있다
-- `dependencies`에 Lombok 추가하기
-https://mvnrepository.com - Lombok 검색 후 다운받은 버전 클릭 - 코드 복사하여 추가
+## ④ `dependencies`에 Lombok 추가하기
+- pom.xml : `dependencies` = 사용 라이브러리 종류가 담아져있다
+- https://mvnrepository.com - Lombok 검색 후 다운받은 버전 클릭 - 코드 복사하여 추가
 
 ## ⑤ Lombok 사용하기
-- class 생성 후 변수 생성  
-생성자, getter&setter, toString 어노테이션 이용하여 추가  
--> `@Data`  `@NoArgsConstructor`  `@AllArgsConstructor`
-
+- `@Data` : getter, setter, toString 자동 생성
+- `@NoArgsConstructor` : 매개변수 없는 생성자 생성
+- `@AllArgsConstructor` : 매개변수 있는 생성자 생성
 ## ⑥ bean
 - resources폴더에 Spring bean 파일 만들기
+- 유지보수 시에 class 파일을 수정하지 않고 bean. 즉 xml 파일만을 수정하여   
+유지보수 할 수 있는 장점이 있다
 ---
 <br>
 <br>
 
-# ✅ DI(Dependency Injection) 개념 및 활용
+# ✅ DI(Dependency Injection, 의존성 주입) 개념 및 활용
 ## property가 객체인 경우(ex2)
 - 
 
