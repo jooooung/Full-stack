@@ -107,3 +107,14 @@
 ```
 ### (2)	Java파일에 xml 파일을 포함시켜 사용하는 방법
 - `@ImportResource("classpath:경로")` : 경로에 적은 xml 파일이 java에 포함된다
+
+# ✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위
+
+## 1. 객체간 의존 자동 연결 : @Autowired 어노테이션을 이용
+
+## 2. 스프링 컨테이너 생명 주기
+- 스프링 컨테이너 생성 : `GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();`
+- 스프링 컨테이너 설정 : `ctx.load(“classpath:applicationCTX.xml”);` 
+- 객체 생성 : `ctx.refresh();`
+- 스프링 컨테이너 사용 : `Student st = ctx.getBean(“student”,Student.class); st.getName();`
+- 스프링 컨테이너 소멸(자원해제) : `ctx.close();`
