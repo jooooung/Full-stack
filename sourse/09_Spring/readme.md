@@ -3,10 +3,13 @@
 ## 여러사람이 협업하기 좋게 가독성이 높게 JSP의 틀을 만들어 놓은 것
 
 ---
+
 [✨ Spring 세팅하기](#✨-spring-세팅하기)  
 [✨1. spring 개요](#✨1-spring-개요)  
 [✨2. DI(Dependency Injection) 개념 및 활용 (의존성 주입)](#✨2-didependency-injection-개념-및-활용-의존성-주입)  
-[✨3. DI(Dependency Injection) 설정방법](#✨3-didependency-injection-설정방법)
+[✨3. DI(Dependency Injection) 설정방법](#✨3-didependency-injection-설정방법)  
+[✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위](#✨4-didependency-injection-자동의존-설정과-빈-생명주기와-범위)
+
 ## ✨ Spring 세팅하기
 
 ### ①. STS 다운로드
@@ -28,34 +31,50 @@
 ## ② 서버 설정
 
 - 기존 서버 폴더 삭제 후 톰캣 폴더 복사하여 IDE에 이동
-- 복사 시 lib에 `jstl.jar`, `standard.jar` 여부 확인
+- 복사 시 lib 폴더에 `jstl.jar`, `standard.jar` 여부 확인
 
 <br>
 <br>
 
 ## ✨1. Spring 개요
 
-### ③ 프로젝트 만들기
+### 프로젝트 만들기
 
-1. Spring legacy project - Simple Spring Utility Priject- next 후 다운로드 - Package 이름 지정
+- Spring legacy project - Simple Spring Utility Priject(web이 아닌 프로젝트)
+- next 후 다운로드 - Package 이름 지정
 
-- C:\Users\dhdtn\\.m2라는 폴더가 생성된다
+- C:\Users\사용자이름\\.m2라는 폴더가 생성된다
 - 프로젝트에 오류 시 우클릭 - Maven - Update
 
-## ④ `dependencies`에 Lombok 추가하기
+## `dependencies`에 Lombok 추가하기
+
+> <b>`dependency`란 객체 간의 관계를 의미</b>
 
 - pom.xml : `dependencies` = 사용 라이브러리 종류가 담아져있다
 - https://mvnrepository.com - Lombok 검색 후 다운받은 버전 클릭 - 코드 복사하여 추가
 
-## ⑤ Lombok 사용하기
+```
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+	<dependency>
+	    <groupId>org.projectlombok</groupId>
+	    <artifactId>lombok</artifactId>
+	    <version>1.18.26</version>
+	    <scope>provided</scope>
+</dependency>
+```
+
+## Lombok 사용하기
+
+> 그동안 `class`에서 직접 생성자나 getter를 만들어줬지만  
+>  Lombok을 사용하면 아주 편리하게 사용 할 수 있다.
 
 - `@Data` : getter, setter, toString 자동 생성
 - `@NoArgsConstructor` : 매개변수 없는 생성자 생성
 - `@AllArgsConstructor` : 매개변수 있는 생성자 생성
 
-## ⑥ bean
+## bean
 
-- resources폴더에 Spring bean 파일 만들기
+- resources폴더에 Spring bean 파일 만들기`(Spring Bean Configuration File)`
 - 유지보수 시에 class 파일을 수정하지 않고 bean. 즉 xml 파일만을 수정하여  
   유지보수 할 수 있는 장점이 있다
 
@@ -66,12 +85,22 @@
 
 # ✨2. DI(Dependency Injection) 개념 및 활용 (의존성 주입)
 
-- 의존하는 클래스를 외부의 컨테이너 생성 후 객체 만들어서 필요할 때 가져다 쓰는 것
+## 1. 스프링을 이용한 객체 생성과 조립
+
+- 의존하는 클래스를 외부의 컨테이너 생성 후 객체를 만들어서 필요할 때 가져다 쓰는 것
 
 # ✨3. DI(Dependency Injection) 설정방법
-## 1. XML 파일을 이용한 DI 설정방법 
-- 값 세팅 =  `<constructor-arg value="홍길동"/>`
+
+## 1. XML 파일을 이용한 DI 설정방법
+
+- 객체 세팅 : `property`
+  - `<property name="student" value="student"/>` : `value는 기초데이터 타입, String
+  - `<property name="student" ref="student"/>` : `ref` 는 다른 빈 객체 설정
+- p를 이용한 객체 세팅: bean 태그에서 바로 세팅
+  - ` <bean id="id" class="경로" p:객체이름="객체값">`
+- 값 세팅 = `<constructor-arg value="홍길동"/>`
 - 여러값 세팅 : 순서대로 지정
+
 ```
 <constructor-arg>
     <list>
@@ -80,15 +109,12 @@
     </list>
 </constructor-arg>
 ```
-- 객체 세팅 
-    - `<property name="student" ref="student"/>`
-- p를 이용한 객체 세팅: bean 태그에서 바로 세팅  
-    - ` <bean id="id" class="경로" p:객체이름="객체값">`
 
+## 2. Java(어노테이션)를 이용한 DI 설정방법(잘 쓰이지는 않는다)
 
-## 2. Java(어노테이션)를 이용한 DI 설정방법
 - java 파일에서 xml역할을 사용하기
-- pom.xml에 추가
+- pom.xml에 의존추가
+
 ```
 <dependency>
     <groupId>cglib</groupId>
@@ -96,25 +122,33 @@
     <version>2.2.2</version>
 </dependency>
 ```
+
 - `@Configuration` : xml역할을 할 java 파일에서 파싱하기 위해 쓴다
 
 ## 3. XML과 Java(어노테이션)를 같이 사용하여 스프링을 설정하고 컨테이너를 만들고 컴포넌트를 생성한다
-### (1)	xml 파일에 Java파일을 포함시켜 사용하는 방법
+
+### (1) xml 파일에 Java파일을 포함시켜 사용하는 방법
+
 - xml에서 어노테이션 인식하기 : namespaces에서 context 체크
+
 ```
 <context:annotation-config/> <!-- 클래스 내의 annotation 해석 -->
 	<bean class="com.lec.ch03.method3.Method3_applicationConfig"/><!-- xml안에 자바 생성 -->
 ```
-### (2)	Java파일에 xml 파일을 포함시켜 사용하는 방법
+
+### (2) Java파일에 xml 파일을 포함시켜 사용하는 방법
+
 - `@ImportResource("classpath:경로")` : 경로에 적은 xml 파일이 java에 포함된다
 
 # ✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위
 
-## 1. 객체간 의존 자동 연결 : @Autowired 어노테이션을 이용
+## 1. 객체간 의존 자동 연결 : @Autowired
 
 ## 2. 스프링 컨테이너 생명 주기
-- 스프링 컨테이너 생성 : `GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();`
-- 스프링 컨테이너 설정 : `ctx.load(“classpath:applicationCTX.xml”);` 
+
+- 스프링 컨테이너 생성 :  
+  `GenericXmlApplicationContext ctx = new  GenericXmlApplicationContext();`
+- 스프링 컨테이너 설정 : `ctx.load(“classpath:파일명”);`
 - 객체 생성 : `ctx.refresh();`
 - 스프링 컨테이너 사용 : `Student st = ctx.getBean(“student”,Student.class); st.getName();`
 - 스프링 컨테이너 소멸(자원해제) : `ctx.close();`
