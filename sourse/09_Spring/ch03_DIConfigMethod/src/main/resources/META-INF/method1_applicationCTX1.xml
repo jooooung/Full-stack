@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="student1" class="com.lec.ch03.Student">
+		<constructor-arg value="홍길동"/>
+		<constructor-arg value="25"/>
+		<constructor-arg>
+			<list>
+				<value>클럽</value>
+				<value>음주</value>
+			</list>
+		</constructor-arg>
+		<property name="height" value="180"/>
+		<property name="weight" value="80"/>
+	</bean>
+	
+	<bean id="studentInfo" class="com.lec.ch03.StudentInfo">
+		<property name="student" ref="student1"/>
+	</bean>
+</beans>

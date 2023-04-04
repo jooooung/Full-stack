@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:annotation-config/> <!-- 클래스 내의 annotation 해석 -->
+	<bean class="com.lec.ch03.method3.Method3_applicationConfig"/><!-- xml안에 자바 생성 -->
+	
+	<bean id="student2" class="com.lec.ch03.Student">
+		<constructor-arg value="춘향"/>
+		<constructor-arg value="25"/>
+		<constructor-arg>
+			<list>
+				<value>그네타기</value>
+				<value>줄다리기</value>
+			</list>
+		</constructor-arg>
+		<property name="height" value="160"/>
+		<property name="weight" value="50"/>
+	</bean>
+</beans>

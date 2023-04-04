@@ -3,10 +3,11 @@
 ## 여러사람이 협업하기 좋게 가독성이 높게 JSP의 틀을 만들어 놓은 것
 
 ---
-[✨1. Spring 세팅하기](#✨1-spring-세팅하기)  
-[✨2. spring 개요](#✨2-spring-개요)  
-[✨3. DI(Dependency Injection) 개념 및 활용 (의존성 주입)](#✨3-didependency-injection-개념-및-활용-의존성-주입)
-## ✨1. Spring 세팅하기
+[✨ Spring 세팅하기](#✨-spring-세팅하기)  
+[✨1. spring 개요](#✨1-spring-개요)  
+[✨2. DI(Dependency Injection) 개념 및 활용 (의존성 주입)](#✨2-didependency-injection-개념-및-활용-의존성-주입)  
+[✨3. DI(Dependency Injection) 설정방법](#✨3-didependency-injection-설정방법)
+## ✨ Spring 세팅하기
 
 ### ①. STS 다운로드
 
@@ -32,7 +33,7 @@
 <br>
 <br>
 
-## ✨2. Spring 개요
+## ✨1. Spring 개요
 
 ### ③ 프로젝트 만들기
 
@@ -63,6 +64,46 @@
 <br>
 <br>
 
-# ✨3. DI(Dependency Injection) 개념 및 활용 (의존성 주입)
+# ✨2. DI(Dependency Injection) 개념 및 활용 (의존성 주입)
 
 - 의존하는 클래스를 외부의 컨테이너 생성 후 객체 만들어서 필요할 때 가져다 쓰는 것
+
+# ✨3. DI(Dependency Injection) 설정방법
+## 1. XML 파일을 이용한 DI 설정방법 
+- 값 세팅 =  `<constructor-arg value="홍길동"/>`
+- 여러값 세팅 : 순서대로 지정
+```
+<constructor-arg>
+    <list>
+        <value>값</value>
+        <value>값</value>
+    </list>
+</constructor-arg>
+```
+- 객체 세팅 
+    - `<property name="student" ref="student"/>`
+- p를 이용한 객체 세팅: bean 태그에서 바로 세팅  
+    - ` <bean id="id" class="경로" p:객체이름="객체값">`
+
+
+## 2. Java(어노테이션)를 이용한 DI 설정방법
+- java 파일에서 xml역할을 사용하기
+- pom.xml에 추가
+```
+<dependency>
+    <groupId>cglib</groupId>
+    <artifactId>cglib</artifactId>
+    <version>2.2.2</version>
+</dependency>
+```
+- `@Configuration` : xml역할을 할 java 파일에서 파싱하기 위해 쓴다
+
+## 3. XML과 Java(어노테이션)를 같이 사용하여 스프링을 설정하고 컨테이너를 만들고 컴포넌트를 생성한다
+### (1)	xml 파일에 Java파일을 포함시켜 사용하는 방법
+- xml에서 어노테이션 인식하기 : namespaces에서 context 체크
+```
+<context:annotation-config/> <!-- 클래스 내의 annotation 해석 -->
+	<bean class="com.lec.ch03.method3.Method3_applicationConfig"/><!-- xml안에 자바 생성 -->
+```
+### (2)	Java파일에 xml 파일을 포함시켜 사용하는 방법
+- `@ImportResource("classpath:경로")` : 경로에 적은 xml 파일이 java에 포함된다
