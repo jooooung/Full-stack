@@ -10,10 +10,9 @@
 [✨3. DI(Dependency Injection) 설정방법](#✨3-didependency-injection-설정방법)  
 [✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위](#✨4-didependency-injection-자동의존-설정과-빈-생명주기와-범위)  
 [✨5. 외부파일propertiesfile을 이용한 설정](#✨5-외부파일propertiesfile을-이용한-설정)  
-[✨6. AOP(aopaspect oriented. programming)](#✨6-aopaspect-oriented-programming)
-
+[✨6. AOP(aopaspect oriented. programming)](#✨6-aopaspect-oriented-programming)  
+[✨7. MVC](#✨7-mvc)
 ## ✨ Spring 세팅하기
-
 ### ①. STS 다운로드
 
 1. 스프링 홈페이지 - 프로젝트 -> 스프링 툴스 4 하단의 Spring Tool Suite 3의 Spring Tool Suite 3 wiki 클릭(Spring Tool Suite 3.9.13까지 JDK8을 지원한다)
@@ -286,7 +285,19 @@ String resourceLocation = "classpath:META-INF/ex1/admin.properties";
 
 
 # ✨7. MVC
-1. web.xml 에서 한글처리 filter 추가하기
+
+## ✔Spring MVC 기본 흐름
+1. **웹브라우저를 통해** 클라이언트의 **요청이 들어오면 무조건 맨 처음 DisptcherServlet에서 요청을 받는다** 
+2. **요청된 내용**을 **HandlerMapping**에게 작업을 보내 **요청 URL과 매칭되는 컨트롤러를 검색**해 준다.
+3. 요청된 내용의 처리를 컨트롤러에게 요청한다
+4. 요청된 내용을 Controller에게도 보내고 요청된 내용에 따라 다른 일을 하고, 컨트롤러 실행결과를 ModelAndView로 변환해서 리턴한다
+5. 컨트롤러의 실행결과를 보여줄 View를 검색하기 위해 ViewResolver에게도 보낸다.
+요청한 결과의 View로 응답 생성을 한다.
+우리가 작업을 많이 할 부분은 Controller, View, Model이고 나머지 부분은 Spring에서 거의 자동으로 다루어준다. 
+요청이 들어오면 DispatcherServlet 이 먼저 받고, Controller에게 요청을 한다. Controller에서 다시 DispatcherServlet으로 뭔가 응답을 준다. 그러면 DispatcherServlet에서 ViewResolver를 통해 View에 호출이 된다. 그러면 사용자에게 응답이 이루어 진다.
+ 
+
+- web.xml 에서 한글처리 filter 추가하기
 ```
 <!-- 한글처리 filter 추가  -->
 	<filter>
@@ -307,7 +318,7 @@ String resourceLocation = "classpath:META-INF/ex1/admin.properties";
 	</filter-mapping>
 ```
 
-2. css 링크 걸기  
+- css 링크 걸기  
 모든 / 포함된 경로는 `DispatcherServlet`으로 간다 따라서 `DispatcherServlet` 안 가게 설정  
 - servlet-context.xml에서  
   `<resources mapping="/css/**" location="/css/" />` 추가
