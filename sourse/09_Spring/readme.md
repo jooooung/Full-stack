@@ -152,3 +152,63 @@
 - 객체 생성 : `ctx.refresh();`
 - 스프링 컨테이너 사용 : `Student st = ctx.getBean(“student”,Student.class); st.getName();`
 - 스프링 컨테이너 소멸(자원해제) : `ctx.close();
+
+# ✨5. 외부파일(propertiesFile)을 이용한 설정
+
+## ✅1. Environment 객체를 이용한 스프링 빈 설정
+
+1. 외부 파일 생성
+2. IOC 컨테이너 생성(환경변수가 자동 세팅(ENV:`Environment`))
+`GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();`
+3. ENV 객체 얻기   
+ `ConfigurableEnvironment env =  ctx.getEnvironment();`
+
+4. ps(properties Source, (`속성 : 값`)형식)이 ENV 객체에 속한다
+- env의 속성과 속성값으로 되어있는 PS들 가져오기
+`MutablePropertySources propertiesSources =  env.getPropertySources();`
+
+5. 외부 파일을 읽어 ENV에 PS를 추가, 파일이 없을 수도 있으니 예외 처리 해주기
+```
+String resourceLocation = "classpath:META-INF/ex1/admin.properties";
+		try {
+			propertiesSources.addLast(new ResourcePropertySource(resourceLocation));
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+```
+---
+6. IOC 컨테이너 안에 객체를 생성(class)
+- 자동적으로 호출하기 : `EnvironmentAware`를 `implements`
+- 만든 class 형 Bean(xml) 생성하기  
+
+7. bean 생성(admin)을 위해 xml 파싱하고 객체생성
+```	
+  	ctx.load("classpath:META-INF/ex1/CTX.xml");
+		ctx.refresh();
+```		
+8. bean 사용
+```
+		Admin admin = ctx.getBean("admin", Admin.class);
+		System.out.println("adminId : " + admin.getAdminId());
+		System.out.println("adminPw : " + admin.getAdminPw());
+		System.out.println("env : " + admin.getEnv());
+		ctx.close();
+```
+
+## ✅2. properties File을 이용한 설정
+- Environment 객체를 사용하지 않고 프로퍼티 파일을 직접 이용하여 스프링 빈을 설정하는 방법 
+- 스프링 설정 XML 파일에 프로퍼티 파일을 명시하는 방법
+
+1. properties 파일 생성
+
+2. Environment 객체를 사용하지 않고 프로퍼티 파일을 직접 이용하여 스프링 빈을 설정
+- xml - namespaces에서 context 체크
+- properties 파일 가져오기  
+`<context:property-placeholder location="classpath:META-INF/ex2/admin.properties, classpath:META-INF/ex2/sub_admin.properties"/>`
+- `value`에 가져온 값 쓰기  
+`<property name="변수이름" value="${properties에 있는 이름}"/>`
+
+
+
+
+
