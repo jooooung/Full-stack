@@ -208,7 +208,28 @@ String resourceLocation = "classpath:META-INF/ex1/admin.properties";
 - `value`에 가져온 값 쓰기  
 `<property name="변수이름" value="${properties에 있는 이름}"/>`
 
+## ✅3.	프로파일(profile) 속성을 이용한 설정
+- profile 속성을 사용하여 동일한 스프링 빈을 여러 개 만들어 놓고  
+ 상황(환경)에 따라서 적절한 스프링 빈을 사용할 수 있게 한다 
 
+### 1. CTX(xml)를 개발용, 테스트용으로 나누어 생성
+- 생성 시 `beans` 태그에 `profile="이름"` 추가  
+동일 이름의 `bean`을 만들어도 충돌이 안 나기 위해 추가한다
 
+- `<context:property-placeholder location="경로">`   
+`context`안의 `location` : 외부 파일을 가져올 수 있다
+
+### 2. `main class`
+- 환경변수 null로 선언
+- `Scanner` 이용하여 원하는 모드 입력받기  
+- 환경변수에 입력받은 값 넣기
+- 컨테이너 생성  
+`GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();`
+- 입력 받은 profile에 맞는 xml 파일 활성화  
+`ctx.getEnvironment().setActiveProfiles(환경변수);`
+- xml 파일 `load`하기 : `ctx.load(loc1, loc2);`
+- 객체 생성 : `ctx.refresh();`
+- `Bean` 가져오기  
+`ServerInfo info = ctx.getBean("serverInfo", ServerInfo.class);`
 
 
