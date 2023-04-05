@@ -151,4 +151,4 @@
 - 스프링 컨테이너 설정 : `ctx.load(“classpath:파일명”);`
 - 객체 생성 : `ctx.refresh();`
 - 스프링 컨테이너 사용 : `Student st = ctx.getBean(“student”,Student.class); st.getName();`
-- 스프링 컨테이너 소멸(자원해제) : `ctx.close();`
+- 스프링 컨테이너 소멸(자원해제) : `ctx.close();
