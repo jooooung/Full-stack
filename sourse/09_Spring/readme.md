@@ -8,7 +8,9 @@
 [✨1. spring 개요](#✨1-spring-개요)  
 [✨2. DI(Dependency Injection) 개념 및 활용 (의존성 주입)](#✨2-didependency-injection-개념-및-활용-의존성-주입)  
 [✨3. DI(Dependency Injection) 설정방법](#✨3-didependency-injection-설정방법)  
-[✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위](#✨4-didependency-injection-자동의존-설정과-빈-생명주기와-범위)
+[✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위](#✨4-didependency-injection-자동의존-설정과-빈-생명주기와-범위)  
+[✨5. 외부파일propertiesfile을 이용한 설정](#✨5-외부파일propertiesfile을-이용한-설정)  
+[✨6. AOP(aopaspect oriented. programming)](#✨6-aopaspect-oriented-programming)
 
 ## ✨ Spring 세팅하기
 
@@ -233,3 +235,51 @@ String resourceLocation = "classpath:META-INF/ex1/admin.properties";
 `ServerInfo info = ctx.getBean("serverInfo", ServerInfo.class);`
 
 
+# ✨6. AOP(Aspect Oriented Programming)
+## AOP란?
+- 핵심 기능과 공통 기능을 분리 시켜놓고, 공통 기능을 필요로 하는 핵심 기능들에서 사용하는 방식
+
+## AOP 관련 용어
+-	`Aspect` : 공통 기능. 예를 들어 로깅같은 기능 자체에 대한 용어
+-	`Advice` : 공통기능을 구현한 객체 메
+-	`Join Point` : 핵심기능. 공통 기능을 적용할 수 있는 대상.
+-	`PointCuts` : Join Point의 부분으로 실제 Advice를 적용해야 되는 부분
+-	`Proxy` : Advice가 적용되었을 때 만들어지는 객체
+-	`Weaving` : Advice와 target이 결합되어서 프록시 객체를 만드는 과정(advice를 핵심기능에 적용하는 행위)
+
+## 스프링에서 AOP 구현
+- AOP의 구현은 proxy를 이용한다.
+- Weaving 방식은 두가지
+	1.	XML을 이용
+	2.	@Aspect 어노테이션 이용
+
+## AOP 구현 시 pom.xml에 의존 설정
+```
+<dependency>
+	<groupId>org.aspectj</groupId>
+	<artifactId>aspectjweaver</artifactId>
+	<version>1.7.4</version>
+</dependency>
+
+<dependency>
+	<groupId>cglib</groupId>
+	<artifactId>cglib</artifactId>
+	<version>2.2</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+	<groupId>org.projectlombok</groupId>
+	<artifactId>lombok</artifactId>
+	<version>1.18.24</version>
+	<scope>provided</scope>
+</dependency>
+```
+
+
+##	Advice의 종류
+- `aop:before` : 핵심기능 메소드 **실행 전**에 advice 실행
+- `aop:after-returning` : **정상적으로 핵심기능 메소드 실행 후**에 advice 실행
+- `aop:after-throwing` : 핵심기능 **메소드 실행 중 exception(에러) 발생시** advice 실행
+- `aop:after` : 핵심기능 **메소드 실행 후( exception이 발생여부에 상관없이 반드시** ) advice 실행
+- `aop:around` : 핵심기능 **메소드 실행 전/후 및 exception 발생시** advice 실행 (가장 광범위하게 사용)
