@@ -283,3 +283,31 @@ String resourceLocation = "classpath:META-INF/ex1/admin.properties";
 - `aop:after-throwing` : 핵심기능 **메소드 실행 중 exception(에러) 발생시** advice 실행
 - `aop:after` : 핵심기능 **메소드 실행 후( exception이 발생여부에 상관없이 반드시** ) advice 실행
 - `aop:around` : 핵심기능 **메소드 실행 전/후 및 exception 발생시** advice 실행 (가장 광범위하게 사용)
+
+
+# ✨7. MVC
+1. web.xml 에서 한글처리 filter 추가하기
+```
+<!-- 한글처리 filter 추가  -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+```
+
+2. css 링크 걸기  
+모든 / 포함된 경로는 `DispatcherServlet`으로 간다 따라서 `DispatcherServlet` 안 가게 설정  
+- servlet-context.xml에서  
+  `<resources mapping="/css/**" location="/css/" />` 추가
