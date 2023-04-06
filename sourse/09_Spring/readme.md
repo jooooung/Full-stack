@@ -11,8 +11,9 @@
 [✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위](#✨4-didependency-injection-자동의존-설정과-빈-생명주기와-범위)  
 [✨5. 외부파일propertiesfile을 이용한 설정](#✨5-외부파일propertiesfile을-이용한-설정)  
 [✨6. AOP(aopaspect oriented. programming)](#✨6-aopaspect-oriented-programming)  
-[✨7. MVC](#✨7-mvc)
-## ✨ Spring 세팅하기
+[✨7. MVC](#✨7-mvc)  
+[✨8. controller](#✨8-controller)
+># ✨ Spring 세팅하기
 ### ①. STS 다운로드
 
 1. 스프링 홈페이지 - 프로젝트 -> 스프링 툴스 4 하단의 Spring Tool Suite 3의 Spring Tool Suite 3 wiki 클릭(Spring Tool Suite 3.9.13까지 JDK8을 지원한다)
@@ -37,9 +38,9 @@
 <br>
 <br>
 
-## ✨1. Spring 개요
+>## ✨1. Spring 개요
 
-### 프로젝트 만들기
+### ✔프로젝트 만들기
 
 - Spring legacy project - Simple Spring Utility Priject(web이 아닌 프로젝트)
 - next 후 다운로드 - Package 이름 지정
@@ -47,7 +48,7 @@
 - C:\Users\사용자이름\\.m2라는 폴더가 생성된다
 - 프로젝트에 오류 시 우클릭 - Maven - Update
 
-## `dependencies`에 Lombok 추가하기
+## ✔`dependencies`에 Lombok 추가하기
 
 > <b>`dependency`란 객체 간의 관계를 의미</b>
 
@@ -64,7 +65,7 @@
 </dependency>
 ```
 
-## Lombok 사용하기
+## ✔Lombok 사용하기
 
 > 그동안 `class`에서 직접 생성자나 getter를 만들어줬지만  
 >  Lombok을 사용하면 아주 편리하게 사용 할 수 있다.
@@ -84,15 +85,15 @@
 <br>
 <br>
 
-# ✨2. DI(Dependency Injection) 개념 및 활용 (의존성 주입)
+># ✨2. DI(Dependency Injection) 개념 및 활용 (의존성 주입)
 
 ## 1. 스프링을 이용한 객체 생성과 조립
 
 - 의존하는 클래스를 외부의 컨테이너 생성 후 객체를 만들어서 필요할 때 가져다 쓰는 것
 
-# ✨3. DI(Dependency Injection) 설정방법
+># ✨3. DI(Dependency Injection) 설정방법
 
-## 1. XML 파일을 이용한 DI 설정방법
+## ✔1. XML 파일을 이용한 DI 설정방법
 
 - 객체 세팅 : `property`
   - `<property name="student" value="student"/>` : `value는 기초데이터 타입, String
@@ -111,7 +112,7 @@
 </constructor-arg>
 ```
 
-## 2. Java(어노테이션)를 이용한 DI 설정방법(잘 쓰이지는 않는다)
+## ✔2. Java(어노테이션)를 이용한 DI 설정방법(잘 쓰이지는 않는다)
 
 - java 파일에서 xml역할을 사용하기
 - pom.xml에 의존추가
@@ -126,7 +127,7 @@
 
 - `@Configuration` : xml역할을 할 java 파일에서 파싱하기 위해 쓴다
 
-## 3. XML과 Java(어노테이션)를 같이 사용하여 스프링을 설정하고 컨테이너를 만들고 컴포넌트를 생성한다
+## ✔3. XML과 Java(어노테이션)를 같이 사용하여 스프링을 설정하고 컨테이너를 만들고 컴포넌트를 생성한다
 
 ### (1) xml 파일에 Java파일을 포함시켜 사용하는 방법
 
@@ -141,11 +142,11 @@
 
 - `@ImportResource("classpath:경로")` : 경로에 적은 xml 파일이 java에 포함된다
 
-# ✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위
+># ✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위
 
-## 1. 객체간 의존 자동 연결 : @Autowired
+## ✔1. 객체간 의존 자동 연결 : @Autowired
 
-## 2. 스프링 컨테이너 생명 주기
+## ✔2. 스프링 컨테이너 생명 주기
 
 - 스프링 컨테이너 생성 :  
   `GenericXmlApplicationContext ctx = new  GenericXmlApplicationContext();`
@@ -154,9 +155,9 @@
 - 스프링 컨테이너 사용 : `Student st = ctx.getBean(“student”,Student.class); st.getName();`
 - 스프링 컨테이너 소멸(자원해제) : `ctx.close();
 
-# ✨5. 외부파일(propertiesFile)을 이용한 설정
+># ✨5. 외부파일(propertiesFile)을 이용한 설정
 
-## ✅1. Environment 객체를 이용한 스프링 빈 설정
+## ✔1. Environment 객체를 이용한 스프링 빈 설정
 
 1. 외부 파일 생성
 2. IOC 컨테이너 생성(환경변수가 자동 세팅(ENV:`Environment`))
@@ -196,7 +197,7 @@ String resourceLocation = "classpath:META-INF/ex1/admin.properties";
 		ctx.close();
 ```
 
-## ✅2. properties File을 이용한 설정
+## ✔2. properties File을 이용한 설정
 - Environment 객체를 사용하지 않고 프로퍼티 파일을 직접 이용하여 스프링 빈을 설정하는 방법 
 - 스프링 설정 XML 파일에 프로퍼티 파일을 명시하는 방법
 
@@ -209,7 +210,7 @@ String resourceLocation = "classpath:META-INF/ex1/admin.properties";
 - `value`에 가져온 값 쓰기  
 `<property name="변수이름" value="${properties에 있는 이름}"/>`
 
-## ✅3.	프로파일(profile) 속성을 이용한 설정
+## ✔3.	프로파일(profile) 속성을 이용한 설정
 - profile 속성을 사용하여 동일한 스프링 빈을 여러 개 만들어 놓고  
  상황(환경)에 따라서 적절한 스프링 빈을 사용할 수 있게 한다 
 
@@ -234,7 +235,7 @@ String resourceLocation = "classpath:META-INF/ex1/admin.properties";
 `ServerInfo info = ctx.getBean("serverInfo", ServerInfo.class);`
 
 
-# ✨6. AOP(Aspect Oriented Programming)
+># ✨6. AOP(Aspect Oriented Programming)
 ## AOP란?
 - 핵심 기능과 공통 기능을 분리 시켜놓고, 공통 기능을 필요로 하는 핵심 기능들에서 사용하는 방식
 
@@ -284,7 +285,7 @@ String resourceLocation = "classpath:META-INF/ex1/admin.properties";
 - `aop:around` : 핵심기능 **메소드 실행 전/후 및 exception 발생시** advice 실행 (가장 광범위하게 사용)
 
 
-# ✨7. MVC
+># ✨7. MVC
 
 ## ✔Spring MVC 기본 흐름
 1. **웹브라우저를 통해** 클라이언트의 **요청이 들어오면 무조건 맨 처음 DisptcherServlet에서 요청을 받는다** 
@@ -322,3 +323,46 @@ String resourceLocation = "classpath:META-INF/ex1/admin.properties";
 모든 / 포함된 경로는 `DispatcherServlet`으로 간다 따라서 `DispatcherServlet` 안 가게 설정  
 - servlet-context.xml에서  
   `<resources mapping="/css/**" location="/css/" />` 추가
+
+># ✨8. Controller
+## ✔ 1. Controller class 제작
+### 1-1. `@Controller` 어노테이션을 clsss에 적용
+	- 컨트롤러 역할의 클래스 파일은 `servlet-context.xml`에 `<context:component-scan base-package="com.lec.ch08" />  `명시된 패키지 아래에만 위치할 수 있다
+
+### 1-2. `@requestMapping` 어노테이션을 이용해서 요청 경로를 지정
+#### 요청 경로는 prefix + 요청경로 + suffix로 조합된다
+- 공통 요청 경로 : `@Controller` 밑에 `@RequestMapping("공통요청경로")` 추가
+- `@RequestMapping("요청경로")` 
+- 요청방식(GET or POST) 지정하기   
+: `@RequestMapping(value="요청경로", method = RequestMethod.GET 또는 POST)`
+
+### 1-3. 웹브라우저의 요청을 처리할 메서드를 구현
+```
+public 리턴타입 메서드이름() {
+		return "view 파일 이름";	
+	}
+```
+- return 타입이 `ModelAndView`   
+
+```
+매개변수 없는 타입
+------------------------
+public ModelAndView list() {
+		ModelAndView mav = new ModelAndView();	// 빈 ModelAndView 객체 생성
+		ArrayList<Member> list = new ArrayList<Member>();
+		list.add(new Member("aaa", "111"));
+		mav.addObject("list", list);  // mav에 추가
+		mav.setViewName("board/list");  // view 지정
+		return mav;	// view 리턴
+	}
+
+매개변수 있는 타입 : new ModelAndView();를 자동 생성
+------------------------
+public ModelAndView reply(ModelAndView mav) {
+		Member member = new Member("ccc", "111");
+		mav.addObject("member", member);
+		mav.setViewName("board/reply");
+		return mav;
+	}
+```
+
