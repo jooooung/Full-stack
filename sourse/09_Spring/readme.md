@@ -12,7 +12,8 @@
 [✨5. 외부파일propertiesfile을 이용한 설정](#✨5-외부파일propertiesfile을-이용한-설정)  
 [✨6. AOP(aopaspect oriented. programming)](#✨6-aopaspect-oriented-programming)  
 [✨7. MVC](#✨7-mvc)  
-[✨8. controller](#✨8-controller)
+[✨8. controller](#✨8-controller)  
+[✨9. FormData]()
 ># ✨ Spring 세팅하기
 ### ①. STS 다운로드
 
@@ -368,3 +369,6 @@ public ModelAndView reply(ModelAndView mav) {
 	}
 ```
 
+># ✨9. FormData
+스프링에서 폼에 있는 데이터 처리하기
+## 

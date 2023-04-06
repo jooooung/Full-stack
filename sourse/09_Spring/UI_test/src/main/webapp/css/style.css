@@ -1,0 +1,23 @@
+@charset "UTF-8";
+body{
+	background-color: lightyellow;
+}
+
+#wrap{
+	width: 300px;
+	margin: 0 auto;
+}
+#wrap table{
+	width: 200px;
+	margin: 0 auto;
+}
+#wrap p{
+	text-align: right;
+	font-weight: bold;
+	color: red;
+}
+
+#wrap input:not(.btn){
+	width: 100px;
+}
+
