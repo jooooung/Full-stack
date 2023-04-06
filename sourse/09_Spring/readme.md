@@ -371,4 +371,65 @@ public ModelAndView reply(ModelAndView mav) {
 
 ># ✨9. FormData
 스프링에서 폼에 있는 데이터 처리하기
-## 
+## ✔1. `HttpServletRequest` 이용하여 form 데어터 전송(파일첨부 시 사용) 
+```
+@RequestMapping(value="join1", method = RequestMethod.GET)
+	public String join1(HttpServletRequest request, Model model) {
+		String name = request.getParameter("name");  // request로 데이터 받기
+		model.addAttribute("name", name);  // model에 add
+		return "member/result1";	// view에 리턴
+	}
+```
+
+## ✔2. `@RequesParam` 어노테이션을 이용해서 데이터를 전송받기
+```
+@RequestMapping(value="join2", method = RequestMethod.GET)
+	public String join2(@RequestParam("name") String memberName, Model model) {
+		model.addAttribute("name", memberName);
+		return "member/result1";
+	}
+```
+
+## ✔3. 데이터(커맨드) 객체를 이용하여 데이터가 많을 경우 간단하게 사용
+로그인 등 전체 데이터가 필요하지 않을 때 사용
+```
+@RequestMapping(value="join3", method = RequestMethod.GET)
+	public String join3(String name, Model model) {
+		model.addAttribute("name", name);
+		return "member/result1";
+	}
+```
+
+## ✔4. 데이터 커맨드를 이용한 개선 방법 : 코드 양이 적다
+```
+@RequestMapping("member/join4")
+	public String input4(MemberDto memberDto, Model model) {
+		//스프링프레임워크가 자동으로 MemberInfo 객체 생성 후 setter를 이용하여 속성을 setting
+		model.addAttribute("member",memberDto);
+		return "member/result4";
+	}
+```
+
+## ✔5. 
+class 이름과 변수 이름은(첫글자는 소문자)같아야한다
+```
+@RequestMapping("join5")
+	public String join5(MemberDto memberDto) { 
+		return "member/result5";
+	}
+```
+## ✔6.
+따라서 대게 MemberDto가 아닌 Member로 생성  
+MemberDto일 시 member로 지정하기  
+= 매개변수에 `@ModelAttribute('모델 이름') `
+```
+public String join6(@ModelAttribute("member") MemberDto memberDto) {
+		return "member/result4";
+	}
+```
+
+## ✔ `@ModelAttribute` 란?
+- 모든 요청경로에 공통으로 필요한 model attribute가 있을 경우 사용
+- `@ModelAttribute(“모델이름선언”)`을 이용하면 자동적으로 모든 요청경로를 수행하기전   
+`model`객체안에 `attribute Add`와 `setting`이 동시에 된다
+-     
