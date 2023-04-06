@@ -325,18 +325,20 @@ String resourceLocation = "classpath:META-INF/ex1/admin.properties";
   `<resources mapping="/css/**" location="/css/" />` 추가
 
 ># ✨8. Controller
-## ✔ 1. Controller class 제작
-### 1-1. `@Controller` 어노테이션을 clsss에 적용
+## ✔ Controller class 제작
+### 1. `@Controller` 어노테이션을 clsss에 적용
 	- 컨트롤러 역할의 클래스 파일은 `servlet-context.xml`에 `<context:component-scan base-package="com.lec.ch08" />  `명시된 패키지 아래에만 위치할 수 있다
 
-### 1-2. `@requestMapping` 어노테이션을 이용해서 요청 경로를 지정
+### 2. `@requestMapping` 어노테이션을 이용해서 요청 경로를 지정
 #### 요청 경로는 prefix + 요청경로 + suffix로 조합된다
 - 공통 요청 경로 : `@Controller` 밑에 `@RequestMapping("공통요청경로")` 추가
 - `@RequestMapping("요청경로")` 
 - 요청방식(GET or POST) 지정하기   
 : `@RequestMapping(value="요청경로", method = RequestMethod.GET 또는 POST)`
+#### ✔ 요청 경로가 Method인 경우
+- `@RequestMapping(params = "method=xxx")`   
 
-### 1-3. 웹브라우저의 요청을 처리할 메서드를 구현
+### 3. 웹브라우저의 요청을 처리할 메서드를 구현
 ```
 public 리턴타입 메서드이름() {
 		return "view 파일 이름";	
