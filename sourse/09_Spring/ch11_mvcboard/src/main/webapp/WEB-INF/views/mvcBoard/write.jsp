@@ -11,7 +11,7 @@
 	<link href="${conPath}/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form action="${conPath }/write.do" method="post">
+	<form action="${conPath }/mvcBoard/write.do" method="post">
 		<table>
 			<caption>글쓰기</caption>
 			<tr>

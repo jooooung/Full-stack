@@ -479,4 +479,19 @@ public String join6(@ModelAttribute("member") MemberDto memberDto) {
 	- 글쓰기 링크 경로 변경 : `writeView.do` => `mvcBoard/write.do`
 	- 순번, 역순 변수선언 후 추가
 	- for문 끝나기 직전 `순번 + 1`, `역번 - 1` 해주기
+
+### 🔸글쓰기
+- **`controller`** 
+	- write 메소드 post로 생성 : form태그의 `method="post"`이기 때문	
+	- 매개변수에 `dto`, `request`, `model` 추가
+	- `request` : service 에서 ip 추출 용도
+	- model에 request 추가 : `model.addAttribute("request", request);`
+	- `return "forward:list.do";`
+	- `return`을 `redirect`로 할 시 alert가 안 뜬다
+	- POST 방식을 받는 list 매핑 추가
+- **`service`**
+	- model을 map화 하기
+	- map으로 `dto`, `request` get
+	- ip 세팅
+	- model에 `addAttribute`
 ## ✔
