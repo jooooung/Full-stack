@@ -13,7 +13,9 @@
 [✨6. AOP(aopaspect oriented. programming)](#✨6-aopaspect-oriented-programming)  
 [✨7. MVC](#✨7-mvc)  
 [✨8. controller](#✨8-controller)  
-[✨9. FormData]()
+[✨9. FormData](#✨9-formdata)  
+[✨10. request mapping](#✨10-request-mapping)  
+[✨11. mvcboard](#✨11-mvcboard)
 ># ✨ Spring 세팅하기
 ### ①. STS 다운로드
 
@@ -462,8 +464,19 @@ public String join6(@ModelAttribute("member") MemberDto memberDto) {
 - webapp - 폴더 생성 - jsp 파일 생성
 - webapp에서 jsp 파일을 생성하면 jsp를 직접 실행 가능하다
 
-## ✔ 
+># ✨11. mvcBoard 
 
-## ✔
-
+## ✔ Controller
+- 서비스 변수 선언 `private service이름 변수이름;`
+### 🔸글목록
+- **`controller`** 
+	- model에 `pageNum` 전달 : `model.addAttribute("pageNum", pageNum);`
+- **`service`**
+	- pageNum 가져오기 : `Map<키값, value> map이름 = model.asMap();`  //model을 map으로 변경
+	- `pageNum` 선언 : `String pageNum = (String) map.get("pageNum");`
+  - `paging` 작업(순번, 역순 추가)
+- **`jsp`**
+	- 글쓰기 링크 경로 변경 : `writeView.do` => `mvcBoard/write.do`
+	- 순번, 역순 변수선언 후 추가
+	- for문 끝나기 직전 `순번 + 1`, `역번 - 1` 해주기
 ## ✔
