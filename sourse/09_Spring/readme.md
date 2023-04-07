@@ -494,4 +494,12 @@ public String join6(@ModelAttribute("member") MemberDto memberDto) {
 	- map으로 `dto`, `request` get
 	- ip 세팅
 	- model에 `addAttribute`
+
+### 🔸상세보기
+- **`controller`** 
+	- 매개변수 : 글번호, model 
+- **`service`**
+	- model을 map화
+	- map으로 `bid` get
+	- model에 `addAttribute`
 ## ✔

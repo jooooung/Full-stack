@@ -12,13 +12,16 @@
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script>
 	$(document).ready(function(){
-  		$('tr').click(function(){
-  			var bid = $(this).children().eq(0).text().trim();	// string tr의 첫번째의 text
+  		/* $('tr').click(function(){
+  			var bid = $(this).children().eq(2).text().trim();	// string tr의 첫번째의 text
   			if(! isNaN(bid)){	// title 클릭 시 무반응
-  				location.href = '${conPath }/contentView.do?bid='+bid+'&pageNum=${pageNum}';
+  				location.href = '${conPath }/mvcBoard/contentView.do?bid='+bid+'&pageNum=${pageNum}';
   			}
-  		});
+  		}); */
   	});
+	const trClicked = (bid) => {
+		location.href = '${conPath}/mvcBoard/content.do?bid='+bid+'&pageNum=${pageNum}'
+	};
 	</script>
 </head>
 <body>
@@ -64,7 +67,7 @@
   		<c:set var="oNum" value="${orderNum }"/>
   		<c:set var="iNum" value="${inverseNum }"/>
   		<c:forEach var="dto" items="${boardList }">
-  			<tr>
+  			<tr onclick="trClicked(${dto.bid})">
   				<td>${oNum }</td>
   				<td>${iNum }</td>
   				<td>${dto.bid }</td>

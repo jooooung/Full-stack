@@ -14,6 +14,7 @@ import com.lec.ch11.service.*;
 @RequestMapping("mvcBoard")	// 공통요청경로
 public class MvcBoardController {
 	private Service bservice;
+	
 	// list
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String list(String pageNum, Model model) { // service에 전달해야하니 Model 생성
@@ -46,5 +47,14 @@ public class MvcBoardController {
 		bservice = new BWriteService();
 		bservice.execute(model);
 		return "forward:list.do";
+	}
+	
+	// content
+	@RequestMapping(value = "content", method = RequestMethod.GET)
+	public String content(int bid, Model model) {
+		model.addAttribute("bid", bid);
+		bservice = new BContentService();
+		bservice.execute(model);
+		return "mvcBoard/content";
 	}
 }
