@@ -526,4 +526,14 @@ public String join6(@ModelAttribute("member") MemberDto memberDto) {
 	- ip 설정 : `request.getRemoteAddr()` 이용
 	- model에 `addAttribute`
 
+### 🔸글 삭제
+- **`controller`** 
+	- model 에 `bid` add
+
+- **`service`**
+	- model을 map화
+	- map으로 `bid` get
+	- `delete` 결과 변수 생성
+	- 결과에 따른 alert 멘트 설정 후 model 에 add 
+	- model에 `addAttribute` 
 ## ✔

@@ -65,7 +65,7 @@ public class MvcBoardController {
 		return "mvcBoard/content";
 	}
 	
-	// modify
+	// modify / reply view
 	@RequestMapping(value = "modify", method = RequestMethod.GET)
 	public String modify(int bid, Model model) {
 		model.addAttribute("bid", bid);
@@ -73,6 +73,7 @@ public class MvcBoardController {
 		bservice.execute(model);
 		return "mvcBoard/modify";
 	}
+	// modify
 	@RequestMapping(value = "modify", method = RequestMethod.POST)
 	public String modify(BoardDto boardDto, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
@@ -80,4 +81,14 @@ public class MvcBoardController {
 		bservice.execute(model);
 		return "forward:content.do";
 	}
+	
+	// delete
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(int bid, Model model) {
+		model.addAttribute("bid", bid);
+		bservice = new BDeleteService();
+		bservice.execute(model);
+		return "forward:list.do";
+	}
+	
 }
