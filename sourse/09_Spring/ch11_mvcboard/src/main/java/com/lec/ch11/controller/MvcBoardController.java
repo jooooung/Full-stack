@@ -91,4 +91,19 @@ public class MvcBoardController {
 		return "forward:list.do";
 	}
 	
+	// reply
+	@RequestMapping(value = "reply", method = RequestMethod.GET)
+	public String reply(int bid, Model model) {
+		model.addAttribute("bid", bid);
+		bservice = new BModifyReplyService(); // bid로 dto를 model에 add
+		bservice.execute(model);
+		return "mvcBoard/reply";
+	}
+	@RequestMapping(value = "reply", method = RequestMethod.POST)
+	public String reply(BoardDto boardDto, HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		bservice = new BReplyService();
+		bservice.execute(model);
+		return "forward:list.do";
+	}
 }

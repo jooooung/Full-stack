@@ -536,4 +536,16 @@ public String join6(@ModelAttribute("member") MemberDto memberDto) {
 	- `delete` 결과 변수 생성
 	- 결과에 따른 alert 멘트 설정 후 model 에 add 
 	- model에 `addAttribute` 
-## ✔
+
+### 🔸답글 쓰기
+- **`controller`** 
+	- `POST` 방식 `@RequestMapping` 추가
+	- - 매개변수에 `dto`, `request`, `model` 추가
+	- `request` : service 에서 ip 추출 용도
+	- model에 request 추가 : `model.addAttribute("request", request);`
+	- `return "forward:list.do";` : 상세보기 페이지로 가기
+ **`service`**
+	- model을 map화
+	- map으로 `dto`, `request` get
+	- ip 설정 : `request.getRemoteAddr()` 이용
+	- model에 `addAttribute`

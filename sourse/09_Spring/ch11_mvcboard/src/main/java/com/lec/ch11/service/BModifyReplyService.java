@@ -13,7 +13,6 @@ public class BModifyReplyService implements Service {
 		Map<String, Object> map = model.asMap();
 		int bid = (Integer) map.get("bid");
 		BoardDao bDao = new BoardDao();
-		model.addAttribute("modifyBoard", bDao.modifyView_replyView(bid));
+		model.addAttribute("board", bDao.modifyView_replyView(bid));
 	}
-
 }

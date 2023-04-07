@@ -11,13 +11,13 @@
 	<link href="${conPath}/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<!-- param.pageNum, param.bid, requestScope.replyBoard(원글정보) -->
-  <form action="${conPath }/reply.do" method="post">
+	<!-- reply.jsp : param.pageNum, param.bid, model의 board(원글정보) -->
+  <form action="${conPath }/mvcBoard/reply.do" method="post">
   	<input type="hidden" name="pageNum" value="${param.pageNum }">
-  	<input type="hidden" name="bgroup" value="${replyBoard.bgroup }"><!-- 원글 --> 
-  	<input type="hidden" name="bstep" value="${replyBoard.bstep }"> <!-- 원글 -->
-  	<input type="hidden" name="bindent" value="${replyBoard.bindent }"><!-- 원글 -->
-  	<input type="hidden" name="bid" value="${replyBoard.bid }"><!-- 원글 -->
+  	<input type="hidden" name="bid" value="${param.bid }"><!-- 원글 -->
+  	<input type="hidden" name="bgroup" value="${board.bgroup }"><!-- 원글 --> 
+  	<input type="hidden" name="bstep" value="${board.bstep }"> <!-- 원글 -->
+  	<input type="hidden" name="bindent" value="${board.bindent }"><!-- 원글 -->
 		<table>
 			<caption>${param.bid }번 글 답글</caption>
 			<tr>
@@ -29,7 +29,7 @@
 			<tr>
 				<th>글제목</th>
 				<td>
-					<input type="text" name="btitle" required="required" value="[답]${replyBoard.btitle }">
+					<input type="text" name="btitle" required="required" value="[답]${board.btitle }">
 				</td>
 			</tr>
 				<th>본문</th>
@@ -40,7 +40,7 @@
 				<td colspan="2">
 					<input type="submit" value="답글쓰기" class="btn">
 					<input type="reset" value="취소" class="btn" onclick="history.back()">
-					<input type="button" value="목록" class="btn" onclick="location.href='${conPath}/list.do?pageNum=${param.pageNum }'">
+					<input type="button" value="목록" class="btn" onclick="location.href='${conPath}/mvcBoard/list.do?pageNum=${param.pageNum }'">
 				</td>
 			</tr>	
 		</table>
