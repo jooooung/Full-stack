@@ -11,7 +11,8 @@
 	<link href="${conPath}/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <form action="modify.do" method="post">
+  <!-- model의 modifyBoard, param.bid, param.pageNum -->
+  <form action="${conPath }/mvcBoard/modify.do" method="post">
   	<input type="hidden" name="pageNum" value="${param.pageNum }">  <!-- hidden 타입으로 pageNum 넘기기 -->
   	<input type="hidden" name="bid" value="${modifyBoard.bid }">	<!-- hidden 타입으로 bid 넘기기 -->
   	<table>
@@ -38,7 +39,8 @@
   			<td colspan="2">
   				<input type="submit" value="수정" class="btn"> 
   				<input type="reset" value="취소" class="btn" onclick="history.back()"> 
-  				<input type="button" value="목록" class="btn" onclick="location.href='list.do?pageNum=${param.pageNum}'"> 
+  				<input type="button" value="목록" class="btn" onclick="location.href='${conPath }/mvcBoard/list.do?pageNum=${param.pageNum}'"> 
+  			</td>
   		</tr>
   	</table>
   </form>

@@ -57,4 +57,27 @@ public class MvcBoardController {
 		bservice.execute(model);
 		return "mvcBoard/content";
 	}
+	@RequestMapping(value = "content", method = RequestMethod.POST)
+	public String content_post(int bid, Model model) {
+		model.addAttribute("bid", bid);
+		bservice = new BContentService();
+		bservice.execute(model);
+		return "mvcBoard/content";
+	}
+	
+	// modify
+	@RequestMapping(value = "modify", method = RequestMethod.GET)
+	public String modify(int bid, Model model) {
+		model.addAttribute("bid", bid);
+		bservice = new BModifyReplyService();
+		bservice.execute(model);
+		return "mvcBoard/modify";
+	}
+	@RequestMapping(value = "modify", method = RequestMethod.POST)
+	public String modify(BoardDto boardDto, HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		bservice = new BModifyService();
+		bservice.execute(model);
+		return "forward:content.do";
+	}
 }

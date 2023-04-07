@@ -502,4 +502,28 @@ public String join6(@ModelAttribute("member") MemberDto memberDto) {
 	- model을 map화
 	- map으로 `bid` get
 	- model에 `addAttribute`
+
+### 🔸글 수정, 답변 뷰 페이지
+- **`controller`** 
+	- model 에 `bid` add
+- **`service`**
+	- model을 map화
+	- map으로 `bid` get
+	- model에 `addAttribute`
+
+### 🔸글 수정저장
+- 글쓴이, 제목, 내용, ip 수정
+- **`controller`** 
+	- `POST` 방식 `@RequestMapping` 추가
+	- - 매개변수에 `dto`, `request`, `model` 추가
+	- `request` : service 에서 ip 추출 용도
+	- model에 request 추가 : `model.addAttribute("request", request);`
+	- `return "forward:content.do";` : 상세보기 페이지로 가기
+	- `content.do`에 POST 방식 추가
+- **`service`**
+	- model을 map화
+	- map으로 `dto`, `request` get
+	- ip 설정 : `request.getRemoteAddr()` 이용
+	- model에 `addAttribute`
+
 ## ✔
