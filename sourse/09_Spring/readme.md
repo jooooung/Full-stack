@@ -4,17 +4,28 @@
 
 ---
 
-[✨ Spring 세팅하기](#✨-spring-세팅하기)  
-[✨1. spring 개요](#✨1-spring-개요)  
-[✨2. DI(Dependency Injection) 개념 및 활용 (의존성 주입)](#✨2-didependency-injection-개념-및-활용-의존성-주입)  
-[✨3. DI(Dependency Injection) 설정방법](#✨3-didependency-injection-설정방법)  
-[✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위](#✨4-didependency-injection-자동의존-설정과-빈-생명주기와-범위)  
-[✨5. 외부파일propertiesfile을 이용한 설정](#✨5-외부파일propertiesfile을-이용한-설정)  
-[✨6. AOP(aopaspect oriented. programming)](#✨6-aopaspect-oriented-programming)  
-[✨7. MVC](#✨7-mvc)  
-[✨8. controller](#✨8-controller)  
-[✨9. FormData](#✨9-formdata)  
-[✨10. request mapping](#✨10-request-mapping)  
+[✨ Spring 세팅하기](#✨-spring-세팅하기)
+
+[✨1. spring 개요](#✨1-spring-개요)
+
+[✨2. DI(Dependency Injection) 개념 및 활용 (의존성 주입)](#✨2-didependency-injection-개념-및-활용-의존성-주입)
+
+[✨3. DI(Dependency Injection) 설정방법](#✨3-didependency-injection-설정방법)
+
+[✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위](#✨4-didependency-injection-자동의존-설정과-빈-생명주기와-범위)
+
+[✨5. 외부파일propertiesfile을 이용한 설정](#✨5-외부파일propertiesfile을-이용한-설정)
+
+[✨6. AOP(aopaspect oriented. programming)](#✨6-aopaspect-oriented-programming)
+
+[✨7. MVC](#✨7-mvc)
+
+[✨8. controller](#✨8-controller)
+
+[✨9. FormData](#✨9-formdata)
+
+[✨10. request mapping](#✨10-request-mapping)
+
 [✨11. mvcboard](#✨11-mvcboard)
 # ✨ Spring 세팅하기
 ### ①. STS 다운로드
