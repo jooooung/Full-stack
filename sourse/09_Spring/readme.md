@@ -432,4 +432,38 @@ public String join6(@ModelAttribute("member") MemberDto memberDto) {
 - 모든 요청경로에 공통으로 필요한 model attribute가 있을 경우 사용
 - `@ModelAttribute(“모델이름선언”)`을 이용하면 자동적으로 모든 요청경로를 수행하기전   
 `model`객체안에 `attribute Add`와 `setting`이 동시에 된다
--     
+
+># ✨10. Request Mapping
+- 이 전까지 mapping은 "xxx" 였다. 오늘은 "xxx.do"로 하는 법을 알아보자
+
+## ✔ index.jsp - main.do 처리하기
+- web.xml - `servlet-mapping`의 `url-pattern`을 `/` 에서 `*.do` 로 변경
+- index.jsp 만들어서 `main.do`로 `forward`
+- `controller`에서 `main.do` 매핑 처리하기
+- `views`에 main.jsp 생성
+
+## ✔ `@RequestMapping` get / post 분리하기
+- 동일한 `@RequestMapping`을 get과 post 두 가지로 만든다
+1. 메소드 이름 동일하게 : 매개변수를 다르게
+2. 메소드 이름을 다르게 만들기
+
+## ✔ `redirect`
+- 입력하거나 넘겨주는 요청값(`model attribute`)이 필요 없이 controller 단을 호출할 때
+- `return "redirect:studentOk.do";` : model에 요청값이 넘어가지 않는다
+- `fullPath` 사용
+`return "redirect:http://www.naver.com";`
+
+## ✔ `forward`
+- 요청값(model attribute)도 함께 넘겨주면서 controller단을 호출할 때
+- `return "forward:studentNg.do";` : model에 요청값이 넘어간다
+- forward 시 forward한 메소드의 방식과 같은 방식이 있어야한다
+
+## ✔ 더미데이터 넣기
+- webapp - 폴더 생성 - jsp 파일 생성
+- webapp에서 jsp 파일을 생성하면 jsp를 직접 실행 가능하다
+
+## ✔ 
+
+## ✔
+
+## ✔

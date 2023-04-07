@@ -30,6 +30,7 @@ public class MemberController {
 		return list;
 	}
 	
+	// 파일 첨부 시 이 방법 사용
 	@RequestMapping(value="join1", method = RequestMethod.GET)
 	public String join1(HttpServletRequest request, Model model) {
 		String name = request.getParameter("name");
@@ -63,6 +64,7 @@ public class MemberController {
 		return "member/result1";
 	}
 	
+	// 로그인 등에서 사용, (받을 변수가 vo의 일부일 때)
 	@RequestMapping(value="join3", method = RequestMethod.GET)
 	public String join3(String name, String id, String pw, int age, 
 						String email, String address, Model model) {
