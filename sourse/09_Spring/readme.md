@@ -16,7 +16,7 @@
 [✨9. FormData](#✨9-formdata)  
 [✨10. request mapping](#✨10-request-mapping)  
 [✨11. mvcboard](#✨11-mvcboard)
-># ✨ Spring 세팅하기
+# ✨ Spring 세팅하기
 ### ①. STS 다운로드
 
 1. 스프링 홈페이지 - 프로젝트 -> 스프링 툴스 4 하단의 Spring Tool Suite 3의 Spring Tool Suite 3 wiki 클릭(Spring Tool Suite 3.9.13까지 JDK8을 지원한다)
