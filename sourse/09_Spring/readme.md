@@ -4,29 +4,21 @@
 
 ---
 
-[✨ Spring 세팅하기](#✨-spring-세팅하기)
-
-[✨1. spring 개요](#✨1-spring-개요)
-
-[✨2. DI(Dependency Injection) 개념 및 활용 (의존성 주입)](#✨2-didependency-injection-개념-및-활용-의존성-주입)
-
-[✨3. DI(Dependency Injection) 설정방법](#✨3-didependency-injection-설정방법)
-
-[✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위](#✨4-didependency-injection-자동의존-설정과-빈-생명주기와-범위)
-
-[✨5. 외부파일propertiesfile을 이용한 설정](#✨5-외부파일propertiesfile을-이용한-설정)
-
-[✨6. AOP(aopaspect oriented. programming)](#✨6-aopaspect-oriented-programming)
-
-[✨7. MVC](#✨7-mvc)
-
-[✨8. controller](#✨8-controller)
-
-[✨9. FormData](#✨9-formdata)
-
-[✨10. request mapping](#✨10-request-mapping)
-
-[✨11. mvcboard](#✨11-mvcboard)
+[✨ Spring 세팅하기](#✨-spring-세팅하기)  
+[✨1. spring 개요](#✨1-spring-개요)  
+[✨2. DI(Dependency Injection) 개념 및 활용 (의존성 주입)](#✨2-didependency-injection-개념-및-활용-의존성-주입)  
+[✨3. DI(Dependency Injection) 설정방법](#✨3-didependency-injection-설정방법)  
+[✨4. DI(Dependency Injection) 자동의존 설정과 빈 생명주기와 범위](#✨4-didependency-injection-자동의존-설정과-빈-생명주기와-범위)  
+[✨5. 외부파일propertiesfile을 이용한 설정](#✨5-외부파일propertiesfile을-이용한-설정)  
+[✨6. AOP(aopaspect oriented. programming)](#✨6-aopaspect-oriented-programming)  
+[✨7. MVC](#✨7-mvc)  
+[✨8. controller](#✨8-controller)  
+[✨9. FormData](#✨9-formdata)  
+[✨10. request mapping](#✨10-request-mapping)  
+[✨11. mvcboard](#✨11-mvcboard)  
+[✨12. jdbc template](#✨12-jdbc-template)  
+[✨13. file upload](#✨13-file-upload)  
+[✨14. mybatis](#✨14-mybatis)
 # ✨ Spring 세팅하기
 ### ①. STS 다운로드
 
@@ -424,16 +416,15 @@ public ModelAndView reply(ModelAndView mav) {
 	}
 ```
 
-## ✔5. 
-class 이름과 변수 이름은(첫글자는 소문자)같아야한다
+## ✔5. class 이름과 변수 이름은(첫글자는 소문자)같아야한다
+
 ```
 @RequestMapping("join5")
 	public String join5(MemberDto memberDto) { 
 		return "member/result5";
 	}
 ```
-## ✔6.
-따라서 대게 MemberDto가 아닌 Member로 생성  
+## ✔6. 따라서 대게 MemberDto가 아닌 Member로 생성  
 MemberDto일 시 member로 지정하기  
 = 매개변수에 `@ModelAttribute('모델 이름') `
 ```
@@ -689,18 +680,125 @@ return (ArrayList<BoardDto>) template.query(sql, new PreparedStatementSetter() {
 ```
 
 ## ✔ servlet-context.xml 
-- multipartResolver Bean생성
+1. `mapping`  변경 : `<resources mapping="/upload/**" location="/upload/" />`
+2. `context:component-scan` 추가 :  `<context:component-scan base-package="com.lec.ch13" />`
+3. `multipartResolver Bean` 생성
 ```
 <beans:bean id="multipartResolver"
 	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	<beans:property name="maxUploadSize" value="1048576"/>	<!-- 최대 업로드 용량 1MB 설정 -->
 </beans:bean>
 ```
+## ✔ Controller
+1. Service형 변수 생성 후 `@Autowired`
+2. 업로드 페이지 `@RequestMapping`
+- 업로드 매핑은 value값은 동일, 업로드 페이지는 method = GET 방식, 결과 페이지는 POST 방식
+- `MultipartHttpServletRequest` 이용하여 파일 업로드
+```
+public ModelAndView fileup(MultipartHttpServletRequest mRequest, ModelAndView mav) {
+		if(fService.fileUp(mRequest, mav)) {  // 파일 업로드 추가
+			mav.addObject("fileUpResult", "파일 업로드 성공");
+		}else {
+			mav.addObject("fileUpResult", "파일 업로드 안 됨");
+		}
+		mav.setViewName("fileResult");		// 뷰 페이지 설정
+		return mav;
+	}
+```
 
+## ✔ Service
+### `boolean` 타입 생성자 생성
+- `MultipartHttpServletRequest`에 들어온 파일을 서버에 저장 -> 소스폴더로 복사
+- `uploadPath`: 업로드 파일, `backupPath`: 저장될 파일 지정 
+- 업로드 파일 받을 배열 변수 생성
+- 파라미터의 파일 객체 가져온 후 파일 이름 중복 시 처리하기
+- 첨부파일 서버에 저장 -> 소스 폴더로 파일 복사
 
 ># ✨14. Mybatis
 - MyBatis는 DB접근(SQL)을 자바가 아닌 xml로 대체하도록 하는 라이브러리
 - SQL 코드를 자바코드와 분리시키는데 목적
+
+## ✔1. dependency 추가하기
+- `lombok`, `spring-jdbc`, `mybatis`, `mybatis-spring`
+
+## ✔2. 한글 인코딩, servlet-mapping 수정
+- web.xml : url-pattern - *.do  설정, 한글 처리 필터 추가
+
+## ✔3. DB 환경설정 : db.properties
+```
+db.driverClassName=oracle.jdbc.driver.OracleDriver
+db.url=jdbc:oracle:thin:@localhost:1521:xe
+db.username=scott
+db.password=tiger
+```
+## ✔4. root-context.xml에 dataSource 빈생성
+```
+// db.properties `context` 하기
+<context:property-placeholder location="classpath:META-INF/property/db.properties"/>		
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="${db.driverClassName}"/>
+	<property name="url" value="${db.url}"/>
+	<property name="username" value="${db.username}"/>
+	<property name="password" value="${db.password}"/>
+</bean>
+```
+
+## ✔5. DTO 생성
+- `@Data`, 변수 선언
+
+## ✔6. xml 생성 :mapper + config
+- https://mybatis.org/mybatis-3/configuration.html#objectFactory 에서 mapper정의 가져오기
+```
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="이름 지정">
+	<resultMap type="Dept" id="DeptResult">
+		<result property="deptno" column="deptno"/>
+		<result property="dname" column="dname"/>
+		<result property="loc" column="loc"/>
+	</resultMap>
+	<!-- select 태그의 id는 유일해야 한다 -->
+	<select id="deptList" resultMap="DeptResult"><!-- resultMap은 결과가 배열일 때 많이 쓴다 -->
+		<![CDATA[	
+			SELECT * FROM DEPT
+		]]>	<!-- CDATA는 sql문에 꺽쇠가 있을때 사용 -->
+	</select>
+</mapper>
+```
+## ✔6. root-context.xml에 SqlSessionfactoryBean, sessionTemplate(SqlSessionTemplate) 빈생성
+```
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:META-INF/sqlmap/config/mybatis-config.xml"/>
+	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"/>
+	</bean>
+```
+## ✔7. DAO
+- interface에 List 형 메소드 생성 : `public List<DTO> 이름();`
+- interface를 `implements` 받는 class 생성
+	- `@Repository` 선언 
+	- SqlSession 변수 생성 : `@Autowired` 하기
+```
+	@Override
+	public List<DTO> 메소드명() {
+		return sessionTemplate.selectList("메소드명");
+	}
+```
+
+## ✔8. Service
+- interface : DTO 타입의 메소드 생성 `public List<DTO> 메소드명();`
+- Service interface를 implements받는 class 생성 
+	- dao 변수 선언 : `@Autowired`
+	- `@Override` 받은 메소드 만들기
+## ✔9. Controller
+- interface Service 변수 `@Autowired`
+- service에서 생성한 메소드 `@ModelAttribute`
+- `@RequestMapping` 생성
+## ✔
+## ✔
 ## ✔
 ## ✔
 ## ✔
