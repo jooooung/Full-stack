@@ -26,7 +26,9 @@
     <!--
     <Manager pathname="" />
     -->
-     <Resource 
+    
+    <!-- JDBC template 사용했으므로 커넥션 풀 미사용 -->
+    <!-- <Resource 
 		auth="Container"
 		driverClassName = "oracle.jdbc.driver.OracleDriver"
 		url = "jdbc:oracle:thin:@localhost:1521:xe"
@@ -36,6 +38,6 @@
 		type = "javax.sql.DataSource"
 		maxActive = "10"
 		maxWait = "1000"
-	/>
+	/> -->
     
 </Context>

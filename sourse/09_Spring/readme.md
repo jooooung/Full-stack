@@ -56,8 +56,10 @@
 
 ### ✔프로젝트 만들기
 
-- Spring legacy project - Simple Spring Utility Priject(web이 아닌 프로젝트)
-- next 후 다운로드 - Package 이름 지정
+- Spring legacy project
+	 - Simple Spring Utility Priject(web이 아닌 프로젝트)
+	 - Spring MVC Project(web 프로젝트)
+- next 후 다운로드 - default Package 이름 지정
 
 - C:\Users\사용자이름\\.m2라는 폴더가 생성된다
 - 프로젝트에 오류 시 우클릭 - Maven - Update
@@ -66,7 +68,7 @@
 
 > <b>`dependency`란 객체 간의 관계를 의미</b>
 
-- pom.xml : `dependencies` = 사용 라이브러리 종류가 담아져있다
+- pom.xml : `dependencies`태그 - 사용 라이브러리 종류가 담아져있다
 - https://mvnrepository.com - Lombok 검색 후 다운받은 버전 클릭 - 코드 복사하여 추가
 
 ```
@@ -80,9 +82,8 @@
 ```
 
 ## ✔Lombok 사용하기
-
-> 그동안 `class`에서 직접 생성자나 getter를 만들어줬지만  
->  Lombok을 사용하면 아주 편리하게 사용 할 수 있다.
+ 그동안 `class`에서 직접 생성자나 getter를 만들어줬지만  
+ Lombok을 사용하면 아주 편리하게 사용 할 수 있다.
 
 - `@Data` : getter, setter, toString 자동 생성
 - `@NoArgsConstructor` : 매개변수 없는 생성자 생성
@@ -560,3 +561,108 @@ public String join6(@ModelAttribute("member") MemberDto memberDto) {
 	- map으로 `dto`, `request` get
 	- ip 설정 : `request.getRemoteAddr()` 이용
 	- model에 `addAttribute`
+
+># ✨12. JDBC Template
+`JDBC Template`을 이용한 db연결 -> 반복 코드를 줄이기 위해 사용
+- JDBC 드라이버 로드 : `DriverManager`
+- 데이터 베이스 연결 : `Connection`
+- SQL문 실행 : `PreparedStatement`, `ResultSet`
+- DB 연결 해제 : `close()`  
+위의 과정을 **`JDBC Template`을 이용하여 한 번에 해결** 할 수 있다.
+	- `JDBC Template`을 이용하면 server-context.xml에서 사용한  
+	connection Full 과정 생략 가능
+
+## ✔1. JDBC Template 사용을 위한 dependencies 추가
+pom.xml에서 `springframework-version`확인 후  
+동일 버전의 `jdbc`를 maven 사이트에서 취약점 확인 후 사용
+```
+<!-- spring-jdbc -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+```
+
+## ✔2. db.properties 파일 생성 후 `OracleDriver` 연결
+src/main/resources - META-INF - property 폴더 생성 후 파일 생성
+```
+db.driverClassName=oracle.jdbc.driver.OracleDriver
+db.url=jdbc:oracle:thin:@localhost:1521:xe
+db.username=원하는 이름
+db.password=원하는 비번
+```
+
+## ✔ 3. bean(객체) 추가
+- web 관련 bean(객체) :  servlet-context.xml에 추가
+- db 관련 bean(객체) : root-context.xml에 추가
+
+### root-context.xml
+- Namespaces에서 context 체크
+- `dataSource` bean 추가
+```
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${db.driverClassName}"/>
+		<property name="url" value="db.url"/>
+		<property name="username" value="db.username"/>
+		<property name="password" value="db.password"/>
+	</bean>
+```
+- `template` bean 추가
+```
+	<bean name="template" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+```
+
+## ✔ controller
+- static 변수 `template` 생성 후
+```
+@Autowired	// root-context.xml의 bean 연결
+	public JdbcTemplate template;
+	public void setTemplate(JdbcTemplate template) {
+		Constant.template = template;
+		this.template = template;
+	}
+```
+
+## ✔ DAO에서 사용하기
+- `template` 변수 추가
+- 생성자 함수에 `template = Constant.template;` 추가
+- update, delete, insert 방법 : `template.update(sql, ? 채우는 객체)`
+- `Object` : template.queryForObject(sql, 가져올 object 타입 세팅)
+- 배열 : template.query(sql, ? 채우는 객체, Arraylist) ---------------------
+
+## ✔ update, delete, insert
+- ? 없는 경우 : `return template.update(sql);`
+- ? 있는 경우
+  - 방법 1 : `PreparedStatementSetter()` 추가 후 ? 세팅
+```
+return template.update(sql, new PreparedStatementSetter() {
+			@Override
+			public void setValues(PreparedStatement pstmt) throws SQLException {
+				pstmt.setInt(1, bid);  
+				// ? 세팅하기 => 매개변수(bid)를 final 변수로 변경해야 함
+			}
+		});
+```
+
+- 방법 2
+```
+return template.update(new PreparedStatementCreator() {
+			String sql = "SQL문";
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, 매개변수);  // ? 세팅
+				return null;
+			}
+		});
+```
+
+## ✔ select
+
+## ✔
+## ✔
+## ✔
+## ✔
