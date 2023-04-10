@@ -661,6 +661,20 @@ return template.update(new PreparedStatementCreator() {
 ```
 
 ## ✔ select
+- return 타입이 Object  
+```
+return template.queryForObject(sql, Integer.class); 
+```
+- return 타입이 ArrayList
+```
+return (ArrayList<BoardDto>) template.query(sql, new PreparedStatementSetter() {
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setInt(1, startRow);
+				ps.setInt(2, endRow);
+			}
+		},new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
+```
 
 ## ✔
 ## ✔

@@ -31,9 +31,7 @@ public class BoardDao {
 				"  FROM (SELECT ROWNUM RN, A.* " + 
 				"        FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)" + 
 				"  WHERE RN BETWEEN ? AND ?";
-		System.out.println("template : " +template);
 		return (ArrayList<BoardDto>) template.query(sql, new PreparedStatementSetter() {
-			
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
 				ps.setInt(1, startRow);
