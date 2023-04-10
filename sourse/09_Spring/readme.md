@@ -676,7 +676,27 @@ return (ArrayList<BoardDto>) template.query(sql, new PreparedStatementSetter() {
 		},new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
 ```
 
-## ✔
+># ✨13. File upload
+## ✔ 1.	Pom.xml에 의존추가 
+- maven 사이트에 Apache Commons FileUpload 검색
+```
+<!-- 파일업로드 -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.5</version>
+		</dependency>
+```
+
+## ✔ servlet-context.xml 
+- multipartResolver Bean생성
+```
+<beans:bean id="multipartResolver"
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<beans:property name="maxUploadSize" value="1048576"/>	<!-- 최대 업로드 용량 1MB 설정 -->
+</beans:bean>
+```
+-
 ## ✔
 ## ✔
 ## ✔
