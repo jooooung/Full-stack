@@ -696,7 +696,11 @@ return (ArrayList<BoardDto>) template.query(sql, new PreparedStatementSetter() {
 	<beans:property name="maxUploadSize" value="1048576"/>	<!-- 최대 업로드 용량 1MB 설정 -->
 </beans:bean>
 ```
--
+
+
+># ✨14. Mybatis
+- MyBatis는 DB접근(SQL)을 자바가 아닌 xml로 대체하도록 하는 라이브러리
+- SQL 코드를 자바코드와 분리시키는데 목적
 ## ✔
 ## ✔
 ## ✔
