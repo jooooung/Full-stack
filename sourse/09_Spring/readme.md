@@ -762,7 +762,7 @@ db.password=tiger
 	<select id="deptList" resultMap="DeptResult"><!-- resultMap은 결과가 배열일 때 많이 쓴다 -->
 		<![CDATA[	
 			SELECT * FROM DEPT
-		]]>	<!-- CDATA는 sql문에 꺽쇠가 있을때 사용 -->
+		]]>	<!-- CDATA는 sql문에 연산자가 있을때 사용 -->
 	</select>
 </mapper>
 ```
@@ -807,6 +807,29 @@ db.password=tiger
 - 페이징된 사원 목록
 - 사원 등록
 - 사원 상세정보, 수정, 삭제
+
+1. pom.xml 디펜던시 추가
+2. web.xml 한글 필터 추가, url 매핑 `*.do` 변경
+3. webapp 폴더에 index.jsp : `home.do`로 `forward`
+4. controller 생성 후 `home.do` 처리
+5. property - db.properties 생성 : DB 연결 설정
+6. root-context.xml : db context, bean 생성
+- context : db파일 `location` 지정
+- `dataSource` bean 생성
+- `sqlSessionFactory` bean 생성 
+7. dto 생성
+8. mybatis-config.xml : `typeAlias`, `mapper` 연결
+9. mapper(xml) 파일 생성 -> sql 추가하기
+- `sqlSessionTemplate` bean 생성
+10. dao 생성
+- dao interface : xml의 sql 수 만큼 생성 =>
+`public xml의 resultMap id(parameterType이 있다면 서술);`
+- dao class 
+	- interface를 impl
+	- `SqlSessionTemplate`을 `Autowired` 하는 변수 생성 
+	- `Override` 받은 메소드에 `return`
+11. utill 패키지 - paging
+- 
 ## ✔
 ## ✔
 ## ✔
