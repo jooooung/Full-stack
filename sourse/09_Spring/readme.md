@@ -714,7 +714,7 @@ public ModelAndView fileup(MultipartHttpServletRequest mRequest, ModelAndView ma
 - 파라미터의 파일 객체 가져온 후 파일 이름 중복 시 처리하기
 - 첨부파일 서버에 저장 -> 소스 폴더로 파일 복사
 
-># ✨14. Mybatis
+># ✨14. Mybatis-I
 - MyBatis는 DB접근(SQL)을 자바가 아닌 xml로 대체하도록 하는 라이브러리
 - SQL 코드를 자바코드와 분리시키는데 목적
 
@@ -797,7 +797,16 @@ db.password=tiger
 - interface Service 변수 `@Autowired`
 - service에서 생성한 메소드 `@ModelAttribute`
 - `@RequestMapping` 생성
-## ✔
+
+## ✔10. view 페이지
+- input, select : jquery로 submit 이벤트 걸기
+- 컨트롤러에서 @ModelAttribute한 이름으로 데이터 출력
+
+># ✨15. Mybatis-II
+사원 관리 페이지 만들기
+- 페이징된 사원 목록
+- 사원 등록
+- 사원 상세정보, 수정, 삭제
 ## ✔
 ## ✔
 ## ✔
