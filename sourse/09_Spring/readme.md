@@ -803,34 +803,53 @@ db.password=tiger
 - 컨트롤러에서 @ModelAttribute한 이름으로 데이터 출력
 
 ># ✨15. Mybatis-II
-사원 관리 페이지 만들기
+## ✔사원 관리 페이지 만들기
 - 페이징된 사원 목록
 - 사원 등록
 - 사원 상세정보, 수정, 삭제
 
-1. pom.xml 디펜던시 추가
-2. web.xml 한글 필터 추가, url 매핑 `*.do` 변경
-3. webapp 폴더에 index.jsp : `home.do`로 `forward`
-4. controller 생성 후 `home.do` 처리
-5. property - db.properties 생성 : DB 연결 설정
-6. root-context.xml : db context, bean 생성
+### 1. pom.xml `dependency` 추가
+- lombok
+- JDBC template
+- myBatis
+- mybatis-spring
+### 2. web.xml 한글 필터 추가, url 매핑 `*.do` 변경
+### 3. webapp/index.jsp 생성
+- 원하는 경로로 `forward`
+### 4. controller 생성 후 `forward`된 경로 생성
+### 5. property - db.properties 생성 : DB 연결 설정
+### 6. root-context.xml : db context, bean 생성
 - context : db파일 `location` 지정
 - `dataSource` bean 생성
 - `sqlSessionFactory` bean 생성 
-7. dto 생성
-8. mybatis-config.xml : `typeAlias`, `mapper` 연결
-9. mapper(xml) 파일 생성 -> sql 추가하기
+### 7. dto 생성
+### 8. mybatis-config.xml : `typeAlias`, `mapper` 연결
+### 9. mapper(xml) 파일 생성 -> sql 추가하기
 - `sqlSessionTemplate` bean 생성
-10. dao 생성
+### 10. dao 생성
 - dao interface : xml의 sql 수 만큼 생성 =>
 `public xml의 resultMap id(parameterType이 있다면 서술);`
 - dao class 
 	- interface를 impl
 	- `SqlSessionTemplate`을 `Autowired` 하는 변수 생성 
 	- `Override` 받은 메소드에 `return`
-11. utill 패키지 - paging
-- 
-## ✔
+### 11. utill 패키지 - `paging` class 생성
+- Paging 함수 만들기
+### 12. Service 
+- interface 
+	- dao에서 만든 메소드 가져오기
+	- dummyData 용 void 함수 생성
+- class
+	- `@Service` : 스프링컨테이너에게 서비스임을 알려주는 어노테이션(빈생성)
+	- `@Autowired` 하여 dao 가져오기
+	- Override 메소드 재정의 (paging)
+	- dummyData 메소드 재정의
+### 13. Controller
+- EmpService @Autowired
+- 매핑 처리
+# ✔ 에러
+-  `servlet-context.xml`  404 에러    
+context:component-scan 의 base-package를 프로젝트가 아닌 더 깊게 설정시 실행 에러
 ## ✔
 ## ✔
 ## ✔

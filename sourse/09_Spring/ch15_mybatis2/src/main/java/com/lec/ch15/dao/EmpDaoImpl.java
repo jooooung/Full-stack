@@ -39,16 +39,16 @@ public class EmpDaoImpl implements EmpDao {
 
 	@Override
 	public int insert(Emp emp) {
-		return template.selectOne("insert", emp);
+		return template.insert("insert", emp);
 	}
 
 	@Override
 	public int update(Emp emp) {
-		return template.selectOne("update", emp);
+		return template.update("update", emp);
 	}
 
 	@Override
 	public int delete(int empno) {
-		return template.selectOne("delete", empno);
+		return template.delete("delete", empno);
 	}
 }

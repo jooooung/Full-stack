@@ -1,5 +1,8 @@
 package com.lec.ch15.utill;
 
+import lombok.Data;
+
+@Data
 public class Paging {
 	private int currentPage = 1;
 	private int pageSize;
@@ -24,7 +27,9 @@ public class Paging {
 		pageCnt   = (int)Math.ceil((double)totCnt/pageSize);
 		startPage = ((currentPage-1) / blockSize ) * blockSize + 1;
 		endPage   = startPage + blockSize - 1;
-		if(endPage > pageCnt) endPage = pageSize;
+		if(endPage > pageCnt) {
+			endPage = pageCnt;
+		}
 	}
 	// pageSize, blockSize = 10 고정
 	public Paging(int totCnt, String pageNum) {

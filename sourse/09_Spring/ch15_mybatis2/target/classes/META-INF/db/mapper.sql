@@ -1,7 +1,7 @@
 -- Emp.xml id=empList   EMPNO 순 출력
-SELECT * 
-    FROM (SELECT ROWNUM RN, A.* 
-        FROM (SELECT * FROM EMP ORDER BY EMPNO) A)
+SELECT * FROM 
+    (SELECT ROWNUM RN, A.* FROM 
+        (SELECT * FROM EMP ORDER BY EMPNO) A)
     WHERE RN BETWEEN 1 AND 3;
     
 -- Emp.xml id=empDeptList
@@ -12,7 +12,7 @@ SELECT *
                 ORDER BY EMPNO) A)
     WHERE RN BETWEEN 1 AND 15;
     
--- Emp.xml id=totCnt
+    -- Emp.xml id=totCnt
 SELECT COUNT(*) FROM EMP;
 
 -- Emp.xml id=detail
