@@ -1,14 +1,11 @@
-package com.lec.ch17.dao;
-
+package com.lec.ch17.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import com.lec.ch17.dto.Board;
-@Mapper
-public interface BoardDao {
-	public List<Board> list(Board board);
+
+public interface BoardService {
+	public List<Board> list(String pageNum);
 	public int totCnt();
 	public int write(Board board);
 	public int hitUp(int bid);

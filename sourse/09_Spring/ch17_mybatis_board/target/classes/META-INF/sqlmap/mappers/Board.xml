@@ -17,7 +17,7 @@
 		<result property="bip" column="bip"/>
 	</resultMap>
 	<!-- 글목록 -->
-	<select id="boardList" parameterType="Board" resultMap="BoardResult">
+	<select id="list" parameterType="Board" resultMap="BoardResult">
 		SELECT * 
 		  FROM (SELECT ROWNUM RN, A.* 
 		        FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)
@@ -33,7 +33,7 @@
  			VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname}, #{btitle}, #{bcontent}, MVC_BOARD_SEQ.CURRVAL, #{bstep}, #{bindent}, #{bip}])
 	</insert>
 	<!-- 조회수 올리기 -->
-	<update id="hitUp" parameterType="Board">
+	<update id="hitUp" parameterType="int">
 		UPDATE MVC_BOARD SET bHIT = bHIT + 1 WHERE bID=#{bid}
 	</update>
 	<!-- 상세보기, 수정, 답변 view -->
