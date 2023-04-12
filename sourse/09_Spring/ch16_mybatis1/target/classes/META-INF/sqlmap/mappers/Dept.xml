@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.ch14.dao.DeptDao">
+	<resultMap type="Dept" id="DeptResult">
+		<result property="deptno" column="deptno"/>
+		<result property="dname" column="dname"/>
+		<result property="loc" column="loc"/>
+	</resultMap>
+	<!-- select 태그의 id는 유일해야 한다 -->
+	<select id="deptList" resultMap="DeptResult"><!-- resultMap은 결과가 배열일 때 많이 쓴다 -->
+		<![CDATA[	
+			SELECT * FROM DEPT
+		]]>	<!-- CDATA는 sql문에 꺽쇠가 있을때 사용 -->
+	</select>
+</mapper>

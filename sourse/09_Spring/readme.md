@@ -862,6 +862,19 @@ db.password=tiger
 	- 관리자사번, 보너스 null 에러 처리 : int -> String으로 변경하여 빈 스트링 입력 가능
 	- 이름 
 
+># ✨16. Mybatis-III
+- Dao를 interface로 대체하는 방법
+- `mybatis-spring`의 버전이 높아야한다
+
+## 1. Servlet-context.xml에 mybatis-spring 추가
+- 추가 전 네임스페이스에서 `mybatis-spring` 체크
+- `<mybatis-spring:scan base-package="com.lec.ch14.dao(dao 패키지 경로)"/>`
+## 2. dao interface에 `@Mapper` 추가
+
+## 3.	Mapper xml파일에 namespace를 DAO interface로 수정 
+- xml파일의 id와 DAO의 method이름은 일치
+- `<mapper namespace="com.lec.ch14.dao.dao파일명">`
+
 
 # ✔ alert 바꾸기 
 ## 1.SweetAlert
