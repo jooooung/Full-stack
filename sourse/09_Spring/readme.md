@@ -876,6 +876,18 @@ db.password=tiger
 - `<mapper namespace="com.lec.ch14.dao.dao파일명">`
 
 
+
+
+
+
+
+
+
+
+
+
+----
+
 # ✔ alert 바꾸기 
 ## 1.SweetAlert
 - CDN : `<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>`
