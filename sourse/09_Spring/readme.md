@@ -862,6 +862,30 @@ db.password=tiger
 	- 관리자사번, 보너스 null 에러 처리 : int -> String으로 변경하여 빈 스트링 입력 가능
 	- 이름 
 
+
+# ✔ alert 바꾸기 
+## 1.SweetAlert
+- CDN : `<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>`
+- alert 대신 `swal('제목', '내용', '아이콘');`
+- 아이콘 : `warning`, `error`, `success`, `info`
+
+## 2. SweetAlert2
+- CDN : `<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>`
+```
+Swal.fire({
+				  title: '제목',
+				  icon: '아이콘',
+				  showCancelButton: 취소버튼유무 true/false,
+				  confirmButtonColor: '컨펌버튼 색상',
+				  cancelButtonColor: '취소버든 색상',
+				  confirmButtonText: '컨펌버튼 글',
+				  cancelButtonText: '취소버튼 글'
+				}).then((result) => {	 
+				  if (result.isConfirmed) {		
+				  	 // 컨펌 시 할 것 지정
+				  }
+				})
+```
 # ✔ 에러
 -  `servlet-context.xml`  404 에러    
 context:component-scan 의 base-package를 프로젝트가 아닌 더 깊게 설정시 실행 에러

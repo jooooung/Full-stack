@@ -9,18 +9,35 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/emp.css" rel=stylesheet>
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 	<script>
 		$(document).ready(function(){
-
+			$('button.delete').click(function(){
+				Swal.fire({
+				  title: '정말 삭제하시겠습니까?',
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: '삭제',
+				  cancelButtonText: '취소'
+				}).then((result) => {	
+				  if (result.isConfirmed) {
+				  	 location.href="${conPath}/delete.do?empno=${param.empno }&pageNum=${param.pageNum }";
+				  }
+				})
+			});
 		});
 	</script>
 </head>
 <body>
 	<c:set var="success" value="1"/>
 	<c:if test="${modifyResult eq success}">
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script>
-			alert('수정 성공');
+			swal('수정 성공', '', 'success');
 		</script>
 	</c:if>
 	<table>
@@ -67,7 +84,7 @@
 				<button onclick="location.href='${conPath}/updateView.do?empno=${param.empno }&pageNum=${param.pageNum }'">
 					수정
 				</button>
-				<button onclick="location.href='${conPath}/delete.do?empno=${param.empno }&pageNum=${param.pageNum }'">
+				<button class="delete" <%-- onclick="location.href='${conPath}/delete.do?empno=${param.empno }&pageNum=${param.pageNum }'" --%>>
 					삭제
 				</button>
 			</td>
