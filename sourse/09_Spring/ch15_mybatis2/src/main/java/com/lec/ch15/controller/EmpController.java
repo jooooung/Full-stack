@@ -87,9 +87,7 @@ public class EmpController {
 	public String write(Emp emp, Model model) {
 		try {
 			model.addAttribute("writeResult", empService.insert(emp));
-			
 		}catch(Exception e) {
-			System.out.println(e.getMessage());
 			model.addAttribute("writeResult", "필드 값이 너무 깁니다");
 			return "forward:writeView.do";
 		}

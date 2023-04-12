@@ -54,12 +54,19 @@
 											
 			}
 		}	// 사번 입력 후 중복확인 시 event
+		
+		function empnoLimit(empno, maxlength) {
+			  if(empno.value.length > maxlength)  {
+				  empno.value 
+			      = empno.value.substr(0, maxlength);
+			  }
+			} // empno 입력 길이 제한
 	</script>
 </head>
 <body>
 	<c:if test="${not empty writeResult}">
 		<script>
-			swal('등록 실패', '입력 값을 확인하세요', 'error');
+			swal('등록 실패', '${writeResult}', 'error');
 		</script>
 	</c:if>
 	<form action="${conPath }/write.do" method="POST" name="frm">
@@ -68,7 +75,7 @@
 			<tr>
 				<th>사번</th>
 				<td>
-					<input type="number" name="empno" required="required" min="0" value="${param.empno }">
+					<input type="number" name="empno" required="required" min="0" value="${param.empno }" oninput="empnoLimit(this, 4)">
 					<input type="button" value="중복확인" onclick="idConfirmChk()"><br>
 					<span>${confirmMsg }</span>
 				</td>
