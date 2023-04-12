@@ -7,3 +7,5 @@
 5. React - VS Code
 6. JSP - eclipse(jee)
 7. jQuery
+8. 개인 프로젝트(jsp)
+9. Spring
