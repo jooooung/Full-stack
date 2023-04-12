@@ -875,6 +875,29 @@ db.password=tiger
 - xml파일의 id와 DAO의 method이름은 일치
 - `<mapper namespace="com.lec.ch14.dao.dao파일명">`
 
+# ✨17 Mybatis-Board
+Mybatis를 이용한 최종 완성 형식의 spring 게시판 만들기
+## 작업순서
+### 1. Qeury
+- sql : 테이블 생성, 필요한 쿼리 만들기
+- db 연결하는 properties 생성
+### 2. pom.xml에 필요한 dependency 추가 : `lombok`, `spring-jdbc`, `mybatis`, `mybatis-spring`
+### 3. web.xml : 한글 필터링 *.do  
+### 4. Dto : 변수 선언, `@Data`
+### 5. Board.xml(mapper)
+- config
+	-  `typeAliases` >  `typeAlias` 의 type으로 dto 경로 지정, `alias` 지정
+	- `mappers` > `mapper` 의 `resource="META-INF/sqlmap/mappers/매퍼파일.xml"`
+- mappers
+	- https://mybatis.org/mybatis-3/configuration.html#objectFactory 에서 mapper정의 가져오기
+	- `<mapper>`의 `namespace="dao 경로"`
+		- `<resultMap>` : type="config에서 지정한 alias, id 지정
+			- `<result>` : property, column
+### 6. Config
+### 7. 빈 생성
+### 8. Mybatis-spring 추가
+### 9. Dao 인터페이스 
+### 10. Service
 
 
 

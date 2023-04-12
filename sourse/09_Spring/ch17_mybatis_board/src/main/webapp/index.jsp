@@ -6,6 +6,6 @@
 	<meta charset="UTF-8">
 </head>
 <body>
-	<jsp:forward page="mvcBoard/list.do"/>	
+	<jsp:forward page="board/list.do"/>	
 </body>
 </html>

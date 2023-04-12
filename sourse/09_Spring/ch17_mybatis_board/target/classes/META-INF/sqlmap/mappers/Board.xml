@@ -16,20 +16,52 @@
 		<result property="bindent" column="bindent"/>
 		<result property="bip" column="bip"/>
 	</resultMap>
+	<!-- 글목록 -->
 	<select id="boardList" parameterType="Board" resultMap="BoardResult">
 		SELECT * 
 		  FROM (SELECT ROWNUM RN, A.* 
 		        FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)
 		  WHERE RN BETWEEN #{startRow} AND ${endRow}
 	</select>
+	<!-- 전체 글 개수 -->
 	<select id="totCnt" resultType="int">
 		SELECT COUNT(*) FROM MVC_BOARD
 	</select>
+	<!-- 원글쓰기 -->
 	<insert id="write" parameterType="Board">
 		INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
- 			VALUES (MVC_BOARD_SEQ.NEXTVAL, '홍','TITLE', NULL, MVC_BOARD_SEQ.CURRVAL, 0,0,'192.1.1.1')
+ 			VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname}, #{btitle}, #{bcontent}, MVC_BOARD_SEQ.CURRVAL, #{bstep}, #{bindent}, #{bip}])
 	</insert>
+	<!-- 조회수 올리기 -->
 	<update id="hitUp" parameterType="Board">
-		
+		UPDATE MVC_BOARD SET bHIT = bHIT + 1 WHERE bID=#{bid}
 	</update>
+	<!-- 상세보기, 수정, 답변 view -->
+	<select id="detail" parameterType="int" resultType="Board">
+		SELECT * FROM MVC_BOARD WHERE bID=#{bid}
+	</select>
+	<!-- 글 수정 -->
+	<update id="modify" parameterType="Board">
+		UPDATE MVC_BOARD 
+		  SET BNAME = #{bname},
+		      BTITLE = #{btitle},
+		      BCONTENT = #{bcontent},
+		      BIP = #{bip}
+		  WHERE BID=#{bid}
+	</update>
+	<!-- 글삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM MVC_BOARD WHERE bID=#{bid}
+	</delete>
+	<!-- 답글 저장 전 작업 -->
+	<update id="preReply" parameterType="int">
+		<![CDATA[
+			UPDATE MVC_BOARD SET BSTEP = BSTEP + 1
+  				WHERE BGROUP = #{bgroup} AND BSTEP > 0
+		]]>
+	</update>
+	<insert id="reply" parameterType="Board">
+		INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
+  			VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname},#{btitle}, #{bcontent}, #{bgroup}, #{bstep}, #{bindent}, #{bip})
+	</insert>
 </mapper>
