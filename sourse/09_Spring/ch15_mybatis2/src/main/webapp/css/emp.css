@@ -10,7 +10,7 @@ table {
 	margin: 0 auto;
 	background-color: white;
 	text-align: center;
-	border-collapse: collapse; /* border 통합 */
+	/* border-collapse: collapse; */ /* border 통합 */
 }
 
 table caption {
@@ -25,10 +25,6 @@ table tr {
 
 table tr:HOVER:not(tr:first-child) {
 	background-color: #fbceb1;
-}
-
-table tr:first-child td {
-	text-align: right;
 }
 
 table th {
@@ -55,4 +51,23 @@ a:hover {
 
 b {
 	color: red;
+}
+
+#paging {
+	display: inline-block;
+}
+
+#paging a, b{
+	float: left;
+	padding: 8px 16px;
+	border-radius: 15px;
+}
+#paging b {
+	background-color: #815854;
+	color: white;
+	border-radius: 15px;
+}
+
+#paging a:hover{
+	background-color: #ddd;
 }

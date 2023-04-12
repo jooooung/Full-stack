@@ -11,21 +11,35 @@
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 	<script>
 		$(document).ready(function(){
-			
+			$('tr').click(function(){
+				let empno = Number($(this).children().eq(0).text().trim());
+				if(!isNaN(empno)){
+					location.href='${conPath}/detail.do?empno='+empno+'&pageNum=${paging.currentPage}';
+				}
+			});
 		});
+		const trClicked = empno => {
+			// 해당 사원 번호의 상세보기 페이지로 가기
+			location.href = '${conPath}/detail.do?empno='+empno+'&pageNum=${paging.currentPage}';
+		}
 	</script>
 </head>
 <body>
+	<c:set var="success" value="1"/>
+	<c:if test="${deleteResult eq success}">
+		<script>
+			alert('${param.empno}번 사원 삭제성공');
+		</script>
+	</c:if>
 	<c:set var="num" value="${paging.totCnt - paging.startRow + 1 }"/>
 	<table>
 		<caption>직원목록</caption>
 		<tr>
-			<td colspan="6">
+			<td colspan="6" style="text-align: right;">
 				<a href="${conPath }/writeForm.do">직원등록</a>
 			</td>
 		</tr>
 		<tr>
-			<th>번호</th>
 			<th>사번</th>
 			<th>이름</th>
 			<th>업무</th>
@@ -33,8 +47,8 @@
 			<th>근무지</th>
 		</tr>
 		<c:forEach var="emp" items="${empDeptList }">
-			<tr>
-				<td>${num }</td>
+			<%-- <tr onclick="trClicked(${emp.empno })">	<!-- 사원번호로 클릭 함수 --> --%>
+			<tr style="cursor: pointer;">
 				<td>${emp.empno }</td>
 				<td>${emp.ename }</td>
 				<td>${emp.job }</td>
@@ -57,7 +71,7 @@
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage < paging.pageCnt }">
-			<a href="${conPath }/empDeptList.do?pageNum?${paging.endPage+1}">다음</a>
+			<a href="${conPath }/empDeptList.do?pageNum=${paging.endPage+1}">다음</a>
 		</c:if>
 	</div>
 </body>

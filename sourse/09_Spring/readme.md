@@ -18,7 +18,7 @@
 [✨11. mvcboard](#✨11-mvcboard)  
 [✨12. jdbc template](#✨12-jdbc-template)  
 [✨13. file upload](#✨13-file-upload)  
-[✨14. mybatis](#✨14-mybatis)
+w[✨14. mybatis](#✨14-mybatis-i)
 # ✨ Spring 세팅하기
 ### ①. STS 다운로드
 
@@ -847,6 +847,21 @@ db.password=tiger
 ### 13. Controller
 - EmpService @Autowired
 - 매핑 처리
+
+### 14. 직원목록 페이지
+- `foreach` 로 직원 데이터 출력
+- `paging` 출력
+- 상세보기 페이지로 가기 위한 tr에 click 이벤트
+	1. `script6`
+	2. `jQuery`
+### 15. 직원정보 상세보기
+- controller에서 넘어온 empDto 또는 param으로 데이터 출력
+### 16. 직원정보 수정
+- View용, 수정 정보 저장용 매핑 따로 두기  
+ -> 글자수 제한 event 걸기 위해
+	- 관리자사번, 보너스 null 에러 처리 : int -> String으로 변경하여 빈 스트링 입력 가능
+	- 이름 
+
 # ✔ 에러
 -  `servlet-context.xml`  404 에러    
 context:component-scan 의 base-package를 프로젝트가 아닌 더 깊게 설정시 실행 에러
