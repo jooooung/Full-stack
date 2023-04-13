@@ -15,6 +15,6 @@ public interface BoardDao {
 	public Board detail(int bid);
 	public int modify(Board board); 
 	public int delete(int bid);
-	public int preReply(int bgroup);
-	public Board reply(Board board);
+	public int preReply(Board board);
+	public int reply(Board board);
 }

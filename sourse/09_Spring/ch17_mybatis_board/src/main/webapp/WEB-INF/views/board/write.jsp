@@ -38,9 +38,9 @@
 	<form action="${conPath }/board/write.do" method="post">
 		<input type="hidden" name="bip" value="${bip }">
 		<table>
-			<caption>글쓰기</caption>
+			<caption>글쓰기 </caption>
 			<tr>
-				<th>작성자 ${bip }</th>
+				<th>작성자 </th>
 				<td>
 					<input type="text" name="bname" required="required" autofocus="autofocus" oninput="bnameLimit(this, 16)">
 				</td>

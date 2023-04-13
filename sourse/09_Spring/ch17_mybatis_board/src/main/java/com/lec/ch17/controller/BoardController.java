@@ -28,38 +28,49 @@ public class BoardController {
 	
 	// 글쓰기 페이지
 	@RequestMapping(value = "writeView", method = {RequestMethod.GET, RequestMethod.POST})
-	public String writeView(Model model, HttpServletRequest request) {
-		model.addAttribute("bip", request.getRemoteAddr());
+	public String writeView(Board board, Model model) {
 		return "board/write";
 	}
 	
 	// 글쓰기 저장
 	@RequestMapping(value = "write", method = RequestMethod.POST)
-	public String write(Board board, Model model) {
-		model.addAttribute("writeResult", boardService.write(board));
+	public String write(Board board, Model model, HttpServletRequest request) {
+		model.addAttribute("writeResult", boardService.write(board, request));
+		return "forward:list.do";
+	}
+	
+	// 답글쓰기 페이지
+	@RequestMapping(value = "replyView", method = {RequestMethod.GET, RequestMethod.POST})
+	public String replyView(int bid, Model model) {
+		model.addAttribute("boardDto", boardService.detail(bid));
+		return "board/reply";
+	}
+	
+	// 답글쓰기 저장
+	@RequestMapping(value = "reply", method = RequestMethod.POST)
+	public String reply(Board board, Model model, HttpServletRequest request) {
+		model.addAttribute("BoardDto", boardService.reply(board, request));
 		return "forward:list.do";
 	}
 	
 	// 상세보기
 	@RequestMapping(value = "detail", method = {RequestMethod.GET, RequestMethod.POST})
 	public String detail(int bid, String pageNum, Model model) {
-		boardService.hitUp(bid);
 		model.addAttribute("boardDto", boardService.detail(bid));
 		return "board/detail";
 	}
 	
 	// 글 수정 페이지
 	@RequestMapping(value = "modifyView", method = {RequestMethod.GET, RequestMethod.POST})	// 수정 페이지
-	public String updateView(int bid, Model model, HttpServletRequest request) {
-		model.addAttribute("bip", request.getRemoteAddr());
+	public String updateView(int bid, Model model) {
 		model.addAttribute("board", boardService.detail(bid));
 		return "board/modify";
 	}
 	// 수정 정보 저장
 	@RequestMapping(value = "modify", method = RequestMethod.POST)
-	public String update(Board board, Model model) {
+	public String update(Board board, Model model, HttpServletRequest request) {
 		try {
-			model.addAttribute("modifyResult", boardService.modify(board));
+			model.addAttribute("modifyResult", boardService.modify(board, request));
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 			model.addAttribute("modifyResult", "필드 값이 너무 길어요");
@@ -74,6 +85,4 @@ public class BoardController {
 		model.addAttribute("deleteResult", boardService.delete(bid));
 		return "forward:list.do";
 	}
-	
-	
 }

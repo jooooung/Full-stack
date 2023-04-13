@@ -61,7 +61,7 @@
 				<button onclick="location.href='${conPath}/board/delete.do?bid=${param.bid }&pageNum=${param.pageNum }'">
 					삭제
 				</button>
-				<button onclick="location.href='${conPath}/board/reply.do?bid=${param.bid }&pageNum=${param.pageNum }'">
+				<button onclick="location.href='${conPath}/board/replyView.do?bid=${param.bid }&pageNum=${param.pageNum }'">
 					답변
 				</button>
 				<button onclick="location.href='${conPath}/board/list.do?pageNum=${param.pageNum }'">

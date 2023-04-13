@@ -54,14 +54,14 @@
 		DELETE FROM MVC_BOARD WHERE bID=#{bid}
 	</delete>
 	<!-- 답글 저장 전 작업 -->
-	<update id="preReply" parameterType="int">
+	<update id="preReply" parameterType="Board">
 		<![CDATA[
 			UPDATE MVC_BOARD SET BSTEP = BSTEP + 1
-  				WHERE BGROUP = #{bgroup} AND BSTEP > 0
+  				WHERE BGROUP = #{bgroup} AND BSTEP > #{bstep}
 		]]>
 	</update>
 	<insert id="reply" parameterType="Board">
 		INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
-  			VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname},#{btitle}, #{bcontent}, #{bgroup}, #{bstep}, #{bindent}, #{bip})
+  			VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname},#{btitle}, #{bcontent}, #{bgroup}, #{bstep}+1, #{bindent}+1, #{bip})
 	</insert>
 </mapper>

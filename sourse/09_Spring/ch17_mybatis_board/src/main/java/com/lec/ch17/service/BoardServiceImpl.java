@@ -2,6 +2,8 @@ package com.lec.ch17.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,22 +30,20 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int write(Board board) {
+	public int write(Board board, HttpServletRequest request) {
+		board.setBip(request.getRemoteAddr());
 		return boardDao.write(board);
 	}
 
 	@Override
-	public int hitUp(int bid) {
-		return boardDao.hitUp(bid);
-	}
-
-	@Override
 	public Board detail(int bid) {
+		boardDao.hitUp(bid);
 		return boardDao.detail(bid);
 	}
 
 	@Override
-	public int modify(Board board) {
+	public int modify(Board board, HttpServletRequest request) {
+		board.setBip(request.getRemoteAddr());
 		return boardDao.modify(board);
 	}
 
@@ -53,12 +53,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int preReply(int bgroup) {
-		return boardDao.preReply(bgroup);
-	}
-
-	@Override
-	public Board reply(Board board) {
+	public int reply(Board board, HttpServletRequest request) {
+		board.setBip(request.getRemoteAddr());
+		boardDao.preReply(board);
 		return boardDao.reply(board);
 	}
 }
