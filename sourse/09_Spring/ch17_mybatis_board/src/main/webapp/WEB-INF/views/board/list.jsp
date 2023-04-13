@@ -20,7 +20,7 @@
   		}); */
   	});
 	const trClicked = (bid) => {
-		location.href = '${conPath}/board/content.do?bid='+bid+'&pageNum=${pageNum}'
+		location.href = '${conPath}/board/detail.do?bid='+bid+'&pageNum=${paging.currentPage}'
 	};
 	</script>
 </head>
@@ -33,8 +33,14 @@
 	<c:if test="${writeResult eq FAIL }">
 		<script>alert('글쓰기 실패')</script>
 	</c:if>
-	<c:if test="${not empty deleteResult }">
-		<script>alert('${deleteResult}');</script>
+	<c:if test="${deleteResult eq SUCCESS }">
+		<script>alert('${param.bid}번 글 삭제 성공');</script>
+	</c:if>
+	<c:if test="${deleteResult eq FAIL }">
+		<script>
+			alert('${param.bid}번 글 삭제 실패');
+			history.go(-1);		
+		</script>
 	</c:if>
 	<c:if test="${replyResult eq SUCCESS }">
 		<script>alert('${param.bid}번 글 답글쓰기 성공')</script>
@@ -46,24 +52,22 @@
   <table>
   	<caption>글목록</caption>
   	<tr>
-  		<td><a href="${conPath }/board/write.do">글쓰기</a></td>
+  		<td><a href="${conPath }/board/writeView.do">글쓰기</a></td>
   	</tr>
   </table>
   <table>
   	<tr>
-  		<th>순번</th><th>역순</th><th>글번호</th>
+  		<th>순번</th><th>글번호</th>
   		<th>글쓴이</th><th>글제목</th><th>작성일</th><th>조회수</th>
   	</tr>
   	<c:if test="${toCnt.size() eq 0 }">
   		<tr><td colspan="7">해당 페이지에 글이 없습니다</td></tr>
   	</c:if>
   	<c:if test="${list.size() != 0 }">
-  		<c:set var="oNum" value="${orderNum }"/>
-  		<c:set var="iNum" value="${inverseNum }"/>
+  		<c:set var="num" value="${paging.totCnt - paging.startRow + 1 }"/>
   		<c:forEach var="dto" items="${list }">
   			<tr onclick="trClicked(${dto.bid})">
-  				<td>${oNum }</td>
-  				<td>${iNum }</td>
+  				<td>${num }</td>
   				<td>${dto.bid }</td>
   				<td>${dto.bname }</td>
   				<td class="left">
@@ -90,26 +94,25 @@
   				</td>
   				<td>${dto.bhit }</td>
   			</tr>
-  			<c:set var="oNum" value="${oNum + 1 }"/>
-  			<c:set var="iNum" value="${iNum - 1 }"/>
+  			<c:set var="num" value="${num + 1 }"/>
   		</c:forEach>
   	</c:if>
   </table>
-  <div class="paging">
-  	<c:if test="${startPage > BLOCKSIZE }">
-  		[ <a href="${conPath }/board/list.do?pageNum=${startPage-1}">이전</a>]
-  	</c:if>
-  	<c:forEach var="i" begin="${startPage}" end="${endPage }">
-  		<c:if test="${i eq pageNum }">
-  			[ <b>${i }</b> ]
-  		</c:if>
-  		<c:if test="${i != pageNum }">
-  			[ <a href="${conPath }/board/list.do?pageNum=${i}">${i }</a> ]
-  		</c:if>
-  	</c:forEach>
- 		<c:if test="${endPage < pageCnt }">
- 			[ <a href="${conPath }/board/list.do?pageNum=${endPage+1}">다음</a> ]
- 		</c:if>
-  </div>
+  <div id="paging">
+		<c:if test="${paging.startPage > paging.blockSize }">
+			<a href="${conPath }/board/list.do?pageNum=${paging.startPage-1}">이전</a>
+		</c:if>
+		<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage }">
+			<c:if test="${i eq paging.currentPage }"> 
+				<b>${i }</b>
+			</c:if>
+			<c:if test="${i != paging.currentPage }"> 
+				<a href="${conPath }/board/list.do?pageNum=${i}">${i }</a>
+			</c:if>
+		</c:forEach>
+		<c:if test="${paging.endPage < paging.pageCnt }">
+			<a href="${conPath }/board/list.do?pageNum=${paging.endPage+1}">다음</a>
+		</c:if>
+	</div>
 </body>
 </html>

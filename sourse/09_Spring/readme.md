@@ -892,7 +892,12 @@ Mybatis를 이용한 최종 완성 형식의 spring 게시판 만들기
 	- https://mybatis.org/mybatis-3/configuration.html#objectFactory 에서 mapper정의 가져오기
 	- `<mapper>`의 `namespace="dao 경로"`
 		- `<resultMap>` : type="config에서 지정한 alias, id 지정
-			- `<result>` : property, column
+			- `<result>` : property, column(DTO의 변수)
+	- query 태그
+		- select
+			- id 지정
+			- `parameterType` : 
+		- insert, delete, update
 ### 6. Config
 ### 7. 빈 생성
 ### 8. Mybatis-spring 추가

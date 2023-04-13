@@ -20,54 +20,56 @@
 		<script>alert('${param.bid}번 글 수정 실패')</script>
 		history.back();
 	</c:if>
+	<div id="detail">
 	<table>
 		<caption>상세보기</caption>
 		<tr>
 			<th>글번호</th>
-			<td>${contentBoard.bid }</td>
+			<td>${boardDto.bid }</td>
 		</tr>
 		<tr>
 			<th>제목</th>
-			<td>${contentBoard.btitle }</td>
+			<td>${boardDto.btitle }</td>
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${contentBoard.bname }</td>
+			<td>${boardDto.bname }</td>
 		</tr>
 		<tr>
 			<th>본문</th>
-			<td><pre>${contentBoard.bcontent }</pre></td>
+			<td><pre>${boardDto.bcontent }</pre></td>
 		</tr>
 		<tr>
 			<th>작성일</th>
 			<td>
-				<fmt:formatDate value="${contentBoard.bdate }" pattern="yy/MM/dd(E) HH/mm"/>	
+				<fmt:formatDate value="${boardDto.bdate }" pattern="yy/MM/dd(E) HH:mm"/>	
 			</td>
 		</tr>
 		<tr>
 			<th>조회수</th>
-			<td>${contentBoard.bhit }</td>
+			<td>${boardDto.bhit }</td>
 		</tr>
 		<tr>
 			<th>IP</th>
-			<td>${contentBoard.bip }</td>
+			<td>${boardDto.bip }</td>
 		</tr>
 		<tr>
 			<td colspan="2">
-				<button onclick="location.href='${conPath}/mvcBoard/modify.do?bid=${param.bid }&pageNum=${param.pageNum }'">
+				<button onclick="location.href='${conPath}/board/modifyView.do?bid=${param.bid }&pageNum=${param.pageNum }'">
 					수정
 				</button>
-				<button onclick="location.href='${conPath}/mvcBoard/delete.do?bid=${param.bid }&pageNum=${param.pageNum }'">
+				<button onclick="location.href='${conPath}/board/delete.do?bid=${param.bid }&pageNum=${param.pageNum }'">
 					삭제
 				</button>
-				<button onclick="location.href='${conPath}/mvcBoard/reply.do?bid=${param.bid }&pageNum=${param.pageNum }'">
+				<button onclick="location.href='${conPath}/board/reply.do?bid=${param.bid }&pageNum=${param.pageNum }'">
 					답변
 				</button>
-				<button onclick="location.href='${conPath}/mvcBoard/list.do?pageNum=${param.pageNum }'">
+				<button onclick="location.href='${conPath}/board/list.do?pageNum=${param.pageNum }'">
 					목록
 				</button>
 			</td>
 		</tr>
 	</table>
+	</div>
 </body>
 </html>

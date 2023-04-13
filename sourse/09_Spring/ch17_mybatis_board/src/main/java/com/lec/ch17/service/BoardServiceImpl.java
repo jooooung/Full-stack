@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lec.ch15.utill.Paging;
 import com.lec.ch17.dao.BoardDao;
 import com.lec.ch17.dto.Board;
+import com.lec.ch17.utill.Paging;
 @Service
 public class BoardServiceImpl implements BoardService {
 	@Autowired
@@ -24,50 +24,41 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int totCnt() {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardDao.totCnt();
 	}
 
 	@Override
 	public int write(Board board) {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardDao.write(board);
 	}
 
 	@Override
 	public int hitUp(int bid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardDao.hitUp(bid);
 	}
 
 	@Override
 	public Board detail(int bid) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardDao.detail(bid);
 	}
 
 	@Override
 	public int modify(Board board) {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardDao.modify(board);
 	}
 
 	@Override
 	public int delete(int bid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardDao.delete(bid);
 	}
 
 	@Override
 	public int preReply(int bgroup) {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardDao.preReply(bgroup);
 	}
 
 	@Override
 	public Board reply(Board board) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardDao.reply(board);
 	}
-
 }

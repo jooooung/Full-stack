@@ -20,7 +20,7 @@
 	<select id="list" parameterType="Board" resultMap="BoardResult">
 		SELECT * 
 		  FROM (SELECT ROWNUM RN, A.* 
-		        FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)
+		        FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP, BID DESC) A)
 		  WHERE RN BETWEEN #{startRow} AND ${endRow}
 	</select>
 	<!-- 전체 글 개수 -->
@@ -30,7 +30,7 @@
 	<!-- 원글쓰기 -->
 	<insert id="write" parameterType="Board">
 		INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
- 			VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname}, #{btitle}, #{bcontent}, MVC_BOARD_SEQ.CURRVAL, #{bstep}, #{bindent}, #{bip}])
+ 			VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname}, #{btitle}, #{bcontent}, MVC_BOARD_SEQ.CURRVAL, 0, 0, #{bip})
 	</insert>
 	<!-- 조회수 올리기 -->
 	<update id="hitUp" parameterType="int">
