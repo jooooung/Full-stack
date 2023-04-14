@@ -903,9 +903,86 @@ Mybatis를 이용한 최종 완성 형식의 spring 게시판 만들기
 ### 8. Mybatis-spring 추가
 ### 9. Dao 인터페이스 
 ### 10. Service
+### 11. View & Controller
+
+# ✨18 Mybatis-mailSender(회원가입 시 메일 자동전송)
+## ✔1. 구글 계정 보안 2단계 인증하기
+- 계정관리 -> 보안 -> 2단계 인증 설정하기
+- 앱 비밀번호 -> 메일 / Windows 컴퓨터 생성 -> 생성된 비밀번호 기억
+
+## ✔2. gmail 설정
+- 설정 -> 전달 및 POP/IMAP
+	- 1. 상태 : 모든 메일에 POP 사용하기 체크
+	- 2. 상태 : IMAP 사용 체크 후 저장
+
+## ✔3. dependency 추가
+```
+<!-- javax.mail -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.7</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>3.0.5.RELEASE</version>
+		</dependency>
+```
+
+## ✔4. web.xml 한글 filter 추가
+## ✔5. 메일 정보 properties 추가
+## ✔6. bean 생성
+## ✔7. controller 
+- 매핑 join 페이지로 수정
+## ✔8. join.jsp(view)
+- text 형식 메일 전송, html 형식 메일 전송
+## ✔9. controller
+### text 형식 메일 전송
+- view에서 받은 매핑 처리
+```
+@RequestMapping(value = "요청명", method = RequestMethod.POST)
+	public String textMail(String name, String email, Model model) {
+		SimpleMailMessage message = new SimpleMailMessage();
+		// message.setFrom("이메일 주소");	// 보낼 메일 주소 (properties에서 미리 설정했으니 생략 가능)
+		message.setTo(email); // 받을 메일 주소
+		message.setSubject("[TEXT가입감사]" + name + "님 회원가입 감사합니다");	// 받을 메일 제목
+		String content = name + "님 회원가입 감사합니다";   // 메일 내용
+		message.setText(content);	// 메일 내용
+		mailSender.send(message);	// 메일 발송
+		model.addAttribute("mailSendResult", "TEXT 메일 발송 완료");
+		return "sendresult";
+	}
+```
+
+### html 형식 메일 전송
+```
+	@RequestMapping(value = "htmlMail", method = RequestMethod.POST)
+	public String htmlMail(final String name, final String email, Model model) {
+		MimeMessagePreparator message = new MimeMessagePreparator() {
+			String content = "메일 내용";
+			@Override
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				// 받을 메일 설정
+				mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
+				// 보낼 메일 주소 (properties에서 미리 설정했으니 생략 가능)
+				// mimeMessage.setFrom(new InternetAddress("이메일주소"));
+				// 메일제목
+				mimeMessage.setSubject("[HTML 가입인사]" + name + "님 가입 감사합니다");
+				// 메일 본문
+				mimeMessage.setText(content, "utf-8", "html");
+			} 
+		};  // 메세지 객체 생성
+		mailSender.send(message);	// 메일 전송
+		model.addAttribute("mailSendResult", "HTML 메일 발송 완료");
+		return "sendResult";
+	}
+```
 
 
-
+## ✔
+## ✔
+## ✔
 
 
 
