@@ -12,5 +12,5 @@ public interface BookService {
 	public int totCntBook();
 	public Book getDetailBook(int bnum);
 	public int registerBook(Book book, MultipartHttpServletRequest mRequest);
-	public int modifyBook(int bnum);
+	public int modifyBook(MultipartHttpServletRequest mRequest);
 }

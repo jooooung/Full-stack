@@ -12,6 +12,7 @@ public class Book {
 	private Date brdate;
 	private String bimg1;
 	private String bimg2;	
+	private String binfo;
 	
 	private int startRow;
 	private int endRow;

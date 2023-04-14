@@ -3,6 +3,7 @@ package com.lec.ch19.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.lec.ch19.dto.Book;
 
@@ -13,5 +14,5 @@ public interface BookDao {
 	public int totCntBook();
 	public Book getDetailBook(int bnum);
 	public int registerBook(Book book);
-	public int modifyBook(int bnum);
+	public int modifyBook(MultipartHttpServletRequest mRequest);
 }
