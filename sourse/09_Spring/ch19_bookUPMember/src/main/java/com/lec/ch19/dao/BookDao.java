@@ -14,5 +14,5 @@ public interface BookDao {
 	public int totCntBook();
 	public Book getDetailBook(int bnum);
 	public int registerBook(Book book);
-	public int modifyBook(MultipartHttpServletRequest mRequest);
+	public int modifyBook(Book book);
 }

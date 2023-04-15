@@ -37,18 +37,18 @@
 	
 	<!-- 책 등록 -->
 	<insert id="registerBook" parameterType="Book">
-		<if test="#{bimg1 != '' and bimg2 != ''}">
+		<if test="bimg1 != '' and bimg2 != ''">
 			INSERT INTO BOOK VALUES (BOOK_SQ.NEXTVAL, #{btitle},#{bwriter},#{brdate}, #{bimg1},#{bimg2},#{binfo})
 		</if>
-		<if test="#{bimg1 = '' and bimg2 != ''}">
+		<if test="bimg1 == '' and bimg2 != ''">
 			INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG2, bINFO)
     			VALUES (BOOK_SQ.NEXTVAL, #{btitle},#{bwriter},#{brdate}, #{bimg2},#{binfo})
 		</if>
-		<if test="#{bimg1 != '' and bimg2 = ''}">
+		<if test="bimg1 != '' and bimg2 == ''">
 			INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bINFO)
     			VALUES (BOOK_SQ.NEXTVAL, #{btitle},#{bwriter},#{brdate}, #{bimg1},#{binfo})
 		</if>
-		<if test="#{bimg1 = '' and bimg2 = ''}">
+		<if test="bimg1 == '' and bimg2 == ''">
 			INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bINFO)
     			VALUES (BOOK_SQ.NEXTVAL, #{btitle},#{bwriter},#{brdate}, #{binfo})
 		</if>
@@ -59,8 +59,8 @@
 		UPDATE BOOK SET BTITLE = #{btitle},
 		                BWRITER = #{bwriter},
 		                BRDATE = #{brdate},
-		                BIMG1 = #{bimg1},
-		                BIMG2 = #{bimg2},
+		                <if test="bimg1 != null and bimg1!=''">BIMG1=#{bimg1},</if>
+						<if test="bimg2 != null and bimg2!=''">BIMG2=#{bimg2},</if>
 		                BINFO = #{binfo}
 		        WHERE BNUM = #{bnum}
 	</update>

@@ -84,7 +84,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public int modifyBook(MultipartHttpServletRequest mRequest) {
+	public int modifyBook(Book book, MultipartHttpServletRequest mRequest) {
 		String uploadPath = mRequest.getRealPath("bookImgFileUpload/");
 		Iterator<String> params = mRequest.getFileNames();
 		String[] bimg = {"", ""};
@@ -114,15 +114,9 @@ public class BookServiceImpl implements BookService {
 			} // if
 			i++;
 		} // while
-		Book book = new Book();
-		book.setBnum(Integer.parseInt(mRequest.getParameter("bnum")));
-		book.setBtitle(mRequest.getParameter("btitle"));
-		book.setBwriter(mRequest.getParameter("bwriter"));
-		book.setBrdate(Date.valueOf(mRequest.getParameter("brdate")));
-		book.setBinfo(mRequest.getParameter("binfo"));
 		book.setBimg1(bimg[0]);
 		book.setBimg2(bimg[1]);
-		return bookDao.modifyBook(mRequest);
+		return bookDao.modifyBook(book);
 	}
 	
 	private int fileCopy(String serverFile, String backupFile) {
