@@ -1,7 +1,7 @@
 -- book.xml
 -- id = mainList(신간도서순)
 SELECT * FROM BOOK ORDER BY BRDATE DESC;
--- id = bookList(startRow - endRow 제목순)
+-- id = bookList(startRow - endRow schItem에 따라 schWord로 검색한 제목순)
 -- (1) schItem이 null 또는 ''일 때
 SELECT * 
   FROM (SELECT B.*, ROWNUM RN 
@@ -25,8 +25,16 @@ SELECT *
     FROM (SELECT * FROM BOOK 
             WHERE BWRITER LIKE '%'||'홍'||'%' ORDER BY BTITLE) B) 
     WHERE RN BETWEEN 1 AND 5;
+    
 -- id = totCntBook(책개수)
+    -- (1) schItem이 null 또는 ''일 때
 SELECT COUNT(*) FROM BOOK;
+    -- (2) schItem이 'all'일 때
+SELECT COUNT(*) FROM BOOK WHERE BTITLE LIKE '%'||'J'||'%' OR BWRITER LIKE '%'||'A'||'%';
+    -- (3) schItem이 'btitle'일 때
+SELECT COUNT(*) FROM BOOK WHERE BTITLE LIKE '%'||'J'||'%';
+    -- (4) schItem이 'bwriter'일 때
+SELECT COUNT(*) FROM BOOK WHERE BWRITER LIKE '%'||'A'||'%';
 -- id = getDetailBook (책번호로 dto 가져오기)
 SELECT * FROM BOOK WHERE BNUM = 1;
 -- id = registerBook (책등록)

@@ -29,7 +29,7 @@
 			<tr><th>책소개</th><td colspan="2">${bookDto.binfo }</td></tr>
 			<tr><td colspan="3">
 				<button onclick="location='book.do?method=modify&bnum=${bookDto.bnum}&pageNum=${param.pageNum}'">수정</button>
-				<button onclick="location='book.do?method=list&pageNum=${param.pageNum}'">목록</button>
+				<button onclick="location='book.do?method=list&pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}'">목록</button>
 		</table>
 	</div>
 	<jsp:include page="../main/footer.jsp"/>

@@ -19,15 +19,49 @@
 	
 	<!-- 도서목록 -->
 	<select id="bookList" parameterType="Book" resultMap="BookResult">
-		SELECT * 
-		  FROM (SELECT B.*, ROWNUM RN 
-		    FROM (SELECT * FROM BOOK ORDER BY BTITLE) B) 
-		    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		<if test="schItem == null or schItem == ''">
+			SELECT * 
+			  FROM (SELECT B.*, ROWNUM RN 
+			    FROM (SELECT * FROM BOOK ORDER BY BTITLE) B) 
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="schItem == 'all'">
+			SELECT * 
+			  FROM (SELECT B.*, ROWNUM RN 
+			    FROM (SELECT * FROM BOOK 
+			            WHERE BTITLE LIKE '%'||#{schWord}||'%' OR BWRITER LIKE '%'||#{schWord}||'%' ORDER BY BTITLE) B) 
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="schItem == 'btitle'">
+			SELECT * 
+			  FROM (SELECT B.*, ROWNUM RN 
+			    FROM (SELECT * FROM BOOK 
+			            WHERE BTITLE LIKE '%'||#{schWord}||'%' ORDER BY BTITLE) B) 
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="schItem == 'bwriter'">
+			SELECT * 
+			  FROM (SELECT B.*, ROWNUM RN 
+			    FROM (SELECT * FROM BOOK 
+			            WHERE BWRITER LIKE '%'||#{schWord}||'%' ORDER BY BTITLE) B) 
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
 	</select>
 	
 	<!-- 책 개수 -->
-	<select id="totCntBook" resultType="int">
-		SELECT COUNT(*) FROM BOOK
+	<select id="totCntBook" parameterType="Book" resultType="int">
+		<if test="schItem == null or schItem == ''">
+			SELECT COUNT(*) FROM BOOK
+		</if>
+		<if test="schItem == 'all'">
+			SELECT COUNT(*) FROM BOOK WHERE BTITLE LIKE '%'||#{schWord}||'%' OR BWRITER LIKE '%'||#{schWord}||'%'
+		</if>
+		<if test="schItem == 'btitle'">
+			SELECT COUNT(*) FROM BOOK WHERE BTITLE LIKE '%'||#{schWord}||'%'
+		</if>
+		<if test="schItem == 'bwriter'">
+			SELECT COUNT(*) FROM BOOK WHERE BWRITER LIKE '%'||#{schWord}||'%'
+		</if>
 	</select>
 	
 	<!-- 책 상세보기 -->

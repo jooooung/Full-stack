@@ -20,9 +20,9 @@ public class BookController {
 	
 	// 도서 목록
 	@RequestMapping(params = "method=list", method = {RequestMethod.GET, RequestMethod.POST})
-	public String list(String pageNum, Model model) {
-		model.addAttribute("paging", new Paging(bookService.totCntBook(), pageNum, 3, 3));
-		model.addAttribute("bookList", bookService.bookList(pageNum));
+	public String list(String pageNum, Model model, Book book) {
+		model.addAttribute("paging", new Paging(bookService.totCntBook(book), pageNum, 3, 3));
+		model.addAttribute("bookList", bookService.bookList(pageNum, book));
 		return "book/list";
 	}
 	

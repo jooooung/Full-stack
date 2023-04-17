@@ -35,7 +35,7 @@ public class MemberServiceImpl implements MemberService {
 					"		<hr color=\"red\">\n" + 
 					"		<span style=\"color=red;\">빨간 글씨 부분</span><br>\n" + 
 					"		<span style=\"color=blue;\">파란 글씨 부분</span><br>\n" + 
-					"		<p><img src=\"http://localhost:8090/ch19/img/coupon.jpg\" alt=\"쿠폰\"></p>\n" + 
+					"		<p><img src=\"http://localhost:8090/ch19_sch/img/coupon.jpg\" alt=\"쿠폰\"></p>\n" + 
 					"		<p align=\"center\">서울시 어떤구 어떤로 무슨빌딩 5층</p>\n" + 
 					"	</div>";
 			@Override

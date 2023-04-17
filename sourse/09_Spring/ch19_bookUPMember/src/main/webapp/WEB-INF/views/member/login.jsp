@@ -18,7 +18,7 @@
 </head>
 <body>
 	<c:if test="${joinResult eq 1 }">
-		<script>alert('${mDto} 회원가입 감사합니다');</script>
+		<script>alert('${mDto.mid}님 회원가입 감사합니다');</script>
 	</c:if>
 	<c:if test="${not empty loginResult}">
 		<script>alert('${loginResult}');</script>

@@ -18,4 +18,6 @@ public class Book {
 	private int endRow;
 	
 	// 검색을 위한 필드
+	private String schItem;
+	private String schWord;
 }
