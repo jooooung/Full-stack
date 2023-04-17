@@ -2,9 +2,28 @@
 -- id = mainList(신간도서순)
 SELECT * FROM BOOK ORDER BY BRDATE DESC;
 -- id = bookList(startRow - endRow 제목순)
+-- (1) schItem이 null 또는 ''일 때
 SELECT * 
   FROM (SELECT B.*, ROWNUM RN 
     FROM (SELECT * FROM BOOK ORDER BY BTITLE) B) 
+    WHERE RN BETWEEN 1 AND 5;
+-- (2) schItem이 'all'일 때
+SELECT * 
+  FROM (SELECT B.*, ROWNUM RN 
+    FROM (SELECT * FROM BOOK 
+            WHERE BTITLE LIKE '%'||'J'||'%' OR BWRITER LIKE '%'||'A'||'%' ORDER BY BTITLE) B) 
+    WHERE RN BETWEEN 1 AND 5;
+-- (3) schItem이 'btitle'일 때
+SELECT * 
+  FROM (SELECT B.*, ROWNUM RN 
+    FROM (SELECT * FROM BOOK 
+            WHERE BTITLE LIKE '%'||'J'||'%' ORDER BY BTITLE) B) 
+    WHERE RN BETWEEN 1 AND 5;
+-- (4) schItem이 'bwriter'일 때
+SELECT * 
+  FROM (SELECT B.*, ROWNUM RN 
+    FROM (SELECT * FROM BOOK 
+            WHERE BWRITER LIKE '%'||'홍'||'%' ORDER BY BTITLE) B) 
     WHERE RN BETWEEN 1 AND 5;
 -- id = totCntBook(책개수)
 SELECT COUNT(*) FROM BOOK;

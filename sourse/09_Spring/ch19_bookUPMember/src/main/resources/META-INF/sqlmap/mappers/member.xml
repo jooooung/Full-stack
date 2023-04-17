@@ -13,7 +13,7 @@
 	</resultMap>
 	<!-- id 중복확인 -->
 	<select id="idConfirm" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM MEMBER WHERE MID = #{mid}
+		SELECT COUNT(*) FROM MEMBER WHERE MID = #{mid, jdbcType=VARCHAR}
 	</select>
 	
 	<!-- 회원가입-->
@@ -23,16 +23,16 @@
 	
 	<!-- 회원 상세보기 -->
 	<select id="getDetailMember" parameterType="String" resultType="Member">
-		SELECT * FROM MEMBER WHERE MID = #{mid}
+		SELECT * FROM MEMBER WHERE MID = #{mid, jdbcType=VARCHAR}
 	</select>
 	
 	<!--회원정보 수정-->
-	<insert id="modifyMember" parameterType="Member">
+	<update id="modifyMember" parameterType="Member">
 		UPDATE MEMBER SET MPW = #{mpw},
 		                  MNAME = #{mname},
 		                  MMAIL = #{mmail},
 		                  MPOST = #{mpost},
 		                  MADDR = #{maddr}
 		            WHERE MID = #{mid}
-	</insert> 
+	</update> 
 </mapper>
