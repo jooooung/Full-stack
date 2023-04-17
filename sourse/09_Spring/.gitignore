@@ -1,2 +1,3 @@
 /.metadata/
 Servers/
+/src/main/resources/META-INF/property/mail.properties
