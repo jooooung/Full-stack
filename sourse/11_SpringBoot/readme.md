@@ -1,6 +1,6 @@
 # SpringBoot
 
-## 환경설정
+## ✅환경설정
 ### sts 4 압축풀기
 - sts4가 있는 폴더에서 cmd 실행  
  java -jar 탭을 누르면 파일명이 자동으로 생성 -> 엔터 -> 압축풀림
@@ -36,3 +36,48 @@
 1. `@SpringBootApplication`(컨트롤러)에서 실행
 2. 프로젝트 우클릭 - run as - Spring Boot App
 
+## ✅Maven 프로젝트로 jsp 사용하기
+- dependency :spring web /  JDBC api /  Oracle Driver / Mybatis framework   / Lombok / Spring Boot DevTools
+	- H2 Database : oracle SQL, mySQL 둘 다 사용가능한 데이터베이스
+
+### pom.xml에 dependency 추가
+```
+	<!-- JSP 파일 사용하기 위한 -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+	</dependency>
+	<!-- 톰캣 -->
+	<dependency>
+		<groupId>org.apache.tomcat.embed</groupId>
+		<artifactId>tomcat-embed-jasper</artifactId>
+	</dependency>
+```
+### application.properties 설정
+```
+server.port=8090
+
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XE
+spring.datasource.username=scott
+spring.datasource.password=tiger
+```
+
+### static폴더에 index.hmtl 생성
+
+### application.properties에 vo, xml 경로 지정
+- vo 패키지 : `mybatis.type-aliases-package=com.lec.emp.model`
+- xml : `mybatis.mapper-locations=classpath:mappers/**/*.xml`
+
+### repository(dao) 생성
+- `@Mapper`
+
+### service  생성
+- interface 생성
+- interface를 `implements` 받는 class 생성 (`@Service`)
+### controller 생성
+- `@Controller`
+- `@Slf4j` : log를 생성해주는 어노테이션
