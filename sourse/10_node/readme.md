@@ -62,3 +62,9 @@ MongoClient.connect(uri, (err, client) => {
 ## ejs 라이브러리 설치
 - npm install ejs
 - view 엔진으로 ejs 등록 : `app.set('view enging', "ejs"); `
+
+23.05.11
+## detail
+
+## update
+- ajax를 이용한 put 방식 전달
