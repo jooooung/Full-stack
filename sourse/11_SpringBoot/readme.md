@@ -81,3 +81,34 @@ spring.datasource.password=tiger
 ### controller 생성
 - `@Controller`
 - `@Slf4j` : log를 생성해주는 어노테이션
+
+230512
+## ✅인텔리J를 이용한 Gradle 프로젝트
+### 1. spring initializr 를 이용한 Gradle 프로젝트 생성
+```
+Project : Gradle – Groovy
+Language : Java
+SpringBoot ; 2.7.11
+Packaging : Jar
+Java : 8
+Dependencies : 
+spring web /  Thymeleaf / Lombok / Spring Boot DevTools 
+```
+
+### 2. 인텔리J 실행
+-	프로젝트 열기 : build.gradle로 open as Project
+- settings > Build,Execution,Deployment > BuildTools > Gradle > Build and run using과 Run Tests using을 IntelliJ로 바꾸면 속도가 조금 빨라짐
+
+## 배포하기
+1. gradlew build
+2. 
+```
+cd build
+cd libs
+java -jar hello-spring-0.0.1-tab
+```
+
+## test 하기
+- test class 만들기
+	- class명 선택 후 Ctrl+Shift+T
+	
