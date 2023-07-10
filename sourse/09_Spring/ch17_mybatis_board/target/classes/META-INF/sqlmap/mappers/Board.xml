@@ -21,7 +21,7 @@
 		SELECT * 
 		  FROM (SELECT ROWNUM RN, A.* 
 		        FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP, BID DESC) A)
-		  WHERE RN BETWEEN #{startRow} AND ${endRow}
+		  WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>
 	<!-- 전체 글 개수 -->
 	<select id="totCnt" resultType="int">
